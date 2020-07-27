@@ -101,7 +101,7 @@
       
 
       const extremesLayer = new GeoJSONLayer({
-        url: "apt.json",
+        url: "https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json",
         elevationInfo: {
           mode: "absolute-height",
           offset: offset
@@ -258,7 +258,7 @@
 	}
 
 
-	readTextFile("apt.json", function(text){
+	readTextFile("https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json", function(text){
 		var jdata = JSON.parse(text);
 		var othdiv = document.getElementById("othPlaceHolder");
 
@@ -287,7 +287,7 @@
 	
 	function Search()
 	{
-	readTextFile("apt.json", function(text){
+	readTextFile("https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json", function(text){
 		var jdata = JSON.parse(text);
 		var count=0;
 		var srcdiv = document.getElementById("searchPlaceHolder");
@@ -338,7 +338,7 @@
 		var Sources=" ";
 		var Links="";
 		var Operations="";
-		readTextFile("apt.json", function(text){
+		readTextFile("https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json", function(text){
 			var jdata = JSON.parse(text);
 			jdata.features.forEach( function(feat) {
 				if (feat.properties.Name==Name){
@@ -410,7 +410,7 @@
 		detp.innerHTML="";
 		var Sources=" ";
 		var Links="";
-		readTextFile("apt.json", function(text){
+		readTextFile("https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json", function(text){
 			var jdata = JSON.parse(text);
 			jdata.features.forEach( function(feat) {
 				if (feat.properties.Name==Name){
