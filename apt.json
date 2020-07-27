@@ -23,7 +23,7 @@
             "Copyright": ""
           }
         ],
-        "Targets": "Target Gov + Military, DIB, Finiancial/Think Tanks, Telco, Academia, Religious organisations",
+        "Targets": "Target Gov and Military, DIB, Finiancial/Think Tanks, Telco, Academia, Religious organisations",
         "Tools": "BUBBLEWRAP, ipconfig, LOWBALL, Net, netstat, PoisonIvy",
         "TTP": "",
         "IOC": "",
@@ -44,6 +44,69 @@
         "coordinates": [
           111,
           33
+        ]
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Desert Falcons",
+        "OtherNames": "APT-C-23, Two-tailed Scorpion, ATK 66, TAG-CT1",
+        "AssociatedGroups": null,
+        "Description": "(Kaspersky) The Global Research and Analysis Team (GreAT) at Kaspersky Lab has uncovered new targeted attacks in the Middle East. Native Arabic-speaking cybercriminals have built advanced methods and tools to deliver, hide and operate malware that they have also developed themselves. This malware was originally discovered during an investigation of one of the attacks in the Middle East. Political activities and news are being actively used by the cybercriminals to entice victims into opening files and attachments. Content has been created with professionalism, with well-designed visuals and interesting, familiar details for the victims, as if the information were long awaited. The victims of the attacks to date have been carefully chosen; they are active and influential in their respective cultures, but also attractive to the cybercriminals as a source of intelligence and a target for extortion. The attackers have been operating for more than two years now, running different campaigns, targeting different types of victims and different types of devices (including Windows- and Android-based). We suspect that at least 30 people distributed across different countries are operating the campaigns.",
+        "Location": "Palestine",
+        "ImageUrl": "palestine.jpg",
+        "ImageCaption": "Palestine",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2011",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+      
+        "Targets": "Sectors: Critical infrastructure, Defense, Education, Government, Media and Transportation. Countries: Albania, Algeria, Australia, Belgium, Bosnia and Herzegovina, Canada, China, Cyprus, Denmark, Egypt, France, Germany, Greece, Hungary, India, Iran, Iraq, Israel, Italy, Japan, Jordan, Kuwait, Lebanon, Libya, Mali, Mauritania, Mexico, Morocco, Netherlands, Norway, Pakistan, Palestine, Portugal, Qatar, Romania, Russia, Saudi Arabia, South Korea, Sudan, Sweden, Syria, Taiwan, Turkey, UAE, Ukraine, USA, Uzbekistan, Yemen and Zimbabwe.",
+        "Tools": "FrozenCell, GlanceLove, GnatSpy, KasperAgent, Micropsia, VAMP and ViperRAT.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Jan 2015",
+				"Description":"Operation “Arid Viper”. Operation Arid Viper attacked five Israeli-based organizations in the government, transport, infrastructure, military, and academic industries, and one organization in Kuwait using spear-phishing emails that dropped a pornographic video on a victim’s computer.",
+				"Link":"https://www.trendmicro.com/vinfo/us/security/news/cyber-attacks/sexually-explicit-material-used-as-lures-in-cyber-attacks?linkId=12425812"
+				},{
+				"Date":"Sep 2015",
+				"Description":"Proofpoint researchers recently intercepted and analyzed phishing emails distributing Arid Viper malware payloads with some noteworthy updates. As with the originally documented examples, these messages were part of narrow campaigns targeting specific industry verticals: telecoms, high tech, and business services, primarily in Israel.",
+				"Link":"https://www.proofpoint.com/us/threat-insight/post/Operation-Arid-Viper-Slithers-Back-Into-View"
+				},{
+				"Date":"Jul 2016",
+				"Description":"Around July last year, more than a 100 Israeli servicemen were hit by a cunning threat actor. The attack compromised their devices and exfiltrated data to the attackers’ command and control server. In addition, the compromised devices were pushed Trojan updates, which allowed the attackers to extend their capabilities. The operation remains active at the time of writing this post, with attacks reported as recently as February 2017.",
+				"Link":"https://securelist.com/breaking-the-weakest-link-of-the-strongest-chain/77562/"
+				},{
+				"Date":"Apr 2017",
+				"Description":"ThreatConnect has identified a KASPERAGENT malware campaign leveraging decoy Palestinian Authority documents. The samples date from April – May 2017, coinciding with the run up to the May 2017 Palestinian Authority elections.",
+				"Link":"https://threatconnect.com/kasperagent-malware-campaign/"
+				},{
+				"Date":"Apr 2017",
+				"Description":"We identified one specific spear phishing campaign launched against targets within Palestine, and specifically against Palestinian law enforcement agencies. This campaign started in April 2017, using a spear phishing campaign to deliver the MICROPSIA payload in order to remotely control infected systems.",
+				"Link":"https://blog.talosintelligence.com/2017/06/palestine-delphi.html"
+				},{
+				"Date":"Sep 2017",
+				"Description":"FrozenCell is the mobile component of a multi-platform attack we’ve seen a threat actor known as “Two-tailed Scorpion/APT-C-23,” use to spy on victims through compromised mobile devices and desktops.",
+				"Link":"https://blog.lookout.com/frozencell-mobile-threat"
+				},{
+				"Date":"Dec 2017",
+				"Description":"Recently, Trend Micro researchers came across a new mobile malware family which we have called GnatSpy. We believe that this is a new variant of VAMP, indicating that the threat actors behind APT-C-23 are still active and continuously improving their product. Some C&C domains from VAMP were reused in newer GnatSpy variants, indicating that these attacks are connected. We detect this new family as ANDROIDOS_GNATSPY.",
+				"Link":"https://blog.trendmicro.com/trendlabs-security-intelligence/new-gnatspy-mobile-malware-family-discovered/"
+				}],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064309/The-Desert-Falcons-targeted-attacks.pdf"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35,
+          32
         ]
       }
     },
@@ -3291,6 +3354,53 @@
           63
         ]
       }
+    }
+	,
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Cyber Berkut",
+        "AssociatedGroups": "",
+        "Description": "(Recorded Future) Recorded Future has collected threat intelligence on the hacking activities of Cyber Berkut for over a year, aligning with the first month of ground fighting in Ukraine, at which time the group began coordinated cyber attacks. This article presents temporal and technical analysis of these activities, based on open source intelligence (OSINT) from the Web. Appropriating the Ukrainian special police force name and logo, the group has aligned itself as pro-Russian, anti-Ukrainian, and most recently attacked Western intervention efforts in the Ukrainian conflict. While the group has taken Ukrainian identities, technical links and contextual analysis connect the group to Russia. The group began with successful distributed denial of service (DDoS) attacks on multiple NATO websites just as separatists in the physical world were beginning to storm military buildings. Since their initial attacks the group has continued to take down websites, and most recently leaked confidential documents between US billionaire George Soros and the Ukrainian prime minister and president which contained plans for Western intervention.",
+        "Location": "Russia",
+        "imageUrl": "russia.png",
+        "imageCaption": "Russia",
+        "OtherNames": "Kiberberkut",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage, Sabotage and destruction",
+        "FirstSeen": "2014",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+        "Targets":"Sectors: Defense, Financial and Government. Countries: Estonia, Germany, Ukraine, USA and NATO.",
+		"Tools":"",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Mar 2014",
+				"Description":"Nato websites disabled by cyber attack on eve of Crimea vote",
+				"Link":"https://www.ft.com/content/b822d5cc-ace6-11e3-8ba3-00144feab7de"
+				},{
+				"Date":"Jul 2014",
+				"Description":"'Cyber Berkut' Hackers Target Major Ukrainian Bank",
+				"Link":"https://www.themoscowtimes.com/2014/07/04/cyber-berkut-hackers-target-major-ukrainian-bank-a37033"
+				},{
+				"Date":"Jan 2015",
+				"Description":"German government websites, including Chancellor Angela Merkel’s page, were hacked on Wednesday in an attack claimed by a group demanding Berlin end support for the Ukrainian government, shortly before their leaders were to meet.",
+				"Link":"https://www.reuters.com/article/us-germany-cyberattack/pro-russian-group-claims-cyber-attack-on-german-government-websites-idUSKBN0KG15320150107"
+				},{
+				"Date":"May 2015",
+				"Description":"Cyber Berkut Graduates From DDoS Stunts to Purveyor of Cyber Attack Tools",
+				"Link":"https://www.recordedfuture.com/cyber-berkut-analysis/"
+				}],
+        "ExtLinks": [{"Description": "","URL": "https://www.recordedfuture.com/cyber-berkut-analysis/"},
+		{"Description": "","URL": "https://en.wikipedia.org/wiki/CyberBerkut"}]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91,
+          65
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -3344,16 +3454,18 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Cleaver",
+        "Name": "Cutting Kitten",
         "AssociatedGroups": "Threat Group 2889, TG-2889",
         "Description": "Cleaver is a threat group that has been attributed to Iranian actors and is responsible for activity tracked as Operation Cleaver. Strong circumstantial evidence suggests Cleaver is linked to Threat Group 2889 (TG-2889).",
         "Location": "Iran",
         "imageUrl": "iran.jpg",
         "imageCaption": "Iran",
-        "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "OtherNames": "Cleaver, TG-2889",
+        "Sponsor": "State-sponsored, security company ITSecTeam",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2012", 		
+		"Targets":"Sectors: Aerospace, Aviation, Chemical, Defense, Education, Energy, Financial (banks: Bank of America, US Bancorp, Fifth Third Bank, Citigroup, PNC, BB&T, Wells Fargo, Capital One and HSBC), Government, Healthcare, Oil and gas, Technology, Telecommunications, Transportation and Utilities. Countries: Canada, China, France, Germany, India, Israel, Kuwait, Mexico, Netherlands, Pakistan, Qatar, Saudi Arabia, South Korea, Turkey, UAE, UK and USA.",
+		"Tools":"CsExt, DistTrack, Jasus, Kagent, Leash, Logger Module, MPKBot, Net Crawler, PupyRAT, PVZ-In, PVZ-Out, SynFlooder, SysKit, TinyZBot, WndTest, zhCat and zhMimikatz.",
         "Sources": [
           {
             "Name": "MITRE",
@@ -3379,7 +3491,23 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"2012",
+				"Description":"Operation “Cleaver”. Operation Cleaver has, over the past several years, conducted a significant global surveillance and infiltration campaign. To date it has successfully evaded detection by existing security technologies. The group is believed to work from Tehran, Iran, although auxiliary team members were identified in other locations including the Netherlands, Canada, and the UK. The group successfully leveraged both publicly available, and customized tools to attack and compromise targets around the globe. The targets include military, oil and gas, energy and utilities, transportation, airlines, airports, hospitals, telecommunications, technology, education, aerospace, Defense Industrial Base (DIB), chemical companies, and governments.",
+				"Link":"https://www.cylance.com/content/dam/cylance/pages/operation-cleaver/Cylance_Operation_Cleaver_Report.pdf"
+				},{
+				"Date":"2013",
+				"Description":"Attack on the Bowman Avenue Dam. Iranian hackers infiltrated the control system of a small dam less than 20 miles from New York City two years ago, sparking concerns that reached to the White House, according to former and current U.S. officials and experts familiar with the previously undisclosed incident.",
+				"Link":"https://www.wsj.com/articles/iranian-hackers-infiltrated-new-york-dam-in-2013-1450662559"
+				},{
+				"Date":"2015",
+				"Description":"Network of Fake LinkedIn Profiles. While tracking a suspected Iran-based threat group known as Threat Group-2889 (TG-2889), Dell SecureWorks Counter Threat Unit (CTU) researchers uncovered a network of fake LinkedIn profiles. These convincing profiles form a self-referenced network of seemingly established LinkedIn users. CTU researchers assess with high confidence the purpose of this network is to target potential victims through social engineering.", 
+				"Link":"https://www.secureworks.com/research/suspected-iran-based-hacker-group-creates-network-of-fake-linkedin-profiles"
+				},{
+				"Date":"Mar 2016",
+				"Description":"U.S. indicts Iranians for hacking dozens of banks, New York dam",
+				"Link":"https://www.reuters.com/article/us-usa-iran-cyber/u-s-indicts-iranians-for-hacking-dozens-of-banks-new-york-dam-idUSKCN0WQ1JF"
+				}],
         "ExtLinks": []
       },
       "geometry": {
@@ -3586,14 +3714,16 @@
       "properties": {
         "Name": "Dark Caracal",
         "AssociatedGroups": null,
-        "Description": "Dark Caracal is threat group that has been attributed to the Lebanese General Directorate of General Security (GDGS) and has operated since at least 2012.",
+        "Description": "Dark Caracal is threat group that has been attributed to the Lebanese General Directorate of General Security (GDGS) and has operated since at least 2012. (Lookout) Lookout and Electronic Frontier Foundation (EFF) have discovered Dark Caracal3, a persistent and prolific actor, who at the time of writing is believed to be administered out of a building belonging to the Lebanese General Security Directorate in Beirut. At present, we have knowledge of hundreds of gigabytes of exfiltrated data, in 21+ countries, across thousands of victims. Stolen data includes enterprise intellectual property and personally identifiable information. We are releasing more than 90 indicators of compromise (IOC) associated with Dark Caracal including 11 different Android malware IOCs; 26 desktop malware IOCs across Windows, Mac, and Linux; and 60 domain/IP based IOCs. Dark Caracal targets include individuals and entities that a nation state might typically attack, including governments, military targets, utilities, financial institutions, manufacturing companies, and defense contractors. We specifically uncovered data associated with military personnel, enterprises, medical professionals, activists, journalists, lawyers, and educational institutions during this investigation. Types of data include documents, call records, audio recordings, secure messaging client content, contact information, text messages, photos, and account data.",
         "Location": "Lebanon",
         "imageUrl": "lebanon.png",
         "imageCaption": "Lebanon",
-        "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "OtherNames": "ATK 27, ATK 27",
+        "Sponsor": "State-sponsored, General Directorate of General Security (GDGS)",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2007",
+		"Targets":"Sectors: Defense, Education, Financial, Government, Healthcare, Manufacturing, Media, Utilities, activists, lawyers and journalists. Countries: China, France, Germany, India, Italy, Jordan, Lebanon, Nepal, Netherlands, Pakistan, Philippines, Qatar, Russia, Saudi Arabia, South Korea, Switzerland, Syria, Thailand, USA, Venezuela and Vietnam.",
+		"Tools":"Bandook, CrossRAT, FinFisher and Pallas.",
         "Sources": [
           {
             "Name": "MITRE",
@@ -3620,7 +3750,7 @@
         "TTP": "",
         "IOC": "",
         "Operations": [],
-        "ExtLinks": []
+        "ExtLinks": [{"Description": "","URL": "https://info.lookout.com/rs/051-ESQ-475/images/Lookout_Dark-Caracal_srr_20180118_us_v.1.0.pdf"}]
       },
       "geometry": {
         "type": "Point",
@@ -3635,17 +3765,17 @@
       "properties": {
         "Name": "Darkhotel",
         "AssociatedGroups": null,
-        "Description": "Darkhotel is a threat group that has been active since at least 2004. The group has conducted activity on hotel and business center Wi\u2011Fi and physical connections as well as peer-to-peer and file sharing networks. The actors have also conducted spearphishing.",
-        "Location": "Other",
-        "imageUrl": "",
-        "imageCaption": "",
-        "Tools": "Win32.Karba, Win32.Pioneer, CVE-2015-8651, Asruex,  CVE-2012-0158, CVE-2010-2883, CVE-2016-4171 and CVE-2018-817",
-        "Targets": "Japan, Taiwan, China, Russia, and South Korea, North Korea\n\nGovernment, Utilities, High-Tech, Automotive",
-        "extlink22": "",
-        "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Description": "Darkhotel is a threat group that has been active since at least 2004. The group has conducted activity on hotel and business center Wi\u2011Fi and physical connections as well as peer-to-peer and file sharing networks. The actors have also conducted spearphishing. (SecurityWeek) The activities of the DarkHotel advanced persistent threat (APT) actor came to light in November 2014, when Kaspersky published a report detailing a sophisticated cyberespionage campaign targeting business travelers in the Asia-Pacific region. The group has been around for nearly a decade and some researchers believe its members are Korean speakers. The attackers targeted their victims using several methods, including through their hotel’s Wi-Fi, zero-day exploits and peer-to-peer (P2P) file sharing websites. Nearly one year later, the threat group was observed using new attack techniques and an exploit leaked from Italian spyware maker Hacking Team. DarkHotel victims have been spotted in several countries, including North Korea, Russia, South Korea, Japan, Bangladesh, Thailand, Taiwan, China, the United States, India, Mozambique, Indonesia and Germany. Up until recently, the attacks appeared to focus on company executives, researchers and development personnel from sectors such as defense industrial base, military, energy, government, NGOs, electronics manufacturing, pharmaceutical, and medical. In more recent DarkHotel attacks it has dubbed “Inexsmar,” security firm Bitdefender said the hackers targeted political figures, and they appeared to be using some new methods.",
+        "Location": "North Korea",
+        "imageUrl": "northkorea.png",
+        "imageCaption": "North Korea",
+        "Tools": "Win32.Karba, Win32.Pioneer, CVE-2015-8651, Asruex,  CVE-2012-0158, CVE-2010-2883, CVE-2016-4171 and CVE-2018-817. Asruex, DarkHotel, DmaUp3.exe, GreezeBackdoor, Karba, msieckc.exe, Nemim, Pioneer, Ramsay, Retro and Tapaoux and various 0-days from the Hacking Team breach.",
+        "Targets": "Japan, Taiwan, China, Russia, and South Korea, North Korea\n\nGovernment, Utilities, High-Tech, Automotive. Sectors: Defense, Energy, Government, Healthcare, Hospitality, NGOs, Pharmaceutical, Research, Technology and Chinese institutions abroad. Countries: Afghanistan, Armenia, Bangladesh, Belgium, China, Ethiopia, Germany, Greece, Hong Kong, India, Indonesia, Iran, Ireland, Israel, Italy, Japan, Kazakhstan, Kyrgyzstan, Lebanon, Malaysia, Mexico, Mozambique, North Korea, Pakistan, Philippines, Russia, Saudi Arabia, Serbia, Singapore, South Korea, Taiwan, Tajikistan, Thailand, Turkey, UAE, UK, USA, Vietnam and others.",
+        
+        "OtherNames": "APT-C-06, SIG25, Dubnium, Fallout Team, Shadow Crane, ATK 52, Higaisa, T-APT-02, Luder",
+        "Sponsor": "State-sponsored",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2007",
         "Sources": [
           {
             "Name": "MITRE",
@@ -3671,7 +3801,51 @@
         ],
         "TTP": "Information on Chinese forum indicating group may have targeted CVE-2015-8651, most likely a South Korean actor",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"2010",
+				"Description":"Operation “DarkHotel”. Target: The travelers are often top executives from a variety of industries doing business and outsourcing in the APAC region. Targets have included CEOs, senior vice presidents, sales and marketing directors and top R&D staff. Method: spear-phishing targets with highly advanced Flash zero-day exploits that effectively evade the latest Windows and Adobe defenses, and yet they also imprecisely spread among large numbers of vague targets with peer-to-peer spreading tactics. Moreover, this crew’s most unusual characteristic is that for several years the Darkhotel APT has maintained a capability to use hotel networks to follow and hit selected targets as they travel around the world.",
+				"Link":"https://securelist.com/the-darkhotel-apt/66779/"
+				},{
+				"Date":"2015",
+				"Description":"Darkhotel’s attacks in 2015",
+				"Link":"https://securelist.com/darkhotels-attacks-in-2015/71713/"
+				},{
+				"Date":"Dec 2015",
+				"Description":"Operation “Daybreak”. Method: Uses Flash zero-day exploit for CVE-2015-8651. Note: not the same operation as Reaper, APT 37, Ricochet Chollima, ScarCruft’s Operation “Daybreak”.",
+				"Link":""
+				},{
+				"Date":"Sep 2016",
+				"Description":"Operation “Inexsmar”. Target: seems to be used in a campaign that targets political figures rather than the usual corporate research and development personnel, CEOs and other senior corporate officials. Method: This attack uses a new payload delivery mechanism rather than the consecrated zero-day exploitation techniques, blending social engineering with a relatively complex Trojan to infect its selected pool of victims.",
+				"Link":"https://labs.bitdefender.com/2017/07/inexsmar-an-unusual-darkhotel-campaign/"
+				},{
+				"Date":"Apr 2018",
+				"Description":"Analysis of CVE-2018-8174 VBScript 0day and APT actor related to Office targeted attack",
+				"Link":"https://blog.360totalsecurity.com/en/analysis-cve-2018-8174-vbscript-0day-apt-actor-related-office-targeted-attack/"
+				},{
+				"Date":"Aug 2018",
+				"Description":"Darkhotel APT is back: Zero-day vulnerability in Microsoft VBScript is exploited",
+				"Link":"https://blog.360totalsecurity.com/en/darkhotel-apt-is-back-zero-day-vulnerability-in-microsoft-vbscript-is-exploited/"
+				},{
+				"Date":"Jan 2020",
+				"Description":"Darkhotel uses a new Zero-day vulnerability in the Internet Explorer scripting engine",
+				"Link":"hDarkhotel uses a new Zero-day vulnerability in the Internet Explorer scripting engine"
+				},{
+				"Date":"Mar 2020",
+				"Description":"Since March this year, more than 200 VPN servers have been compromised and many Chinese institutions abroad were under Since March this year, more than 200 VPN servers have been compromised and many Chinese institutions abroad were under",
+				"Link":"http://blogs.360.cn/post/APT_Darkhotel_attacks_during_coronavirus_pandemic.html"
+				},{
+				"Date":"May 2020",
+				"Description":"Ramsay: A cyber-espionage toolkit tailored for air-gapped networks",
+				"Link":"https://www.welivesecurity.com/2020/05/13/ramsay-cyberespionage-toolkit-airgapped-networks/"
+				},{
+				"Date":"May 2020",
+				"Description":"In this latest incident, Higaisa used a malicious shortcut file ultimately responsible for creating a multi-stage attack that consists of several malicious scripts, payloads and decoy PDF documents.",
+				"Link":"https://blog.malwarebytes.com/threat-analysis/2020/06/higaisa/"
+				},{
+				"Date":"May 2020",
+				"Description":"Operation “The Gh0st Remains the Same”. In this engagement, the victims received a compressed RAR folder that contained trojanized files. If the malicious files were engaged, they displayed decoy web pages associated with the software company “Zeplin”.",
+				"Link":"https://blog.prevailion.com/2020/06/the-gh0st-remains-same8.html"
+				}],
         "ExtLinks": [
           {
             "Description": "",
@@ -3732,7 +3906,17 @@
           {
             "Description": "",
             "URL": "https://blog.malwarebytes.com/threat-analysis/2020/06/higaisa/"
-          }
+          },
+		  {"Description": "","URL": "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08070903/darkhotel_kl_07.11.pdf"},
+		  {"Description": "","URL": "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08070901/darkhotelappendixindicators_kl.pdf"},
+		  {"Description": "","URL": "https://www.securityweek.com/darkhotel-apt-uses-new-methods-target-politicians"}
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          125,
+          44
         ]
       }
     },
@@ -3742,16 +3926,16 @@
         "Name": "DarkHydrus",
         "AssociatedGroups": null,
         "Description": "DarkHydrus is a threat group that has targeted government agencies and educational institutions in the Middle East since at least 2016. The group heavily leverages open-source tools and custom payloads for carrying out attacks.",
-        "Location": "Other",
-        "imageUrl": "",
-        "imageCaption": "",
-        "Tools": "RogueRobin",
-        "Targets": "",
-        "extlink22": "",
-        "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Location": "Iran",
+        "imageUrl": "iran.jpg",
+        "imageCaption": "Iran",
+        "Tools": "Cobalt Strike, Mimikatz, Phishery and RogueRobin.",
+        "Targets": "Sectors: Education and Government. Countries: Iran and Middle East.",
+        
+        "OtherNames": "LazyMeerkat, ATK 77",
+        "Sponsor": "State-sponsored",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2016",
         "Sources": [
           {
             "Name": "MITRE",
@@ -3777,7 +3961,22 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"Jun 2018",
+				"Description":"On June 24, 2018, Unit 42 observed DarkHydrus carrying out a credential harvesting attack on an educational institution in the Middle East. The attack involved a spear-phishing email with a subject of “Project Offer” and a malicious Word document as an attachment.",
+				"Link":"https://unit42.paloaltonetworks.com/unit42-darkhydrus-uses-phishery-harvest-credentials-middle-east/"
+				},
+				{
+				"Date":"Jul 2018",
+				"Description":"Attack on Middle East Government. This attack diverged from previous attacks we observed from this group as it involved spear-phishing emails sent to targeted organizations with password protected RAR archive attachments that contained malicious Excel Web Query files (.iqy).",
+				"Link":"https://unit42.paloaltonetworks.com/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/"
+				},
+				{
+				"Date":"Jan 2019",
+				"Description":"New Attacks in the Middle East. 360 Threat Intelligence Center captured several lure Excel documents written in Arabic in January 9, 2019. A backdoor dropped by macro in the lure documents can communicate with C2 server through DNS tunnel, as well as Google Drive API.",
+				"Link":"https://ti.360.net/blog/articles/latest-target-attack-of-darkhydruns-group-against-middle-east-en/"
+				}
+			],
         "ExtLinks": [
           {
             "Description": "",
@@ -3786,7 +3985,15 @@
           {
             "Description": "",
             "URL": "https://docs.google.com/document/d/1oYX3uN6KxIX_StzTH0s0yFNNoHDnV8VgmVqU5WoeErc/edit#heading=h.ez428aw98bca"
-          }
+          },
+		  {"Description": "","URL": "https://unit42.paloaltonetworks.com/unit42-new-threat-actor-group-darkhydrus-targets-middle-east-government/"}
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52,
+          35
         ]
       }
     },
@@ -7155,6 +7362,48 @@
           40
         ]
       }
+    }
+	,
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Covellite",
+        "AssociatedGroups": null,
+        "Description": "(Dragos) Covellite compromises networks associated with civilian electric energy worldwide and gathers intelligence on intellectual property and internal industrial operations. Covellite lacks an industrial control system (ICS) specific capability at this time. Covellite operates globally with targets primarily in Europe, East Asia, and North America. US targets emerged in September 2017 with a small, targeted phishing campaign directed at select U.S. electric companies. The phishing emails contained a malicious Microsoft Word document and infected computers with malware. The malicious emails discovered in the fall masqueraded as resumes or invitations. They delivered a remote access tool (RAT) payload which was used to conduct reconnaissance and enable persistent, covert access to victims’ machines. Covellite’s infrastructure and malware are similar to the hacking organization known as Lazarus Group, Hidden Cobra, Labyrinth Chollima by Novetta and Hidden Cobra by the U.S. Department of Homeland Security. Lazarus Group is responsible for attacks ranging from the 2014 attack on Sony Pictures to a number of Bitcoin heists in 2017. Technical analysis of Covellite malware indicates an evolution from known Lazarus toolkits. However, aside from technical overlap, it is not known how the capabilities and operations between Covellite and Lazarus are related. Covellite remains active but appears to have abandoned North American targets, with indications of activity in Europe and East Asia. Given the group’s specific interest in infrastructure operations, rapidly improving capabilities, and history of aggressive targeting, Dragos considers this group a primary threat to the ICS industry.",
+        "Location": "North Korea",
+        "imageUrl": "northkorea.png",
+        "imageCaption": "North Korea",
+        "OtherNames": "",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2017",
+		"Targets":"Sectors: Energy. Countries: East Asia, Europe and USA.",
+		"Tools":"",
+        "Sources": [
+          
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [{"Description": "","URL": "https://dragos.com/resource/covellite/"}
+		
+		
+		]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          123,
+          40
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -7392,6 +7641,46 @@
         "IOC": "",
         "Operations": [],
         "ExtLinks": []
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Corkow",
+        "AssociatedGroups": "",
+        "Description": "(Group-IB) In February 2015 the first major successful attack on a Russian trading system took place, when hackers gained unsanctioned access to trading system terminals using a Trojan resulting in trades of more than $400million. The criminals made purchases and sales of US dollars in the Dollar/Ruble exchange program on behalf of a bank using malware. The attack itself lasted only 14 minutes, however, it managed to cause a high volatility in the exchange rate of between 55/62 (Buy/Sell) rubles per 1 dollar instead of the 60-62 stable range. To conduct the attack criminals used the Corkow malware, also known as Metel, containing specific modules designed to conduct thefts from trading systems, such as QUIK operated by ARQA Technologies and TRANSAQ from ZAO “Screen market systems”. Corkow provided remote access to the ITS-Broker system terminal by «Platforma soft» Ltd., which enabled the fraud to be committed. In August 2015 a new incident related to the Corkow (Metel) Trojan was detected. An attack on a bank card systems, which included about 250 banks which used the bank card system to service cash withdrawals from Visa and MasterCard cards under a special tariff. This attack resulted in the hundreds of millions of rubles being stolen via ATMs of the systems members.", 
+        "Location": "Russia",
+        "imageUrl": "russia.png",
+        "imageCaption": "Russia",
+        "OtherNames": "Metel",
+        "Sponsor": "",
+        "Motivation": "Financial crime",
+        "FirstSeen": "2011",
+		"Targets":"Sectors: Financial. Countries: Argentina, Austria, Belarus, Brazil, Croatia, Cyprus, Denmark, Estonia, France, Germany, Italy, Kazakhstan, Latvia, Mexico, Peru, Poland, Singapore, Spain, Switzerland, Russia, Thailand, Turkey, UK, Ukraine and USA.",
+        "Tools":"Corkow, Metel.",
+		"Sources": [
+          
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [{"Description": "","URL": "https://www.group-ib.ru/brochures/Group-IB-Corkow-Report-EN.pdf"},
+		{"Description": "","URL": "https://www.welivesecurity.com/2014/02/27/corkow-analysis-of-a-business-oriented-banking-trojan/"},
+		{"Description": "","URL": "https://www.kaspersky.com/resource-center/threats/metel"}]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95,
+          60
+        ]
       }
     },
     {
@@ -8771,6 +9060,140 @@
           {
             "Description": "",
             "URL": "https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf"
+          }]
+		  }
+    }
+	,
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Cyber Caliphate Army (CCA) - ISIS",
+        "AssociatedGroups": null,
+        "Description": "(Wikipedia) Islamic State Hacking Division or United Cyber Caliphate refers to any number of group self-identifying as the digital army for Islamic State of Iraq and Levant. The cyber security group had pledged allegiance to Jeremy An and his objectives in late 2014. Their recent claims and hacks have led FBI director James Comey to state that his agency does not yet have the capabilities to limit ISIL attempts to recruit Americans through social media. Russian military hackers have been identified as using the CyberCaliphate nomer to cover several hacking attacks, notably on TV5Monde and the Twitter of US CENTCOM. A list of names and details said to be of American military personnel was released by unknown parties who said they were part of the ISHD, but doubts were raised on the source and nature of the data.",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Sectors: Defense and Government. Countries: Australia, Canada, UK and USA.",
+        "Tools": "",
+        "OtherNames": "United Cyber Caliphate (UCC), Islamic State Hacking Division, ATK 133, TAG-CT6",
+        "Sponsor": "",
+        "Motivation": "Sabotage and destruction",
+        "FirstSeen": "2014",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Feb 2015",
+				"Description":"U.S. military wives’ death threats. Five military wives received death threats from a hacker group calling itself “CyberCaliphate”, claiming to be an Islamic State affiliate, on February 10, 2015. This was later discovered to have been a false flag attack by Sofacy, APT 28, Fancy Bear, Sednit, when the victims’ email addresses were found to have been in the Fancy Bear phishing target list.",
+				"Link":"https://www.apnews.com/4d174e45ef5843a0ba82e804f080988f"
+				},{
+				"Date":"Apr 2015",
+				"Description":"Tasmania's Hobart International Airport website has been shut down after it was hacked and defaced with a statement supporting the radical Islamist group",
+				"Link":"https://www.telegraph.co.uk/news/worldnews/islamic-state/11531794/Australian-airport-website-hacked-by-Islamic-State.html"
+				},{
+				"Date":"Apr 2015",
+				"Description":"Compromise of TV5Monde in France. “A group calling itself the Cyber Caliphate, linked to so-called Islamic State, first claimed responsibility. But an investigation now suggests the attack was in fact carried out by a group of Russian hackers. (Sofacy, APT 28, Fancy Bear, Sednit, ed.)”",
+				"Link":"https://www.bbc.com/news/technology-37590375"
+				},{
+				"Date":"Jun 2015",
+				"Description":"ISIS 'kill list' includes names of 151 Canadians",
+				"Link":"https://www.cbc.ca/news/canada/isis-kill-list-canadians-1.3637214"
+				},{
+				"Date":"Aug 2015",
+				"Description":"Isis 'hacking division' releases details of 1,400 Americans and urges attacks",
+				"Link":"https://www.theguardian.com/world/2015/aug/13/isis-hacking-division-releases-details-of-1400-americans-and-urges-attacks"
+				},{
+				"Date":"Sep 2015",
+				"Description":"ISIS hackers intercept top secret British Government emails in major security breach uncovered by GCHQ",
+				"Link":"https://www.mirror.co.uk/news/uk-news/isis-hackers-intercept-top-secret-6428423"
+				},{
+				"Date":"Apr 2017",
+				"Description":"ISIS-linked Cyber Group Releases 'Kill List' of 8,786 US Targets For Lone Wolf Attacks",
+				"Link":"https://www.newsweek.com/isis-linked-cyber-group-releases-kill-list-8786-us-targets-lone-wolf-attacks-578765"
+				}
+				],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://en.wikipedia.org/wiki/Islamic_State_Hacking_Division"
+          }]
+		  }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "DarkUniverse",
+        "AssociatedGroups": null,
+        "Description": "(Kaspersky) DarkUniverse is an interesting example of a full cyber-espionage framework used for at least eight years. The malware contains all the necessary modules for collecting all kinds of information about the user and the infected system and appears to be fully developed from scratch. Due to unique code overlaps, we assume with medium confidence that DarkUniverse’s creators were connected with the ItaDuke set of activities. The attackers were resourceful and kept updating their malware during the full lifecycle of their operations, so the observed samples from 2017 are totally different from the initial samples from 2009. The suspension of its operations may be related to the publishing of the ‘Lost in Translation’ leak, or the attackers may simply have decided to switch to more modern approaches and start using more widely available artefacts for their operations.",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Sectors: Defense and civilian. Countries: Afghanistan, Belarus, Ethiopia, Iran, Russia, Sudan, Syria, Tanzania, UAE and others.",
+        "Tools": "dfrgntfs5.sqt, glue30.dll, msvcrt58.sqt, updater.mod and zl4vq.sqt.",
+        "OtherNames": "",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2017",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [
+				],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://securelist.com/darkuniverse-the-mysterious-apt-framework-27/94897/"
+          }]
+		  }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Cold River",
+        "AssociatedGroups": null,
+        "Description": "(Lastline) While reviewing some network anomalies, we recently uncovered Cold River, a sophisticated threat actor making malicious use of DNS tunneling for command and control activities. We have been able to decode the raw traffic in command and control, find sophisticated lure documents used in the campaign, connect other previously unknown samples, and associate a number of legitimate organizations whose infrastructure is referenced and used in the campaign. The campaign targets Middle Eastern organizations largely from the Lebanon and United Arab Emirates, though, Indian and Canadian companies with interests in those Middle Eastern countries are also targeted. There are new TTPs used in this attack – for example Agent_Drable is leveraging the Django python framework for command and control infrastructure, the technical details of which are outlined later in the blog.",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Countries: Canada, India and Middle East (mostly Lebanon and UAE).",
+        "Tools": "DNSpionage.",
+        "OtherNames": "Nahr el bared, Nahr Elbard",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2019",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [
+				],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://www.lastline.com/labsblog/threat-actor-cold-river-network-traffic-analysis-and-a-deep-dive-on-agent-drable/"
           }]
 		  }
     }
