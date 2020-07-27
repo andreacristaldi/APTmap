@@ -1,7 +1,7 @@
 # APTmap
 Graphical map of known Advanced Persistent Threats
 
-<a href="https://andreacristaldi.github.io/APTmap/index.html">https://andreacristaldi.github.io/APTmap/index.html</a>
+<a href="https://andreacristaldi.github.io/APTmap/">https://andreacristaldi.github.io/APTmap/</a>
 
 <img src="https://github.com/andreacristaldi/APTmap/raw/master/images/preview.jpg" />
 
