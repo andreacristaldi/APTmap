@@ -47,6 +47,127 @@
         ]
       }
     },
+{
+      "type": "Feature",
+      "properties": {
+        "Name": "Confucius",
+        "OtherNames": "",
+        "AssociatedGroups": null,
+        "Description": "(Trend Micro) Confucius’ campaigns were reportedly active as early as 2013, abusing Yahoo! And Quora forums as part of their command-and-control (C&C) communications. We stumbled upon Confucius, likely from South Asia, while delving into Patchwork’s cyberespionage operations. Confucius’ operations include deploying bespoke backdoors and stealing files from their victim’s systems with tailored file stealers. The stolen files are then exfiltrated by abusing a cloud service provider. Some of these file stealers specifically target files from USB devices, probably to overcome air-gapped environments. This group seems to be associated with Patchwork, Dropping Elephant.",
+        "Location": "India",
+        "ImageUrl": "india.jpg",
+        "ImageCaption": "India",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2013",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+      
+        "Targets": "Countries: Most of the South and Southeast Asian countries (including Mongolia), most of the Middle Eastern countries, with a focus on Pakistan, most of the African countries, Trinidad and Tobago and Ukraine.",
+        "Tools": "ApacheStealer, Confucius, MY24, sctrls, remote-access-c3, sip_telephone, swissknife2 and Sneepy.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Oct 2017",
+				"Description":"In recent weeks, Unit 42 has discovered three documents crafted to exploit the InPage program. InPage is a word processor program that supports languages such as Urdu, Persian, Pashto, and Arabic. The three InPage exploit files are linked through their use of very similar shellcode, which suggests that either the same actor is behind these attacks, or the attackers have access to a shared builder.",
+				"Link":"https://unit42.paloaltonetworks.com/unit42-recent-inpage-exploits-lead-multiple-malware-families/"
+				},{
+				"Date":"Late 2017",
+				"Description":"Probing Confucius’ infrastructure, we came across websites offering Windows and Android chat applications, most likely iterations of its predecessor, Simple Chat Point: Secret Chat Point, and Tweety Chat. We are admittedly uncertain of the extent — and success — of their use, but it’s one of the ingredients of the group’s operations.",
+				"Link":"https://blog.trendmicro.com/trendlabs-security-intelligence/deciphering-confucius-cyberespionage-operations/"
+				},{
+				"Date":"May 2018",
+				"Description":"During their previous campaign, we found Confucius using fake romance websites to entice victims into installing malicious Android applications. This time, the threat actor seems to have a new modus operandi, setting up two new websites and new payloads with which to compromise its targets.",
+				"Link":"https://blog.trendmicro.com/trendlabs-security-intelligence/confucius-update-new-tools-and-techniques-further-connections-with-patchwork/"
+				}],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://unit42.paloaltonetworks.com/unit42-confucius-says-malware-families-get-further-by-abusing-legitimate-websites/"
+          },
+          {
+            "Description": "",
+            "URL": "https://documents.trendmicro.com/assets/research-deciphering-confucius-cyberespionage-operations.pdf"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80,
+          25
+        ]
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "CardinalLizard",
+        "OtherNames": "",
+        "AssociatedGroups": null,
+        "Description": "(Kaspersky) We are moderately confident that this is a new collection of Chinese-speaking activity targeting businesses, active since 2014. Over the last few years, the group has shown an interest in the Philippines, Russia, Mongolia and Malaysia, the latter especially prevalent during 2018. The hackers use a custom malware featuring some interesting anti-detection and anti-emulation techniques. The infrastructure used also shows some overlaps with Roaming Tiger and previous PlugX campaigns, but this could just be due to infrastructure reuse under the Chinese-speaking umbrella.",
+        "Location": "China",
+        "ImageUrl": "china.jpg",
+        "ImageCaption": "China",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2014",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+      
+        "Targets": "Countries: Malaysia, Mongolia, Philippines and Russia.",
+        "Tools": "PlugX.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://securelist.com/apt-trends-report-q1-2018/85280/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91,
+          33
+        ]
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Calypso",
+        "OtherNames": "",
+        "AssociatedGroups": null,
+        "Description": "(Positive Technologies) The PT Expert Security Center first took note of Calypso in March 2019 during threat hunting. Our specialists collected multiple samples of malware used by the group. They have also identified the organizations hit by the attackers, as well as the attackers’ C2 servers. Our data indicates that the group has been active since at least September 2016. The primary goal of the group is theft of confidential data. Main targets are governmental institutions in Brazil, India, Kazakhstan, Russia, Thailand, and Turkey. Our data gives reason to believe that the APT group is of Asian origin.",
+        "Location": "China",
+        "ImageUrl": "china.jpg",
+        "ImageCaption": "China",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2016",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+      
+        "Targets": "Sectors: Government. Countries: Belarus, Brazil, India, Kazakhstan, Mongolia, Russia, Thailand, Turkey and Ukraine.",
+        "Tools": "Byeby, Calypso RAT, DCSync, DoublePulsar, EarthWorm, EternalBlue, EternalRomance, FlyingDutchman, Hussar, Mimikatz, nbtscan, netcat, OS_Check_445, PlugX, Quarks PwDump, SysInternals, TCP Port Scanner, ZXPortMap and Living off the Land.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://www.ptsecurity.com/ww-en/analytics/calypso-apt-2019/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          96,
+          30
+        ]
+      }
+    },
 	{
       "type": "Feature",
       "properties": {
@@ -673,13 +794,13 @@
         "Name": "APT1",
         "OtherNames": "Comment Crew, Comment Panda, PLA Unit 61398, TG-8223, BrownFox, Group 3, GIF89a, ShadyRAT, Shanghai Group, Byzantine Candor",
         "AssociatedGroups": "Comment Crew, Comment Group, Comment Panda",
-        "Description": "APT1 is a Chinese threat group that has been attributed to the 2nd Bureau of the People\u2019s Liberation Army (PLA) General Staff Department\u2019s (GSD) 3rd Department, commonly known by its Military Unit Cover Designator (MUCD) as Unit 61398.",
+        "Description": "APT1 is a Chinese threat group that has been attributed to the 2nd Bureau of the People\u2019s Liberation Army (PLA) General Staff Department\u2019s (GSD) 3rd Department, commonly known by its Military Unit Cover Designator (MUCD) as Unit 61398. Also known as APT1, Comment Crew is an advanced persistent threat (APT) group with links to the Chinese military. The threat actors, which were active from roughly 2006 to 2010, managed to strike over 140 US companies in the quest for sensitive corporate and intellectual property data. The group earned their name through their use of HTML comments to hide communication to the command-and-control servers. The usual attack vector was via spear-phishing campaigns utilizing emails which contained documents with names tailored for the potential victims, such as “ArmyPlansConferenceOnNewGCVSolicitation.pdf,” or “Chinese Oil Executive Learning From Experience.doc.” This group may also be responsible for the Siesta campaign.",
         "Location": "China",
         "ImageUrl": "china.jpg",
         "ImageCaption": "China",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Sponsor": "State-sponsored, 2nd Bureau of the People’s Liberation Army (PLA) General Staff Department’s (GSD) 3rd Department, commonly known by its Military Unit Cover Designator (MUCD) as Unit 61398",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2006",
         "Sources": [
           {
             "Name": "MITRE",
@@ -696,11 +817,31 @@
             "Copyright": ""
           }
         ],
-        "Targets": "U.S. cybersecurity firm Mandiant, later purchased by FireEye, released a report in February 2013 that exposed one of China's cyber espionage units, Unit 61398. The group, which FireEye called APT1, is a unit within China's People's Liberation Army (PLA) that has been linked to a wide range of cyber operations targeting U.S. private sector entities for espionage purposes. The comprehensive report detailed evidence connecting APT1 and the PLA, offered insight into APT1's operational malware and methodologies, and provided timelines of the espionage it conducted.",
-        "Tools": "BISCUIT, Cachedump, CALENDAR, GLOOXMAIL, gsecdump, ipconfig, Lslsass, Mimikatz, Net, Pass-The-Hash Toolkit, PoisonIvy, PsExec, pwdump, Seasalt, Tasklist, WEBC2, xCmd",
+        "Targets": "U.S. cybersecurity firm Mandiant, later purchased by FireEye, released a report in February 2013 that exposed one of China's cyber espionage units, Unit 61398. The group, which FireEye called APT1, is a unit within China's People's Liberation Army (PLA) that has been linked to a wide range of cyber operations targeting U.S. private sector entities for espionage purposes. The comprehensive report detailed evidence connecting APT1 and the PLA, offered insight into APT1's operational malware and methodologies, and provided timelines of the espionage it conducted. Sectors: Aerospace, Chemical, Construction, Education, Energy, Engineering, Entertainment, Financial, Food and Agriculture, Government, Healthcare, High-Tech, IT, Manufacturing, Media, Mining, Navigation, Non-profit organizations, Research, Satellites, Telecommunications, Transportation and lawyers. Countries: Belgium, Canada, France, India, Israel, Japan, Luxembourg, Norway, Singapore, South Africa, Switzerland, Taiwan, UAE, UK and USA.",
+        "Tools": "BISCUIT, Cachedump, CALENDAR, GLOOXMAIL, gsecdump, ipconfig, Lslsass, Mimikatz, Net, Pass-The-Hash Toolkit, PoisonIvy, PsExec, pwdump, Seasalt, Tasklist, WEBC2, xCmd. Auriga, bangat, BISCUIT, Bouncer, Cachedump, CALENDAR, Combos, CookieBag, Dairy, GDOCUPLOAD, GetMail, GLASSES, GLOOXMAIL, GOGGLES, GREENCAT, gsecdump, Hackfase, Helauto, Kurton, LIGHTBOLT, LIGHTDART, LONGRUN, Lslsass, ManItsMe, MAPIget, Mimikatz, MiniASP, NewsReels, Oceansalt, Pass-The-Hash Toolkit, Poison Ivy, ProcDump, pwdump, Seasalt, ShadyRAT, StarsyPound, Sword, TabMsgSQL, Tarsip, WARP, WebC2 and Living off the Land.",
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"2006-2010",
+				"Description":"Operation “Seasalt”. Target: 140 US companies in the quest for sensitive corporate and intellectual property data. Method: Spear-phishing with malicious documents.",
+				"Link":""
+				},{
+				"Date":"2011-2012",
+				"Description":"Hackers Plundered Israeli Defense Firms that Built ‘Iron Dome’ Missile Defense System",
+				"Link":"https://krebsonsecurity.com/2014/07/hackers-plundered-israeli-defense-firms-that-built-iron-dome-missile-defense-system/"
+				},{
+				"Date":"Feb 2014",
+				"Description":"Operation “Siesta”. FireEye recently looked deeper into the activity discussed in TrendMicro’s blog and dubbed the “Siesta” campaign. The tools, modus operandi, and infrastructure used in the campaign present two possibilities: either the Chinese cyberespionage unit APT 1 is perpetrating this activity, or another group is using the same tactics and tools as the legacy APT 1.",
+				"Link":"https://www.fireeye.com/blog/threat-research/2014/03/a-detailed-examination-of-the-siesta-campaign.html"
+				},{
+				"Date":"May 2018",
+				"Description":"Operation “Oceansalt”. Target: Oceansalt appears to have been part of an operation targeting South Korea, United States, and Canada in a well-focused attack. A variation of this malware has been distributed from two compromised sites in South Korea. Method: Oceansalt appears to be the first stage of an advanced persistent threat. The malware can send system data to a control server and execute commands on infected machines, but we do not yet know its ultimate purpose. Note: It is possible that this operation was not performed by the actual Comment Crew group (as they are supposedly in jail).",
+				"Link":"https://www.mcafee.com/enterprise/en-us/assets/reports/rp-operation-oceansalt.pdf"
+				},{
+				"Date":"May 2014",
+				"Description":"5 in China Army Face U.S. Charges of Cyberattacks",
+				"Link":"https://www.nytimes.com/2014/05/20/us/us-to-charge-chinese-workers-with-cyberspying.html"
+				}],
         "ExtLinks": [
           {
             "Description": "",
@@ -2536,17 +2677,17 @@
       "properties": {
         "Name": "APT39",
         "AssociatedGroups": "Chafer",
-        "Description": "APT39 is an Iranian cyber espionage group that has been active since at least 2014. They have targeted the telecommunication and travel industries to collect personal information that aligns with Iran's national priorities.",
+        "Description": "APT39 is an Iranian cyber espionage group that has been active since at least 2014. They have targeted the telecommunication and travel industries to collect personal information that aligns with Iran's national priorities. (FireEye) APT39 was created to bring together previous activities and methods used by this actor, and its activities largely align with a group publicly referred to as “Chafer.” However, there are differences in what has been publicly reported due to the variances in how organizations track activity. APT39 primarily leverages the SEAWEED and CACHEMONEY backdoors along with a specific variant of the POWBAT backdoor. While APT39’s targeting scope is global, its activities are concentrated in the Middle East. APT39 has prioritized the telecommunications sector, with additional targeting of the travel industry and IT firms that support it and the high-tech industry. APT39’s focus on the telecommunications and travel industries suggests intent to perform monitoring, tracking, or surveillance operations against specific individuals, collect proprietary or customer data for commercial or operational purposes that serve strategic requirements related to national priorities, or create additional accesses and vectors to facilitate future campaigns. Government entities targeting suggests a potential secondary intent to collect geopolitical data that may benefit nation-state decision making. Targeting data supports the belief that APT39’s key mission is to track or monitor targets of interest, collect personal information, including travel itineraries, and gather customer data from telecommunications firms.",
         "Location": "Iran",
         "imageUrl": "iran.jpg",
         "imageCaption": "Iran",
-        "Tools": "Remexi, PsExec, Mimikatz, Web Shells (aspx spy, b374k), nbtscan, plink, RemCom, VNC Bypass scanner, CoreSecurity tools, Impacket / Python exploits, NSSM, Remcom, HTTPTunnel, Cadelspy, PLink, SSH Tunnels to Windows Servers",
-        "Targets": "Airlines, Airports, Transportation, Logistics - worldwide",
-        "extlink22": "",
-        "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Tools": "Remexi, PsExec, Mimikatz, Web Shells (aspx spy, b374k), nbtscan, plink, RemCom, VNC Bypass scanner, CoreSecurity tools, Impacket / Python exploits, NSSM, Remcom, HTTPTunnel, Cadelspy, PLink, SSH Tunnels to Windows Servers. Antak, ASPXSpy, CrackMapExec, EternalBlue, HTTPTunnel, MechaFlounder, Metasploit, Mimikatz, nbtscan, Non-sucking Service Manager, OilRig, Plink, POWBAT, pwdump, Remcom, Remexi, SEAWEED, SMB hacking tools, UltraVNC, Windows Credentials Editor and Living off the Land.",
+        "Targets": "Airlines, Airports, Transportation, Logistics - worldwide. Sectors: Aviation, Engineering, Government, High-Tech, IT, Shipping and Logistics, Telecommunications and Transportation. Countries: Israel, Jordan, Kuwait, Middle East, Saudi Arabia, Spain, Turkey, UAE and USA.",
+        
+        "OtherNames": "Chafer, Remix kitten, TA454",
+        "Sponsor": "State-sponsored",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2014",
         "Sources": [
           {
             "Name": "MITRE",
@@ -2572,7 +2713,23 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"2017",
+				"Description":"Chafer appears to have been undeterred by its exposure in 2015 and continued to be very active during 2017, using seven new tools, rolling out new infrastructure, and attacking nine new target organizations in the region. The group hit organizations in Israel, Jordan, the United Arab Emirates, Saudi Arabia, and Turkey. Sectors targeted included airlines; aircraft services; software and IT services companies serving the air and sea transport sectors; telecoms services; payroll services; engineering consultancies; and document management software. Outside of the Middle East, Symantec has also found evidence of attacks against one African airline and attempts to compromise an international travel reservations firm.",
+				"Link":"https://www.symantec.com/blogs/threat-intelligence/chafer-latest-attacks-reveal-heightened-ambitions"
+				},{
+				"Date":"Feb 2018",
+				"Description":"Turkish Government Targeting. This new secondary payload is Python-based and compiled into executable form using the PyInstaller utility. This is the first instance where Unit 42 has identified a Python-based payload used by these operators. We’ve also identified code overlap with OilRig’s Clayside VBScript but at this time track Chafer and OilRig as separate threat groups. We have named this payload MechaFlounder for tracking purposes.",
+				"Link":"https://unit42.paloaltonetworks.com/new-python-based-payload-mechaflounder-used-by-chafer/"
+				},{
+				"Date":"Autumn 2018",
+				"Description":"Spying on Iran-based foreign diplomatic entities. Throughout the autumn of 2018 we analyzed a long-standing (and still active at that time) cyberespionage campaign that was primarily targeting foreign diplomatic entities based in Iran. The attackers were using an improved version of Remexi in what the victimology suggests might be a domestic cyberespionage operation.",
+				"Link":"https://securelist.com/chafer-used-remexi-malware/89538/"
+				},{
+				"Date":"2018",
+				"Description":"Bitdefender researchers have found attacks conducted by this actor in the Middle East region, dating back to 2018. The campaigns were based on several tools, including “living off the land” tools, which makes attribution difficult, as well as different hacking tools and a custom built backdoor.",
+				"Link":"https://www.bitdefender.com/files/News/CaseStudies/study/332/Bitdefender-Whitepaper-Chafer-creat4491-en-EN-interactive.pdf"
+				}],
         "ExtLinks": [
           {
             "Description": "",
@@ -3025,14 +3182,16 @@
       "properties": {
         "Name": "Carbanak",
         "AssociatedGroups": "Anunak, Carbon Spider",
-        "Description": "Carbanak is a threat group that mainly targets banks. It also refers to malware of the same name (Carbanak). It is sometimes referred to as FIN7, but these appear to be two groups using the same Carbanak malware and are therefore tracked separately.",
+        "Description": "Carbanak is a threat group that mainly targets banks. It also refers to malware of the same name (Carbanak). It is sometimes referred to as FIN7, but these appear to be two groups using the same Carbanak malware and are therefore tracked separately. (Kaspersky) From late 2013 onwards, several banks and financial institutions have been attacked by an unknown group of cybercriminals. In all these attacks, a similar modus operandi was used. According to victims and the law enforcement agencies (LEAs) involved in the investigation, this could result in cumulative losses of up to 1 billion USD. The attacks are still active. This report provides a technical analysis of these attacks. The motivation for the attackers, who are making use of techniques commonly seen in Advanced Persistent Threats (APTs), appears to be financial gain as opposed to espionage. An analysis of the campaign has revealed that the initial infections were achieved using spear phishing emails that appeared to be legitimate banking communications, with Microsoft Word 97 – 2003 (.doc) and Control Panel Applet (.CPL) files attached. We believe that the attackers also redirected to exploit kits website traffic that related to financial activity.",
         "Location": "Russia",
         "imageUrl": "russia.png",
         "imageCaption": "Russia",
-        "OtherNames": "",
+        "OtherNames": "Anunak, Carbon Spider",
         "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Motivation": "Financial crime",
+        "FirstSeen": "2013",
+		"Targets":"Sectors: Financial and Hospitality. Countries: Australia, Austria, Brazil, Bulgaria, Canada, China, Czech, France, Germany, Hong Kong, Iceland, India, Luxembourg, Morocco, Nepal, Norway, Pakistan, Poland, Russia, Spain, Sweden, Switzerland, Taiwan, UK, Ukraine, USA and Uzbekistan.",
+		"Tools":"Antak, Ave Maria, BABYMETAL, Backdoor Batel, Bateleur, BELLHOP, Boostwrite, Cain & Abel, Carbanak, Cobalt Strike, DNSMessenger, DNSRat, DRIFTPIN, FlawedAmmyy, Griffon, HALFBAKED, Harpy, JS Flash, KLRD, Mimikatz, MBR Eraser, Odinaff, POWERPIPE, POWERSOURCE, PsExec, SocksBot, SoftPerfect Network Scanner, SQLRAT, TeamViewer and TinyMet.",
         "Sources": [
           {
             "Name": "MITRE",
@@ -3058,13 +3217,77 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
-        "ExtLinks": []
+        "Operations": [{
+				"Date":"Mar 2018",
+				"Description":"Mastermind behind EUR 1 billion cyber bank robbery arrested in Spain",
+				"Link":"https://www.europol.europa.eu/newsroom/news/mastermind-behind-eur-1-billion-cyber-bank-robbery-arrested-in-spain"
+				},{
+				"Date":"Aug 2018",
+				"Description":"Three Carbanak cyber heist gang members arrested",
+				"Link":"https://www.computerweekly.com/news/252446153/Three-Carbanak-cyber-heist-gang-members-arrested"
+				}],
+        "ExtLinks": [{"Description": "","URL": "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064518/Carbanak_APT_eng.pdf"},
+		{"Description": "","URL": "https://www.group-ib.com/resources/threat-research/Anunak_APT_against_financial_institutions.pdf"},
+		{"Description": "","URL": "https://www.bitdefender.com/files/News/CaseStudies/study/262/Bitdefender-WhitePaper-An-APT-Blueprint-Gaining-New-Visibility-into-Financial-Threats-interactive.pdf"}]
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           107,
+          63
+        ]
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Buhtrap",
+        "AssociatedGroups": "",
+        "Description": "(Group-IB) Buhtrap has been active since 2014, however their first attacks against financial institutions were only detected in August 2015. Earlier, the group had only focused on targeting banking clients. At the moment, the group is known to target Russian and Ukrainian banks. From August 2015 to February 2016 Buhtrap managed to conduct 13 successful attacks against Russian banks for a total amount of 1.8 billion rubles ($25.7 mln). The number of successful attacks against Ukrainian banks has not been identified. Buhtrap is the first hacker group using a network worm to infect the overall bank infrastructure that significantly increases the difficulty of removing all malicious functions from the network. As a result, banks have to shut down the whole infrastructure which provokes delay in servicing customers and additional losses. Malicious programs intentionally scan for machines with an automated Bank-Customer system of the Central Bank of Russia (further referred to as BCS CBR). We have not identified incidents of attacks involving online money transfer systems, ATM machines or payment gates which are known to be of interest for other criminal groups. Buhtrap has some infrastructure overlap with TA505, Graceful Spider, Gold Evergreen.",
+        "Location": "Russia",
+        "imageUrl": "russia.png",
+        "imageCaption": "Russia",
+        "OtherNames": "Buhtrap",
+        "Sponsor": "",
+        "Motivation": "Financial crime",
+        "FirstSeen": "2015",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+        "Targets":"Sectors: Financial and Government. Countries: Russia and Ukraine.",
+		"Tools":"Buhtrap, FlawedAmmyy, Niteris EK and NSIS.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"2014",
+				"Description":"On October 20, 2014 we notified Group-IB Bot-Trek Intelligence subscribers about phishing emails which were sent from the info@beeline-mail.ru address with the subject “Invoice No 522375-ФЛОРЛ-14-115” (pic. 1). The beeline-mail.ru domain name was also registered on October 20, 2014.",
+				"Link":"https://www.group-ib.com/brochures/gib-buhtrap-report.pdf"
+				},{
+				"Date":"Oct 2015",
+				"Description":"We noticed in late October that users visiting the Ammyy website to download the free version of its remote administrator software were being served a bundle containing not only the legitimate Remote Desktop Software Ammyy Admin, but also an NSIS (Nullsoft Scriptable Installation Software) installer ultimately intended to install the tools used by the Buhtrap gang to spy on and control their victims’ computers.",
+				"Link":"https://www.welivesecurity.com/2015/11/11/operation-buhtrap-malware-distributed-via-ammyy-com/"
+				},{
+				"Date":"Dec 2015",
+				"Description":"In December 2015, employees from several Russian banks were targeted with spoofed emails, a common technique in attack campaigns. The emails were made to look like they were from the Central Bank of Russia and offered employment to their recipients. Instead of being an actual employment offer, the emails were an attempt to deliver Trojan.Ratopak onto the target’s computer.",
+				"Link":"https://www.symantec.com/connect/blogs/russian-bank-employees-received-fake-job-offers-targeted-email-attack"
+				},{
+				"Date":"Sep 2016",
+				"Description":"Breach of the Russian boxing site allboxing[.].ru",
+				"Link":"https://www.forcepoint.com/blog/security-labs/highly-evasive-code-injection-awaits-user-interaction-delivering-malware"
+				},{
+				"Date":"2017",
+				"Description":"Operation “TwoBee”. Buhtrap resurfaced in the beginning of 2017 in the TwoBee campaign, where it served primarily as means of malware delivery. In March of last year, it hit the news (literally), spreading through several compromised major news outlets in whose main pages malicious actors implanted scripts. This scripts executed an exploit for Internet Explorer in visitor’s browsers.",
+				"Link":"https://www.kaspersky.com/blog/financial-trojans-2019/25690/"
+				},{
+				"Date":"Jun 2019",
+				"Description":"Throughout our tracking, we’ve seen this group deploy its main backdoor as well as other tools against various victims, but June 2019 was the first time we saw the Buhtrap group use a zero-day exploit as part of a campaign. In that case, we observed Buhtrap using a local privilege escalation exploit, CVE-2019-1132, against one of its victims.",
+				"Link":"https://www.welivesecurity.com/2019/07/11/buhtrap-zero-day-espionage-campaigns/"
+				}],
+        "ExtLinks": [{"Description": "","URL": "https://www.group-ib.com/brochures/gib-buhtrap-report.pdf"},
+		{"Description": "","URL": "https://www.welivesecurity.com/2015/04/09/operation-buhtrap/"}]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95,
           63
         ]
       }
@@ -3173,14 +3396,16 @@
         "Name": "Cobalt Group",
         "AssociatedGroups": "Cobalt Gang, Cobalt Spider",
         "Description": "Cobalt Group is a financially motivated threat group that has primarily targeted financial institutions. The group has conducted intrusions to steal money via targeting ATM systems, card processing, payment systems and SWIFT systems. Cobalt Group has mainly targeted banks in Eastern Europe, Central Asia, and Southeast Asia. One of the alleged leaders was arrested in Spain in early 2018, but the group still appears to be active. The group has been known to target organizations in order to use their access to then compromise additional victims. Reporting indicates there may be links between Cobalt Group and both the malware Carbanak and the group Carbanak.",
-        "Location": "Other",
-        "imageUrl": "",
-        "imageCaption": "",
-        "OtherNames": "",
+        "Location": "Russia",
+        "imageUrl": "russia.png",
+        "imageCaption": "Russia",
+        "OtherNames": "Cobalt Gang, Cobalt Spider, Gold Kingswood, ATK 67, TAG-CR3",
         "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
-        "Sources": [
+        "Motivation": "Financial crime",
+        "FirstSeen": "2016",
+		"Targets":"Sectors: Financial, High-Tech, Media and Retail. Countries: Argentina, Armenia, Austria, Azerbaijan, Belarus, Bulgaria, Canada, China, Czech, Estonia, Georgia, Italy, Jordan, Kazakhstan, Kuwait, Kyrgyzstan, Malaysia, Moldova, Netherlands, Poland, Romania, Russia, Spain, Taiwan, Tajikistan, Thailand, Turkey, UK, Ukraine, USA and Vietnam.",
+        "Tools":"ATMSpitter, ATMRipper, AtNow, Cobalt Strike, CobInt, Cyst Downloader, FlawedAmmyy, Formbook, Little Pig, Mimikatz, Metasploit Stager, More_eggs, NSIS, Pony, Sdelete, SoftPerfect Network Scanner, SPID, Taurus Loader, ThreatKit and VenomKit.",
+		"Sources": [
           {
             "Name": "MITRE",
             "Description": "",
@@ -3205,8 +3430,70 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
-        "ExtLinks": []
+        "Operations": [{
+				"Date":"Jun 2016",
+				"Description":"In June 2016, the first attack conducted by the Cobalt group was tracked at a large Russian bank, where hackers attempted to steal money from ATMs. The attackers infiltrated the bank’s network, gained control over it, compromised the domain administrator’s account, and reached the ATM control server.",
+				"Link":"https://www.group-ib.com/blog/cobalt"
+				},{
+				"Date":"Jul 2016",
+				"Description":"ATM heist at the First Commercial Bank in Taiwan",
+				"Link":"https://www.reuters.com/article/us-taiwan-cyber-atms/taiwan-atm-heist-linked-to-european-hacking-spree-security-firm-idUSKBN14P0CX"
+				},{
+				"Date":"Aug 2016",
+				"Description":"ATM heist at the Government Saving Bank in Thailand",
+				"Link":""
+				},{
+				"Date":"May 2017",
+				"Description":"In May, Proofpoint observed multiple campaigns using a new version of Microsoft Word Intruder (MWI). MWI is a tool sold on underground markets for creating exploit-laden documents, generally used in targeted attacks. We previously reported about MWI when it added support for CVE-2016-4117. After the latest update, MWI is now using CVE-2017-0199 to launch an HTML Application (HTA) used for both information collection and payload execution. This activity targets organizations in the financial vertical including banks, banking software vendors, and ATM software and hardware vendors. The emails are sent to technology and security personnel working in departments including Fraud and Information Security.",
+				"Link":"https://www.proofpoint.com/us/threat-insight/post/microsoft-word-intruder-integrates-cve-2017-0199-utilized-cobalt-group-target"
+				},{
+				"Date":"Aug 2017",
+				"Description":"The first spam run on August 31 used a Rich Text Format (RTF) document laden with malicious macros. The second, which ran from September 20 to 21, used an exploit for CVE-2017-8759 (patched last September), a code injection/remote code execution vulnerability in Microsoft’s .NET Framework. The vulnerability was used to retrieve and execute Cobalt Strike from a remote server they controlled.",
+				"Link":"https://blog.trendmicro.com/trendlabs-security-intelligence/cobalt-spam-runs-use-macros-cve-2017-8759-exploit/"
+				},{
+				"Date":"Nov 2017",
+				"Description":"On Tuesday, November 21, a massive spear-phishing campaign began targeting individual employees at various financial institutions, mostly in Russia and Turkey. Purporting to provide info on changes to ‘SWIFT’ terms, the email contained a single attachment with no text in the body. It was an attempt by the Cobalt Group to gain a foothold in the networks of the targeted individuals’ organizations.",
+				"Link":"https://www.riskiq.com/blog/labs/cobalt-strike/"
+				},{
+				"Date":"Jan 2018",
+				"Description":"Spear-phishing attacks to Russian banks. The emails were sent in the name of a large European bank in an attempt to social engineer the receiver into trusting the email. The emails were quite plain with only a single question in the body and an attachment with the name once.rtf. In other cases, we saw a file with the name Заявление.rtf attached to an email that was also written in Russian.",
+				"Link":"https://www.riskiq.com/blog/labs/cobalt-group-spear-phishing-russian-banks/"
+				},{
+				"Date":"May 2018",
+				"Description":"On May 23, 1:21 p.m (Moscow time) Group-IB tracked a new large-scale Cobalt cyberattack on the leading banks of Russia and the CIS. It was like a challenge: phishing emails were sent acting as a major anti-virus vendor. Bank employees received a “complaint”, in English, that their computers allegedly violated legislation.",
+				"Link":"https://www.group-ib.com/blog/renaissance"
+				},{
+				"Date":"Sep 2018",
+				"Description":"In 2018, CTU researchers observed several GOLD KINGSWOOD campaigns involving SpicyOmelette, a tool used by the group during initial exploitation of an organization. This sophisticated JavaScript remote access tool is generally delivered via phishing, and it uses multiple defense evasion techniques to hinder prevention and detection activities.",
+				"Link":"https://www.secureworks.com/blog/cybercriminals-increasingly-trying-to-ensnare-the-big-financial-fish"
+				},{
+				"Date":"Oct 2018",
+				"Description":"One of the latest examples related to the campaign under analysis was used in attacks just a few days ago. It shows the simplicity of the attack delivery employed by this group. The attack reinforces the fact that email is still one of the primary attack vectors we continuously observe. This attack begins by targeting employees at several banking entities across the globe using an email with subject “Confirmations on October 16, 2018”.",
+				"Link":"https://unit42.paloaltonetworks.com/unit42-new-techniques-uncover-attribute-cobalt-gang-commodity-builders-infrastructure-revealed/"
+				},{
+				"Date":"Oct 2019",
+				"Description":"Magecart Group 4: A link with Cobalt Group?",
+				"Link":"https://blog.malwarebytes.com/threat-analysis/2019/10/magecart-group-4-a-link-with-cobalt-group/"
+				},{
+				"Date":"Mar 2018",
+				"Description":"Mastermind behind EUR 1 billion cyber bank robbery arrested in Spain",
+				"Link":"https://www.europol.europa.eu/newsroom/news/mastermind-behind-eur-1-billion-cyber-bank-robbery-arrested-in-spain"
+				},{
+				"Date":"Aug 2018",
+				"Description":"Three Carbanak cyber heist gang members arrested",
+				"Link":"https://www.computerweekly.com/news/252446153/Three-Carbanak-cyber-heist-gang-members-arrested"
+				}],
+        "ExtLinks": [
+		{"Description": "","URL": "https://www.ptsecurity.com/upload/corporate/ww-en/analytics/Cobalt-2017-eng.pdf"},
+		{"Description": "","URL": "https://www.crowdstrike.com/blog/meet-crowdstrikes-adversary-of-the-month-for-september-cobalt-spider/"}
+		]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          91,
+          63
+        ]
       }
     },
     {
@@ -3218,13 +3505,13 @@
         "Location": "Iran",
         "imageUrl": "iran.jpg",
         "imageCaption": "Iran",
-        "Tools": "TDTESS backdoor, Vminst, NetSrv, Cobalt Strike, ZPP, Matryoshka v1 and Matryoshka v2",
-        "Targets": "Israel\u00e2\u20ac\u2122s Ministry of Foreign Affairs and some well-known Israeli academic researchers specializing in Middle East Studies. Israel, Saudi Arabia, United States, Jordan, Germany",
-        "extlink22": "",
-        "OtherNames": "",
+        "Tools": "TDTESS backdoor, Vminst, NetSrv, Cobalt Strike, ZPP, Matryoshka v1 and Matryoshka v2. Cobalt Strike, EmpireProject, Matryoshka RAT, TDTESS, Vminst and ZPP.",
+        "Targets": "Israel\u00e2\u20ac\u2122s Ministry of Foreign Affairs and some well-known Israeli academic researchers specializing in Middle East Studies. Israel, Saudi Arabia, United States, Jordan, Germany. Sectors: Defense, Education, Government, IT and Media. Countries: Germany, Israel, Jordan, Saudi Arabia, Turkey and USA.",
+        
+        "OtherNames": "Slayer Kitten",
         "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2013",
         "Sources": [
           {
             "Name": "MITRE",
@@ -3250,7 +3537,19 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"2013",
+				"Description":"Operation “Wilted Tulip”. In this report, Trend Micro and ClearSky expose a vast espionage apparatus spanning the entire time the group has been active. It includes recent incidents as well as older ones that have not been publicly reported; new malware; exploitation, delivery and command and control infrastructure; and the group’s modus operandi. We dubbed this activity Operation Wilted Tulip.",
+				"Link":"https://www.clearskysec.com/wp-content/uploads/2017/07/Operation_Wilted_Tulip.pdf"
+				},{
+				"Date":"2015",
+				"Description":"CopyKittens has conducted at least three waves of cyber-attacks in the past year. In each of the attacks the infection method was almost identical and included an extraordinary number of stages used to avoid detection. As with other common threat actors, the group relies on social engineering methods to deceive its targets prior to infection.",
+				"Link":"https://s3-eu-west-1.amazonaws.com/minervaresearchpublic/CopyKittens/CopyKittens.pdf"
+				},{
+				"Date":"Jan 2017",
+				"Description":"Breach of the Israeli newspaper Jerusalem Post. As part of our monitoring of Iranian threat agents activities, we have detected that since October 2016 and until the end of January 2017, the Jerusalem Post, as well as multiple other Israeli websites and one website in the Palestinian Authority were compromised by Iranian threat agent CopyKittens.",
+				"Link":"https://www.clearskysec.com/copykitten-jpost/"
+				}],
         "ExtLinks": [
           {
             "Description": "",
@@ -4996,6 +5295,94 @@
         "coordinates": [
           53,
           35
+        ]
+      }
+    }
+	,
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Cadelle",
+        "AssociatedGroups": "",
+        "Description": "(Symantec) Symantec telemetry identified Cadelle and Chafer, APT 39 activity dating from as far back as July 2014, however, it’s likely that activity began well before this date. Command-and-control (C&C) registrant information points to activity possibly as early as 2011, while executable compilation times suggest early 2012. Their attacks continue to the present day. Symantec estimates that each team is made up of between 5 and 10 people. There is evidence to suggest that the two teams may be connected in some way, though we cannot confirm this. A number of computers experienced both Cadelspy and Remexi infections within a small time window. In one instance, a computer was compromised with Backdoor.Cadelspy just minutes after being infected with Backdoor.Remexi. The Cadelle and Chafer groups also keep the same working hours and focus on similar targets. However, no sharing of C&C infrastructure between the teams has been observed. If Cadelle and Chafer are not directly linked, then they may be separately working for a single entity. Their victim profile may be of interest to a nation state.",
+        "Location": "Iran",
+        "imageUrl": "iran.jpg",
+        "imageCaption": "Iran",
+        "Tools": "Antak and Cadelspy.",
+        "Targets": "Countries: Germany, Iran, Iraq, Netherlands, Pakistan, Saudi Arabia, Singapore, Sudan, Tajikistan, Thailand, Turkey, UAE, UK and USA.",
+        "OtherNames": "",
+        "Sponsor": "State-sponsored",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2001",
+        "Sources": [
+         
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://www.symantec.com/connect/blogs/iran-based-attackers-use-back-door-threats-spy-middle-eastern-targets"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50,
+          35
+        ]
+      }
+    },
+	
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Clever Kitten",
+        "AssociatedGroups": "",
+        "Description": "(CrowdStrike) Clever Kitten primarily targets global companies with strategic importance to countries that are contrary to Iranian interests. Clever Kitten actors have a strong affinity for PHP server-side attacks to make access; this is relatively unique amongst targeted attackers who often favor targeting a specific individual at a specific organization using social engineering. Some attackers have moved to leveraging strategic web compromises. The reason for this is likely the availability of exploits against web browsers, which for a variety of reasons allows an attacker to bypass security features such as Data Execution Prevention (DEP) or Address Space Layout Randomization (ASLR).",
+        "Location": "Iran",
+        "imageUrl": "iran.jpg",
+        "imageCaption": "Iran",
+        "Tools": "Acunetix Web Vulnerability Scanner, RC SHELL",
+        "Targets": "Global companies with strategic importance to countries that are contrary to Iranian interests.",
+        "OtherNames": "Group 41",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2013",
+        "Sources": [
+         
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://www.crowdstrike.com/blog/whois-clever-kitten/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          50,
+          33
         ]
       }
     },
@@ -8270,6 +8657,122 @@
 		  {"Description": "","URL": "https://research.checkpoint.com/2018/apt-attack-middle-east-big-bang/"}
         ]
       }
+    }
+	,
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Callisto Group",
+        "AssociatedGroups": null,
+        "Description": "(F-Secure) The most obvious common theme between all known targets of the Callisto Group is an involvement in European foreign and security policy, whether as a military or government official, being employed by a think tank, or working as a journalist. More specifically, many of the known targets have a clear relation to foreign and security policy involving both Eastern Europe and the South Caucasus. This targeting suggests the Callisto Group is interested in intelligence gathering related to foreign and security policy. Furthermore, we are unaware of any targeting in the described attacks that would suggest a financial motive. It is worth noting that during our investigation we uncovered links between infrastructure associated with the Callisto Group and infrastructure used to host online stores selling controlled substances. While we don’t yet know enough to fully understand the nature of these links, they do suggest the existence of connections between the Callisto Group and criminal actors. While the targeting would suggest that the main benefactor of the Callisto Group’s activity is a nation state with specific interest in the Eastern Europe and South Caucasus regions, the link to infrastructure used for the sale of controlled substances hints at the involvement of a criminal element. Finally, the infrastructure associated with the Callisto Group and related infrastructure contain links to at least Russia, Ukraine, and China in both the content hosted on the infrastructure, and in WHOIS information associated with the infrastructure. It is possible to come up with a number of plausible theories to explain the above findings. For example, a cybercrime group with ties to a nation state, such as acting on behalf of or for the benefit of a government agency, is one potential explanation. However, we do not believe it is possible to make any definitive assertions regarding the nature or affiliation of the Callisto Group based on the currently available information.",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Sectors: Defense, Government, Think Tanks and journalists. Countries: Europe and the South Caucasus.",
+        "Tools": "RCS Galileo.",
+        "OtherNames": "",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2013",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://www.f-secure.com/documents/996508/1030745/callisto-group"
+          }]
+      }
+    }
+	,
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Careto",
+        "AssociatedGroups": null,
+        "Description": "(Kaspersky) The Mask is an advanced threat actor that has been involved in cyber-espionage operations since at least 2007. The name “Mask” comes from the Spanish slang word “Careto” (“Ugly Face” or “Mask”) which the authors included in some of the malware modules. More than 380 unique victims in 31 countries have been observed to date. What makes “The Mask” special is the complexity of the toolset used by the attackers. This includes an extremely sophisticated malware, a rootkit, a bootkit, 32-and 64-bit Windows versions, Mac OS X and Linux versions and possibly versions for Android and iPad/iPhone (Apple iOS).",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Sectors: Diplomatic missions, Education, Energy and Government. Countries: Brazil, France, Germany, Iran, Libya, Morocco, Poland, South Africa, Spain, Switzerland, Tunisia, UK, USA and Venezuela.",
+        "Tools": "Careto.",
+        "OtherNames": "The Mask, Mask, Ugly Face",
+        "Sponsor": "State-sponsored",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2007",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Feb 2014",
+				"Description":"At the moment, all known Careto C&C servers are offline. The attackers began taking them offline in January 2014. We were also able to sinkhole several C&C servers, which allowed us to gather statistics on the operation.",
+				"Link":"https://securelist.com/the-caretomask-apt-frequently-asked-questions/58254/"
+				}
+				],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://d2538mqrb7brka.cloudfront.net/wp-content/uploads/sites/43/2018/03/20133638/unveilingthemask_v1.0.pdf"
+          },
+		  {"Description": "","URL": "https://securelist.com/the-caretomask-apt-frequently-asked-questions/58254/"}]
+      }
+    }
+	,
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Chimera",
+        "AssociatedGroups": null,
+        "Description": "(CyCraft) For nearly two years, our team monitored several attacks that targeted Taiwan’s semiconductor vendors. We believe these attacks originated from the same threat actor – Chimera – as these attacks utilized similar tactics, techniques and even the same customized malware. The actor likely harvested various valid credentials via phishing emails or data breaches as their starting point to conduct their cyber attack on the vendors. Cobalt Strike was later used as their main RAT tool. To avoid detection, the Cobalt Strike RAT was often masqueraded as a Google Chrome Update. The RAT would then connect back to their C2 server. As these servers were in a public cloud server, it made it difficult to track. Subsequently, by compromising the AD server, the delicate malware – SkeletonKeyInjector – was invoked to implant a general key to allow LM, persistence and defense evasion. Although this malware was discovered for the first time, we have high confidence that these attacks were conducted by the same threat actor. Based on the stolen data, we infer that the actor’s goal was to harvest company trade secrets. The motive may be related to business competition or a country’s industrial strategy.",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Sectors: High-Tech. Countries: Taiwan.",
+        "Tools": "Cobalt Strike and SkeletonKeyInjector.",
+        "OtherNames": "",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2018",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Late 2018",
+				"Description":"Operation “Skeleton Key”",
+				"Link":"https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf"
+				}
+				],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://cycraft.com/download/%5BTLP-White%5D20200415%20Chimera_V4.1.pdf"
+          }]
+		  }
     }
 	
   ]
