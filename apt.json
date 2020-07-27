@@ -47,6 +47,282 @@
         ]
       }
     },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Blue Termite",
+        "OtherNames": "Cloudy Omega",
+        "AssociatedGroups": null,
+        "Description": "(Kaspersky) In October 2014, Kaspersky Lab started to research “Blue Termite”, an Advanced Persistent Threat (APT) targeting Japan. The oldest sample we’ve seen up to now is from November 2013. This is not the first time the country has been a victim of an APT. However, the attack is different in two respects: unlike other APTs, the main focus of Blue Termite is to attack Japanese organizations; and most of their C2s are located in Japan. One of the top targets is the Japan Pension Service, but the list of targeted industries includes government and government agencies, local governments, public interest groups, universities, banks, financial services, energy, communication, heavy industry, chemical, automotive, electrical, news media, information services sector, health care, real estate, food, semiconductor, robotics, construction, insurance, transportation and so on. Unfortunately, the attack is still active and the number of victims has been increasing.",
+        "Location": "China",
+        "ImageUrl": "china.jpg",
+        "ImageCaption": "China",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2013",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+      
+        "Targets": "Sectors: Automotive, Chemical, Construction, Education, Energy, Financial, Food and Agriculture, Government, Healthcare, High-Tech, Industrial, IT, Media, Real estate, Telecommunications, Transportation and several others. Countries: Japan.",
+        "Tools": "Emdivi and 0-days from the Hacking Team breach.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://securelist.com/new-activity-of-the-blue-termite-apt/71876/"
+          },
+          {
+            "Description": "",
+            "URL": "https://www.symantec.com/connect/blogs/operation-cloudyomega-ichitaro-zero-day-and-ongoing-cyberespionage-campaign-targeting-japan"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93,
+          33
+        ]
+      }
+    },
+	
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Bookworm",
+        "OtherNames": "",
+        "AssociatedGroups": null,
+        "Description": "(Palo Alto) Threat actors have delivered Bookworm as a payload in attacks on targets in Thailand. Readers who are interested in this campaign should start with our first blog that lays out the overall functionality of the malware and introduces its many components. Unit 42 does not have detailed targeting information for all known Bookworm samples, but we are aware of attempted attacks on at least two branches of government in Thailand. We speculate that other attacks delivering Bookworm were also targeting organizations in Thailand based on the contents of the associated decoys documents, as well as several of the dynamic DNS domain names used to host C2 servers that contain the words “Thai” or “Thailand”. Analysis of compromised systems seen communicating with Bookworm C2 servers also confirms our speculation on targeting with a majority of systems existing within Thailand.",
+        "Location": "China",
+        "ImageUrl": "china.jpg",
+        "ImageCaption": "China",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2015",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+      
+        "Targets": "Sectors: Defense and Government. Countries: Thailand.",
+        "Tools": "Bookworm, FormerFirstRAT, Poison Ivy, PlugX and Scieron.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://unit42.paloaltonetworks.com/attack-campaign-on-the-government-of-thailand-delivers-bookworm-trojan/"
+          },
+          {
+            "Description": "",
+            "URL": "https://unit42.paloaltonetworks.com/bookworm-trojan-a-model-of-modular-architecture/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          93,
+          35
+        ]
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "BlackTech",
+        "OtherNames": "Circuit Panda, Radio Panda, T-APT-03",
+        "AssociatedGroups": null,
+        "Description": "(Trend Micro) BlackTech is a cyber espionage group operating against targets in East Asia, particularly Taiwan, and occasionally, Japan and Hong Kong. Based on the mutexes and domain names of some of their C&C servers, BlackTech’s campaigns are likely designed to steal their target’s technology. Following their activities and evolving tactics and techniques helped us uncover the proverbial red string of fate that connected three seemingly disparate campaigns: PLEAD, Shrouded Crossbow, and of late, Waterbear.",
+        "Location": "China",
+        "ImageUrl": "china.jpg",
+        "ImageCaption": "China",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2010",
+        "Sources": [
+          {
+            "Name": "MITRE",
+            "Description": "",
+            "URL": "https://attack.mitre.org/groups/G0018",
+            "JsonURL": "https://attack.mitre.org/groups/G0018/G0018-enterprise-layer.json",
+            "Copyright": ""
+          }
+        ],
+        "Targets": "Sectors: Financial, Government, Healthcare and Technology. Countries: Hong Kong, Japan and Taiwan.",
+        "Tools": "BIFROST, Bluether, DRIGO, IconDown, KIVARS, PLEAD and XBOW.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"2010",
+				"Description":"Operation “Shrouded Crossbow”. This campaign, first observed in 2010, is believed to be operated by a well-funded group given how it appeared to have purchased the source code of the BIFROST backdoor, which the operators enhanced and created other tools from. Shrouded Crossbow targeted privatized agencies and government contractors as well as enterprises in the consumer electronics, computer, healthcare, and financial industries.",
+				"Link":"https://blog.trendmicro.com/trendlabs-security-intelligence/following-trail-blacktech-cyber-espionage-campaigns/"
+				},{
+				"Date":"2012",
+				"Description":"Operation “PLEAD”. PLEAD is an information theft campaign with a penchant for confidential documents. Active since 2012, it has so far targeted Taiwanese government agencies and private organizations.",
+				"Link":""
+				},{
+				"Date":"2014",
+				"Description":"Operation “Waterbear”. Waterbear has actually been operating for a long time. The campaign’s name is based on its malware’s capability to equip additional functions remotely.",
+				"Link":""
+				},{
+				"Date":"Jul 2018",
+				"Description":"ESET researchers have discovered a new malware campaign misusing stolen digital certificates. We spotted this malware campaign when our systems marked several files as suspicious. Interestingly, the flagged files were digitally signed using a valid D-Link Corporation code-signing certificate. The exact same certificate had been used to sign non-malicious D-Link software; therefore, the certificate was likely stolen.",
+				"Link":"https://www.welivesecurity.com/2018/07/09/certificates-stolen-taiwanese-tech-companies-plead-malware-campaign/"
+				},{
+				"Date":"Apr 2019",
+				"Description":"At the end of April 2019, ESET researchers utilizing ESET telemetry observed multiple attempts to deploy Plead malware in an unusual way. Specifically, the Plead backdoor was created and executed by a legitimate process named AsusWSPanel.exe. This process belongs to the Windows client for a cloud storage service called ASUS WebStorage.",
+				"Link":"https://www.welivesecurity.com/2019/05/14/plead-malware-mitm-asus-webstorage/"
+				},{
+				"Date":"Dec 2019",
+				"Description":"[…] in one of its recent campaigns, we’ve discovered a piece of Waterbear payload with a brand-new purpose: hiding its network behaviors from a specific security product by API hooking techniques. In our analysis, we have discovered that the security vendor is APAC-based, which is consistent with BlackTech’s targeted countries.",
+				"Link":"https://blog.trendmicro.com/trendlabs-security-intelligence/waterbear-is-back-uses-api-hooking-to-evade-security-product-detection/"
+				}],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://blog.trendmicro.com/trendlabs-security-intelligence/following-trail-blacktech-cyber-espionage-campaigns/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          96,
+          32
+        ]
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Blackgear",
+        "OtherNames": "Topgear",
+        "AssociatedGroups": null,
+        "Description": "(Trend Micro) Blackgear is an espionage campaign which has targeted users in Taiwan for many years. Multiple papers and talks have been released covering this campaign, which used the ELIRKS backdoor when it was first discovered in 2012. It is known for using blogs and microblogging services to hide the location of its actual command-and-control (C&C) servers. This allows an attacker to change the C&C server used quickly by changing the information in these posts. Like most campaigns, Blackgear has evolved over time. Our research indicates that it has started targeting Japanese users. Two things led us to this conclusion: first, the fake documents that are used as part of its infection routines are now in Japanese. Secondly, it is now using blogging sites and microblogging services based in Japan for its C&C activity.",
+        "Location": "China",
+        "ImageUrl": "china.jpg",
+        "ImageCaption": "China",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2018",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+      
+        "Targets": "Countries: Japan, South Korea and Taiwan.",
+        "Tools": "Comnie, Elirks and Protux.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Jul 2018",
+				"Description":"Resurfaces, Abuses Social Media for C&C Communication",
+				"Link":"https://blog.trendmicro.com/trendlabs-security-intelligence/blackgear-cyberespionage-campaign-resurfaces-abuses-social-media-for-cc-communication/"
+				}],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://blog.trendmicro.com/trendlabs-security-intelligence/blackgear-espionage-campaign-evolves-adds-japan-target-list/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          96,
+          33
+        ]
+      }
+    },
+	
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Bitter",
+        "OtherNames": "T-APT-17",
+        "AssociatedGroups": null,
+        "Description": "(Forcepoint) Forcepoint Security Labs recently encountered a strain of attacks that appear to target Pakistani nationals. We named the attack “BITTER” based on the network communication header used by the latest variant of remote access tool (RAT) used. Our investigation indicates that the campaign has existed since at least November 2013 but has remained active until today.",
+        "Location": "South Asia",
+        "ImageUrl": "",
+        "ImageCaption": "",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2013",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+      
+        "Targets": "Sectors: Energy, Engineering and Government. Countries: China, Pakistan and Saudi Arabia.",
+        "Tools": "ArtraDownloader and BitterRAT.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Nov 2013",
+				"Description":"Spear-phishing emails are used to target prospective BITTER victims. The campaign predominantly used the older, relatively popular Microsoft Office exploit, CVE-2012-0158, in order to download and execute a RAT binary from a website.",
+				"Link":"https://www.forcepoint.com/blog/x-labs/bitter-targeted-attack-against-pakistan"
+				},{
+				"Date":"Jun 2016",
+				"Description":"Recently, 360 Threat Intelligence Center found a series of targeted attacks against Pakistan targets. Attacker exploited one vulnerability (CVE-2017-12824) of InPage to craft bait documents (.inp).",
+				"Link":"https://ti.360.net/blog/articles/analysis-of-targeted-attack-against-pakistan-by-exploiting-inpage-vulnerability-and-related-apt-groups-english/"
+				},{
+				"Date":"Sep 2018",
+				"Description":"Starting in September 2018 and continuing through the beginning of 2019, BITTER launched a wave of attacks targeting Pakistan and Saudi Arabia. This is the first reported instance of BITTER targeting Saudi Arabia. Details surrounding these attacks and the three ArtraDownloader variants observed are described below.",
+				"Link":"https://unit42.paloaltonetworks.com/multiple-artradownloader-variants-used-by-bitter-to-target-pakistan/"
+				},{
+				"Date":"May 2019",
+				"Description":"The Anomali Threat Research Team discovered a phishing site impersonating a login page for the Ministry of Foreign Affairs of the People’s Republic of China email service. When visitors attempt to login to the fraudulent page, they are presented with a pop-up verification message asking users to close their windows and continue browsing.",
+				"Link":"https://www.anomali.com/blog/suspected-bitter-apt-continues-targeting-government-of-china-and-chinese-organizations#When:19:24:00Z"
+				}],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://unit42.paloaltonetworks.com/multiple-artradownloader-variants-used-by-bitter-to-target-pakistan/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77,
+          20
+        ]
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Barium",
+        "OtherNames": "Pigfish",
+        "AssociatedGroups": null,
+        "Description": "(Microsoft) Barium begins its attacks by cultivating relationships with potential victims—particularly those working in Business Development or Human Resources—on various social media platforms. Once Barium has established rapport, they spear-phish the victim using a variety of unsophisticated malware installation vectors, including malicious shortcut (.lnk) files with hidden payloads, compiled HTML help (.chm) files, or Microsoft Office documents containing macros or exploits. Initial intrusion stages feature the Win32/Barlaiy implant—notable for its use of social network profiles, collaborative document editing sites, and blogs for C&C. Later stages of the intrusions rely upon Winnti for persistent access. The majority of victims recorded to date have been in electronic gaming, multimedia, and Internet content industries, although occasional intrusions against technology companies have occurred. Also see APT 41, which overlaps with Barium.",
+        "Location": "China",
+        "ImageUrl": "china.jpg",
+        "ImageCaption": "China",
+        "Sponsor": "State-sponsored",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2016",
+        "Sources": [{"Name": "Thaicert","Description": "","URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf","JsonURL": "","Copyright": ""}],
+      
+        "Targets": "Sectors: Media, Online video game companies and Technology.",
+        "Tools": "Barlaiy, Cobalt Strike, PlugX and Winnti.",
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Nov 2017",
+				"Description":"Microsoft Asks Judge to Take Down Barium Hackers",
+				"Link":"https://www.courthousenews.com/wp-content/uploads/2017/11/barium.pdf"
+				}
+				],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://www.microsoft.com/security/blog/2017/01/25/detecting-threat-actors-in-recent-german-industrial-attacks-with-windows-defender-atp/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          97,
+          33
+        ]
+      }
+    },
     {
       "type": "Feature",
       "properties": {
@@ -499,6 +775,13 @@
             "Description": "",
             "URL": "https://redskyalliance.org/xindustry/apt-c-36-blind-eagle-and-colombia"
           }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -60,
+          -7
         ]
       }
     },
@@ -2473,16 +2756,16 @@
       "properties": {
         "Name": "Axiom",
         "AssociatedGroups": "Group 72",
-        "Description": "Axiom is a cyber espionage group suspected to be associated with the Chinese government. It is responsible for the Operation SMN campaign. Though both this group and Winnti Group use the malware Winnti, the two groups appear to be distinct based on differences in reporting on the groups' TTPs and targeting.",
+        "Description": "Axiom is a cyber espionage group suspected to be associated with the Chinese government. It is responsible for the Operation SMN campaign. Though both this group and Winnti Group use the malware Winnti, the two groups appear to be distinct based on differences in reporting on the groups' TTPs and targeting. (Talos) Group 72 is a long standing threat actor group involved in Operation SMN, named Axiom by Novetta. The group is sophisticated, well funded, and possesses an established, defined software development methodology. The group targets high profile organizations with high value intellectual property in the manufacturing, industrial, aerospace, defense, media sectors. Geographically, the group almost exclusively targets organizations based in United States, Japan, Taiwan, and Korea. The preferred tactics of the group include watering-hole attacks, spear-phishing, and other web-based tactics. The tools and infrastructure used by the attackers are common to a number of other threat actor groups which may indicate some degree of overlap. We have seen similar patterns used in domain registration for malicious domains, and the same tactics used in other threat actor groups leading us to believe that this group may be part of a larger organization that comprises many separate teams, or that different groups share tactics, code and personnel from time to time. Though both this group and Winnti Group, Blackfly, Wicked Panda use the malware Winnti, the two groups appear to be distinct based on differences in reporting on the groups’ TTPs and targeting. Could be related to APT 17, Deputy Dog, Elderwood, Sneaky Panda and/or APT 20, Violin Panda.",
         "Location": "China",
         "imageUrl": "china.jpg",
         "imageCaption": "China",
-        "Tools": "Winnti, Gh0st RAT, PoisonIvy, HydraQ, Hikit, ZxShell, Deputy Dog, Derusbi, PlugX, HTRAN, HDRoot, Fscan, Timestomper",
-        "Targets": "",
-        "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+		"Targets": "Sectors: High profile organizations with high value intellectual property in Aerospace, Defense, Industrial, Manufacturing and Media. Countries: Japan, South Korea, Taiwan and USA.",
+        "Tools": "9002 RAT, DeputyDog, Derusbi, Gh0st RAT, HiKit, PlugX, Poison Ivy, Winnti, ZoxPNG, ZoxRPC and ZXShell. Winnti, Gh0st RAT, PoisonIvy, HydraQ, Hikit, ZxShell, Deputy Dog, Derusbi, PlugX, HTRAN, HDRoot, Fscan, Timestomper",
+        "OtherNames": "Group 72",
+        "Sponsor": "State-sponsored",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2008",
         "Sources": [
           {
             "Name": "MITRE",
@@ -2508,7 +2791,11 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"2008-2014",
+				"Description":"Operation “SMN”. Axiom is responsible for directing highly sophisticated cyberespionage against numerous Fortune 500 companies, journalists, environmental groups, pro-democracy groups, software companies, academic institutions and government agencies worldwide for at least the last six years. In our coordinated effort, we performed the first ever-private sponsored interdiction against a sophisticated state sponsored advanced threat group. Our efforts detected and cleaned 43,000 separate installations of Axiom tools, including 180 of their top tier implants.",
+				"Link":"http://www.novetta.com/wp-content/uploads/2014/11/Executive_Summary-Final_1.pdf"
+				}],
         "ExtLinks": [
           {
             "Description": "",
@@ -2533,6 +2820,14 @@
           {
             "Description": "",
             "URL": "https://blog.trendmicro.com/trendlabs-security-intelligence/supply-chain-attack-operation-red-signature-targets-south-korean-organizations/"
+          },
+		  {
+            "Description": "",
+            "URL": "https://blogs.cisco.com/security/talos/threat-spotlight-group-72"
+          },
+          {
+            "Description": "",
+            "URL": "http://www.novetta.com/wp-content/uploads/2015/04/novetta_winntianalysis.pdf"
           }
         ]
       },
@@ -2555,9 +2850,11 @@
         "imageCaption": "",
         "OtherNames": "",
         "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
-        "Sources": [
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2015",
+        "Targets":"Sectors: Media, Think Tanks, activists and the UN. Countries: Afghanistan, Angola, Bahrain, Iran, Iraq, Jordan, Libya, Netherlands, Nigeria, Russia, Saudi Arabia, Tunisia and UK.",
+		"Tools":"FinFisher, Wingbird and 0-day vulnerabilities in Flash.",
+		"Sources": [
           {
             "Name": "MITRE",
             "Description": "",
@@ -2582,7 +2879,23 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"Jun 2015",
+				"Description":"Leveraging data from Kaspersky Security Network, we identified two other similar exploit chains used by BlackOasis in June 2015 which were zero days at the time. Those include CVE-2015-5119 and CVE-2016-0984, which were patched in July 2015 and February 2016 respectively. These exploit chains also delivered FinSpy installation packages.",
+				"Link":"https://securelist.com/blackoasis-apt-and-new-targeted-attacks-leveraging-zero-day-exploit/82732/"
+				},{
+				"Date":"May 2016",
+				"Description":"We first became aware of BlackOasis’ activities in May 2016, while investigating another Adobe Flash zero day. On May 10, 2016, Adobe warned of a vulnerability (CVE-2016-4117) affecting Flash Player 21.0.0.226 and earlier versions for Windows, Macintosh, Linux, and Chrome OS. The vulnerability was actively being exploited in the wild.",
+				"Link":""
+				},{
+				"Date":"Sep 2017",
+				"Description":"FireEye recently detected a malicious Microsoft Office RTF document that leveraged CVE-2017-8759, a SOAP WSDL parser code injection vulnerability. This vulnerability allows a malicious actor to inject arbitrary code during the parsing of SOAP WSDL definition contents.",
+				"Link":"https://www.fireeye.com/blog/threat-research/2017/09/zero-day-used-to-distribute-finspy.html"
+				},{
+				"Date":"Oct 2017",
+				"Description":"On October 10, 2017, Kaspersky Lab’s advanced exploit prevention systems identified a new Adobe Flash zero day exploit used in the wild against our customers. The exploit was delivered through a Microsoft Office document and the final payload was the latest version of FinSpy malware.",
+				"Link":"https://securelist.com/blackoasis-apt-and-new-targeted-attacks-leveraging-zero-day-exploit/82732/"
+				}],
         "ExtLinks": []
       },
       "geometry": {
@@ -2596,18 +2909,18 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "BRONZE BUTLER",
+        "Name": "Bronze Butler",
         "AssociatedGroups": "REDBALDKNIGHT, Tick",
-        "Description": "BRONZE BUTLER is a cyber espionage group with likely Chinese origins that has been active since at least 2008. The group primarily targets Japanese organizations, particularly those in government, biotechnology, electronics manufacturing, and industrial chemistry.",
+        "Description": "BRONZE BUTLER is a cyber espionage group with likely Chinese origins that has been active since at least 2008. The group primarily targets Japanese organizations, particularly those in government, biotechnology, electronics manufacturing, and industrial chemistry. (SecureWorks) CTU analysis indicates that Bronze Butler primarily targets organizations located in Japan. The threat group has sought unauthorized access to networks of organizations associated with critical infrastructure, heavy industry, manufacturing, and international relations. Secureworks analysts have observed Bronze Bulter exfiltrating the following categories of data: - Intellectual property related to technology and development - Product specification - Sensitive business and sales-related information - Network and system configuration files - Email messages and meeting minutes. The focus on intellectual property, product details, and corporate information suggests that the group seeks information that they believe might be of value to competing organizations. The diverse targeting suggests that Bronze Bulter may be tasked by multiple teams or organizations with varying priorities.",
         "Location": "China",
         "imageUrl": "china.jpg",
         "imageCaption": "China",
-        "Tools": "whoami, procdump, VBS, WCE, Mimikatz, gsecdump, PsExec, Daserf, Gofarer, Datper, ABK Downloader, avirra Downloader, Datper, RoyalRoad RTF Weaponizer",
-        "Targets": "",
-        "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Tools": "whoami, procdump, VBS, WCE, Mimikatz, gsecdump, PsExec, Daserf, Gofarer, Datper, ABK Downloader, avirra Downloader, Datper, RoyalRoad RTF Weaponizer. 9002 RAT, 8.t Dropper, Blogspot, Daserf, Datper, Elirks, Gh0st RAT, gsecdump, HomamDownloader, Lilith RAT, Mimikatz, Minzen, rarstar, SymonLoader and Windows Credentials Editor.",
+        "Targets": "Sectors: Critical infrastructure, Defense, Engineering, Government, High-Tech, Industrial, International relations, Manufacturing, Media and Technology. Countries: China, Hong Kong, Japan, Russia, Singapore, South Korea, Taiwan and USA.",
+        "OtherNames": "Tick, RedBaldNight, Stalker Panda",
+        "Sponsor": "State-sponsored, National University of Defense and Technology",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2010",
         "Sources": [
           {
             "Name": "MITRE",
@@ -2633,7 +2946,31 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"Jul 2015",
+				"Description":"Symantec discovered the most recent wave of Tick attacks in July 2015, when the group compromised three different Japanese websites with a Flash (.swf) exploit to mount watering hole attacks. Visitors to these websites were infected with a downloader known as Gofarer (Downloader.Gofarer). Gofarer collects information about the compromised computer and then downloads and installs Daserf.",
+				"Link":"https://www.symantec.com/connect/blogs/tick-cyberespionage-group-zeros-japan"
+				},{
+				"Date":"Apr 2017",
+				"Description":"Wali is a backdoor used for targeted attacks. It gathers information about the compromised machines and their networks, in addition to stealing sensitive information and credentials. Wali’s operators use this information to move laterally in an organization and compromise more machines.",
+				"Link":"https://www.cybereason.com/blog/labs-shadowwali-new-variant-of-the-xxmm-family-of-backdoors"
+				},{
+				"Date":"Nov 2017",
+				"Description":"Daserf’s infection chain accordingly evolved, as shown below. It has several methods for infecting its targets of interest: spear phishing emails, watering hole attacks, and exploiting a remote code execution vulnerability (CVE-2016-7836, patched last March 2017) in SKYSEA Client View, an IT asset management software widely used in Japan.",
+				"Link":"https://blog.trendmicro.com/trendlabs-security-intelligence/redbaldknight-bronze-butler-daserf-backdoor-now-using-steganography/"
+				},{
+				"Date":"Jun 2018",
+				"Description":"Tick Group Weaponized Secure USB Drives to Target Air-Gapped Critical Systems",
+				"Link":"https://unit42.paloaltonetworks.com/unit42-tick-group-weaponized-secure-usb-drives-target-air-gapped-critical-systems/"
+				},{
+				"Date":"2019",
+				"Description":"Operation “ENDTRADE”. By the first half of 2019, we found that the group was able to zero in on specific industries in Japan from which it could steal proprietary information and classified data. We named this campaign “Operation ENDTRADE,” based on its targets.",
+				"Link":"https://documents.trendmicro.com/assets/pdf/Operation-ENDTRADE-TICK-s-Multi-Stage-Backdoors-for-Attacking-Industries-and-Stealing-Classified-Data.pdf"
+				},{
+				"Date":"Jun 2019",
+				"Description":"Breach of Mitsubishi Electric",
+				"Link":"https://www.zdnet.com/article/mitsubishi-electric-discloses-security-breach-china-is-main-suspect/"
+				}],
         "ExtLinks": [
           {
             "Description": "",
@@ -2670,7 +3007,9 @@
           {
             "Description": "",
             "URL": "https://jsac.jpcert.or.jp/archive/2020/pdf/JSAC2020_8_koike-nakajima_jp.pdf"
-          }
+          },
+		  {"Description": "","URL": "https://unit42.paloaltonetworks.com/unit42-tick-group-continues-attacks/"},
+		  {"Description": "","URL": "https://wikileaks.org/vault7/document/2015-08-20150814-256-CSIR-15005-Stalker-Panda/2015-08-20150814-256-CSIR-15005-Stalker-Panda.pdf"}
         ]
       },
       "geometry": {
@@ -3267,10 +3606,12 @@
         "Location": "Russia",
         "imageUrl": "russia.png",
         "imageCaption": "Russia",
-        "OtherNames": "",
+        "OtherNames": "Berserk Bear, Dymalloy",
         "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Motivation": "Sabotage and destruction",
+        "FirstSeen": "2010",
+		"Targets":"Sectors: Energy. Countries: Azerbaijan, Belgium, Canada, France, Germany, Italy, Norway, Russia, Singapore, Spain, Switzerland, Turkey, UK, Ukraine and USA.",
+		"Tools":"Goodor, Impacket, Karagany, Phishery and Living off the Land.",
         "Sources": [
           {
             "Name": "MITRE",
@@ -3296,8 +3637,28 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
-        "ExtLinks": []
+        "Operations": [{
+				"Date":"Dec 2015",
+				"Description":"Symantec has evidence indicating that the Dragonfly 2.0 campaign has been underway since at least December 2015 and has identified a distinct increase in activity in 2017.",
+				"Link":"https://www.symantec.com/blogs/threat-intelligence/dragonfly-energy-sector-cyber-attacks"
+				},
+				{
+				"Date":"May 2017",
+				"Description":"Attack on nuclear facilities in the US. Since May, hackers have been penetrating the computer networks of companies that operate nuclear power stations and other energy facilities, as well as manufacturing plants in the United States and other countries. Among the companies targeted was the Wolf Creek Nuclear Operating Corporation, which runs a nuclear power plant near Burlington, Kan., according to security consultants and an urgent joint report issued by the Department of Homeland Security and the Federal Bureau of Investigation last week.",
+				"Link":"https://www.nytimes.com/2017/07/06/technology/nuclear-plant-hack-report.html"
+				},
+				{
+				"Date":"May 2017",
+				"Description":"Attacks on critical infrastructure and energy companies around the world. Since at least May 2017, Talos has observed attackers targeting critical infrastructure and energy companies around the world, primarily in Europe and the United States. These attacks target both the critical infrastructure providers, and the vendors those providers use to deliver critical services. Attacks on critical infrastructure are not a new concern for security researchers, as adversaries are keen to understand critical infrastructure ICS networks for reasons unknown, but surely nefarious.",
+				"Link":"https://blog.talosintelligence.com/2017/07/template-injection.html"
+				},
+				{
+				"Date":"Mar 2020",
+				"Description":"Breach of San Francisco airport",
+				"Link":"https://www.zdnet.com/article/russian-state-hackers-behind-san-francisco-airport-hack/"
+				}
+				],
+        "ExtLinks": [{"Description": "","URL": "https://www.symantec.com/blogs/threat-intelligence/dragonfly-energy-sector-cyber-attacks"}]
       },
       "geometry": {
         "type": "Point",
@@ -7818,6 +8179,98 @@
           }
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Bahamut",
+        "AssociatedGroups": null,
+        "Description": "(Bellingcat) Bahamut was first noticed when it targeted a Middle Eastern human rights activist in the first week of January 2017. Later that month, the same tactics and patterns were seen in attempts against an Iranian women’s activist – an individual commonly targeted by Iranian actors, such as Magic Hound, APT 35, Cobalt Gypsy, Charming Kitten and the Sima campaign documented in our 2016 Black Hat talk. Recurrent patterns in hostnames, registrations, and phishing scripts provided a strong link between the two incidents, and older attempts were found that directly overlapped with these attacks. Over the course of the following months, several more attempts against the same individuals were observed, intended to steal credentials for iCloud and Gmail accounts. Bahamut was also observed engaging in reconnaissance and counter-reconnaissance attempts, intended to harvest IP addresses of emails accounts. One attempt impersonated BBC News Alerts, using timely content related to the diplomatic conflict between Qatar and other Gulf states as bait. This message used external images embedded in the email to track where the lure would be opened.",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Sectors: Political, economic and social. Countries: Egypt, Iran, Palestine, Qatar, Tunisia, Turkey and UAE.",
+        "Tools": "Bahamut and DownPaper.",
+        "OtherNames": "",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2016",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Dec 2016",
+				"Description":"Beginning in December 2016, unconnected Middle Eastern human rights activists began to receive spear-phishing messages in English and Persian that were not related to any previously-known groups. These attempts differed from other tactics seen by us elsewhere, such as those connected to Iran, with better attention paid to the operation of the campaign.",
+				"Link":"https://www.bellingcat.com/news/mena/2017/06/12/bahamut-pursuing-cyber-espionage-actor-middle-east/"
+				},
+				{
+				"Date":"Oct 2017",
+				"Description":"For three months there was no apparent further activity from the actor. However, in the same week of September a series of spear-phishing attempts once again targeted a set of otherwise unrelated individuals, employing the same tactics as before. Bahamut remains active, and its operations are more extensive than first disclosed.",
+				"Link":"https://www.bellingcat.com/resources/case-studies/2017/10/27/bahamut-revisited-cyber-espionage-middle-east-south-asia/"
+				},
+				{
+				"Date":"Jun 2018",
+				"Description":"Cisco Talos has identified a highly targeted campaign against 13 iPhones which appears to be focused on India. The attacker deployed an open-source mobile device management (MDM) system to control enrolled devices.",
+				"Link":"https://blog.talosintelligence.com/2018/07/Mobile-Malware-Campaign-uses-Malicious-MDM.html"
+				},
+				{
+				"Date":"Jul 2018",
+				"Description":"The Bahamut group was discovered and detailed by Bellingcat, an open-source news website. In this post, the author was discussing Android-based malware with some similarities to the iOS malware we identified. That post kickstarted our investigation into any potential overlap between these campaigns and how they are potentially linked. The new MDM platform we identified has similar victimology with Middle Eastern targets, namely Qatar, using a U.K. mobile number issued from LycaMobile. Bahamut targeted similar Qatar-based individuals during their campaign.",
+				"Link":"https://blog.talosintelligence.com/2018/07/Mobile-Malware-Campaign-uses-Malicious-MDM-Part2.html"
+				}
+				],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://www.bellingcat.com/news/mena/2017/06/12/bahamut-pursuing-cyber-espionage-actor-middle-east/"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "The Big Bang",
+        "AssociatedGroups": null,
+        "Description": "(Talos) Talos continuously monitors malicious emails campaigns. We identified one specific spear phishing campaign launched against targets within Palestine, and specifically against Palestinian law enforcement agencies. This campaign started in April 2017, using a spear phishing campaign to deliver the MICROPSIA payload in order to remotely control infected systems. Although this technique is not new, it remains an effective technique for attackers. The malware itself was developed in Delphi; in this article, we describe the features and the network communication to the command and control server used by the attackers. The threat actor has chosen to reference TV show characters and include German language words within the attack. Most significantly, the attacker has appeared to have used genuine documents stolen from Palestinian sources as well as a controversial music video as part of the attack. (Check Point) While the APT has gone through significant upgrades over the past year, the conductors of these campaigns maintained evident fingerprints, both in the delivery methods and malware development conventions. These unique traces assisted us in correlating the current wave to past attacks, and may also have some resemblance to attacks related to the Molerats, Extreme Jackal, Gaza Cybergang APT group.",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Sectors: Law enforcement and others. Countries: Middle East and Palestine.",
+        "Tools": "Micropsia.",
+        "OtherNames": "",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2017",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://blog.talosintelligence.com/2017/06/palestine-delphi.html"
+          },
+		  {"Description": "","URL": "https://research.checkpoint.com/2018/apt-attack-middle-east-big-bang/"}
+        ]
+      }
     }
+	
   ]
 }
