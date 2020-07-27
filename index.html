@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1" />
+  <meta name="description" content="APTMAP - Advanced Persistent Threat Map">
+  <meta name="keywords" content="APTMAP, Advanced Persistent Threat Map">
+  <meta name="author" content="Andrea Cristaldi">
+  <title>APTMAP - Advanced Persistent Threat Map</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="CSS/style.css" />
+
+  <script src="https://js.arcgis.com/4.12/"></script>
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/SceneView",
+      "esri/layers/TileLayer",
+      "esri/layers/GeoJSONLayer",
+      "esri/Basemap",
+
+      
+
+      "esri/Graphic",
+      "esri/geometry/Point",
+      "esri/geometry/Mesh",
+	   "esri/core/watchUtils"
+   
+    ], function (Map, SceneView, TileLayer, GeoJSONLayer, Basemap,  Graphic, Point, Mesh, watchUtils) {
+
+
+      const R = 6358137; // approximate radius of the Earth in m
+      const offset = 300000; // offset from the ground used for the clouds
+      const basemap = new Basemap({
+        baseLayers: [
+          
+		  new TileLayer({
+            url: "https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/terrain_with_heavy_bathymetry/MapServer"
+          }),
+		  new TileLayer({
+            url: "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer"
+			
+          })
+        ]
+      });
+      const map = new Map({
+        basemap: basemap
+      });
+      const view = new SceneView({
+        container: "viewDiv",
+        map: map,
+        alphaCompositingEnabled: true,
+        qualityProfile: "high",
+        camera: {
+          position: [15.03975781, 14.94826384, 19921223.30821],
+          heading: 2.03,
+          tilt: 0.13
+        },
+		
+        environment: {
+          background: {
+            type: "color",
+            color: [255, 252, 244, 0]
+          },
+          starsEnabled: false,
+          atmosphereEnabled: true,
+          lighting: {
+            directShadowsEnabled: false,
+            date: "Sun Jun 23 2019 17:19:18 GMT+0200 (Central European Summer Time)"
+          }
+        },
+        constraints: {
+          altitude: {
+            min: 10000000,
+            max: 25000000
+          }
+        },
+        popup: {
+          dockEnabled: true,
+          dockOptions: {
+            position: "top-right",
+            breakpoint: false,
+            buttonEnabled: false
+          },
+          collapseEnabled: false
+        },
+        highlightOptions: {
+          color: [255, 255, 255],
+          haloOpacity: 0.5
+        }
+      });
+
+      view.ui.empty("top-left");
+     
+      const origin = new Point({
+        x: 0, y: -90, z: -(2 * R)
+      });
+      
+      
+
+      const extremesLayer = new GeoJSONLayer({
+        url: "apt.json",
+        elevationInfo: {
+          mode: "absolute-height",
+          offset: offset
+        },
+        renderer: {
+          type: "simple",
+          symbol: {
+            type: "point-3d",
+            symbolLayers: [{
+              type: "icon",
+              resource: { primitive: "circle" },
+              material: { color: [0, 0, 0, 0] },
+              outline: { color: [245, 99, 66, 1], size: 4 },
+              size: 4
+            }, {
+              type: "icon",
+              resource: { primitive: "circle" },
+              material: { color: [0, 0, 0, 0] },
+              outline: { color: [255, 0, 0, 1], size: 2 },
+              size: 10
+            }]
+          }
+        },
+        popupTemplate: {
+          title: "{Name}",
+		  content: DisplayPopUp,
+		  outFields: ["*"]
+		  
+		  
+		  
+        }
+      });
+
+      map.layers.add(extremesLayer);
+	  
+	  
+	  document.getElementById("close-about").addEventListener("click", closeMenu);
+
+      document.getElementById("start-globe").addEventListener("click", function () {
+        closeMenu();
+        view.when(function () {
+          watchUtils.whenFalseOnce(view, "updating", rotate);
+        });
+      });
+
+      document.getElementById("container").addEventListener("click", function (e) {
+        if (e.target.id === "container") {
+          closeMenu();
+          view.when(function () {
+            watchUtils.whenFalseOnce(view, "updating", rotate);
+          });
+        }
+      });
+
+      function closeMenu() {
+        document.getElementById("container").style.display = "none";
+        view.container.style.filter = "blur(0px)";
+      }
+
+
+      
+			  
+
+
+
+      let intro = true;
+      document.getElementById("about").addEventListener("click", function () {
+        document.getElementById("container").style.display = "flex";
+        view.container.style.filter = "blur(10px)";
+        if (intro) {
+          document.getElementById("show-about").classList.remove("hidden");
+          document.getElementById("show-intro").classList.add("hidden");
+          intro = false;
+        }
+      });
+	  
+	  
+	  document.getElementById("others").addEventListener("click", function () {
+       document.getElementById("others-container").style.display = "flex";
+        
+      });
+	  document.getElementById("close-others").addEventListener("click", closeOthers);
+	  
+	  function closeOthers() {
+        document.getElementById("others-container").style.display = "none";
+        
+      }
+	  
+	  document.getElementById("search").addEventListener("click", function () {
+       document.getElementById("search-container").style.display = "flex";
+       
+        view.container.style.filter = "blur(10px)";
+      });
+	  document.getElementById("close-search").addEventListener("click", closeSearch);
+	  
+	  function closeSearch() {
+        document.getElementById("search-container").style.display = "none";
+        view.container.style.filter = "blur(0px)";
+      }
+	  
+
+      view.ui.add("about", "bottom-left");
+	  view.ui.add("maptitle", "top-left");
+	  view.ui.add("others", "top-left");
+	  view.ui.add("search", "top-left");
+
+      function rotate() {
+        if (!view.interacting) {
+          const camera = view.camera.clone();
+          camera.position.longitude -= 0.2;
+          view.goTo(camera, { animate: false });
+          requestAnimationFrame(rotate);
+        }
+      }
+
+    });
+	
+	
+	
+	function DisplayPopUp(feature)
+	{
+	var div='';
+	div+='<div class="popupImage"><img src="images/flags/'+ feature.graphic.attributes.ImageUrl +'" alt="' + feature.graphic.attributes.ImageCaption + '"/></div>';
+	div+='<div class="popupImageCaption">'+feature.graphic.attributes.ImageCaption+'</div>';
+	div+='<div class="popupDescription"><p class="info"><i class="fa fa-location-arrow"></i> <strong>Location:</strong> ' + feature.graphic.attributes.Location+ '</p>';
+	if (feature.graphic.attributes.Description){div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description:</strong> '+feature.graphic.attributes.Description+'</p>';}
+	if (feature.graphic.attributes.OtherNames){div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names:</strong> '+feature.graphic.attributes.OtherNames+'</p>';}
+	if (feature.graphic.attributes.AssociatedGroups){div+='<p class="info"><i class="fa fa-sitemap"></i> <strong>Associated groups:</strong> '+feature.graphic.attributes.AssociatedGroups+'</p>';}
+	if (feature.graphic.attributes.FirstSeen){div+='<p class="info"><i class="fa fa-clock-o"></i> <strong>First seen:</strong> '+feature.graphic.attributes.FirstSeen+'</p>';}
+	if (feature.graphic.attributes.Sponsor){div+='<p class="info"><i class="fa fa-share-square-o"></i> <strong>Sponsor:</strong> '+feature.graphic.attributes.Sponsor+'</p>';}
+	if (feature.graphic.attributes.Motivation){div+='<p class="info"><i class="fa fa-angle-double-right"></i> <strong>Motivation:</strong> '+feature.graphic.attributes.Motivation+'</p>';}
+	if (feature.graphic.attributes.Targets){div+='<p class="info"><i class="fa fa-crosshairs"></i> <strong>Targets:</strong> '+feature.graphic.attributes.Targets+'</p>';}
+	if (feature.graphic.attributes.Tools){div+='<p class="info"><i class="fa fa-cubes"></i> <strong>Tools:</strong> '+feature.graphic.attributes.Tools+'</p>';}
+	if (feature.graphic.attributes.TTP){div+='<p class="info"><i class="fa fa-cog"></i> <strong>TTP:</strong> '+feature.graphic.attributes.TTP+'</p>';}
+	if (feature.graphic.attributes.IOC){div+='<p class="info"><i class="fa fa-search"></i> <strong>IOC:</strong> '+feature.graphic.attributes.IOC+'</p>';}
+	
+	div+='<p class="info" id="detP" onclick="details(\''+feature.graphic.attributes.Name+'\');"><span class="detButton">Show details</span></p>'
+	div+='</div>';
+	div+='</div>';
+		
+	return div;}
+	
+	
+	function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+	}
+
+
+	readTextFile("apt.json", function(text){
+		var jdata = JSON.parse(text);
+		var othdiv = document.getElementById("othPlaceHolder");
+
+		jdata.features.forEach( function(feat ) {
+			if(feat.properties.Location=="Other"){
+				
+				var div='';
+				if (feat.properties.Description){div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description:</strong> '+feat.properties.Description+'</p>';}
+				if (feat.properties.OtherNames){div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names:</strong> '+feat.properties.OtherNames+'</p>';}
+				if (feat.properties.AssociatedGroups){div+='<p class="info"><i class="fa fa-sitemap"></i> <strong>Associated groups:</strong> '+feat.properties.AssociatedGroups+'</p>';}
+				if (feat.properties.FirstSeen){div+='<p class="info"><i class="fa fa-clock-o"></i> <strong>First seen:</strong> '+feat.properties.FirstSeen+'</p>';}
+				if (feat.properties.Sponsor){div+='<p class="info"><i class="fa fa-share-square-o"></i> <strong>Sponsor:</strong> '+feat.properties.Sponsor+'</p>';}
+				if (feat.properties.Motivation){div+='<p class="info"><i class="fa fa-angle-double-right"></i> <strong>Motivation:</strong> '+feat.properties.Motivation+'</p>';}
+				if (feat.properties.Targets){div+='<p class="info"><i class="fa fa-crosshairs"></i> <strong>Targets:</strong> '+feat.properties.Targets+'</p>';}
+				if (feat.properties.Tools){div+='<p class="info"><i class="fa fa-cubes"></i> <strong>Tools:</strong> '+feat.properties.Tools+'</p>';}
+				if (feat.properties.TTP){div+='<p class="info"><i class="fa fa-cog"></i> <strong>TTP:</strong> '+feat.properties.TTP+'</p>';}
+				if (feat.properties.IOC){div+='<p class="info"><i class="fa fa-search"></i> <strong>IOC:</strong> '+feat.properties.IOC+'</p>';}
+					
+				var Details='<p id="detP'+ feat.properties.Name+'" style="word-break: break-word;" onclick="othdetails(\'detP' + feat.properties.Name+'\',\''+ feat.properties.Name +'\');"><span class="detButton">Show details</span></p>';
+								
+				othPlaceHolder.innerHTML += "<li><h2 class='APTname'>" + feat.properties.Name + "</h2><p>" + div + Details + "</li>";
+				}
+		});
+	});
+	
+	
+	function Search()
+	{
+	readTextFile("apt.json", function(text){
+		var jdata = JSON.parse(text);
+		var count=0;
+		var srcdiv = document.getElementById("searchPlaceHolder");
+		srcdiv.innerHTML="";
+		var srcLocation = document.getElementById("searchLocation").value;
+		var srcAPTname = document.getElementById("searchAPTname").value;
+		var srcTools = document.getElementById("searchTools").value;
+		var srcTarget = document.getElementById("searchTarget").value;
+
+		jdata.features.forEach( function(feat ) {
+			if (srcAPTname){if(!feat.properties.Name.toLowerCase().includes(srcAPTname.toLowerCase()) && !feat.properties.OtherNames.toLowerCase().includes(srcAPTname.toLowerCase())){return;}}
+			if (srcLocation){if(!feat.properties.Location.toLowerCase().includes(srcLocation.toLowerCase())){return;}}
+			if (srcTools){if(!feat.properties.Tools.toLowerCase().includes(srcTools.toLowerCase())){return;}}
+			if (srcTarget){
+			if(feat.properties.Targets){
+
+				if(!feat.properties.Targets.toLowerCase().includes(srcTarget.toLowerCase())){return;}}
+				else{return}
+			}
+			count++;
+			
+			
+			var div='';
+			if (feat.properties.Description){div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description:</strong> '+feat.properties.Description+'</p>';}
+			if (feat.properties.OtherNames){div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names:</strong> '+feat.properties.OtherNames+'</p>';}
+			if (feat.properties.AssociatedGroups){div+='<p class="info"><i class="fa fa-sitemap"></i> <strong>Associated groups:</strong> '+feat.properties.AssociatedGroups+'</p>';}
+			if (feat.properties.FirstSeen){div+='<p class="info"><i class="fa fa-clock-o"></i> <strong>First seen:</strong> '+feat.properties.FirstSeen+'</p>';}
+			if (feat.properties.Sponsor){div+='<p class="info"><i class="fa fa-share-square-o"></i> <strong>Sponsor:</strong> '+feat.properties.Sponsor+'</p>';}
+			if (feat.properties.Motivation){div+='<p class="info"><i class="fa fa-angle-double-right"></i> <strong>Motivation:</strong> '+feat.properties.Motivation+'</p>';}
+			if (feat.properties.Targets){div+='<p class="info"><i class="fa fa-crosshairs"></i> <strong>Targets:</strong> '+feat.properties.Targets+'</p>';}
+			if (feat.properties.Tools){div+='<p class="info"><i class="fa fa-cubes"></i> <strong>Tools:</strong> '+feat.properties.Tools+'</p>';}
+			if (feat.properties.TTP){div+='<p class="info"><i class="fa fa-cog"></i> <strong>TTP:</strong> '+feat.properties.TTP+'</p>';}
+			if (feat.properties.IOC){div+='<p class="info"><i class="fa fa-search"></i> <strong>IOC:</strong> '+feat.properties.IOC+'</p>';}
+					
+			var Details='<p id="detSP'+ feat.properties.Name+'" style="word-break: break-word;" onclick="othdetails(\'detSP' + feat.properties.Name+'\',\''+ feat.properties.Name +'\');"><span class="detButton">Show details</span></p>';
+			
+		
+			srcdiv.innerHTML += "<li><h2 class='APTname'>" + feat.properties.Name + "</h2><p>" + div + Details + "</li>";
+			});
+		});
+	
+	}
+	
+	
+	function details(Name) {
+		var detp = document.getElementById("detP");
+		detp.innerHTML="";
+		var Sources=" ";
+		var Links="";
+		var Operations="";
+		readTextFile("apt.json", function(text){
+			var jdata = JSON.parse(text);
+			jdata.features.forEach( function(feat) {
+				if (feat.properties.Name==Name){
+				
+					for (var s of feat.properties.Sources) 
+						{
+						Sources +=' <a href="' + s.URL +'" target="_blank">'+s.Name+'</a>,';
+						if (s.Name=="MITRE" && s.JsonURL)
+							{
+							readTextFile(s.JsonURL, function(text){
+								var jdata = JSON.parse(text);
+							
+								detp.innerHTML +='<h2>'+jdata.description+'</h2>';
+								if (jdata.techniques){
+									jdata.techniques.forEach( function(tec ) {
+										var tid="";
+										var cmt="";
+										var sty="";
+										var sp="";
+							
+										if(tec.techniqueID.includes('.'))
+										{   tid=tec.techniqueID;
+											sty=' style="padding-left:1em"; ';
+										}
+										else
+										{
+											tid='<a href="https://attack.mitre.org/techniques/'+ tec.techniqueID + '/" target="_blank">'+ tec.techniqueID +'</a>';
+											sp='</br>';
+										}
+										if(tec.comment){
+											cmt='<div'+sty+'>' + tec.comment.replace(/(\[.*?\]) */g, "") + '</div>';
+										}
+										detp.innerHTML += sp+ '<h5'+sty+'>'+ tid +'</h5>'+ cmt;
+										});
+									}	
+								
+								});
+						
+							}
+						}
+				
+						detp.innerHTML+='<p class="info">Sources:' + Sources.substring(0,Sources.length-1)+'</p>';
+					
+						for (var l of feat.properties.ExtLinks) 
+							{
+							Links+='<a href="' + l.URL +'" target="_blank">'+l.URL+'</a></br>';
+							}
+						if (Links){
+							detp.innerHTML= detp.innerHTML + '<p class="info">Links:</br>' + Links +'</p>';}
+				
+						for (var op of feat.properties.Operations) 
+							{
+							Operations+='<li><strong>' + op.Date + '</strong><br/><br/>'+ op.Description + '<br/>';
+							if (op.Link){Operations+='<a href="' + op.Link +'" target="_blank">'+op.Link+'</a><br/>';}
+							Operations+='</li>'
+							}
+						if (Operations){
+							detp.innerHTML= detp.innerHTML + '<p class="info">Operations:</br><ul>' + Operations +'</ul></p>';}
+
+				
+				}
+			});
+		});
+				  
+	  }
+	  
+	function othdetails(c,Name) {
+		var detp = document.getElementById(c);
+		detp.innerHTML="";
+		var Sources=" ";
+		var Links="";
+		readTextFile("apt.json", function(text){
+			var jdata = JSON.parse(text);
+			jdata.features.forEach( function(feat) {
+				if (feat.properties.Name==Name){
+				
+					for (var s of feat.properties.Sources) 
+					{
+						Sources +=' <a href="' + s.URL +'" target="_blank">'+s.Name+'</a>,';
+						if (s.Name=="MITRE" && s.JsonURL)
+						{
+							readTextFile(s.JsonURL, function(text){
+								var jdata = JSON.parse(text);
+								
+								detp.innerHTML +='<h4>'+jdata.description+'</h4>';
+								if (jdata.techniques){
+								jdata.techniques.forEach( function(tec ) {
+									var tid="";
+									var cmt="";
+									var sty="";
+									var sp="";
+						
+									if(tec.techniqueID.includes('.'))
+										{ tid=tec.techniqueID;
+											sty=' style="padding-left:1em"; ';
+										}
+									else
+										{
+											tid='<a href="https://attack.mitre.org/techniques/'+ tec.techniqueID + '/" target="_blank">'+ tec.techniqueID +'</a>';
+											sp='</br>';
+										}	
+									if(tec.comment){
+										cmt='<div'+sty+'>' + tec.comment.replace(/(\[.*?\]) */g, "") + '</div>';
+									}
+									detp.innerHTML += sp+ '<h5'+sty+'>'+ tid +'</h5>'+ cmt;
+								});
+								}
+							});
+						}
+					}
+				
+					detp.innerHTML+='<p class="info">Sources:' + Sources.substring(0,Sources.length-1)+'</p>';
+					
+					for (var l of feat.properties.ExtLinks) 
+					{
+						Links+='<a href="' + l.URL +'" target="_blank">'+l.URL+'</a></br>';
+					}
+					if (Links){
+					detp.innerHTML= detp.innerHTML + '<p class="info">Links:</br>' + Links +'</p>';}
+					for (var op of feat.properties.Operations) 
+						{
+						Operations+='<li><strong>' + op.Date + '</strong><br/><br/>'+ op.Description + '<br/>';
+						if (op.Link){Operations+='<a href="' + op.Link +'" target="_blank">'+op.Link+'</a><br/>';}
+							Operations+='</li>'
+						}
+						if (Operations){
+							detp.innerHTML= detp.innerHTML + '<p class="info">Operations:</br><ul>' + Operations +'</ul></p>';}
+
+				}
+			});
+		});
+				  
+	}
+
+  </script>
+</head>
+<body>
+  <div id="viewDiv">
+    <div id="about">About APTMAP</div>
+	<div id="maptitle"><img src="images/aptmap.png" /></div>
+	<div id="others"><h3>Other APTs not in map</h3></div>
+	<div id="search"><h3>Search</h3></div>
+  </div>
+  <div id="container">
+    <div id="introDiv">
+      <img src="images/aptmap.png" />
+      <div id="show-intro">
+        <p>An Advanced Persistent Threat (APT) is a stealthy computer network threat actor, nation state, state-sponsored group or non-state sponsored groups conducting large-scale targeted intrusions for specific goals, which gains unauthorized access to a computer network and remains undetected for an extended period.
+        </p>
+		<p>Attribution is a very complex issue. This map is based on data from different sources (vendor, studies, reports, ...) and is not a reliable source. Most of the mappings rely on the findings in a single incident analysis. Groups often change their toolsets or exchange them with other groups. This makes attribution of certain operations extremely difficult. Information published here may be wrong, outdated, or may change based on evolving information.</p>
+        <p>Primary sources: <a href="https://attack.mitre.org/resources/terms-of-use/" target="blank_">MITRE</a>, <a href="https://apt.threattracking.com/" target="blank_">APT Groups and Operations</a>, <a href="https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf" target="blank_">Thaicert</a></p>
+		<p>ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON AN "AS IS" BASIS</p>
+		<p>Project: Andrea Cristaldi <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>
+		
+		<button id="start-globe">Go to map</button>
+      </div>
+      <div id="show-about" class="hidden">
+	  <p>An Advanced Persistent Threat (APT) is a stealthy computer network threat actor, nation state, state-sponsored group or non-state sponsored groups conducting large-scale targeted intrusions for specific goals, which gains unauthorized access to a computer network and remains undetected for an extended period.
+        </p>
+		<p>Attribution is a very complex issue. This map is based on data from different sources (vendor, studies, reports, ...) and is not a reliable source. Most of the mappings rely on the findings in a single incident analysis. Groups often change their toolsets or exchange them with other groups. This makes attribution of certain operations extremely difficult. Information published here may be wrong, outdated, or may change based on evolving information.</p>
+        <p>Primary sources: <a href="https://attack.mitre.org/resources/terms-of-use/" target="blank_">MITRE</a>, <a href="https://apt.threattracking.com/" target="blank_">APT Groups and Operations</a>, <a href="https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf" target="blank_">Thaicert</a></p>
+		<p>ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON AN "AS IS" BASIS</p>
+        <p>Project: Andrea Cristaldi <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>
+		
+		<button id="close-about" class="esri-icon-close"></button>
+        </div>
+	   
+    </div>
+  </div>
+  <div id="others-container">
+  <button id="close-others" class="esri-icon-close"></button>
+		<div><img src="images/aptmap.png" />        
+		<h1>Other APTs not in map</h1>
+		<ol id="othPlaceHolder">
+		</ol>
+		
+		</div>
+		
+	   </div>
+  <div id="search-container">
+  <div id="searchDiv">
+  <button id="close-search" class="esri-icon-close"></button>
+		<div><img src="images/aptmap.png" /> </div> 
+		<div>		
+		<h1>Search</h1>
+		<div id"searchPnl">APT Name: <input type="text" id="searchAPTname" name="searchAPTname"><br><br>
+		Location: <input type="text" id="searchLocation" name="searchLocation"><br><br>
+		Target: <input type="text" id="searchTarget" name="searchTarget"><br><br>
+		Tools: <input type="text" id="searchTools" name="searchTools"><br><br>
+		<input type="button" id="btnsearch" name="btnsearch" value="Search" onclick="Search()">
+		</div>
+		<ol id="searchPlaceHolder">
+		</ol>
+		</div>
+	   </div>
+    </div>
+	</div>
+  </div>
+  
+</body>
+</html>
