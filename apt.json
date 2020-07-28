@@ -2562,6 +2562,111 @@
         ]
       }
     },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "DNSpionage",
+        "AssociatedGroups": "",
+        "Description": "(Talos) Cisco Talos recently discovered a new campaign targeting Lebanon and the United Arab Emirates (UAE) affecting .gov domains, as well as a private Lebanese airline company. Based on our research, it’s clear that this adversary spent time understanding the victims’ network infrastructure in order to remain under the radar and act as inconspicuous as possible during their attacks. Based on this actor’s infrastructure and TTPs, we haven’t been able to connect them with any other campaign or actor that’s been observed recently. This particular campaign utilizes two fake, malicious websites containing job postings that are used to compromise targets via malicious Microsoft Office documents with embedded macros. The malware utilized by this actor, which we are calling “DNSpionage,” supports HTTP and DNS communication with the attackers. Talos found a possible relationship between DNSpionage and OilRig, APT 34, Helix Kitten, Chrysene.",
+        "Location": "Iran",
+        "imageUrl": "iran.jpg",
+        "imageCaption": "iran",
+        "OtherNames": "",
+        "Sponsor": "State-sponsored",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2019",
+        "Targets": "Sectors: Aviation, Government, Law enforcement, Telecommunications and Internet infrastructure. Countries: Albania, Cyprus, Egypt, Iraq, Jordan, Kuwait, Lebanon, Libya, North Africa, Sweden, UAE and USA.",
+        "Tools": "DNSpionage and Karkoff.",
+        "Sources": [
+          
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [
+          {
+            "Date": "Apr 2019",
+            "Description": "DNSpionage brings out the Karkoff",
+            "Link": "https://blog.talosintelligence.com/2019/04/dnspionage-brings-out-karkoff.html"
+          }
+        ],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://blog.talosintelligence.com/2018/11/dnspionage-campaign-targets-middle-east.html"
+          },
+          {
+            "Description": "",
+            "URL": "https://www.fireeye.com/blog/threat-research/2019/01/global-dns-hijacking-campaign-dns-record-manipulation-at-scale.html"
+          },
+          {
+            "Description": "",
+            "URL": "https://www.crowdstrike.com/blog/widespread-dns-hijacking-activity-targets-multiple-sectors/"
+          },
+          {
+            "Description": "",
+            "URL": "https://krebsonsecurity.com/tag/dnspionage/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52,
+          31
+        ]
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "Domestic Kitten",
+        "AssociatedGroups": "",
+        "Description": "(Check Point) Recent investigations by Check Point researchers reveal an extensive and targeted attack that has been taking place since 2016 and, until now, has remained under the radar due to the artful deception of its attackers towards their targets. Through the use of mobile applications, those behind the attack use fake decoy content to entice their victims to download such applications, which are in fact loaded with spyware, to then collect sensitive information about them. Interestingly, these targets include Kurdish and Turkish natives and ISIS supporters. Most interesting of all, though, is that all these targets are actually Iranians citizens. Considering the nature of the target, the data collected about these groups provides those behind the campaign with highly valuable information that will no doubt be leveraged in further future action against them. Indeed, the malware collects data including contact lists stored on the victim’s mobile device, phone call records, SMS messages, browser history and bookmarks, geo-location of the victim, photos, surrounding voice recordings and more. The targets are Kurdish and Turkish natives and ISIS supporters.",
+        "Location": "Iran",
+        "imageUrl": "iran.jpg",
+        "imageCaption": "iran",
+        "OtherNames": "",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2016",
+        "Targets": "Countries: Afghanistan, Iran, Iraq and UK.",
+        "Tools": "",
+        "Sources": [
+          
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [
+        ],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://research.checkpoint.com/domestic-kitten-an-iranian-surveillance-operation/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          52,
+          33
+        ]
+      }
+    },
     {
       "type": "Feature",
       "properties": {
@@ -4070,10 +4175,13 @@
         "Location": "Other",
         "imageUrl": "",
         "imageCaption": "",
-        "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "OtherNames": "Energetic Bear, Crouching Yeti, Group 24, Koala Team, Iron Liberty, TG-4192, Electrum, ATK 6",
+        "Sponsor": "State-sponsored",
+        "Motivation": "Sabotage and destruction",
+        "FirstSeen": "2011",
+		"Targets":"Sectors: Aviation, Construction, Defense, Education, Energy, Industrial, IT, Manufacturing, Oil and gas and Pharmaceutical. Countries: Canada, France, Germany, Greece, Italy, Norway, Poland, Romania, Russia, Serbia, Spain, Turkey, UK, Ukraine and USA.",
+		"Tools":"Commix, CrackMapExec, Dirsearch, Dorshel, Havex RAT, Hello EK, Heriplor, Impacket, Industroyer, Inveigh, Karagany, LightsOut EK, Listrix, nmap, Oldrea, PHPMailer, PsExec, SMBTrap, sqlmap, Subbrute, Sublist3r, Sysmain, Wpscan and WSO.",
+				
         "Sources": [
           {
             "Name": "MITRE",
@@ -4099,8 +4207,52 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
-        "ExtLinks": []
+        "Operations": [{
+				"Date":"Feb 2013",
+				"Description":"Spam campaign. The Dragonfly group has used at least three infection tactics against targets in the energy sector. The earliest method was an email spear phishing campaign, which saw selected executives and senior employees in target companies receive emails containing a malicious PDF attachment. Infected emails had one of two subject lines: “The account” or “Settlement of delivery problem”.",
+				"Link":"https://www.symantec.com/content/en/us/enterprise/media/security_response/whitepapers/Dragonfly_Threat_Against_Western_Energy_Suppliers.pdf"
+				},{
+				"Date":"Jun 2013",
+				"Description":"Watering Hole Attacks using Lightsout. In June 2013, the attackers shifted their focus to watering hole attacks. They compromised a number of energy-related websites and injected an iframe into each of them. This iframe then redirected visitors to another compromised legitimate website hosting the Lightsout exploit kit. This in turn exploited either Java or Internet Explorer in order to drop Oldrea or Karagany on the victim’s computer.", 
+				"Link":""
+				},{
+				"Date":"Sep 2013",
+				"Description":"Watering Hole Attacks using Hello. In September 2013, Dragonfly began using a new version of this exploit kit, known as the Hello exploit kit. The landing page for this kit contains JavaScript which fingerprints the system, identifying installed browser plugins. The victim is then redirected to a URL which in turn determines the best exploit to use based on the information collected.",
+				"Link":""
+				},{
+				"Date":"2013",
+				"Description":"Trojanized software. The most ambitious attack vector used by Dragonfly was the compromise of a number of legitimate software packages. Three different ICS equipment providers were targeted and malware was inserted into the software bundles they had made available for download on their websites.",
+				"Link":""
+				},{
+				"Date":"Feb 2014",
+				"Description":"LightsOut EK Targets Energy Sector. Late last year, the story broke that threat actors were targeting the energy sector with Remote Access Tools and Intelligence gathering malware. It would seem that the attackers responsible for this threat are back for more. This particular APT struck late February between 2/24-2/26.",
+				"Link":"https://www.zscaler.com/blogs/research/lightsout-ek-targets-energy-sector"
+				},{
+				"Date":"Dec 2015",
+				"Description":"Attack on Energy Companies in the Ukraine. According to a statement posted this week on the official website of the Ukrainian security service SBU, Russian special services allegedly planted malware on the networks of several regional power companies. The malicious software is said to have been discovered by employees of the SBU. The SBU said the attackers also flooded the targeted companies’ technical support phone lines. The agency removed the malware and launched an investigation. Just before Christmas, power outages were reported in the Ivano-Frankivsk Oblast region of Ukraine. The outages were blamed on outsiders who remotely tampered with automatic control systems. The power company responsible for the region also reported that its call center suffered a technical failure caused by a barrage of calls.",
+				"Link":"https://ssu.gov.ua/sbu/control/uk/publish/article?art_id=170951&cat_id=39574"
+				},{
+				"Date":"2016",
+				"Description":"This report by Kaspersky Lab ICS CERT presents information on identified servers that have been infected and used by the group. The report also includes the findings of an analysis of several webservers compromised by the Energetic Bear group during 2016 and in early 2017.",
+				"Link":"https://securelist.com/energetic-bear-crouching-yeti/85345/"
+				},{
+				"Date":"Dec 2016",
+				"Description":"Power outage at Ukrenergo in the Ukraine. Preliminary findings indicate that workstations and Supervisory Control and Data Acquisition (SCADA) systems, linked to the 330 kilowatt sub-station “North”, were influenced by external sources outside normal parameters, Ukrenergo said in comments emailed to Reuters.", 
+				"Link":"https://dragos.com/wp-content/uploads/CrashOverride-01.pdf"
+				},{
+				"Date":"Apr 2017",
+				"Description":"Breach of EirGrid in the UK. The breach of the Vodafone network allowed the hackers to create a type of wiretap known as Generic Routing Encapsulation (GRE) to tunnel into EirGrid’s Vodafone router located in Shotton.",
+				"Link":"https://www.independent.ie/irish-news/statesponsored-hackers-targeted-eirgrid-electricity-network-in-devious-attack-36005921.html"
+				},{
+				"Date":"May 2017",
+				"Description":"Watering Hole Attack on Turkish critical infrastructure. Through our web crawling network, we were able to determine that a website belonging to a Turkish energy company was being used in a watering hole attack targeting people associated with Turkish critical infrastructure. Compromised via a supply chain attack, the site was injected with SMB credential-harvesting malware.",
+				"Link":"https://www.riskiq.com/blog/labs/energetic-bear/"
+				}],
+        "ExtLinks": [
+		{"Description": "","URL": "https://www.symantec.com/blogs/threat-intelligence/dragonfly-energy-sector-cyber-attacks"},
+		{"Description": "","URL": "https://www.kaspersky.com/resource-center/threats/crouching-yeti-energetic-bear-malware-threat"},
+		{"Description": "","URL": "https://www.sans.org/reading-room/whitepapers/ICS/impact-dragonfly-malware-industrial-control-systems-36672"}
+		]
       }
     },
     {
@@ -4180,14 +4332,15 @@
         "Name": "DragonOK",
         "AssociatedGroups": null,
         "Description": "DragonOK is a threat group that has targeted Japanese organizations with phishing emails. Due to overlapping TTPs, including similar custom tools, DragonOK is thought to have a direct or indirect relationship with the threat group Moafee. It is known to use a variety of malware, including Sysget/HelloBridge, PlugX, PoisonIvy, FormerFirstRat, NFlog, and NewCT.",
-        "Location": "Other",
-        "imageCaption": "",
-        "Tools": "CVE-2015-1641, Sysget, IsSpace, Rambo Backdoor",
-        "Targets": "Japan",
+        "Location": "China",
+        "imageCaption": "China",
+		"imageUrl": "china.jpg",
+        "Tools": "CVE-2015-1641, Sysget, IsSpace, Rambo Backdoor. FormerFirstRAT, HTran, IsSpace, KHRAT, Mongall, NewCT, Nflog, PlugX, Poison Ivy, Rambo, SysGet and TidePool.",
+        "Targets": "Sectors: High-Tech and Manufacturing. Countries: Cambodia, Japan, Russia, Taiwan and Tibet.",
         "OtherNames": "",
         "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2015",
         "Sources": [
           {
             "Name": "MITRE",
@@ -4213,7 +4366,19 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"Jan 2015",
+				"Description":"This campaign involved five separate phishing attacks, each carrying a different variant of Sysget malware, also known as HelloBridge. The malware was included as an attachment intended to trick the user into opening the malware. All five phishing campaigns targeted a Japanese manufacturing firm over the course of two months, but the final campaign also targeted a separate Japanese high-tech organization.",
+				"Link":"https://unit42.paloaltonetworks.com/unit-42-identifies-new-dragonok-backdoor-malware-deployed-against-japanese-targets/"
+				},{
+				"Date":"2016",
+				"Description":"In recent months, Unit 42 has observed a number of attacks that we attribute to this group. Multiple new variants of the previously discussed sysget malware family have been observed in use by DragonOK. Sysget malware was delivered both directly via phishing emails, as well as in Rich Text Format (RTF) documents exploiting the CVE-2015-1641 vulnerability that in turn leveraged a very unique shellcode.",
+				"Link":"https://unit42.paloaltonetworks.com/unit42-dragonok-updates-toolset-targets-multiple-geographic-regions/"
+				},{
+				"Date":"Jan 2017",
+				"Description":"Cybersecurity expert Niklas Femerstrand in an email yesterday pointed out that while servers in several different countries appear to be the origin the attack, it has been linked to the DragonOK campaign. “The DragonOK campaign has previously [in 2014] targeted organizations in Taiwan, Japan, Tibet and Russia, and political organizations in Cambodia since at least January, 2017,” he wrote, adding that there are “strong indications” the campaign is “an operation funded by China”.",
+				"Link":"https://www.phnompenhpost.com/national/kingdom-targeted-new-malware"
+				}],
         "ExtLinks": [
           {
             "Description": "",
@@ -4236,6 +4401,13 @@
             "URL": "https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-operation-quantum-entanglement.pdf"
           }
         ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95,
+          33
+        ]
       }
     },
     {
@@ -4243,14 +4415,17 @@
       "properties": {
         "Name": "Dust Storm",
         "AssociatedGroups": null,
-        "Description": "Dust Storm is a threat group that has targeted multiple industries in Japan, South Korea, the United States, Europe, and several Southeast Asian countries.",
+        "Description": "Dust Storm is a threat group that has targeted multiple industries in Japan, South Korea, the United States, Europe, and several Southeast Asian countries. (Cylance) Very little public information was available throughout 2010 on this threat, despite the group’s primary backdoor gaining some level of prominence in targeted Asian attacks. This may be explained by the group’s early reliance on Dynamic DNS domains for their command and control (C2) infrastructure, as well as their use of public RATs like Poison Ivy and Gh0st RAT for second-stage implants. It wasn’t until June 2011 that Operation Dust Storm started to garner some notoriety from a series of attacks which leveraged an unpatched Internet Explorer 8 vulnerability, CVE-2011-1255, to gain a foothold into victim networks. In these attacks, a link to the exploit was sent via a spear phishing email from a purported Chinese student seeking advice or asking the target a question following a presentation. As to other documented cases, the attacker started interacting with the infected machine within minutes of compromise to begin manual network and host enumeration. In October 2011, the group attempted to take advantage of the ongoing Libyan crisis at the time and phish the news cycle regarding Muammar Gaddafi’s death on October 20, 2011. It appears that in addition to some US defense targets, this campaign was also directed at a Uyghur mailing list. This time, the group used a specially crafted malicious Windows Help (.hlp) file, which exploited CVE-2010-1885.",
         "Location": "Other",
         "imageUrl": "",
         "imageCaption": "",
         "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Sponsor": "Seems state-sponsored",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2010",
+		"Targets":"Sectors: Energy and Oil and gas. Countries: Japan, South Korea, USA, Europe and Southeast Asia.",
+		"Tools":"Gh0st RAT, Misdat, MiS-Type, Poison Ivy and S-Type.",
+				
         "Sources": [
           {
             "Name": "MITRE",
@@ -4277,7 +4452,8 @@
         "TTP": "",
         "IOC": "",
         "Operations": [],
-        "ExtLinks": []
+        "ExtLinks": [{"Description": "","URL": "https://www.cylance.com/content/dam/cylance/pdfs/reports/Op_Dust_Storm_Report.pdf"},
+		{"Description": "","URL": "https://www.symantec.com/connect/blogs/inside-back-door-attack"}]
       }
     },
     {
@@ -4353,16 +4529,16 @@
       "properties": {
         "Name": "Equation group",
         "AssociatedGroups": null,
-        "Description": "Equation is a sophisticated threat group that employs multiple remote access tools. The group is known to use zero-day exploits and has developed the capability to overwrite the firmware of hard disk drives. NSA, GCHQ, CSIS, ASIS, GCSB, FiveEyes, FVEY",
+        "Description": "Equation is a sophisticated threat group that employs multiple remote access tools. The group is known to use zero-day exploits and has developed the capability to overwrite the firmware of hard disk drives. NSA, GCHQ, CSIS, ASIS, GCSB, FiveEyes, FVEY. (Ars Technica) Kaspersky researchers have documented 500 infections by Equation Group in at least 42 countries, with Iran, Russia, Pakistan, Afghanistan, India, Syria, and Mali topping the list. Because of a self-destruct mechanism built into the malware, the researchers suspect that this is just a tiny percentage of the total; the actual number of victims likely reaches into the tens of thousands. A long list of almost superhuman technical feats illustrate Equation Group’s extraordinary skill, painstaking work, and unlimited resources. They include: - The use of virtual file systems, a feature also found in the highly sophisticated Regin malware. Recently published documents provided by Ed Snowden indicate that the NSA used Regin to infect the partly state-owned Belgian firm Belgacom. - The stashing of malicious files in multiple branches of an infected computer’s registry. By encrypting all malicious files and storing them in multiple branches of a computer’s Windows registry, the infection was impossible to detect using antivirus software. - Redirects that sent iPhone users to unique exploit Web pages. In addition, infected machines reporting to Equation Group command servers identified themselves as Macs, an indication that the group successfully compromised both iOS and OS X devices. - The use of more than 300 Internet domains and 100 servers to host a sprawling command and control infrastructure. - USB stick-based reconnaissance malware to map air-gapped networks, which are so sensitive that they aren’t connected to the Internet. Both Stuxnet and the related Flame malware platform also had the ability to bridge airgaps. - An unusual if not truly novel way of bypassing code-signing restrictions in modern versions of Windows, which require that all third-party software interfacing with the operating system kernel be digitally signed by a recognized certificate authority. To circumvent this restriction, Equation Group malware exploited a known vulnerability in an already signed driver for CloneCD to achieve kernel-level code execution. Taken together, the accomplishments led Kaspersky researchers to conclude that Equation Group is probably the most sophisticated computer attack group in the world, with technical skill and resources that rival the groups that developed Stuxnet and the Flame espionage malware in Operation Olympic Games. Other publicly exposed major APT activities from the NSA involve the wholesale worldwide spying from programs such as PRISM and, together with GCHQ, INCENSER, where various international Internet trunks were tapped. Their arsenal of 0-day cyber weapons was stolen by an actor Shadow Brokers, who leaked a large section on the internet4 and tried to sell the rest afterward. Most notable among the dumps were 0-days such as ETERNALBLUE and ETERNALROMANCE that were used by other groups for the creation of infamous ransomware explosions such as WannaCry and NotPetya. Equation Group is also linked to the creation of the Stuxnet worm that aimed to sabotage nuclear reactors in Iran in 2010, and/or the “follow-up” threats Duqu, Flame or Gauss. Although neither country has openly admitted responsibility, Stuxnet is believed to be a jointly built American/Israeli (allegedly, Unit 8200) cyber weapon.",
         "Location": "USA",
         "imageUrl": "usa.png",
         "imageCaption": "USA",
-        "Targets": "",
-        "Tools": "Regin, EquationLaser, EquationDrug, DoubleFantasy, TripleFantasy, Fanny, Grayfish, RemSec, Gauss",
-        "OtherNames": "",
-        "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Targets": "Sectors: Aerospace, Defense, Energy, Government, Media, Nanotechnology, Nuclear research, Oil and gas, Telecommunications, Transportation, Islamic activists and scholars, and companies developing cryptographic technologies. Countries: Afghanistan, Bangladesh, Belgium, Brazil, Ecuador, France, Germany, Hong Kong, India, Iran, Iraq, Israel, Kazakhstan, Lebanon, Libya, Malaysia, Mali, Mexico, Nigeria, Pakistan, Palestine, Philippines, Qatar, Russia, Singapore, Somalia, South Africa, Sudan, Switzerland, Syria, UAE, UK, USA and Yemen.",
+        "Tools": "Regin, EquationLaser, EquationDrug, DoubleFantasy, TripleFantasy, Fanny, Grayfish, RemSec, Gauss. DarkPulsar, DOUBLEFANTASY, DoublePulsar, Duqu, EQUATIONDRUG, EQUATIONLASER, FANNY, Flame, GRAYFISH, GROK, Lambert, OddJob, Regin, TRIPLEFANTASY, UNITEDRAKE and many others.",
+        "OtherNames": "Tilded Team",
+        "Sponsor": "State-sponsored, believed to be tied to the NSA’s Tailored Access Operations unit",
+        "Motivation": "Information theft and espionage, Sabotage and destruction",
+        "FirstSeen": "2001",
         "Sources": [
           {
             "Name": "MITRE",
@@ -4421,7 +4597,12 @@
           {
             "Description": "",
             "URL": "https://securelist.com/darkuniverse-the-mysterious-apt-framework-27/94897/"
-          }
+          },
+		  {"Description": "","URL": "https://media.kasperskycontenthub.com/wp-content/uploads/sites/43/2018/03/08064459/Equation_group_questions_and_answers.pdf"},
+		  {"Description": "","URL": "https://arstechnica.com/information-technology/2015/02/how-omnipotent-hackers-tied-to-the-nsa-hid-for-14-years-and-were-found-at-last/"},
+		  {"Description": "","URL": "https://en.wikipedia.org/wiki/Equation_Group"},
+		  {"Description": "","URL": "https://en.wikipedia.org/wiki/PRISM_(surveillance_program)"},
+		  {"Description": "","URL": "https://www.electrospaces.net/2014/11/incenser-or-how-nsa-and-gchq-are.html"}
         ]
       },
       "geometry": {
@@ -4654,6 +4835,53 @@
         "IOC": "",
         "Operations": [],
         "ExtLinks": []
+      }
+    },
+	{
+      "type": "Feature",
+      "properties": {
+        "Name": "DustSquad",
+        "AssociatedGroups": null,
+        "Description": "(Kaspersky) For the last two years we have been monitoring a Russian-language cyberespionage actor that focuses on Central Asian users and diplomatic entities. We named the actor DustSquad and have provided private intelligence reports to our customers on four of their campaigns involving custom Android and Windows malware. In this blogpost we cover a malicious program for Windows called Octopus that mostly targets diplomatic entities. The name was originally coined by ESET in 2017 after the 0ct0pus3.php script used by the actor on their old C2 servers. We also started monitoring the malware and, using Kaspersky Attribution Engine based on similarity algorithms, discovered that Octopus is related to DustSquad, something we reported in April 2018. In our telemetry we tracked this campaign back to 2014 in the former Soviet republics of Central Asia (still mostly Russian-speaking), plus Afghanistan.",
+        "Location": "Russia",
+        "imageUrl": "russia.png",
+        "imageCaption": "Russia",
+        "Targets": "Sectors: Defense, Government, Media, diplomats and dissidents. Countries: Afghanistan, Kazakhstan and Central Asia.",
+        "Tools": "Harpoon, Octopus and Remote Control System.",
+        "OtherNames": "Golden Falcon, APT-C-34, Nomadic Octopus",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2014",
+        "Sources": [
+          
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://securelist.com/octopus-infested-seas-of-central-asia/88200/"
+          },
+          {
+            "Description": "",
+            "URL": "https://www.zdnet.com/article/extensive-hacking-operation-discovered-in-kazakhstan/"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          94,
+          63
+        ]
       }
     },
     {
@@ -5776,14 +6004,16 @@
       "properties": {
         "Name": "Machete",
         "AssociatedGroups": "El Machete",
-        "Description": "Machete is a group that has been active since at least 2010, targeting high-profile government entities in Latin American countries.",
+        "Description": "Machete is a group that has been active since at least 2010, targeting high-profile government entities in Latin American countries. (Kaspersky) “Machete” is a targeted attack campaign with Spanish speaking roots. We believe this campaign started in 2010 and was renewed with an improved infrastructure in 2012. The operation may be still “active”. The malware is distributed via social engineering techniques, which includes spear-phishing emails and infections via Web by a fake Blog website. We have found no evidence of exploits targeting zero-day vulnerabilities. Both the attackers and the victims appear to be Spanish-speaking. In some cases, such as Russia, the target appears to be an embassy from one of the countries of this list.",
         "Location": "Other",
         "imageUrl": "",
         "imageCaption": "",
-        "OtherNames": "",
+        "OtherNames": "TEMP.Andromeda, ATK 97, TAG-NS1",
         "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2010",
+		"Targets":"Sectors: Defense, Education, Embassies, Energy, Government, and Telecommunications. Countries: Argentina, Belgium, Bolivia, Brazil, Canada, China, Colombia, Cuba, Dominican Republic, Ecuador, France, Germany, Guatemala, Malaysia, Mexico, Nicaragua, Peru, Russia, South Korea, Spain, Sweden, UK, Ukraine, USA and Venezuela and others.",
+		"Tools":"Machete and Living off the Land.",
         "Sources": [
           {
             "Name": "MITRE",
@@ -5809,8 +6039,16 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
-        "ExtLinks": []
+        "Operations": [{
+				"Date":"Mar 2017",
+				"Description":"We’ve found that this group has continued to operate successfully, predominantly in Latin America, since 2014. All attackers simply moved to new C2 infrastructure, based largely around dynamic DNS domains, in addition to making minimal changes to the malware in order to evade signature-based detection.",
+				"Link":"https://threatvector.cylance.com/en_us/home/el-machete-malware-attacks-cut-through-latam.html"
+				},{
+				"Date":"Mar 2019",
+				"Description":"From the end of March up until the end of May 2019, ESET researchers observed that there were more than 50 victimized computers actively communicating with the C&C server. This amounts to gigabytes of data being uploaded every week.",
+				"Link":"https://www.welivesecurity.com/2019/08/05/sharpening-machete-cyberespionage/"
+				}],
+        "ExtLinks": [{"Description": "","URL": "https://securelist.com/el-machete/66108/"}]
       }
     },
     {
@@ -7827,10 +8065,12 @@
         "imageCaption": "China",
         "Tools": "PlugX, China Chopper Webshell, HttpBrowser, Hunter, ASPXTool, wce, gsecdump, nbtscan, htran",
         "Targets": "US Gov and contractors, Western think tanks",
-        "OtherNames": "",
+        "OtherNames": "Emissary Panda, APT 27, LuckyMouse, Bronze Union, TEMP.Hippo, Group 35, ATK 15, ZipToken",
         "Sponsor": "",
-        "Motivation": "",
-        "FirstSeen": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2010",
+		"Targets":"Sectors: Aerospace, Aviation, Defense, Education, Embassies, Government, Manufacturing, Technology, Telecommunications and Think Tanks. Countries: Australia, Canada, China, Hong Kong, India, Iran, Israel, Japan, Middle East, Philippines, Russia, Spain, South Korea, Taiwan, Thailand, Tibet, Turkey, UK and USA.",
+		"Tools":"Antak, ASPXSpy, China Chopper, Gh0st RAT, gsecdump, HTTPBrowser, Htran, Hunter, HyperBro, Mimikatz, Nishang, OwaAuth, PlugX, ProcDump, PsExec, TwoFace, SysUpdate, Windows Credentials Editor, ZXShell and Living off the Land.",
         "Sources": [
           {
             "Name": "MITRE",
@@ -7856,7 +8096,31 @@
         ],
         "TTP": "",
         "IOC": "",
-        "Operations": [],
+        "Operations": [{
+				"Date":"2010",
+				"Description":"Operation “Iron Tiger”. Operation Iron Tiger is a targeted attack campaign discovered to have stolen trillions of data from defense contractors in the US, including stolen emails, intellectual property, strategic planning documents – data and records that could be used to destabilize an organization.",
+				"Link":"https://github.com/CyberMonitor/APT_CyberCriminal_Campagin_Collections/blob/master/2015/2015.09.17.Operation_Iron_Tiger/wp-operation-iron-tiger.pdf"
+				},{
+				"Date":"2015",
+				"Description":"Penetration of networks for industrial espionage. Designated as Threat Group 3390 and nicknamed “Emissary Panda” by researchers, the hacking group has compromised victims’ networks largely through “watering hole” attacks launched from over 100 compromised legitimate websites, sites picked because they were known to be frequented by those targeted in the attack.",
+				"Link":"https://arstechnica.com/information-technology/2015/08/newly-discovered-chinese-hacking-group-hacked-100-websites-to-use-as-watering-holes/"
+				},{
+				"Date":"Jul 2017",
+				"Description":"Operation “PZChao”. The past few years have seen high-profile cyber-attacks shift to damaging the targets’ digital infrastructures to stealing highly sensitive data, silently monitoring the victim and constantly laying the ground for a new wav e of attacks. This is also the case of a custom-built piece of malware that we have been monitoring for several months as it wrought havoc in Asia. Our threat intelligence systems picked up the first indicators of compromise in July last year, and we have kept an eye on the threat ever since.",
+				"Link":"https://labs.bitdefender.com/2018/02/operation-pzchao-a-possible-return-of-the-iron-tiger-apt/"
+				},{
+				"Date":"Mar 2018",
+				"Description":"Operation “SpoiledLegacy”. We have been monitoring a campaign targeting Vietnamese government and diplomatic entities abroad since at least April 2018.",
+				"Link":"https://securelist.com/apt-trends-report-q1-2019/90643/"
+				},{
+				"Date":"Apr 2019",
+				"Description":"In April 2019, Unit 42 observed the Emissary Panda (AKA APT27, TG-3390, Bronze Union, Lucky Mouse) threat group installing webshells on Sharepoint servers to compromise Government Organizations of two different countries in the Middle East.",
+				"Link":"https://unit42.paloaltonetworks.com/emissary-panda-attacks-middle-east-government-sharepoint-servers/"
+				},{
+				"Date":"Mar 2020",
+				"Description":"Is APT27 Abusing COVID-19 To Attack People ?!",
+				"Link":"https://marcoramilli.com/2020/03/19/is-apt27-abusing-covid-19-to-attack-people/"
+				}],
         "ExtLinks": [
           {
             "Description": "",
@@ -9196,7 +9460,93 @@
             "URL": "https://www.lastline.com/labsblog/threat-actor-cold-river-network-traffic-analysis-and-a-deep-dive-on-agent-drable/"
           }]
 		  }
-    }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "EmpireMonkey",
+        "AssociatedGroups": null,
+        "Description": "(Blueliv) EmpireMonkey is an advanced financially motivated cybercriminal gang. The group gained notoriety for a heist they conducted in February 2019 against the Maltese Bank of Valletta, which initially resulted in roughly €13 million in losses, though much of this was subsequently recovered or frozen. While a thorough post-mortem of the Bank of Valletta attack has yet to be made public, it is highly likely that the threat actors sent malicious spear phishing emails to employees at Bank of Valletta and other European financial institutions. In October 2018, HSBC Malta reported receiving phishing emails that bore hallmarks of the subsequent EmpireMonkey attack against Bank of Valletta. This group seems to be directly related to Carbanak, Anunak and/or FIN7.",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Sectors: Financial. Countries: Malta.",
+        "Tools": "",
+        "OtherNames": "CobaltGoblin, Anthropoid Spider",
+        "Sponsor": "",
+        "Motivation": "Financial crime",
+        "FirstSeen": "2018",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Jan 2020",
+				"Description":"6 Suspects Arrested in Maltese Bank Hacking Heist",
+				"Link":"https://www.bankinfosecurity.com/6-suspects-arrested-in-maltese-bank-hacking-heist-a-13674"
+				}
+				],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://blueliv.com/resources/white-papers/Finance_whitepaper_ENG.pdf"
+          }]
+		  }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Donot Team",
+        "AssociatedGroups": null,
+        "Description": "(ASERT) In late January 2018, ASERT discovered a new modular malware framework we call “yty”. The framework shares a striking resemblance to the EHDevel framework. We believe with medium confidence that a team we call internally as “Donot Team” is responsible for the new malware and will resume targeting of South Asia. In a likely effort to disguise the malware and its operations, the authors coded several references into the malware for football—it is unclear whether they mean American football or soccer. The theme may allow the network traffic to fly under the radar. The actors use false personas to register their domains instead of opting for privacy protection services. Depending on the registrar service chosen, this could be seen as another cost control measure. The actors often used typo-squatting to slightly alter a legitimate domain name. In contrast, the registration information used accurate spelling, possibly indicating the domain naming was intentional, typos included. Each unique registrant usually registered only a few domains, but mistakenly reused phone numbers or the registration data portrayed a similar pattern across domains.",
+        "Location": "Other",
+        "imageUrl": "",
+        "imageCaption": "",
+        "Targets": "Sectors: Government. Countries: Argentina, Bangladesh, India, Pakistan, Philippines, Sri Lanka, Thailand, UAE and UK.",
+        "Tools": "BackConfig, EHDevel and yty.",
+        "OtherNames": "APT-C-35, SectorE02",
+        "Sponsor": "",
+        "Motivation": "Information theft and espionage",
+        "FirstSeen": "2018",
+        "Sources": [
+          {
+            "Name": "Thaicert",
+            "Description": "",
+            "URL": "https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf",
+            "JsonURL": "",
+            "Copyright": ""
+          }
+        ],
+        "TTP": "",
+        "IOC": "",
+        "Operations": [{
+				"Date":"Mar 2019",
+				"Description":"From March to July this year, the ThreatRecon team noticed a spear phishing campaign by the SectorE02 group going on against the Government of Pakistan and organizations there related to defense and intelligence.",
+				"Link":"https://threatrecon.nshc.net/2019/08/02/sectore02-updates-yty-framework-in-new-targeted-campaign-against-pakistan-government/"
+				},{
+				"Date":"Apr 2019",
+				"Description":"StealJob: New Android Malware. Recently, we have observed a large-scale upgrade of its malicious Android APK framework to make it more stable and practical. Since the new APK framework is quite different from the one used in the past, we named it as StealJob since “job” is frequently used in the code.",
+				"Link":"https://ti.360.net/blog/articles/stealjob-new-android-malware-used-by-donot-apt-group-en/"
+				}
+				],
+        "ExtLinks": [
+          {
+            "Description": "",
+            "URL": "https://ti.360.net/blog/articles/donot-group-is-targeting-pakistani-businessman-working-in-china-en/"
+          },
+		  {"Description": "","URL": "https://www.netscout.com/blog/asert/donot-team-leverages-new-modular-malware-framework-south-asia"},
+		  {"Description": "","URL": "http://blog.ptsecurity.com/2019/11/studying-donot-team.html"}]
+		  
+    
+	}
+	}
 	
   ]
 }
