@@ -241,6 +241,9 @@
 	div+='<p class="info" id="detP" onclick="details(\''+feature.graphic.attributes.Name+'\');"><span class="detButton">Show details</span></p>'
 	div+='</div>';
 	div+='</div>';
+	if (location.href.includes('#')){
+	location.href = location.href.substring(0,location.href.indexOf("#")) + "#" + feature.graphic.attributes.Name;	}
+	else{location.href = location.href + "#" + feature.graphic.attributes.Name;	}
 		
 	return div;}
 	
