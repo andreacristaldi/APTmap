@@ -314,6 +314,7 @@
 			
 			
 			var div='';
+			if (feat.properties.Location){div+='<p class="info"><i class="fa fa-location-arrow"></i> <strong>Location:</strong> ' + feat.properties.Location+ '</p>';}
 			if (feat.properties.Description){div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description:</strong> '+feat.properties.Description+'</p>';}
 			if (feat.properties.OtherNames){div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names:</strong> '+feat.properties.OtherNames+'</p>';}
 			if (feat.properties.AssociatedGroups){div+='<p class="info"><i class="fa fa-sitemap"></i> <strong>Associated groups:</strong> '+feat.properties.AssociatedGroups+'</p>';}
