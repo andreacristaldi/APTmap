@@ -11,22 +11,100 @@
   <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="CSS/style.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
 
   <script src="https://js.arcgis.com/4.12/"></script>
-  <script>
+  
+  
+ <script>
+
+ window.addEventListener('hashchange', function(){
+	document.getElementById("search").click();
+	if (window.location.hash.split("=")[0]==="#name"){
+	document.getElementById("searchAPTname").value=decodeURIComponent(window.location.hash.split("=")[1]);
+	document.getElementById("searchTarget").value="";
+	document.getElementById("searchTargetcategory").value="";
+	document.getElementById("searchTool").value="";
+	document.getElementById("searchLocation").value="";
+	}
+	else if (window.location.hash.split("=")[0]==="#target"){
+	document.getElementById("searchTarget").value=decodeURIComponent(window.location.hash.split("=")[1]);
+	document.getElementById("searchAPTname").value="";
+	document.getElementById("searchTargetcategory").value="";
+	document.getElementById("searchTool").value="";
+	document.getElementById("searchLocation").value="";
+	}
+	else if (window.location.hash.split("=")[0]==="#targetcategory"){
+	document.getElementById("searchTargetcategory").value=decodeURIComponent(window.location.hash.split("=")[1]);
+	document.getElementById("searchAPTname").value="";
+	document.getElementById("searchTarget").value="";
+	document.getElementById("searchTool").value="";
+	document.getElementById("searchLocation").value="";
+	}
+	else if (window.location.hash.split("=")[0]==="#tool"){
+	document.getElementById("searchTool").value=decodeURIComponent(window.location.hash.split("=")[1]);
+	document.getElementById("searchAPTname").value="";
+	document.getElementById("searchTarget").value="";
+	document.getElementById("searchTargetcategory").value="";
+	document.getElementById("searchLocation").value="";
+	}
+
+Search();
+	
+});
+ 
+function GetDate()
+{
+
+	var today = new Date();
+	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+	var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+	var dateTime = date+' '+time;
+	var date2 = new Date(dateTime);
+
+	return date2.toString();
+}
+
+function GetMap()
+{
+	var today = new Date();
+
+	if (today.getHours()>=0 && today.getHours()<17){
+		return 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer';
+	}
+	else{
+		return 'https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Earth_at_Night_2016/MapServer';
+	}
+			  // old https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/terrain_with_heavy_bathymetry/MapServer
+			  // hi res new https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer
+			  // night https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Earth_at_Night_2016/MapServer
+}
+ 
+ var jdata;
+ 	fetch('apt.json')
+  .then(response => response.json())
+  .then(data => {
+    jdata=data;
+    
+  })
+  .catch(error => {
+    console.error('JSON error: ', error);
+  });
+
+
+	
+
     require([
       "esri/Map",
       "esri/views/SceneView",
       "esri/layers/TileLayer",
       "esri/layers/GeoJSONLayer",
       "esri/Basemap",
-
-      
-
       "esri/Graphic",
       "esri/geometry/Point",
-      "esri/geometry/Mesh",
-	   "esri/core/watchUtils"
+      "esri/geometry/Mesh",	   
+	  "esri/core/watchUtils"
    
     ], function (Map, SceneView, TileLayer, GeoJSONLayer, Basemap,  Graphic, Point, Mesh, watchUtils) {
 
@@ -37,7 +115,7 @@
         baseLayers: [
           
 		  new TileLayer({
-            url: "https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/terrain_with_heavy_bathymetry/MapServer"
+            url: GetMap()
           }),
 		  new TileLayer({
             url: "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer"
@@ -64,17 +142,17 @@
             type: "color",
             color: [255, 252, 244, 0]
           },
-          starsEnabled: false,
+          starsEnabled: true,
           atmosphereEnabled: true,
           lighting: {
             directShadowsEnabled: false,
-            date: "Sun Jun 23 2019 17:19:18 GMT+0200 (Central European Summer Time)"
+            date: "Sun Jun 23 2019 18:00:00 GMT+0200 (Central European Summer Time)"//GetDate()
           }
         },
         constraints: {
           altitude: {
-            min: 10000000,
-            max: 25000000
+            min: 5000000,
+            max: 35000000
           }
         },
         popup: {
@@ -87,8 +165,8 @@
           collapseEnabled: false
         },
         highlightOptions: {
-          color: [255, 255, 255],
-          haloOpacity: 0.5
+          color: [255, 255, 0],
+          haloOpacity: 0.8
         }
       });
 
@@ -99,13 +177,17 @@
       });
       
       
+	  
 
       const extremesLayer = new GeoJSONLayer({
-        url: "https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json",
+	    id: "extremesLayer",
+        url: "apt.json",
         elevationInfo: {
           mode: "absolute-height",
           offset: offset
-        },
+        }, 
+		outFields: ["*"],
+		
         renderer: {
           type: "simple",
           symbol: {
@@ -126,356 +208,1302 @@
           }
         },
         popupTemplate: {
-          title: "{Name}",
+          title: "{name}",
 		  content: DisplayPopUp,
-		  outFields: ["*"]
-		  
-		  
-		  
-        }
-      });
-
-      map.layers.add(extremesLayer);
-	  
-	  
-	  document.getElementById("close-about").addEventListener("click", closeMenu);
-
-      document.getElementById("start-globe").addEventListener("click", function () {
-        closeMenu();
-        view.when(function () {
-          watchUtils.whenFalseOnce(view, "updating", rotate);
-        });
-      });
-
-      document.getElementById("container").addEventListener("click", function (e) {
-        if (e.target.id === "container") {
-          closeMenu();
-          view.when(function () {
-            watchUtils.whenFalseOnce(view, "updating", rotate);
-          });
-        }
-      });
-
-      function closeMenu() {
-        document.getElementById("container").style.display = "none";
-        view.container.style.filter = "blur(0px)";
-      }
-
-
-      
-			  
-
-
-
-      let intro = true;
-      document.getElementById("about").addEventListener("click", function () {
-        document.getElementById("container").style.display = "flex";
-        view.container.style.filter = "blur(10px)";
-        if (intro) {
-          document.getElementById("show-about").classList.remove("hidden");
-          document.getElementById("show-intro").classList.add("hidden");
-          intro = false;
-        }
-      });
-	  
-	  
-	  document.getElementById("others").addEventListener("click", function () {
-       document.getElementById("others-container").style.display = "flex";
-        
-      });
-	  document.getElementById("close-others").addEventListener("click", closeOthers);
-	  
-	  function closeOthers() {
-        document.getElementById("others-container").style.display = "none";
-        
-      }
-	  
-	  document.getElementById("search").addEventListener("click", function () {
-       document.getElementById("search-container").style.display = "flex";
-       
-        view.container.style.filter = "blur(10px)";
-      });
-	  document.getElementById("close-search").addEventListener("click", closeSearch);
-	  
-	  function closeSearch() {
-        document.getElementById("search-container").style.display = "none";
-        view.container.style.filter = "blur(0px)";
-      }
-	  
-
-      view.ui.add("about", "bottom-left");
-	  view.ui.add("maptitle", "top-left");
-	  view.ui.add("others", "top-left");
-	  view.ui.add("search", "top-left");
-
-      function rotate() {
-        if (!view.interacting) {
-          const camera = view.camera.clone();
-          camera.position.longitude -= 0.2;
-          view.goTo(camera, { animate: false });
-          requestAnimationFrame(rotate);
-        }
-      }
-
-    });
+		  outFields: ["*"],
+		  /*autoCloseEnabled: false*/
+	      }
 	
-	
-	
-	function DisplayPopUp(feature)
-	{
-	var div='';
-	div+='<div class="popupImage"><img src="images/flags/'+ feature.graphic.attributes.ImageUrl +'" alt="' + feature.graphic.attributes.ImageCaption + '"/></div>';
-	div+='<div class="popupImageCaption">'+feature.graphic.attributes.ImageCaption+'</div>';
-	div+='<div class="popupDescription"><p class="info"><i class="fa fa-location-arrow"></i> <strong>Location:</strong> ' + feature.graphic.attributes.Location+ '</p>';
-	if (feature.graphic.attributes.Description){div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description:</strong> '+feature.graphic.attributes.Description+'</p>';}
-	if (feature.graphic.attributes.OtherNames){div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names:</strong> '+feature.graphic.attributes.OtherNames+'</p>';}
-	if (feature.graphic.attributes.AssociatedGroups){div+='<p class="info"><i class="fa fa-sitemap"></i> <strong>Associated groups:</strong> '+feature.graphic.attributes.AssociatedGroups+'</p>';}
-	if (feature.graphic.attributes.FirstSeen){div+='<p class="info"><i class="fa fa-clock-o"></i> <strong>First seen:</strong> '+feature.graphic.attributes.FirstSeen+'</p>';}
-	if (feature.graphic.attributes.Sponsor){div+='<p class="info"><i class="fa fa-share-square-o"></i> <strong>Sponsor:</strong> '+feature.graphic.attributes.Sponsor+'</p>';}
-	if (feature.graphic.attributes.Motivation){div+='<p class="info"><i class="fa fa-angle-double-right"></i> <strong>Motivation:</strong> '+feature.graphic.attributes.Motivation+'</p>';}
-	if (feature.graphic.attributes.Targets){div+='<p class="info"><i class="fa fa-crosshairs"></i> <strong>Targets:</strong> '+feature.graphic.attributes.Targets+'</p>';}
-	if (feature.graphic.attributes.Tools){div+='<p class="info"><i class="fa fa-cubes"></i> <strong>Tools:</strong> '+feature.graphic.attributes.Tools+'</p>';}
-	if (feature.graphic.attributes.TTP){div+='<p class="info"><i class="fa fa-cog"></i> <strong>TTP:</strong> '+feature.graphic.attributes.TTP+'</p>';}
-	if (feature.graphic.attributes.IOC){div+='<p class="info"><i class="fa fa-search"></i> <strong>IOC:</strong> '+feature.graphic.attributes.IOC+'</p>';}
-	
-	div+='<p class="info" id="detP" onclick="details(\''+feature.graphic.attributes.Name+'\');"><span class="detButton">Show details</span></p>'
-	div+='</div>';
-	div+='</div>';
-	if (location.href.includes('#')){
-	location.href = location.href.substring(0,location.href.indexOf("#")) + "#" + feature.graphic.attributes.ID;	}
-	else{location.href = location.href + "#" + feature.graphic.attributes.ID;	}
+      });
+map.layers.add(extremesLayer);
+	  
+function onChart(jdata) {
+	var vdict1={};
+	var yValues1 = [];
+	var xValues1 = [];
 		
-	return div;}
+    for (let i = 0; i < jdata.features.length; i++) {
 	
+		if (vdict1[jdata.features[i].properties.country] !== undefined)
+		{ 
+			vdict1[jdata.features[i].properties.country]+=1;
+		}
+		else {
+			vdict1[jdata.features[i].properties.country]=1;
+		}
+	}
 	
-	function readTextFile(file, callback) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-        }
-    }
-    rawFile.send(null);
+	var vdict1_sort = Object.keys(vdict1).map(function(key) {  return [key, vdict1[key]];});
+
+
+	vdict1_sort.sort(function(first, second) {  return second[1] - first[1];});
+
+
+	for (let i = 0; i < 9; i++) {
+		if (vdict1_sort[i][0]!==""){
+			yValues1.push(vdict1_sort[i][0]);
+			xValues1.push(vdict1_sort[i][1]);
+			}
 	}
 
 
-	readTextFile("https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json", function(text){
-		var jdata = JSON.parse(text);
-		var othdiv = document.getElementById("othPlaceHolder");
 
-		jdata.features.forEach( function(feat ) {
-			if(feat.properties.Location=="Other"){
-				
-				var div='';
-				if (feat.properties.Description){div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description:</strong> '+feat.properties.Description+'</p>';}
-				if (feat.properties.OtherNames){div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names:</strong> '+feat.properties.OtherNames+'</p>';}
-				if (feat.properties.AssociatedGroups){div+='<p class="info"><i class="fa fa-sitemap"></i> <strong>Associated groups:</strong> '+feat.properties.AssociatedGroups+'</p>';}
-				if (feat.properties.FirstSeen){div+='<p class="info"><i class="fa fa-clock-o"></i> <strong>First seen:</strong> '+feat.properties.FirstSeen+'</p>';}
-				if (feat.properties.Sponsor){div+='<p class="info"><i class="fa fa-share-square-o"></i> <strong>Sponsor:</strong> '+feat.properties.Sponsor+'</p>';}
-				if (feat.properties.Motivation){div+='<p class="info"><i class="fa fa-angle-double-right"></i> <strong>Motivation:</strong> '+feat.properties.Motivation+'</p>';}
-				if (feat.properties.Targets){div+='<p class="info"><i class="fa fa-crosshairs"></i> <strong>Targets:</strong> '+feat.properties.Targets+'</p>';}
-				if (feat.properties.Tools){div+='<p class="info"><i class="fa fa-cubes"></i> <strong>Tools:</strong> '+feat.properties.Tools+'</p>';}
-				if (feat.properties.TTP){div+='<p class="info"><i class="fa fa-cog"></i> <strong>TTP:</strong> '+feat.properties.TTP+'</p>';}
-				if (feat.properties.IOC){div+='<p class="info"><i class="fa fa-search"></i> <strong>IOC:</strong> '+feat.properties.IOC+'</p>';}
-					
-				var Details='<p id="detP'+ feat.properties.Name+'" style="word-break: break-word;" onclick="othdetails(\'detP' + feat.properties.Name+'\',\''+ feat.properties.Name +'\');"><span class="detButton">Show details</span></p>';
+    const labels1 = yValues1;
+    const data1 = {
+                    labels: labels1,
+                            datasets: [
+                                {
+                                    label: 'APT',
+                                    data: xValues1,
+                                    borderColor: "rgba(7,250,142,1.0)",
+                                    backgroundColor: "rgba(0,255,0,0.3)",
+                                    color: "rgba(255,255,255,1.0)"
+                                }
+                            ]
+                        };
+
+
+                       const chart1 = new Chart("IdChart1", {
+                            type: 'line',
+                            data: data1,
+                            options: {
+                                responsive: true,
+								maintainAspectRatio: true,
+								scales: {
+      y: {
+        ticks: { color: 'white', beginAtZero: true }
+      },
+      x: {
+        ticks: { color: 'white', beginAtZero: true }
+      }
+    },
+                                plugins: {
+                                    legend:{display:false},
+                                    title: {
+                                        display: true,
+                                        text: 'Countries',
+										color: "rgba(255,255,255,1.0)"
+                                    }
+                                }
+                            },
+                        });
+ 
+	
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+	var vdict2={};
+	var yValues2 = [];
+	var xValues2 = [];
+	
+	
+    for (let i = 0; i < jdata.features.length; i++) {
+	
+		if (vdict2[jdata.features[i].properties["first-seen"]] !== undefined)
+		{ 
+			vdict2[jdata.features[i].properties["first-seen"]]+=1;
+		}
+		else {
+			vdict2[jdata.features[i].properties["first-seen"]]=1;
+		}
+	}
+	
+	
+	
+	for (var key in vdict2){
+		if (key!==""){
+			xValues2.push(vdict2[key]);
+			yValues2.push(key);}
+	}
+	                       
+                    
+    const labels2 = yValues2;
+    const data2 = {
+                   labels: labels2,
+                   datasets: [
+                                {
+                                    label: 'First seen',
+                                    data: xValues2,
+                                    borderColor: "rgba(16,255,255,1.0)",
+                                    backgroundColor: "rgba(0,255,0,0.3)",
+                                    
+                                }
+                            ]
+                        };
+
+
+                       const chart2 = new Chart("IdChart2", {
+                            type: 'line',
+                            data: data2,
+                            options: {
+                                responsive: true,
+								maintainAspectRatio: true,
+								scales: {
+      y: {
+        ticks: { color: 'white', beginAtZero: true }
+      },
+      x: {
+        ticks: { color: 'white', beginAtZero: true }
+      }
+    },
+                                plugins: {
+                                    legend:{display:false},
+                                    title: {
+                                        display: true,
+                                        text: 'First seen',
+										color: "rgba(255,255,255,1.0)"
+                                    }
+                                }
+                            },
+                        });
+ 
+
+
+
+
+
+
+	var vdict3={};
+	var yValues3 = [];
+	var xValues3 = [];
+	
+	
+    for (let i = 0; i < jdata.features.length; i++) {
+		for (let i2 = 0; i2 < jdata.features[i].properties["targets"].length; i2++) {
+			if (vdict3[jdata.features[i].properties["targets"][i2]] !== undefined)
+			{ 
+				vdict3[jdata.features[i].properties["targets"][i2]]+=1;
+			}
+			else {
+				vdict3[jdata.features[i].properties["targets"][i2]]=1;
+			}
+	
+		}
+	}
+	
+	
+	
+	var vdict3_sort = Object.keys(vdict3).map(function(key) { return [key, vdict3[key]];});
+
+
+	vdict3_sort.sort(function(first, second) {  return second[1] - first[1];});
+
+
+	for (let i = 0; i < 8; i++) {
+		if (vdict3_sort[i][0]!==""){
+			yValues3.push(vdict3_sort[i][0]);
+			xValues3.push(vdict3_sort[i][1]);
+			}
+	}
+	                       
+                    
+    const labels3 = yValues3;
+    const data3 = {
+                    labels: labels3,
+                    datasets: [
+                                {
+                                    label: 'Targets',
+                                    data: xValues3,
+                                    borderColor: "rgba(255,16,101,1.0)",
+                                    backgroundColor: "rgba(0,255,0,0.3)",
+                                    
+                                }
+                            ]
+                        };
+
+
+                       const chart3 = new Chart("IdChart3", {
+                            type: 'line',
+                            data: data3,
+                            options: {
+                                responsive: true,
+								maintainAspectRatio: true,
+								scales: {
+      y: {
+        ticks: { color: 'white', beginAtZero: true }
+      },
+      x: {
+        ticks: { color: 'white', beginAtZero: true }
+      }
+    },
+                                plugins: {
+                                    legend:{display:false},
+                                    title: {
+                                        display: true,
+                                        text: 'Targets',
+										color: "rgba(255,255,255,1.0)"
+                                    }
+                                }
+                            },
+                        });
+						
+						
+						
+						
+						
+
+
+	var vdict4={};
+	var yValues4 = [];
+	var xValues4 = [];
+	
+	
+    for (let i = 0; i < jdata.features.length; i++) {
+		for (let i2 = 0; i2 < jdata.features[i].properties["target-category"].length; i2++) {
+			if (vdict4[jdata.features[i].properties["target-category"][i2]] !== undefined)
+			{ 
+				vdict4[jdata.features[i].properties["target-category"][i2]]+=1;
+			}
+			else {
+				vdict4[jdata.features[i].properties["target-category"][i2]]=1;
+			}
+
+		}
+	}
+	
+	
+	
+	var vdict4_sort = Object.keys(vdict4).map(function(key) {  return [key, vdict4[key]];});
+
+
+	vdict4_sort.sort(function(first, second) {  return second[1] - first[1];});
+
+
+	for (let i = 0; i < 20; i++) {
+		if (vdict4_sort[i][0]!==""){
+			yValues4.push(vdict4_sort[i][0]);
+			xValues4.push(vdict4_sort[i][1]);
+			}
+	}
+	                       
+                    
+    const labels4 = yValues4;
+    const data4 = {
+                    labels: labels4,
+                    datasets: [
+                                {
+                                    label: 'APT',
+                                    data: xValues4,
+                                    borderColor: "rgba(253,255,16,1.0)",
+                                    backgroundColor: "rgba(0,255,0,0.3)",
+                                    
+                                }
+                            ]
+                        };
+
+
+                       const chart4 = new Chart("IdChart4", {
+                            type: 'doughnut',
+                            data: data4,
+                            options: {
+                                responsive: true,
+								maintainAspectRatio: true,
 								
-				othPlaceHolder.innerHTML += "<li><h2 class='APTname'>" + feat.properties.Name + "</h2><p>" + div + Details + "</li>";
+                                plugins: {
+                                    legend:{display:false},
+                                    title: {
+                                        display: true,
+                                        text: 'Target categories',
+										color: "rgba(255,255,255,1.0)",
+										
+                                    }
+                                }
+                            },
+                        });						
+						
+		
+
+
+
+
+
+
+
+
+
+
+	var vdict5={};
+	var yValues5 = [];
+	var xValues5 = [];
+	
+	
+    for (let i = 0; i < jdata.features.length; i++) {
+		for (let i2 = 0; i2 < jdata.features[i].properties["tools"].length; i2++) {
+			if(jdata.features[i].properties["tools"][i2].type!==undefined){
+				for (let i3 = 0; i3 < jdata.features[i].properties["tools"][i2].type.length; i3++) {
+	
+	
+					if (vdict5[jdata.features[i].properties["tools"][i2].type[i3]] !== undefined)
+						{ 
+						vdict5[jdata.features[i].properties["tools"][i2].type[i3]]+=1;
+						}
+					else {
+						vdict5[jdata.features[i].properties["tools"][i2].type[i3]]=1;
+						}
 				}
-		});
-	});
+			}
+		}
+	}
 	
 	
-	function Search()
+	
+	var vdict5_sort = Object.keys(vdict5).map(function(key) {  return [key, vdict5[key]];});
+
+
+	vdict5_sort.sort(function(first, second) {  return second[1] - first[1];});
+
+
+	for (let i = 0; i < 12; i++) {
+		if (vdict5_sort[i][0]!==""){
+			yValues5.push(vdict5_sort[i][0]);
+			xValues5.push(vdict5_sort[i][1]);}
+    }
+	                       
+                   
+const labels5 = yValues5;
+const data5 = {
+                labels: labels5,
+                datasets: [
+                                {
+                                    label: 'Type of tools',
+                                    data: xValues5,
+                                    borderColor: "rgba(255,16,239,1.0)",
+                                    backgroundColor: "rgba(30,30,30,0.3)",
+                                    
+                                }
+                            ]
+                        };
+
+
+                       const chart5 = new Chart("IdChart5", {
+                            type: 'doughnut',
+                            data: data5,
+                            options: {
+                                responsive: true,
+								maintainAspectRatio: true,
+								
+                                plugins: {
+                                    legend:{display:false},
+                                    title: {
+                                        display: true,
+                                        text: 'Type of tools',
+										color: "rgba(255,255,255,1.0)",
+										
+                                    }
+                                }
+                            },
+                        });						
+						
+			
+
+
+
+
+
+
+	var vdict6={};
+	var yValues6 = [];
+	var xValues6 = [];
+	
+	
+    for (let i = 0; i < jdata.features.length; i++) {
+		for (let i2 = 0; i2 < jdata.features[i].properties["tools"].length; i2++) {
+			if(jdata.features[i].properties["tools"][i2].value!==undefined){
+				if (vdict6[jdata.features[i].properties["tools"][i2].value] !== undefined)
+				{ 
+					vdict6[jdata.features[i].properties["tools"][i2].value]+=1;
+				}
+				else {
+					vdict6[jdata.features[i].properties["tools"][i2].value]=1;
+				}
+			}
+		}
+	}
+	
+	
+	
+	var vdict6_sort = Object.keys(vdict6).map(function(key) {  return [key, vdict6[key]];});
+
+
+	vdict6_sort.sort(function(first, second) {  return second[1] - first[1];});
+
+
+	for (let i = 0; i < 12; i++) {
+		if (vdict6_sort[i][0]!==""){
+			yValues6.push(vdict6_sort[i][0]);
+			xValues6.push(vdict6_sort[i][1]);
+			}
+	}
+	                       
+                   
+    const labels6 = yValues6;
+    const data6 = {
+                    labels: labels6,
+                    datasets: [
+                                {
+                                    label: 'Tools',
+                                    data: xValues6,
+                                    borderColor: "rgba(33,7,231,1.0)",
+                                    backgroundColor: "rgba(30,30,30,0.3)",
+                                    
+                                }
+                            ]
+                        };
+
+
+                       const chart6 = new Chart("IdChart6", {
+                            type: 'pie',
+                            data: data6,
+                            options: {
+                                responsive: true,
+								maintainAspectRatio: true,
+								
+                                plugins: {
+                                    legend:{display:false},
+                                    title: {
+                                        display: true,
+                                        text: 'Tools',
+										color: "rgba(255,255,255,1.0)",
+										
+                                    }
+                                }
+                            },
+                        });						
+
+}
+
+
+//relationship
+
+var reldiv = document.getElementById("relPlaceHolder");
+
+lst_tools=[];
+
+APT_targets={};
+APT_targetcategories={};
+APT_ttp={};
+APT_tools={};
+Targets_APT={};
+Tools_APT={};
+Techniques_APT={};
+lst_aptname=[];
+lst_targets=[];
+
+for (let i = 0; i < jdata.features.length; i++) {
+	lst_aptname.push(jdata.features[i].properties["name"].trim());
+	APT_targets[jdata.features[i].properties["name"].trim()]=jdata.features[i].properties["targets"];
+	APT_targetcategories[jdata.features[i].properties["name"].trim()]=jdata.features[i].properties["target-category"];
+    APT_ttp[jdata.features[i].properties["name"].trim()]=jdata.features[i].properties["TTP"];
+	APT_tools[jdata.features[i].properties["name"].trim()]=jdata.features[i].properties["tools"];
+}
+	
+lst_aptname.sort();
+
+
+APTtoadd='<div id="relAPT"><h2>APT</h2>';
+
+
+for (let i = 0; i < lst_aptname.length; i++){
+	APTtoadd+='<h3 class="APTname">' + lst_aptname[i] + "</h3><br />";
+	APTtoadd+='<span class="relAPTTargets"><h4 class="relTitle">Targets</h4>';
+	APTtoadd+=APT_targets[lst_aptname[i]].join(", ")+"</span><br />";
+	
+	for (let i2 = 0; i2 < APT_targets[lst_aptname[i]].length; i2++)
 	{
-	readTextFile("https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json", function(text){
-		var jdata = JSON.parse(text);
-		var count=0;
+		if (  Targets_APT[APT_targets[lst_aptname[i]][i2]]=== undefined)
+			{ 
+			lst_targets.push(APT_targets[lst_aptname[i]][i2]);
+			Targets_APT[APT_targets[lst_aptname[i]][i2]]= [lst_aptname[i]];  
+			}
+		else{ 
+			Targets_APT[APT_targets[lst_aptname[i]][i2]].push(lst_aptname[i]);
+			}
+	
+	}
+	
+	APTtoadd+='<span class="relAPTTargetCategories"><h4 class="relTitle2">Target categories</h4>';
+	APTtoadd+=APT_targetcategories[lst_aptname[i]].join(", ")+"</span><br />";
+	APTtoadd+='<span class="relAPTTechniques"><h4 class="relTitle">Techniques</h4>';
+	for (let i2 = 0; i2 < APT_ttp[lst_aptname[i]].length; i2++)
+	{
+		APTtoadd+=APT_ttp[lst_aptname[i]][i2]["techniqueID"]+", ";
+	}
+	APTtoadd+="</span><br />";
+	APTtoadd+='<span class="relAPTTools"><h4 class="relTitle">Tools</h4>';
+	for (let i2 = 0; i2 < APT_tools[lst_aptname[i]].length; i2++)
+	{
+		APTtoadd+=APT_tools[lst_aptname[i]][i2]["value"]+", ";
+		if (lst_tools.includes(APT_tools[lst_aptname[i]][i2]["value"])!== true)
+		{ 
+			lst_tools.push(APT_tools[lst_aptname[i]][i2]["value"]);  
+		}
+
+	}
+	APTtoadd+="</span><br />";
+	
+}
+
+APTtoadd+="</div></span><br />";
+
+lst_targets.sort();
+Targetstoadd='<div id="relTargets"><h2>Targets</h2>';
+
+for (let i = 0; i < lst_targets.length; i++){
+	Targetstoadd+='<h3 class="relTitle">'+lst_targets[i]+'</h3>';
+	Targetstoadd+='<span class="relTargetsAPT">'+Targets_APT[lst_targets[i]].join(", ")+'</span>';
+}
+Targetstoadd+="</div>";
+
+
+
+reldiv.innerHTML += APTtoadd + Targetstoadd;
+
+var reldiv2 = document.getElementById("relPlaceHolder2");
+reldiv2.innerHTML='<div class="relchk"><span class="relchkTitle">APT</span><label class="switch"><input type="checkbox" id="chkrelAPT" onclick="chkrelAPTclick()"><span class="slider"></span></label></div><div id="relAPTchk"><span class="relchkTitle">Targets</span><label class="switch"><input type="checkbox" id="chkrelAPT1" onclick="chkrelAPT1click()"><span class="slider"></span></label><span class="relchkTitle">Target categories</span><label class="switch"><input type="checkbox" id="chkrelAPT2" onclick="chkrelAPT2click()"><span class="slider"></span></label><span class="relchkTitle">Techniques</span><label class="switch"><input type="checkbox" id="chkrelAPT3" onclick="chkrelAPT3click()"><span class="slider"></span></label><span class="relchkTitle">Tools</span><label class="switch"><input type="checkbox" id="chkrelAPT4" onclick="chkrelAPT4click()"><span class="slider"></span></label></div><br /><div class="relchk"><span class="relchkTitle">Targets</span><label class="switch"><input type="checkbox" id="chkrelTargets" onclick="chkrelTargetsclick()"><span class="slider"></span></label></div>';
+
+
+//fullstats
+
+var fuldiv = document.getElementById("fulPlaceHolder");
+
+divf1toadd="APTs: " + lst_aptname.length + "<br />";
+divf1toadd+="Tools: " + lst_tools.length; + "<br />";
+
+fuldiv.innerHTML += '<p class="info">'+divf1toadd + '</p>';
+
+
+//others
+
+var othdiv = document.getElementById("othPlaceHolder");
+
+
+let apt = null;
+var div='';
+for (let i = 0; i < jdata.features.length; i++) {
+	
+    if (jdata.features[i].properties.country === "") 
+	{
+		apt = jdata.features[i];
+        
+		div+='<li><h2 class="APTname">'+ apt.properties["name"] +'</h2>';
+		if (apt.properties.description)
+		{
+			div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description</strong><br />'+apt.properties.description+'</p>';
+		}
+	if (apt.properties["other-names"].length >0)
+	{
+		let onadd="";
+		for (var on of apt.properties["other-names"]) 
+		{
+			onadd +=' '+on+',';
+		}
+		div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names</strong><br />'+onadd+'</p>';
+	}
+	
+	if (apt.properties["first-seen"])
+	{
+		div+='<p class="info"><i class="fa fa-clock-o"></i> <strong>First seen</strong><br />'+apt.properties["first-seen"]+'</p>';
+	}
+	if (apt.properties["sponsor"])
+	{
+		div+='<p class="info"><i class="fa fa-share-square-o"></i> <strong>Sponsor</strong><br />'+apt.properties["sponsor"]+'</p>';
+	}
+	if (apt.properties.motivation)
+	{
+		div+='<p class="info"><i class="fa fa-angle-double-right"></i> <strong>Motivation</strong><br />'+apt.properties.motivation+'</p>';
+	}
+	if (apt.properties.targets.length>0){
+		let tadd="";
+		for (var t of apt.properties.targets) 
+			{
+				tadd +=' <a href="#target=' + t +'" >'+t+'</a>,';
+			}
+		div+='<p class="info"><i class="fa fa-crosshairs"></i> <strong>Targets</strong><br />'+tadd+'</p>';
+	}
+	
+	if (apt.properties["target-category"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["target-category"]) 
+			{
+				tadd +=' <a href="#targetcategory=' + t +'" >'+t+'</a>,';
+			}
+		div+='<p class="info"><i class="fa fa-industry"></i> <strong>Target categories</strong><br />'+tadd+'</p>';
+	
+	}
+	
+	
+	if (apt.properties["ext-links"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["ext-links"]) 
+			{
+				tadd +=' <a href="' + t.url +'" >'
+				if (t.description!== undefined){tadd +=t.url;}
+				else{tadd +=t.description;}
+				tadd +='</a><br /><br />';
+			}
+		div+='<p class="info"><i class="fa fa-link"></i> <strong>External links</strong><br />'+tadd+'</p>';
+	}
+	
+	
+	
+	
+	
+	if (apt.properties["tools"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["tools"]) 
+			{
+			tadd +=' <a href="#tool=' + t.value +'" ><strong>'+t.value+'</strong> (category: ' + t.category +')</a><br />';
+			if (t.type!== undefined){tadd +='type: '+ t.type.join(', ') +'<br />'}
+			tadd +='<br />'+ t.description + '<br /><br />';
+			for (var t2 of t.refs) 
+				{
+					tadd +=' <a href="'+ t2 +'" target="_blank">'+t2+'</a><br /><br />';
+				}
+					tadd +='<br />';
+			}
+		div+='<p class="info"><i class="fa fa-exclamation-triangle"></i> <strong>Tools</strong><br />'+tadd+'</p>';
+	}
+	
+	if (apt.properties["TTP"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["TTP"]) 
+			{
+				tadd +=' <a href="https://attack.mitre.org/techniques/' + t.techniqueID.replace(".","/") +'/" target="_blank" ><strong>'+t.techniqueID+'</strong></a><br />'
+				if (t.comment!== undefined){tadd +=t.comment +'<br /><br />'}
+		}
+		div+='<p class="info"><i class="fa fa-cogs"></i> <strong>TTP</strong><br />'+tadd+'</p>';
+	}
+	
+
+	
+	if (apt.properties.sources.length>0)
+	{
+		let sadd="";
+		for (var s of apt.properties.sources) 
+			{
+				sadd +=s.name+ ', ' ;
+			}
+		div+='<p class="info"><i class="fa fa-book"></i> <strong>Sources</strong><br />'+sadd+'</p>';
+	}
+div+='</li>';
+}
+}
+
+othdiv.innerHTML += div;
+
+
+
+	  
+// tooltip
+const tooltip = document.createElement("div");
+tooltip.className = "tooltip";
+document.body.appendChild(tooltip);
+
+
+view.on("pointer-move", function(event) {
+  view.hitTest(event).then(function(response) {
+    
+    if (response.results.length) {
+      const graphic = response.results[0].graphic;
+      
+      if (graphic.geometry.type === "point" && graphic.attributes && graphic.attributes.name) {
+        
+        tooltip.style.left = event.x+5 + "px";
+        tooltip.style.top = event.y-20 + "px";
+        
+        tooltip.textContent = graphic.attributes.name;
+		
+        
+        tooltip.style.display = "block";
+      }
+    } else {
+      
+      tooltip.style.display = "none";
+    }
+  });
+});
+
+
+
+// search
+const searchInput = document.createElement("input");
+searchInput.type = "text";
+searchInput.placeholder = "Search APT name";
+searchInput.addEventListener("input", onSearchInput);
+
+const searchInputRes = document.createElement("div");
+searchInputRes.id="searchInputRes"
+view.ui.add(searchInput, "top-right");
+view.ui.add(searchInputRes, "top-right");
+
+function onSearchInput() {
+  
+  
+	const searchText = searchInput.value.trim().toLowerCase();
+	extremesLayer.definitionExpression = `LOWER(name) LIKE '%${searchText}%'`;
+  
+	extremesLayer.queryFeatures().then(function(results){
+	var div="";
+	if(searchText!==""){
+ 	
+		var lst_apt=[];
+		var lst_aptinmap=[];
+		var lst_aptothers=[];
+		for (let i = 0; i < jdata.features.length; i++) 
+			{
+	
+			if (jdata.features[i].properties.name.toLowerCase().startsWith(searchText)) 
+			{
+				if (jdata.features[i].geometry!==undefined)
+					{
+					lst_aptinmap.push(jdata.features[i].properties.name);
+					} 
+				else 
+					{
+					lst_apt.push(jdata.features[i].properties.name);
+					}
+			
+			}
+			for (let i2 = 0; i2 < jdata.features[i].properties["other-names"].length; i2++) 
+			{
+				if (jdata.features[i].properties["other-names"][i2].toLowerCase().startsWith(searchText)) 
+				{
+					lst_aptothers.push(jdata.features[i].properties["other-names"][i2]);
+				}
+			}
+		}
+		lst_apt.sort();
+		lst_aptinmap.sort();
+		lst_aptothers.sort();
+		if (lst_apt.length+lst_aptinmap.length+lst_aptothers.length>0)
+		{
+			div+="In map: ";
+			for (let i = 0; i < lst_aptinmap.length; i++) 
+			{
+				div+=' <a href="#name=' + lst_aptinmap[i] +'" >'+lst_aptinmap[i] +'</a>,';
+			}
+			div+="<br /><br/>Not in map: ";
+			for (let i = 0; i < lst_apt.length; i++) 
+			{
+				div+=' <a href="#name=' + lst_apt[i] +'" >'+lst_apt[i] +'</a>,';
+			}
+			div+="<br /><br/>Other names: ";
+			for (let i = 0; i < lst_aptothers.length; i++) 
+			{
+				div+=' <a href="#name=' + lst_aptothers[i] +'" >'+lst_aptothers[i] +'</a>,';
+			}
+		}
+	
+	
+		searchInputRes.style.display="block";
+	}   
+	else
+	{	
+		searchInputRes.style.display="none";
+	}
+	searchInputRes.innerHTML=div;
+	});
+
+}
+  
+document.getElementById("close-about").addEventListener("click", closeMenu);
+
+document.getElementById("start-globe").addEventListener("click", function () {
+	document.getElementById("chart-container").style.filter = "blur(0px)";
+    closeMenu();
+	onChart(jdata);
+    view.when(function () {
+		watchUtils.whenFalseOnce(view, "updating", rotate);
+		});
+    });
+
+document.getElementById("container").addEventListener("click", function (e) {
+    if (e.target.id === "container") {
+    closeMenu();
+	onChart(jdata);
+    view.when(function () {
+        watchUtils.whenFalseOnce(view, "updating", rotate);
+        });
+    }
+});
+
+function closeMenu() {
+    document.getElementById("container").style.display = "none";
+    view.container.style.filter = "blur(0px)";
+	document.getElementById("chart-container").style.filter = "blur(0px)";
+    }
+
+
+      
+
+let intro = true;
+document.getElementById("about").addEventListener("click", function () {
+    document.getElementById("container").style.display = "flex";
+    view.container.style.filter = "blur(10px)";
+	document.getElementById("chart-container").style.filter = "blur(10px)";
+    if (intro) {
+        document.getElementById("show-about").classList.remove("hidden");
+        document.getElementById("show-intro").classList.add("hidden");
+		document.getElementById("chart-container").style.filter = "";
+		  
+        intro = false;
+    }
+});
+	  
+	  
+document.getElementById("others").addEventListener("click", function () {
+	document.getElementById("others-container").style.display = "flex";
+    });
+document.getElementById("close-others").addEventListener("click", closeOthers);
+	  
+function closeOthers() {
+    document.getElementById("others-container").style.display = "none";
+    }
+	  
+document.getElementById("search").addEventListener("click", function () {
+    document.getElementById("search-container").style.display = "flex";
+    view.container.style.filter = "blur(10px)";
+	document.getElementById("chart-container").style.filter = "blur(10px)";
+    });
+document.getElementById("close-search").addEventListener("click", closeSearch);
+	  
+function closeSearch() {
+    document.getElementById("search-container").style.display = "none";
+    view.container.style.filter = "blur(0px)";
+	document.getElementById("chart-container").style.filter =  "blur(0px)";
+    }
+	  
+document.getElementById("chart").addEventListener("click", function () {
+    document.getElementById("chart-container").style.display = "flex";
+    document.getElementById("chart-container").style.filter =  "blur(0px)";
+	});
+document.getElementById("close-chart").addEventListener("click", closeChart);
+	  
+function closeChart() {
+    document.getElementById("chart-container").style.display = "none";
+    }
+	  
+	  
+document.getElementById("relationship").addEventListener("click", function () {
+    document.getElementById("relationship-container").style.display = "flex";
+    });
+document.getElementById("close-relationship").addEventListener("click", closeRelationship);
+
+function closeRelationship() {
+    document.getElementById("relationship-container").style.display = "none";
+    }
+	  
+view.ui.add("about", "bottom-left");
+view.ui.add("maptitle", "top-left");
+view.ui.add("others", "top-left");
+view.ui.add("search", "top-left");
+view.ui.add("chart", "top-left");
+view.ui.add("relationship", "top-left");
+
+function rotate() {
+    if (!view.interacting) {
+        const camera = view.camera.clone();
+        camera.position.longitude -= 0.2;
+        view.goTo(camera, { animate: false });
+        requestAnimationFrame(rotate);
+        }
+    }
+
+});
+	
+
+	
+function DisplayPopUp(feature)
+	{
+	let apt = null;
+	 
+    for (let i = 0; i < jdata.features.length; i++) 
+	{
+		if (jdata.features[i].properties.uuid === feature.graphic.attributes.uuid) 
+		{
+			apt = jdata.features[i];
+			break;
+		}
+    }
+
+
+	var div='';
+	div+='<div class="popupImage"><img src="images/flags/'+ apt.properties["image-url"] +'" alt="' + apt.properties["image-caption"] + '"/></div>';
+	div+='<div class="popupImageCaption">'+apt.properties["image-caption"]+'</div>';
+	div+='<div class="popupDescription"><p class="info"><i class="fa fa-location-arrow"></i> <strong>Location</strong><br />' + apt.properties.location + '</p>';
+	if (apt.properties.description)
+	{
+		div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description</strong><br />'+apt.properties.description+'</p>';
+	}
+	if (apt.properties["other-names"].length >0)
+	{
+		let onadd="";
+		for (var on of apt.properties["other-names"]) 
+			{
+				onadd +=' ' + on +',';
+			}
+		div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names</strong><br />'+onadd+'</p>';
+	}
+	
+	if (apt.properties["first-seen"])
+	{
+		div+='<p class="info"><i class="fa fa-clock-o"></i> <strong>First seen</strong><br />'+apt.properties["first-seen"]+'</p>';
+	}
+	if (apt.properties["sponsor"])
+	{
+		div+='<p class="info"><i class="fa fa-share-square-o"></i> <strong>Sponsor</strong><br />'+apt.properties["sponsor"]+'</p>';
+	}
+	if (apt.properties.motivation)
+	{
+		div+='<p class="info"><i class="fa fa-angle-double-right"></i> <strong>Motivation</strong><br />'+apt.properties.motivation+'</p>';
+		}
+	if (apt.properties.targets.length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties.targets) 
+			{
+				tadd +=' <a href="#target=' + t +'" >'+t+'</a>,';
+			}
+		div+='<p class="info"><i class="fa fa-crosshairs"></i> <strong>Targets</strong><br />'+tadd+'</p>';
+	}
+	
+	if (apt.properties["target-category"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["target-category"]) 
+			{
+				tadd +=' <a href="#targetcategory=' + t +'" >'+t+'</a>,';
+		}
+		div+='<p class="info"><i class="fa fa-industry"></i> <strong>Target categories</strong><br />'+tadd+'</p>';
+	}
+
+	if (apt.properties["ext-links"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["ext-links"]) 
+			{
+				tadd +=' <a href="' + t.url +'" target="_blank">'
+				if (t.description!== undefined){tadd +=t.url;}
+				else{tadd +=t.description;}
+				tadd +='</a><br /><br />';
+			}
+		div+='<p class="info"><i class="fa fa-link"></i> <strong>External links</strong><br />'+tadd+'</p>';
+	}
+	
+	
+	
+	if (apt.properties["tools"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["tools"]) 
+			{
+			tadd +=' <a href="#tool=' + t.value +'" ><strong>'+t.value+'</strong> (category: ' + t.category +')</a><br />';
+			if (t.type!== undefined){tadd +='type: '+ t.type.join(', ') +'<br />'}
+			tadd +='<br />'+ t.description + '<br /><br />';
+			for (var t2 of t.refs) 
+				{
+					tadd +=' <a href="'+ t2 +'" target="_blank">'+t2+'</a><br /><br />';
+				}
+					tadd +='<br />';
+			}
+		div+='<p class="info"><i class="fa fa-exclamation-triangle"></i> <strong>Tools</strong><br />'+tadd+'</p>';
+	}
+	
+	if (apt.properties["TTP"].length>0)
+		{
+		let tadd="";
+		for (var t of apt.properties["TTP"]) 
+			{
+				tadd +=' <a href="https://attack.mitre.org/techniques/' + t.techniqueID.replace(".","/") +'/" target="_blank" ><strong>'+t.techniqueID+'</strong></a><br />'
+				if (t.comment!== undefined){tadd +=t.comment +'<br /><br />'}
+			}
+		div+='<p class="info"><i class="fa fa-cogs"></i> <strong>TTP</strong><br />'+tadd+'</p>';
+		}
+	
+	if (apt.properties.sources.length>0)
+	{
+		let sadd="";
+		for (var s of apt.properties.sources) 
+			{
+				sadd +=s.name+ ', ' ;
+			}
+			div+='<p class="info"><i class="fa fa-book"></i> <strong>Sources</strong><br />'+sadd+'</p>';
+	}
+	return div;
+	}
+	
+	
+	
+	
+
+
+	
+function Search()
+	{
+	
 		var srcdiv = document.getElementById("searchPlaceHolder");
 		srcdiv.innerHTML="";
 		var srcLocation = document.getElementById("searchLocation").value;
 		var srcAPTname = document.getElementById("searchAPTname").value;
-		var srcTools = document.getElementById("searchTools").value;
+		var srcTools = document.getElementById("searchTool").value;
 		var srcTarget = document.getElementById("searchTarget").value;
-
-		jdata.features.forEach( function(feat ) {
-			if (srcAPTname){if(!feat.properties.Name.toLowerCase().includes(srcAPTname.toLowerCase()) && !feat.properties.OtherNames.toLowerCase().includes(srcAPTname.toLowerCase())){return;}}
-			if (srcLocation){if(!feat.properties.Location.toLowerCase().includes(srcLocation.toLowerCase())){return;}}
-			if (srcTools){if(!feat.properties.Tools.toLowerCase().includes(srcTools.toLowerCase())){return;}}
-			if (srcTarget){
-			if(feat.properties.Targets){
-
-				if(!feat.properties.Targets.toLowerCase().includes(srcTarget.toLowerCase())){return;}}
-				else{return}
+		var srcTargetcategory = document.getElementById("searchTargetcategory").value;
+	
+	if (srcAPTname!=="")
+	{
+		let apt = null;
+		for (let i = 0; i < jdata.features.length; i++) 
+		{
+	
+			if (jdata.features[i].properties.name.toLowerCase() === srcAPTname.toLowerCase()) 
+			{
+				apt = jdata.features[i];
+				break;
 			}
-			count++;
-			
-			
-			var div='';
-			if (feat.properties.Location){div+='<p class="info"><i class="fa fa-location-arrow"></i> <strong>Location:</strong> ' + feat.properties.Location+ '</p>';}
-			if (feat.properties.Description){div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description:</strong> '+feat.properties.Description+'</p>';}
-			if (feat.properties.OtherNames){div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names:</strong> '+feat.properties.OtherNames+'</p>';}
-			if (feat.properties.AssociatedGroups){div+='<p class="info"><i class="fa fa-sitemap"></i> <strong>Associated groups:</strong> '+feat.properties.AssociatedGroups+'</p>';}
-			if (feat.properties.FirstSeen){div+='<p class="info"><i class="fa fa-clock-o"></i> <strong>First seen:</strong> '+feat.properties.FirstSeen+'</p>';}
-			if (feat.properties.Sponsor){div+='<p class="info"><i class="fa fa-share-square-o"></i> <strong>Sponsor:</strong> '+feat.properties.Sponsor+'</p>';}
-			if (feat.properties.Motivation){div+='<p class="info"><i class="fa fa-angle-double-right"></i> <strong>Motivation:</strong> '+feat.properties.Motivation+'</p>';}
-			if (feat.properties.Targets){div+='<p class="info"><i class="fa fa-crosshairs"></i> <strong>Targets:</strong> '+feat.properties.Targets+'</p>';}
-			if (feat.properties.Tools){div+='<p class="info"><i class="fa fa-cubes"></i> <strong>Tools:</strong> '+feat.properties.Tools+'</p>';}
-			if (feat.properties.TTP){div+='<p class="info"><i class="fa fa-cog"></i> <strong>TTP:</strong> '+feat.properties.TTP+'</p>';}
-			if (feat.properties.IOC){div+='<p class="info"><i class="fa fa-search"></i> <strong>IOC:</strong> '+feat.properties.IOC+'</p>';}
-					
-			var Details='<p id="detSP'+ feat.properties.Name+'" style="word-break: break-word;" onclick="othdetails(\'detSP' + feat.properties.Name+'\',\''+ feat.properties.Name +'\');"><span class="detButton">Show details</span></p>';
-			
+		}
+	
+		if(apt===null)
+		{
+			for (let i = 0; i < jdata.features.length; i++) 
+			{
+				for (let i2 = 0; i2 < jdata.features[i].properties["other-names"].length; i2++) 
+				{
+	
+					if (jdata.features[i].properties["other-names"][i2].toLowerCase() === srcAPTname.toLowerCase()) 
+					{
+						apt = jdata.features[i];
+						break;
+					}
+				}
+			}
+		}
+	
+	
+	
+		var div='';
+		if(apt!==null)
+		{
+			if(apt.properties.location!=="")
+			{
+				div+='<div class="popupImage"><img src="images/flags/'+ apt.properties["image-url"] +'" alt="' + apt.properties["image-caption"] + '"/></div>';
+				div+='<div class="popupImageCaption">'+apt.properties["image-caption"]+'</div>';
+				div+='<div class="popupDescription"><p class="info"><i class="fa fa-location-arrow"></i> <strong>Location</strong><br />' + apt.properties.location + '</p>';
+			}
+			div+='<h2 class="APTname">'+ apt.properties["name"] +'</h2>';
+
+			if (apt.properties.description){div+='<p class="info"><i class="fa fa-file-text-o"></i> <strong>Description</strong><br />'+apt.properties.description+'</p>';}
+			if (apt.properties["other-names"].length >0)
+			{
+				let onadd="";
+				for (var on of apt.properties["other-names"]) 
+					{
+						onadd +=' ' + on +',';
+					}
+				div+='<p class="info"><i class="fa fa-users"></i> <strong>Other names</strong><br />'+onadd+'</p>';
+			}
+	
+			if (apt.properties["first-seen"]){div+='<p class="info"><i class="fa fa-clock-o"></i> <strong>First seen</strong><br />'+apt.properties["first-seen"]+'</p>';}
+			if (apt.properties["sponsor"]){div+='<p class="info"><i class="fa fa-share-square-o"></i> <strong>Sponsor</strong><br />'+apt.properties["sponsor"]+'</p>';}
+			if (apt.properties.motivation){div+='<p class="info"><i class="fa fa-angle-double-right"></i> <strong>Motivation</strong><br />'+apt.properties.motivation+'</p>';}
+			if (apt.properties.targets.length>0){
+				let tadd="";
+				for (var t of apt.properties.targets) 
+					{
+						tadd +=' <a href="#target=' + t +'" >'+t+'</a>,';
+					}
+				div+='<p class="info"><i class="fa fa-crosshairs"></i> <strong>Targets</strong><br />'+tadd+'</p>';
+			}
+	
+	if (apt.properties["target-category"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["target-category"]) 
+			{
+				tadd +=' <a href="#targetcategory=' + t +'" >'+t+'</a>,';
+			}
+		div+='<p class="info"><i class="fa fa-industry"></i> <strong>Target categories</strong><br />'+tadd+'</p>';
+		}
+	
+	
+	if (apt.properties["ext-links"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["ext-links"]) 
+			{
+				tadd +=' <a href="' + t.url +'" target="_blank">'
+				if (t.description!== undefined){tadd +=t.url;}
+				else{tadd +=t.description;}
+				tadd +='</a><br /><br />';
+			}
+		div+='<p class="info"><i class="fa fa-link"></i> <strong>External links</strong><br />'+tadd+'</p>';
+	}
+	
+	if (apt.properties["tools"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["tools"]) 
+			{
+				tadd +=' <a href="#tool=' + t.value +'" ><strong>'+t.value+'</strong> (category: ' + t.category +')</a><br />';
+				if (t.type!== undefined){tadd +='type: '+ t.type.join(', ') +'<br />'}
+				tadd +='<br />'+ t.description + '<br /><br />';
+				for (var t2 of t.refs) 
+					{
+						tadd +=' <a href="'+ t2 +'" target="_blank">'+t2+'</a><br /><br />';
+					}
+					tadd +='<br />';
+			}
+		div+='<p class="info"><i class="fa fa-exclamation-triangle"></i> <strong>Tools</strong><br />'+tadd+'</p>';
+	}
+	
+	if (apt.properties["TTP"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["TTP"]) 
+			{
+				tadd +=' <a href="https://attack.mitre.org/techniques/' + t.techniqueID.replace(".","/") +'/" target="_blank" ><strong>'+t.techniqueID+'</strong></a><br />'
+				if (t.comment!== undefined){tadd +=t.comment +'<br /><br />'}
+			}
+		div+='<p class="info"><i class="fa fa-cogs"></i> <strong>TTP</strong><br />'+tadd+'</p>';
+	}
+	
+	
+	
+	if (apt.properties.sources.length>0)
+	{
+		let sadd="";
+		for (var s of apt.properties.sources) 
+			{
+				sadd +=s.name+ ', ' ;
+			}
+			div+='<p class="info"><i class="fa fa-book"></i> <strong>Sources</strong><br />'+sadd+'</p>';
+	}
+}
+	srcdiv.innerHTML=div;
+}
 		
-			srcdiv.innerHTML += "<li><h2 class='APTname'>" + feat.properties.Name + "</h2><p>" + div + Details + "</li>";
-			});
-		});
+else if (srcLocation!=="")
+{
+	var div="";
+	var lst_apt=[];
+	for (let i = 0; i < jdata.features.length; i++) 
+	{
+	
+		if (jdata.features[i].properties.location.toLowerCase() === srcLocation.toLowerCase()) {
+			lst_apt.push(jdata.features[i].properties.name);
+		}
+    }
+	lst_apt.sort();
+	for (let i = 0; i < lst_apt.length; i++) {
+		div+=' <a href="#name=' + lst_apt[i] +'" >'+lst_apt[i] +'</a>,';
+	}
+	
+		
+	srcdiv.innerHTML=div;
 	
 	}
 	
 	
-	function details(Name) {
-		var detp = document.getElementById("detP");
-		detp.innerHTML="";
-		var Sources=" ";
-		var Links="";
-		var Operations="";
-		readTextFile("https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json", function(text){
-			var jdata = JSON.parse(text);
-			jdata.features.forEach( function(feat) {
-				if (feat.properties.Name==Name){
-				
-					for (var s of feat.properties.Sources) 
-						{
-						Sources +=' <a href="' + s.URL +'" target="_blank">'+s.Name+'</a>,';
-						if (s.Name=="MITRE" && s.JsonURL)
-							{
-							readTextFile(s.JsonURL, function(text){
-								var jdata = JSON.parse(text);
-							
-								detp.innerHTML +='<h2>'+jdata.description+'</h2>';
-								if (jdata.techniques){
-									jdata.techniques.forEach( function(tec ) {
-										var tid="";
-										var cmt="";
-										var sty="";
-										var sp="";
-							
-										if(tec.techniqueID.includes('.'))
-										{   tid=tec.techniqueID;
-											sty=' style="padding-left:1em"; ';
-										}
-										else
-										{
-											tid='<a href="https://attack.mitre.org/techniques/'+ tec.techniqueID + '/" target="_blank">'+ tec.techniqueID +'</a>';
-											sp='</br>';
-										}
-										if(tec.comment){
-											cmt='<div'+sty+'>' + tec.comment.replace(/(\[.*?\]) */g, "") + '</div>';
-										}
-										detp.innerHTML += sp+ '<h5'+sty+'>'+ tid +'</h5>'+ cmt;
-										});
-									}	
-								
-								});
-						
-							}
-						}
-				
-						detp.innerHTML+='<p class="info">Sources:' + Sources.substring(0,Sources.length-1)+'</p>';
-					
-						for (var l of feat.properties.ExtLinks) 
-							{
-							Links+='<a href="' + l.URL +'" target="_blank">'+l.URL+'</a></br>';
-							}
-						if (Links){
-							detp.innerHTML= detp.innerHTML + '<p class="info">Links:</br>' + Links +'</p>';}
-				
-						for (var op of feat.properties.Operations) 
-							{
-							Operations+='<li><strong>' + op.Date + '</strong><br/><br/>'+ op.Description + '<br/>';
-							if (op.Link){Operations+='<a href="' + op.Link +'" target="_blank">'+op.Link+'</a><br/>';}
-							Operations+='</li>'
-							}
-						if (Operations){
-							detp.innerHTML= detp.innerHTML + '<p class="info">Operations:</br><ul>' + Operations +'</ul></p>';}
-
-				
+else if (srcTools!=="")
+{
+	var div="";
+	var lst_apt=[];
+	var dict_apt={};
+	for (let i = 0; i < jdata.features.length; i++) {
+		for (let i2 = 0; i2 < jdata.features[i].properties.tools.length; i2++) {
+			if (jdata.features[i].properties.tools[i2].value.toLowerCase()===srcTools.toLowerCase()){
+				if(dict_apt[jdata.features[i].properties.name]===undefined){
+					dict_apt[jdata.features[i].properties.name]=jdata.features[i].properties.tools[i2].description;
+					lst_apt.push(jdata.features[i].properties.name);
 				}
-			});
-		});
-				  
-	  }
-	  
-	function othdetails(c,Name) {
-		var detp = document.getElementById(c);
-		detp.innerHTML="";
-		var Sources=" ";
-		var Links="";
-		readTextFile("https://raw.githubusercontent.com/andreacristaldi/APTmap/master/apt.json", function(text){
-			var jdata = JSON.parse(text);
-			jdata.features.forEach( function(feat) {
-				if (feat.properties.Name==Name){
-				
-					for (var s of feat.properties.Sources) 
-					{
-						Sources +=' <a href="' + s.URL +'" target="_blank">'+s.Name+'</a>,';
-						if (s.Name=="MITRE" && s.JsonURL)
-						{
-							readTextFile(s.JsonURL, function(text){
-								var jdata = JSON.parse(text);
-								
-								detp.innerHTML +='<h4>'+jdata.description+'</h4>';
-								if (jdata.techniques){
-								jdata.techniques.forEach( function(tec ) {
-									var tid="";
-									var cmt="";
-									var sty="";
-									var sp="";
-						
-									if(tec.techniqueID.includes('.'))
-										{ tid=tec.techniqueID;
-											sty=' style="padding-left:1em"; ';
-										}
-									else
-										{
-											tid='<a href="https://attack.mitre.org/techniques/'+ tec.techniqueID + '/" target="_blank">'+ tec.techniqueID +'</a>';
-											sp='</br>';
-										}	
-									if(tec.comment){
-										cmt='<div'+sty+'>' + tec.comment.replace(/(\[.*?\]) */g, "") + '</div>';
-									}
-									detp.innerHTML += sp+ '<h5'+sty+'>'+ tid +'</h5>'+ cmt;
-								});
-								}
-							});
-						}
-					}
-				
-					detp.innerHTML+='<p class="info">Sources:' + Sources.substring(0,Sources.length-1)+'</p>';
-					
-					for (var l of feat.properties.ExtLinks) 
-					{
-						Links+='<a href="' + l.URL +'" target="_blank">'+l.URL+'</a></br>';
-					}
-					if (Links){
-					detp.innerHTML= detp.innerHTML + '<p class="info">Links:</br>' + Links +'</p>';}
-					for (var op of feat.properties.Operations) 
-						{
-						Operations+='<li><strong>' + op.Date + '</strong><br/><br/>'+ op.Description + '<br/>';
-						if (op.Link){Operations+='<a href="' + op.Link +'" target="_blank">'+op.Link+'</a><br/>';}
-							Operations+='</li>'
-						}
-						if (Operations){
-							detp.innerHTML= detp.innerHTML + '<p class="info">Operations:</br><ul>' + Operations +'</ul></p>';}
-
-				}
-			});
-		});
-				  
+		
+			}
+		}
 	}
+	lst_apt.sort();
+	
+		
+	
+	for (let i = 0; i < lst_apt.length; i++) {
+		div+=' <a href="#name=' + lst_apt[i] +'" >'+lst_apt[i] +'</a><br />' + dict_apt[lst_apt[i]]+'<br /><br />';
+	}
+			
+	srcdiv.innerHTML=div;
+	
+	}
+	
+else if (srcTarget!=="")
+	{
+
+	var div="";
+	var lst_apt=[];
+	
+	for (let i = 0; i < jdata.features.length; i++) {
+		for (let i2 = 0; i2 < jdata.features[i].properties.targets.length; i2++) {
+			if (jdata.features[i].properties.targets[i2].toLowerCase()===srcTarget.toLowerCase()){
+				if (lst_apt.includes(jdata.features[i].properties.name)!==true) {
+					lst_apt.push(jdata.features[i].properties.name);
+		
+				}
+		
+			}
+		}
+	}
+	lst_apt.sort();
+	
+		
+	
+	for (let i = 0; i < lst_apt.length; i++) {
+		div+=' <a href="#name=' + lst_apt[i] +'" >'+lst_apt[i] +'</a>,';
+	}
+			
+	srcdiv.innerHTML=div;
+	
+	}
+	
+		
+else if (srcTargetcategory!=="")
+	{
+
+	var div="";
+	var lst_apt=[];
+	
+	for (let i = 0; i < jdata.features.length; i++) {
+		for (let i2 = 0; i2 < jdata.features[i].properties["target-category"].length; i2++) {
+			if (jdata.features[i].properties["target-category"][i2].toLowerCase()===srcTargetcategory.toLowerCase()){
+				if (lst_apt.includes(jdata.features[i].properties.name)!==true) {
+					lst_apt.push(jdata.features[i].properties.name);
+				}
+			}
+		}
+	}
+	lst_apt.sort();
+	
+		
+	
+	for (let i = 0; i < lst_apt.length; i++) {
+		div+=' <a href="#name=' + lst_apt[i] +'" >'+lst_apt[i] +'</a>,';
+	}
+			
+	srcdiv.innerHTML=div;
+	
+	}
+		
+	
+	
+	
+	}
+	
+	
 
   </script>
 </head>
@@ -483,19 +1511,25 @@
   <div id="viewDiv">
     <div id="about">About APTMAP</div>
 	<div id="maptitle"><img src="images/aptmap.png" /></div>
+	
 	<div id="others"><h3>Other APTs not in map</h3></div>
 	<div id="search"><h3>Search</h3></div>
+	<div id="chart"><h3>Charts</h3></div>
+	<div id="relationship"><h3>Relationship</h3></div>
+	
+	
   </div>
   <div id="container">
+  
     <div id="introDiv">
       <img src="images/aptmap.png" />
       <div id="show-intro">
         <p>An Advanced Persistent Threat (APT) is a stealthy computer network threat actor, nation state, state-sponsored group or non-state sponsored groups conducting large-scale targeted intrusions for specific goals, which gains unauthorized access to a computer network and remains undetected for an extended period.
         </p>
 		<p>Attribution is a very complex issue. This map is based on data from different sources (vendor, studies, reports, ...) and is not a reliable source. Most of the mappings rely on the findings in a single incident analysis. Groups often change their toolsets or exchange them with other groups. This makes attribution of certain operations extremely difficult. Information published here may be wrong, outdated, or may change based on evolving information.</p>
-        <p>Primary sources: <a href="https://attack.mitre.org/resources/terms-of-use/" target="blank_">MITRE</a>, <a href="https://apt.threattracking.com/" target="blank_">APT Groups and Operations</a>, <a href="https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf" target="blank_">Thaicert</a></p>
+        <p>Primary sources: <a href="https://www.misp-project.org/" target="blank_">MISP</a>, <a href="https://attack.mitre.org/" target="blank_">MITRE</a>, <a href="https://www.etda.or.th/th/" target="blank_">ETDA</a>, <a href="https://www.vx-underground.org/" target="blank_">VX-Underground</a></p>
 		<p>ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON AN "AS IS" BASIS</p>
-		<p>Project: Andrea Cristaldi <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>
+		<p>Project: Andrea Cristaldi <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
 		<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="blank_">Creative Commons Attribution 4.0 International License</a>.</p>
 		<button id="start-globe">Go to map</button>
       </div>
@@ -503,9 +1537,11 @@
 	  <p>An Advanced Persistent Threat (APT) is a stealthy computer network threat actor, nation state, state-sponsored group or non-state sponsored groups conducting large-scale targeted intrusions for specific goals, which gains unauthorized access to a computer network and remains undetected for an extended period.
         </p>
 		<p>Attribution is a very complex issue. This map is based on data from different sources (vendor, studies, reports, ...) and is not a reliable source. Most of the mappings rely on the findings in a single incident analysis. Groups often change their toolsets or exchange them with other groups. This makes attribution of certain operations extremely difficult. Information published here may be wrong, outdated, or may change based on evolving information.</p>
-        <p>Primary sources: <a href="https://attack.mitre.org/resources/terms-of-use/" target="blank_">MITRE</a>, <a href="https://apt.threattracking.com/" target="blank_">APT Groups and Operations</a>, <a href="https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf" target="blank_">Thaicert</a></p>
+        <p>Primary sources: <a href="https://www.misp-project.org/" target="blank_">MISP</a>, <a href="https://attack.mitre.org/" target="blank_">MITRE</a>, <a href="https://www.etda.or.th/th/" target="blank_">ETDA</a>, <a href="https://www.vx-underground.org/" target="blank_">VX-Underground</a></p>
+		<ol id="fulPlaceHolder">
+		</ol>
 		<p>ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON AN "AS IS" BASIS</p>
-        <p>Project: Andrea Cristaldi <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>
+        <p>Project: Andrea Cristaldi <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
 		<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="blank_">Creative Commons Attribution 4.0 International License</a>.</p>
 		<button id="close-about" class="esri-icon-close"></button>
         </div>
@@ -521,7 +1557,123 @@
 		
 		</div>
 		
-	   </div>
+  </div>
+  
+ 
+  
+    <div id="relationship-container">
+  <button id="close-relationship" class="esri-icon-close"></button>
+		<div><img src="images/aptmap.png" />        
+		<h1>Relationship</h1>
+		<div id="relPlaceHolder2"></div>
+		<ol id="relPlaceHolder">
+		</ol>
+		<script>
+function chkrelAPTclick() {
+  
+  var checkBox = document.getElementById("chkrelAPT");
+  var box2 = document.getElementById("relAPT");
+  if (checkBox.checked == true)
+  {
+	box2.style.display = 'block';
+  } 
+  else 
+  {
+    box2.style.display = 'none';
+  }
+}
+
+function chkrelAPT1click() {
+  
+  var checkBox = document.getElementById("chkrelAPT1");
+  var boxes = document.querySelectorAll('.relAPTTargets');
+
+
+  if (checkBox.checked == true)
+  {
+	boxes.forEach(box => {  box.style.display = 'block';});
+  } 
+  else 
+  {
+    boxes.forEach(box => {  box.style.display = 'none';});
+  }
+}
+
+
+function chkrelAPT2click() {
+  
+  var checkBox = document.getElementById("chkrelAPT2");
+  var boxes = document.querySelectorAll('.relAPTTargetCategories');
+
+
+  if (checkBox.checked == true){
+    boxes.forEach(box => {  box.style.display = 'block';});
+  
+  } else {
+    boxes.forEach(box => {  box.style.display = 'none';});
+	
+  }
+}
+
+function chkrelAPT3click() {
+  
+  var checkBox = document.getElementById("chkrelAPT3");
+  var boxes = document.querySelectorAll('.relAPTTechniques');
+
+
+  if (checkBox.checked == true){
+    boxes.forEach(box => {  box.style.display = 'block';});
+  
+  } else {
+    boxes.forEach(box => {  box.style.display = 'none';});
+	
+  }
+}
+
+function chkrelAPT4click() {
+  
+  var checkBox = document.getElementById("chkrelAPT4");
+  var boxes = document.querySelectorAll('.relAPTTools');
+
+
+  if (checkBox.checked == true){
+    boxes.forEach(box => {  box.style.display = 'block';});
+  
+  } else {
+    boxes.forEach(box => {  box.style.display = 'none';});
+	
+  }
+}
+
+function chkrelTargetsclick(){
+var checkBox = document.getElementById("chkrelTargets");
+   var box = document.getElementById("relTargets");
+   if (checkBox.checked == true){
+   
+   box.style.display = 'block';
+  } else {
+     
+   box.style.display = 'none';
+  }
+}
+
+function btnSearchClick()
+{
+
+if (document.getElementById("searchAPTname").value!==""){window.location.hash='#name='+document.getElementById("searchAPTname").value;
+} else if (document.getElementById("searchTarget").value!==""){window.location.hash='#target='+document.getElementById("searchTarget").value;
+} else if (document.getElementById("searchTargetcategory").value!==""){window.location.hash='#targetcategory='+document.getElementById("searchTargetcategory").value;
+} else if (document.getElementById("searchTool").value!==""){window.location.hash='#tool='+document.getElementById("searchTool").value;
+} else if (document.getElementById("searchLocation").value!==""){window.location.hash='#location='+document.getElementById("searchLocation").value;}
+
+}	
+		
+		
+		</script>
+		</div>
+		
+  </div>
+  
   <div id="search-container">
   <div id="searchDiv">
   <button id="close-search" class="esri-icon-close"></button>
@@ -531,16 +1683,72 @@
 		<div id"searchPnl">APT Name: <input type="text" id="searchAPTname" name="searchAPTname"><br><br>
 		Location: <input type="text" id="searchLocation" name="searchLocation"><br><br>
 		Target: <input type="text" id="searchTarget" name="searchTarget"><br><br>
-		Tools: <input type="text" id="searchTools" name="searchTools"><br><br>
-		<input type="button" id="btnsearch" name="btnsearch" value="Search" onclick="Search()">
+		Target category: <input type="text" id="searchTargetcategory" name="searchTargetcategory"><br><br>
+		Tool: <input type="text" id="searchTool" name="searchTool"><br><br>
+		<input type="button" id="btnsearch" name="btnsearch" value="Search" onclick="btnSearchClick()">
+		<button onclick="history.back()">Go Back</button>
 		</div>
 		<ol id="searchPlaceHolder">
 		</ol>
 		</div>
 	   </div>
     </div>
+	<div id="chart-container">
+  <div id="chartDiv">
+  <button id="close-chart" class="esri-icon-close"></button>
+		
+		<div>		
+		<canvas id="IdChart1" ></canvas>
+		<canvas id="IdChart2" ></canvas>
+		<canvas id="IdChart3" ></canvas>
+		<canvas id="IdChart4" ></canvas>
+		<canvas id="IdChart5" ></canvas>
+		<canvas id="IdChart6" ></canvas>
+		</div>
+		
+		</div>
+	   </div>
+    </div>
 	</div>
   </div>
-  
+ <script>
+ setTimeout(function(){
+ 
+ if (window.location.hash!=="") {
+	document.getElementById("search").click();
+	if (window.location.hash.split("=")[0]==="#name"){
+	document.getElementById("searchAPTname").value=decodeURIComponent(window.location.hash.split("=")[1]);
+	document.getElementById("searchTarget").value="";
+	document.getElementById("searchTargetcategory").value="";
+	document.getElementById("searchTool").value="";
+	document.getElementById("searchLocation").value="";
+	}
+	else if (window.location.hash.split("=")[0]==="#target"){
+	document.getElementById("searchTarget").value=decodeURIComponent(window.location.hash.split("=")[1]);
+	document.getElementById("searchAPTname").value="";
+	document.getElementById("searchTargetcategory").value="";
+	document.getElementById("searchTool").value="";
+	document.getElementById("searchLocation").value="";
+	}
+	else if (window.location.hash.split("=")[0]==="#targetcategory"){
+	document.getElementById("searchTargetcategory").value=decodeURIComponent(window.location.hash.split("=")[1]);
+	document.getElementById("searchAPTname").value="";
+	document.getElementById("searchTarget").value="";
+	document.getElementById("searchTool").value="";
+	document.getElementById("searchLocation").value="";
+	}
+	else if (window.location.hash.split("=")[0]==="#tool"){
+	document.getElementById("searchTool").value=decodeURIComponent(window.location.hash.split("=")[1]);
+	document.getElementById("searchAPTname").value="";
+	document.getElementById("searchTarget").value="";
+	document.getElementById("searchTargetcategory").value="";
+	document.getElementById("searchLocation").value="";
+	}
+
+Search();
+	}
+}, 6000);
+ 
+ </script>
 </body>
 </html>

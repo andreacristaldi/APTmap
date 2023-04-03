@@ -1,5 +1,5 @@
 # APTmap
-Graphical map of known Advanced Persistent Threats
+Graphical map of known Advanced Persistent Threats v2
 
 <a href="https://andreacristaldi.github.io/APTmap/">https://andreacristaldi.github.io/APTmap/</a>
 
@@ -9,11 +9,13 @@ An Advanced Persistent Threat (APT) is a stealthy computer network threat actor,
 
 Attribution is a very complex issue. This map is based on data from different sources (vendor, studies, reports, ...) and is not a reliable source. Most of the mappings rely on the findings in a single incident analysis. Groups often change their toolsets or exchange them with other groups. This makes attribution of certain operations extremely difficult. Information published here may be wrong, outdated, or may change based on evolving information.
 
-Primary sources: <a href="https://attack.mitre.org/resources/terms-of-use/" target="blank_">MITRE</a>, <a href="https://apt.threattracking.com/" target="blank_">APT Groups and Operations</a>, <a href="https://www.thaicert.or.th/downloads/files/A_Threat_Actor_Encyclopedia.pdf" target="blank_">Thaicert</a>
+Primary sources: <a href="https://www.misp-project.org/" target="blank_">MISP</a>, <a href="https://attack.mitre.org/" target="blank_">MITRE</a>, <a href="https://www.etda.or.th/th/" target="blank_">ETDA</a>, <a href="https://www.vx-underground.org/" target="blank_">VX-Underground</a>
+
+Project: Andrea Cristaldi <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
 
 
 <h2>Data</h2>
-The data is stored in JSON format, hoping that this will help keep it up to date.
+The data is stored in JSON format and will be updated periodically.
 
 
 <h2>License</h2>
