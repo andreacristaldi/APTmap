@@ -216,6 +216,17 @@ function GetMap()
 	
       });
 map.layers.add(extremesLayer);
+
+
+view.popup.watch("visible", function(name, oldValue, newValue){
+        if(name===true){document.getElementById("chart-container").style["max-width"] = "50%";}
+		else{document.getElementById("chart-container").style["max-width"] = "100%";}
+		
+		//console.info(name, oldValue, newValue);
+      })
+
+
+
 	  
 function onChart(jdata) {
 	var vdict1={};
@@ -1136,6 +1147,7 @@ function DisplayPopUp(feature)
 		}
     }
 
+	
 
 	var div='';
 	div+='<div class="popupImage"><img src="images/flags/'+ apt.properties["image-url"] +'" alt="' + apt.properties["image-caption"] + '"/></div>';

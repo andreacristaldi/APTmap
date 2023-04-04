@@ -590,7 +590,7 @@ body,
   position: absolute;
   bottom: 70px;
   left: 0;
-  max-height:250px;
+  /*max-height:250px;*/
   
   
   display: flex;
