@@ -291,7 +291,7 @@ button.esri-icon-close {
 #searchDiv {
   position: relative;
   width: 80%;
-  /*max-width: 800px;*/
+  max-width: 900px;
   min-height: 350px;
   max-height:90%;
   flex: 1;
