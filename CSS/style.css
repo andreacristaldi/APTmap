@@ -55,7 +55,7 @@ li{
 	list-style-type:none;
 	padding-top:1em;
 }
-li a{color: #888;}
+li a{color: #cccccc;}
 
 
 #searchPlaceHolder a{color: #888;}
@@ -102,6 +102,10 @@ ol {
 
 .esri-popup__header-title {
   font-size: 18px;
+}
+
+.esri-popup__header-title:hover{
+	background-color: #000000;
 }
 
 .esri-popup__footer {
@@ -286,8 +290,8 @@ button.esri-icon-close {
 
 #searchDiv {
   position: relative;
-  width: 70%;
-  max-width: 800px;
+  width: 80%;
+  /*max-width: 800px;*/
   min-height: 350px;
   max-height:90%;
   flex: 1;
@@ -302,8 +306,13 @@ button.esri-icon-close {
   word-break:break-word;
 }
 
+#searchDiv img{
+	width:50%;
+}
 
-
+#searchDiv .popupImageCaption{
+	width:50%;
+}
 
 #search-container {
    padding: 0;
@@ -489,7 +498,27 @@ input:checked + .slider:before {
 	border:1px solid #ffffff;
 }
 .APTname
-{    color: aqua;}
+{    color: aqua;
+     font-size: 2em;
+	 }
+	 
+.infoTitle
+{
+	font-size: 1.4em;
+	
+}
+
+.infoTool
+{    color: aqua;
+     text-decoration:bold;
+	 font-size: 1.2em;
+	 }
+	 
+.infoTTP
+{    color: aqua;
+     text-decoration:bold;
+	 font-size: 1.2em;
+	 }
 
 #chart {
   color: white;
