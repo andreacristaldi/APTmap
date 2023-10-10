@@ -1,0 +1,287 @@
+[
+    {
+        "id": 1,
+        "filetype": "PE32 executable (GUI) Intel 80386, for MS Windows",
+        "count": 10451
+    },
+    {
+        "id": 2,
+        "filetype": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows",
+        "count": 3116
+    },
+    {
+        "id": 3,
+        "filetype": "PE32 executable (GUI) Intel 80386 Mono/.Net assembly, for MS Windows",
+        "count": 1977
+    },
+    {
+        "id": 4,
+        "filetype": "PE32 executable (console) Intel 80386, for MS Windows",
+        "count": 829
+    },
+    {
+        "id": 5,
+        "filetype": "PE32 executable (GUI) Intel 80386, for MS Windows, UPX compressed",
+        "count": 724
+    },
+    {
+        "id": 6,
+        "filetype": "PE32+ executable (DLL) (GUI) x86-64, for MS Windows",
+        "count": 652
+    },
+    {
+        "id": 7,
+        "filetype": "PE32 executable (GUI) Intel 80386 (stripped to external PDB), for MS Windows",
+        "count": 446
+    },
+    {
+        "id": 8,
+        "filetype": "PE32 executable (DLL) (console) Intel 80386, for MS Windows",
+        "count": 330
+    },
+    {
+        "id": 9,
+        "filetype": "MS-DOS executable, MZ for MS-DOS",
+        "count": 302
+    },
+    {
+        "id": 10,
+        "filetype": "PE32+ executable (GUI) x86-64, for MS Windows",
+        "count": 257
+    },
+    {
+        "id": 11,
+        "filetype": "MS-DOS executable",
+        "count": 206
+    },
+    {
+        "id": 12,
+        "filetype": "PE32+ executable (console) x86-64, for MS Windows",
+        "count": 165
+    },
+    {
+        "id": 13,
+        "filetype": "PE32 executable (native) Intel 80386, for MS Windows",
+        "count": 159
+    },
+    {
+        "id": 14,
+        "filetype": "PE32 executable (DLL) (console) Intel 80386 Mono/.Net assembly, for MS Windows",
+        "count": 126
+    },
+    {
+        "id": 15,
+        "filetype": "PE32+ executable (DLL) (console) x86-64, for MS Windows",
+        "count": 105
+    },
+    {
+        "id": 16,
+        "filetype": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, UPX compressed",
+        "count": 104
+    },
+    {
+        "id": 17,
+        "filetype": "PE32 executable (console) Intel 80386 Mono/.Net assembly, for MS Windows",
+        "count": 102
+    },
+    {
+        "id": 18,
+        "filetype": "PE32+ executable (native) x86-64, for MS Windows",
+        "count": 88
+    },
+    {
+        "id": 19,
+        "filetype": "PE32 executable (DLL) (GUI) Intel 80386 (stripped to external PDB), for MS Windows",
+        "count": 87
+    },
+    {
+        "id": 20,
+        "filetype": "PE32 executable (console) Intel 80386 (stripped to external PDB), for MS Windows",
+        "count": 60
+    },
+    {
+        "id": 21,
+        "filetype": "PE32 executable (DLL) (native) Intel 80386, for MS Windows",
+        "count": 44
+    },
+    {
+        "id": 22,
+        "filetype": "PE32 executable (console) Intel 80386, for MS Windows, UPX compressed",
+        "count": 42
+    },
+    {
+        "id": 23,
+        "filetype": "PE32+ executable (DLL) (EFI application) x86-64, for MS Windows",
+        "count": 41
+    },
+    {
+        "id": 24,
+        "filetype": "PE32+ executable (console) x86-64 (stripped to external PDB), for MS Windows",
+        "count": 38
+    },
+    {
+        "id": 25,
+        "filetype": "PE32 executable (GUI) Intel 80386, for MS Windows, PECompact2 compressed",
+        "count": 27
+    },
+    {
+        "id": 26,
+        "filetype": "PE32+ executable (GUI) x86-64 (stripped to external PDB), for MS Windows",
+        "count": 24
+    },
+    {
+        "id": 27,
+        "filetype": "PE32 executable (DLL) (EFI application) Intel 80386, for MS Windows",
+        "count": 23
+    },
+    {
+        "id": 28,
+        "filetype": "PE32+ executable (GUI) x86-64 Mono/.Net assembly, for MS Windows",
+        "count": 15
+    },
+    {
+        "id": 29,
+        "filetype": "PE32 executable (GUI) Intel 80386, for MS Windows, Petite compressed",
+        "count": 12
+    },
+    {
+        "id": 30,
+        "filetype": "PE32 executable (DLL) (console) Intel 80386, for MS Windows, PECompact2 compressed",
+        "count": 10
+    },
+    {
+        "id": 31,
+        "filetype": "PE32 executable (DLL) (console) Intel 80386 (stripped to external PDB), for MS Windows",
+        "count": 9
+    },
+    {
+        "id": 32,
+        "filetype": "PE32 executable (console) Intel 80386 (stripped to external PDB), for MS Windows, UPX compressed",
+        "count": 8
+    },
+    {
+        "id": 33,
+        "filetype": "PE32+ executable (DLL) (native) x86-64, for MS Windows",
+        "count": 7
+    },
+    {
+        "id": 34,
+        "filetype": "PE32+ executable (DLL) (console) x86-64 (stripped to external PDB), for MS Windows",
+        "count": 7
+    },
+    {
+        "id": 35,
+        "filetype": "PE32 executable (console) Intel 80386, for MS Windows, PECompact2 compressed",
+        "count": 6
+    },
+    {
+        "id": 36,
+        "filetype": "PE32 executable (DLL) (GUI) Intel 80386 Mono/.Net assembly, for MS Windows",
+        "count": 6
+    },
+    {
+        "id": 37,
+        "filetype": "PE32 executable (GUI) Intel 80386 (stripped to external PDB), for MS Windows, UPX compressed",
+        "count": 5
+    },
+    {
+        "id": 38,
+        "filetype": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, Petite compressed",
+        "count": 5
+    },
+    {
+        "id": 39,
+        "filetype": "PE32+ executable (DLL) (console) x86-64 Mono/.Net assembly, for MS Windows",
+        "count": 5
+    },
+    {
+        "id": 40,
+        "filetype": "PE32 executable (Windows CE) ARM Thumb, for MS Windows",
+        "count": 4
+    },
+    {
+        "id": 41,
+        "filetype": "PE32 executable (native) Intel 80386 (stripped to external PDB), for MS Windows",
+        "count": 3
+    },
+    {
+        "id": 42,
+        "filetype": "PE32 executable (GUI) Intel 80386, for MS Windows, InnoSetup self-extracting archive",
+        "count": 3
+    },
+    {
+        "id": 43,
+        "filetype": "PE32+ executable (console) x86-64 Mono/.Net assembly, for MS Windows",
+        "count": 2
+    },
+    {
+        "id": 44,
+        "filetype": "PE32 executable (DLL) (console) Intel 80386, for MS Windows, UPX compressed",
+        "count": 2
+    },
+    {
+        "id": 45,
+        "filetype": "PE32 executable (GUI) Intel 80386, for MS Windows, ZIP self-extracting archive (WinZip)",
+        "count": 2
+    },
+    {
+        "id": 46,
+        "filetype": "MS-DOS executable, NE for MS Windows 3.x (driver)",
+        "count": 2
+    },
+    {
+        "id": 47,
+        "filetype": "PE32+ executable (DLL) (GUI) x86-64 (stripped to external PDB), for MS Windows",
+        "count": 2
+    },
+    {
+        "id": 48,
+        "filetype": "PE32+ executable (GUI) Intel 80386 Mono/.Net assembly, for MS Windows",
+        "count": 2
+    },
+    {
+        "id": 49,
+        "filetype": "PE32 executable (DLL) (Windows CE) ARM Thumb, for MS Windows",
+        "count": 1
+    },
+    {
+        "id": 50,
+        "filetype": "PE32 executable (GUI) Intel 80386 (stripped to external PDB) system file, for MS Windows",
+        "count": 1
+    },
+    {
+        "id": 51,
+        "filetype": "PE32 executable (DLL) (GUI) Intel 80386, for MS Windows, PECompact2 compressed",
+        "count": 1
+    },
+    {
+        "id": 52,
+        "filetype": "PE32 executable (XBOX) Intel 80386, for MS Windows",
+        "count": 1
+    },
+    {
+        "id": 53,
+        "filetype": "MS-DOS executable, NE for MS Windows 3.x",
+        "count": 1
+    },
+    {
+        "id": 54,
+        "filetype": "PE32 executable (Windows CE) ARM, for MS Windows",
+        "count": 1
+    },
+    {
+        "id": 55,
+        "filetype": "PE32 executable (DLL) (GUI) Intel 80386 (stripped to external PDB), for MS Windows, UPX compressed",
+        "count": 1
+    },
+    {
+        "id": 56,
+        "filetype": "PE Unknown PE signature 0x0 (DLL) x86-64, for MS Windows",
+        "count": 1
+    },
+    {
+        "id": 57,
+        "filetype": "DOS executable (COM, 0x8C-variant)",
+        "count": 1
+    }
+]

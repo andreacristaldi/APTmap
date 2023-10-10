@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+ 
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1" />
+	<meta name="description" content="APTMalware - Advanced Persistent Threat MALWARE stats">
+	<meta name="keywords" content="APTMalware, Advanced Persistent Threat MALWARE stats">
+	<meta name="author" content="Andrea Cristaldi">
+	<title>APTMalware - Advanced Persistent Threat MALWARE stats</title>
+	<link rel="stylesheet" href="CSS/style2.css" />
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+
+
+
+</script>
+
+
+</head>
+<body>
+	<div class="DivContainer">
+	<img src="images/aptmap.png"/>
+	<h1>APT Malware stats</h1>
+		<div class="DivPanel1">
+			<h2>Samples</h2>
+			<span id="NSamples"></span>
+			<p>2010-2022</br>
+			PE Portable Executable</br>
+			29GB of data analysed using static analysis techniques</br>
+			<a href="malware.html">Here, the stats</a></p>
+		</div>
+		
+		
+		<div class="DivPanel2">
+			<h2>Samples</h2>
+			
+			 <div class="table-container" id="TableSamples">
+        <input type="text" id="search-input1" placeholder="Search hash"><br/><br/>
+		
+		<table>
+            <thead>
+                <tr>
+					<th>ID</th>
+                    <th>HASH</th>
+                                        
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+		<div id="pagination1">
+        <button id="prev-page1">Prev</button>
+        <span id="page-number1">1</span> / <span id="total-pages1">1</span>
+        <button id="next-page1">Next</button>
+		<span id="count1"></span> 
+    <script>
+        
+        const itemsPerPage1 = 250;
+        let currentPage1 = 1;
+        let jsonData1 = [];
+		let filteredData1 =[];
+
+        
+        function loadData1() {
+            $.getJSON('hashes.json', function(data) {
+                jsonData1 = data;
+				filteredData1 = jsonData1;
+                const totalPages = Math.ceil(filteredData1.length / itemsPerPage1);
+                $('#total-pages1').text(totalPages);
+                updateTable1();
+            });
+        }
+
+        
+        function updateTable1() {
+            const startIndex = (currentPage1 - 1) * itemsPerPage1;
+            const endIndex = startIndex + itemsPerPage1;
+			const currentPageData = filteredData1.slice(startIndex, endIndex);
+
+            const tableBody = $('#TableSamples tbody');
+            tableBody.empty();
+
+            for (const item of currentPageData) {
+                tableBody.append(`<tr><td><a target='_blank' href='https://www.virustotal.com/gui/search/${item.SHA256}'>${item.SHA256}</a></td><td>MD5: ${item.MD5}<br/>SHA1: ${item.SHA1}<br/>SHA256: ${item.SHA256}</td></tr>`);
+            }
+			
+			let celem = 0;
+			for (const item of filteredData1) {
+                
+			   celem +=1;
+			}
+			$('#count1').text('Total record: ' + celem );
+     
+
+            $('#page-number1').text(currentPage1);
+        }
+
+        
+        $('#prev-page1').click(function() {
+            if (currentPage1 > 1) {
+                currentPage1--;
+                updateTable1();
+            }
+        });
+
+        
+        $('#next-page1').click(function() {
+            const maxPage = Math.ceil(jsonData1.length / itemsPerPage1);
+            if (currentPage1 < maxPage) {
+                currentPage1++;
+                updateTable1();
+            }
+        });
+		$('#search-input1').on('input', function() {
+            const searchTerm = $(this).val().toLowerCase();
+            filteredData1 = jsonData1.filter(item => item.MD5.toLowerCase().includes(searchTerm) || 
+                item.SHA1.toLowerCase().includes(searchTerm)|| 
+                item.SHA256.toLowerCase().includes(searchTerm));
+            currentPage1 = 1;
+			const totalPages = Math.ceil(filteredData1.length / itemsPerPage1);
+            $('#total-pages1').text(totalPages);
+            updateTable1();
+        });
+        
+        loadData1();
+    </script>
+	
+	</div>
+		
+		
+		
+    </div>
+	</div>
+	<div class="clearfix"></div>
+	
+	</div>
+	
+
+
+
+</body>
+</html>

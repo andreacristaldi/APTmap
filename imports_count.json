@@ -1,0 +1,3622 @@
+[
+    {
+        "id": 1,
+        "import": "KERNEL32.DLL",
+        "count": 15358
+    },
+    {
+        "id": 2,
+        "import": "USER32.DLL",
+        "count": 11583
+    },
+    {
+        "id": 3,
+        "import": "ADVAPI32.DLL",
+        "count": 10744
+    },
+    {
+        "id": 4,
+        "import": "SHELL32.DLL",
+        "count": 7747
+    },
+    {
+        "id": 5,
+        "import": "OLE32.DLL",
+        "count": 5357
+    },
+    {
+        "id": 6,
+        "import": "GDI32.DLL",
+        "count": 4993
+    },
+    {
+        "id": 7,
+        "import": "OLEAUT32.DLL",
+        "count": 4137
+    },
+    {
+        "id": 8,
+        "import": "MSVCRT.DLL",
+        "count": 3953
+    },
+    {
+        "id": 9,
+        "import": "COMCTL32.DLL",
+        "count": 3935
+    },
+    {
+        "id": 10,
+        "import": "WS2_32.DLL",
+        "count": 3551
+    },
+    {
+        "id": 11,
+        "import": "SHLWAPI.DLL",
+        "count": 3198
+    },
+    {
+        "id": 12,
+        "import": "WININET.DLL",
+        "count": 2736
+    },
+    {
+        "id": 13,
+        "import": "COMDLG32.DLL",
+        "count": 2132
+    },
+    {
+        "id": 14,
+        "import": "VERSION.DLL",
+        "count": 1891
+    },
+    {
+        "id": 15,
+        "import": "MSCOREE.DLL",
+        "count": 1763
+    },
+    {
+        "id": 16,
+        "import": "PSAPI.DLL",
+        "count": 1263
+    },
+    {
+        "id": 17,
+        "import": "WSOCK32.DLL",
+        "count": 1046
+    },
+    {
+        "id": 18,
+        "import": "WINMM.DLL",
+        "count": 988
+    },
+    {
+        "id": 19,
+        "import": "WINSPOOL.DRV",
+        "count": 944
+    },
+    {
+        "id": 20,
+        "import": "IPHLPAPI.DLL",
+        "count": 797
+    },
+    {
+        "id": 21,
+        "import": "NTDLL.DLL",
+        "count": 635
+    },
+    {
+        "id": 22,
+        "import": "URLMON.DLL",
+        "count": 618
+    },
+    {
+        "id": 23,
+        "import": "CRYPT32.DLL",
+        "count": 617
+    },
+    {
+        "id": 24,
+        "import": "GDIPLUS.DLL",
+        "count": 578
+    },
+    {
+        "id": 25,
+        "import": "OLEACC.DLL",
+        "count": 535
+    },
+    {
+        "id": 26,
+        "import": "NETAPI32.DLL",
+        "count": 533
+    },
+    {
+        "id": 27,
+        "import": "USERENV.DLL",
+        "count": 527
+    },
+    {
+        "id": 28,
+        "import": "RPCRT4.DLL",
+        "count": 506
+    },
+    {
+        "id": 29,
+        "import": "MFC42.DLL",
+        "count": 492
+    },
+    {
+        "id": 30,
+        "import": "MPR.DLL",
+        "count": 453
+    },
+    {
+        "id": 31,
+        "import": "WTSAPI32.DLL",
+        "count": 441
+    },
+    {
+        "id": 32,
+        "import": "WINHTTP.DLL",
+        "count": 391
+    },
+    {
+        "id": 33,
+        "import": "MSVBVM60.DLL",
+        "count": 389
+    },
+    {
+        "id": 34,
+        "import": "DMDSKMGR.DLL",
+        "count": 348
+    },
+    {
+        "id": 35,
+        "import": "MSVCP60.DLL",
+        "count": 338
+    },
+    {
+        "id": 36,
+        "import": "MSVCR80.DLL",
+        "count": 299
+    },
+    {
+        "id": 37,
+        "import": "IMM32.DLL",
+        "count": 264
+    },
+    {
+        "id": 38,
+        "import": "MSVCP80.DLL",
+        "count": 259
+    },
+    {
+        "id": 39,
+        "import": "SECUR32.DLL",
+        "count": 245
+    },
+    {
+        "id": 40,
+        "import": "MSVCR90.DLL",
+        "count": 231
+    },
+    {
+        "id": 41,
+        "import": "UXTHEME.DLL",
+        "count": 229
+    },
+    {
+        "id": 42,
+        "import": "OPENGL32.DLL",
+        "count": 223
+    },
+    {
+        "id": 43,
+        "import": "MSIMG32.DLL",
+        "count": 219
+    },
+    {
+        "id": 44,
+        "import": "SETUPAPI.DLL",
+        "count": 213
+    },
+    {
+        "id": 45,
+        "import": "RASAPI32.DLL",
+        "count": 178
+    },
+    {
+        "id": 46,
+        "import": "YCPFOUNDATION.DLL",
+        "count": 177
+    },
+    {
+        "id": 47,
+        "import": "RGX.DLL",
+        "count": 177
+    },
+    {
+        "id": 48,
+        "import": "OLEDLG.DLL",
+        "count": 172
+    },
+    {
+        "id": 49,
+        "import": "DNSAPI.DLL",
+        "count": 157
+    },
+    {
+        "id": 50,
+        "import": "NTOSKRNL.EXE",
+        "count": 141
+    },
+    {
+        "id": 51,
+        "import": "DBGHELP.DLL",
+        "count": 116
+    },
+    {
+        "id": 52,
+        "import": "AVICAP32.DLL",
+        "count": 110
+    },
+    {
+        "id": 53,
+        "import": "HAL.DLL",
+        "count": 105
+    },
+    {
+        "id": 54,
+        "import": "PLATFORM.DLL",
+        "count": 88
+    },
+    {
+        "id": 55,
+        "import": "MSVCP90.DLL",
+        "count": 86
+    },
+    {
+        "id": 56,
+        "import": "DWMAPI.DLL",
+        "count": 86
+    },
+    {
+        "id": 57,
+        "import": "MSVCRT20.DLL",
+        "count": 83
+    },
+    {
+        "id": 58,
+        "import": "SHFOLDER.DLL",
+        "count": 80
+    },
+    {
+        "id": 59,
+        "import": "OLEPRO32.DLL",
+        "count": 78
+    },
+    {
+        "id": 60,
+        "import": "MSVCRT40.DLL",
+        "count": 78
+    },
+    {
+        "id": 61,
+        "import": "PDH.DLL",
+        "count": 75
+    },
+    {
+        "id": 62,
+        "import": "WINDOWSCODECS.DLL",
+        "count": 74
+    },
+    {
+        "id": 63,
+        "import": "IMAGEHLP.DLL",
+        "count": 73
+    },
+    {
+        "id": 64,
+        "import": "WINSCARD.DLL",
+        "count": 73
+    },
+    {
+        "id": 65,
+        "import": "MSVFW32.DLL",
+        "count": 72
+    },
+    {
+        "id": 66,
+        "import": "CABINET.DLL",
+        "count": 69
+    },
+    {
+        "id": 67,
+        "import": "MSACM32.DLL",
+        "count": 68
+    },
+    {
+        "id": 68,
+        "import": "WLDAP32.DLL",
+        "count": 64
+    },
+    {
+        "id": 69,
+        "import": "DISKMGR.DLL",
+        "count": 64
+    },
+    {
+        "id": 70,
+        "import": "FUNCLOGIC.DLL",
+        "count": 64
+    },
+    {
+        "id": 71,
+        "import": "COMN.DLL",
+        "count": 64
+    },
+    {
+        "id": 72,
+        "import": "QTCORE4.DLL",
+        "count": 62
+    },
+    {
+        "id": 73,
+        "import": "QTGUI4.DLL",
+        "count": 62
+    },
+    {
+        "id": 74,
+        "import": "CRTDLL.DLL",
+        "count": 61
+    },
+    {
+        "id": 75,
+        "import": "FLBACKUP.DLL",
+        "count": 61
+    },
+    {
+        "id": 76,
+        "import": "MPRAPI.DLL",
+        "count": 60
+    },
+    {
+        "id": 77,
+        "import": "AVIFIL32.DLL",
+        "count": 54
+    },
+    {
+        "id": 78,
+        "import": "WINTRUST.DLL",
+        "count": 53
+    },
+    {
+        "id": 79,
+        "import": "QUERY.DLL",
+        "count": 52
+    },
+    {
+        "id": 80,
+        "import": "LZ32.DLL",
+        "count": 50
+    },
+    {
+        "id": 81,
+        "import": "CFGMGR32.DLL",
+        "count": 49
+    },
+    {
+        "id": 82,
+        "import": "MSI.DLL",
+        "count": 47
+    },
+    {
+        "id": 83,
+        "import": "NTDLL",
+        "count": 43
+    },
+    {
+        "id": 84,
+        "import": "SQLUNIRL.DLL",
+        "count": 42
+    },
+    {
+        "id": 85,
+        "import": "MFC42U.DLL",
+        "count": 39
+    },
+    {
+        "id": 86,
+        "import": "LIBORTP-9.DLL",
+        "count": 36
+    },
+    {
+        "id": 87,
+        "import": "BCRYPT.DLL",
+        "count": 36
+    },
+    {
+        "id": 88,
+        "import": "MSASN1.DLL",
+        "count": 35
+    },
+    {
+        "id": 89,
+        "import": "EXPSRV.DLL",
+        "count": 35
+    },
+    {
+        "id": 90,
+        "import": "MSVCR100.DLL",
+        "count": 34
+    },
+    {
+        "id": 91,
+        "import": "NETSH.EXE",
+        "count": 33
+    },
+    {
+        "id": 92,
+        "import": "MSVCIRT.DLL",
+        "count": 32
+    },
+    {
+        "id": 93,
+        "import": "ODBC32.DLL",
+        "count": 32
+    },
+    {
+        "id": 94,
+        "import": "CMUTIL.DLL",
+        "count": 32
+    },
+    {
+        "id": 95,
+        "import": "MSDART.DLL",
+        "count": 32
+    },
+    {
+        "id": 96,
+        "import": "MSXFS.DLL",
+        "count": 31
+    },
+    {
+        "id": 97,
+        "import": "SKINH.DLL",
+        "count": 30
+    },
+    {
+        "id": 98,
+        "import": "ESENT.DLL",
+        "count": 29
+    },
+    {
+        "id": 99,
+        "import": "URL.DLL",
+        "count": 29
+    },
+    {
+        "id": 100,
+        "import": "LIBMEDIASTREAMER_VOIP-4.DLL",
+        "count": 29
+    },
+    {
+        "id": 101,
+        "import": "SHCORE.DLL",
+        "count": 25
+    },
+    {
+        "id": 102,
+        "import": "WPCAP.DLL",
+        "count": 24
+    },
+    {
+        "id": 103,
+        "import": "CMDIAL32.DLL",
+        "count": 23
+    },
+    {
+        "id": 104,
+        "import": "NDIS.SYS",
+        "count": 22
+    },
+    {
+        "id": 105,
+        "import": "GLMF32.DLL",
+        "count": 21
+    },
+    {
+        "id": 106,
+        "import": "RASMAN.DLL",
+        "count": 21
+    },
+    {
+        "id": 107,
+        "import": "WINSTA.DLL",
+        "count": 20
+    },
+    {
+        "id": 108,
+        "import": "SKINMAGIC.DLL",
+        "count": 20
+    },
+    {
+        "id": 109,
+        "import": "APPSYS.DLL",
+        "count": 20
+    },
+    {
+        "id": 110,
+        "import": "DSP_UTIL.DLL",
+        "count": 20
+    },
+    {
+        "id": 111,
+        "import": "I3BASEDX.DLL",
+        "count": 20
+    },
+    {
+        "id": 112,
+        "import": "I3GFXDX.DLL",
+        "count": 20
+    },
+    {
+        "id": 113,
+        "import": "I3SCENEDX.DLL",
+        "count": 20
+    },
+    {
+        "id": 114,
+        "import": "I3MATHDX.DLL",
+        "count": 20
+    },
+    {
+        "id": 115,
+        "import": "NTDSAPI.DLL",
+        "count": 19
+    },
+    {
+        "id": 116,
+        "import": "MSVCR71.DLL",
+        "count": 19
+    },
+    {
+        "id": 117,
+        "import": "CRYPTDLL.DLL",
+        "count": 19
+    },
+    {
+        "id": 118,
+        "import": "ADSLDPC.DLL",
+        "count": 19
+    },
+    {
+        "id": 119,
+        "import": "MSVCP71.DLL",
+        "count": 18
+    },
+    {
+        "id": 120,
+        "import": "DUSER.DLL",
+        "count": 18
+    },
+    {
+        "id": 121,
+        "import": "SAMLIB.DLL",
+        "count": 17
+    },
+    {
+        "id": 122,
+        "import": "GLU32.DLL",
+        "count": 17
+    },
+    {
+        "id": 123,
+        "import": "MFCSUBS.DLL",
+        "count": 17
+    },
+    {
+        "id": 124,
+        "import": "MAGNIFICATION.DLL",
+        "count": 17
+    },
+    {
+        "id": 125,
+        "import": "MAPI32.DLL",
+        "count": 16
+    },
+    {
+        "id": 126,
+        "import": "LIBGCC_S_DW2-1.DLL",
+        "count": 16
+    },
+    {
+        "id": 127,
+        "import": "MSOERT2.DLL",
+        "count": 15
+    },
+    {
+        "id": 128,
+        "import": "RESUTILS.DLL",
+        "count": 14
+    },
+    {
+        "id": 129,
+        "import": "UNTFS.DLL",
+        "count": 14
+    },
+    {
+        "id": 130,
+        "import": "OLECLI32.DLL",
+        "count": 14
+    },
+    {
+        "id": 131,
+        "import": "MSVCP100.DLL",
+        "count": 12
+    },
+    {
+        "id": 132,
+        "import": "CLUSAPI.DLL",
+        "count": 12
+    },
+    {
+        "id": 133,
+        "import": "CREDUI.DLL",
+        "count": 12
+    },
+    {
+        "id": 134,
+        "import": "POWRPROF.DLL",
+        "count": 12
+    },
+    {
+        "id": 135,
+        "import": "ULIB.DLL",
+        "count": 12
+    },
+    {
+        "id": 136,
+        "import": "MAPISTUB.DLL",
+        "count": 12
+    },
+    {
+        "id": 137,
+        "import": "MFC90.DLL",
+        "count": 11
+    },
+    {
+        "id": 138,
+        "import": "NORMALIZ.DLL",
+        "count": 11
+    },
+    {
+        "id": 139,
+        "import": "SNMPAPI.DLL",
+        "count": 11
+    },
+    {
+        "id": 140,
+        "import": "MMCBASE.DLL",
+        "count": 11
+    },
+    {
+        "id": 141,
+        "import": "HHCTRL.OCX",
+        "count": 11
+    },
+    {
+        "id": 142,
+        "import": "IFSUTIL.DLL",
+        "count": 11
+    },
+    {
+        "id": 143,
+        "import": "W32TOPL.DLL",
+        "count": 11
+    },
+    {
+        "id": 144,
+        "import": "INTL.DLL",
+        "count": 11
+    },
+    {
+        "id": 145,
+        "import": "TDI.SYS",
+        "count": 10
+    },
+    {
+        "id": 146,
+        "import": "COMSVCS.DLL",
+        "count": 10
+    },
+    {
+        "id": 147,
+        "import": "CLBCATQ.DLL",
+        "count": 10
+    },
+    {
+        "id": 148,
+        "import": "ODBCTRAC.DLL",
+        "count": 10
+    },
+    {
+        "id": 149,
+        "import": "PSTOREC.DLL",
+        "count": 10
+    },
+    {
+        "id": 150,
+        "import": "MSFL70.DLL",
+        "count": 10
+    },
+    {
+        "id": 151,
+        "import": "SPOOLSS.DLL",
+        "count": 10
+    },
+    {
+        "id": 152,
+        "import": "INETCOMM.DLL",
+        "count": 10
+    },
+    {
+        "id": 153,
+        "import": "DHCPSAPI.DLL",
+        "count": 9
+    },
+    {
+        "id": 154,
+        "import": "RTM.DLL",
+        "count": 9
+    },
+    {
+        "id": 155,
+        "import": "API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL",
+        "count": 9
+    },
+    {
+        "id": 156,
+        "import": "HHSETUP.DLL",
+        "count": 9
+    },
+    {
+        "id": 157,
+        "import": "LSASRV.DLL",
+        "count": 9
+    },
+    {
+        "id": 158,
+        "import": "LPK.DLL",
+        "count": 9
+    },
+    {
+        "id": 159,
+        "import": "D3D9.DLL",
+        "count": 8
+    },
+    {
+        "id": 160,
+        "import": "NDDEAPI.DLL",
+        "count": 8
+    },
+    {
+        "id": 161,
+        "import": "SHIMENG.DLL",
+        "count": 8
+    },
+    {
+        "id": 162,
+        "import": "CRYPTUI.DLL",
+        "count": 8
+    },
+    {
+        "id": 163,
+        "import": "MSWSOCK.DLL",
+        "count": 8
+    },
+    {
+        "id": 164,
+        "import": "NTMARTA.DLL",
+        "count": 8
+    },
+    {
+        "id": 165,
+        "import": "FLTLIB.DLL",
+        "count": 8
+    },
+    {
+        "id": 166,
+        "import": "HID.DLL",
+        "count": 8
+    },
+    {
+        "id": 167,
+        "import": "API-MS-WIN-CRT-HEAP-L1-1-0.DLL",
+        "count": 8
+    },
+    {
+        "id": 168,
+        "import": "API-MS-WIN-CORE-PROFILE-L1-1-0.DLL",
+        "count": 8
+    },
+    {
+        "id": 169,
+        "import": "ODBCJT32.DLL",
+        "count": 8
+    },
+    {
+        "id": 170,
+        "import": "FLEDGE.EXE",
+        "count": 8
+    },
+    {
+        "id": 171,
+        "import": "ACTIVEDS.DLL",
+        "count": 7
+    },
+    {
+        "id": 172,
+        "import": "ATL.DLL",
+        "count": 7
+    },
+    {
+        "id": 173,
+        "import": "DCIMAN32.DLL",
+        "count": 7
+    },
+    {
+        "id": 174,
+        "import": "MSVCR110.DLL",
+        "count": 7
+    },
+    {
+        "id": 175,
+        "import": "API-MS-WIN-CRT-STDIO-L1-1-0.DLL",
+        "count": 7
+    },
+    {
+        "id": 176,
+        "import": "API-MS-WIN-CRT-MATH-L1-1-0.DLL",
+        "count": 7
+    },
+    {
+        "id": 177,
+        "import": "API-MS-WIN-CRT-STRING-L1-1-0.DLL",
+        "count": 7
+    },
+    {
+        "id": 178,
+        "import": "API-MS-WIN-CORE-LIBRARYLOADER-L1-2-0.DLL",
+        "count": 7
+    },
+    {
+        "id": 179,
+        "import": "OLVI70.DLL",
+        "count": 7
+    },
+    {
+        "id": 180,
+        "import": "WSNMP32.DLL",
+        "count": 7
+    },
+    {
+        "id": 181,
+        "import": "REGAPI.DLL",
+        "count": 7
+    },
+    {
+        "id": 182,
+        "import": "RTUTILS.DLL",
+        "count": 7
+    },
+    {
+        "id": 183,
+        "import": "LIBSTDC++-6.DLL",
+        "count": 7
+    },
+    {
+        "id": 184,
+        "import": "VCRUNTIME140.DLL",
+        "count": 7
+    },
+    {
+        "id": 185,
+        "import": "NCRYPT.DLL",
+        "count": 7
+    },
+    {
+        "id": 186,
+        "import": "XFS_CONF.DLL",
+        "count": 7
+    },
+    {
+        "id": 187,
+        "import": "DDRAW.DLL",
+        "count": 6
+    },
+    {
+        "id": 188,
+        "import": "DBNMPNTW.DLL",
+        "count": 6
+    },
+    {
+        "id": 189,
+        "import": "AZROLES.DLL",
+        "count": 6
+    },
+    {
+        "id": 190,
+        "import": "AUTHZ.DLL",
+        "count": 6
+    },
+    {
+        "id": 191,
+        "import": "SENSAPI.DLL",
+        "count": 6
+    },
+    {
+        "id": 192,
+        "import": "XMLLITE.DLL",
+        "count": 6
+    },
+    {
+        "id": 193,
+        "import": "ODBCCP32.DLL",
+        "count": 6
+    },
+    {
+        "id": 194,
+        "import": "DSQUERY.DLL",
+        "count": 6
+    },
+    {
+        "id": 195,
+        "import": "API-MS-WIN-CORE-SYNCH-L1-2-0.DLL",
+        "count": 6
+    },
+    {
+        "id": 196,
+        "import": "API-MS-WIN-CORE-HANDLE-L1-1-0.DLL",
+        "count": 6
+    },
+    {
+        "id": 197,
+        "import": "API-MS-WIN-EVENTING-PROVIDER-L1-1-0.DLL",
+        "count": 6
+    },
+    {
+        "id": 198,
+        "import": "LIBORTP-8.DLL",
+        "count": 6
+    },
+    {
+        "id": 199,
+        "import": "SNAPAPI.DLL",
+        "count": 6
+    },
+    {
+        "id": 200,
+        "import": "MSCMS.DLL",
+        "count": 6
+    },
+    {
+        "id": 201,
+        "import": "LIBMEDIASTREAMER_BASE-3.DLL",
+        "count": 6
+    },
+    {
+        "id": 202,
+        "import": "PROFAPI.DLL",
+        "count": 6
+    },
+    {
+        "id": 203,
+        "import": "API-MS-WIN-CRT-LOCALE-L1-1-0.DLL",
+        "count": 6
+    },
+    {
+        "id": 204,
+        "import": "API-MS-WIN-CORE-HEAP-L2-1-0.DLL",
+        "count": 6
+    },
+    {
+        "id": 205,
+        "import": "MSVCM80.DLL",
+        "count": 6
+    },
+    {
+        "id": 206,
+        "import": "VCRUNTIME140D.DLL",
+        "count": 6
+    },
+    {
+        "id": 207,
+        "import": "UCRTBASED.DLL",
+        "count": 6
+    },
+    {
+        "id": 208,
+        "import": "COREDLL.DLL",
+        "count": 5
+    },
+    {
+        "id": 209,
+        "import": "AYGSHELL.DLL",
+        "count": 5
+    },
+    {
+        "id": 210,
+        "import": "PACKET.DLL",
+        "count": 5
+    },
+    {
+        "id": 211,
+        "import": "NTLANMAN.DLL",
+        "count": 5
+    },
+    {
+        "id": 212,
+        "import": "MSVCP110.DLL",
+        "count": 5
+    },
+    {
+        "id": 213,
+        "import": "API-MS-WIN-SERVICE-MANAGEMENT-L1-1-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 214,
+        "import": "API-MS-WIN-SERVICE-WINSVC-L1-1-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 215,
+        "import": "API-MS-WIN-SECURITY-SDDL-L1-1-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 216,
+        "import": "UNIMDMAT.DLL",
+        "count": 5
+    },
+    {
+        "id": 217,
+        "import": "UTILDLL.DLL",
+        "count": 5
+    },
+    {
+        "id": 218,
+        "import": "MSORCL32.DLL",
+        "count": 5
+    },
+    {
+        "id": 219,
+        "import": "RPCNS4.DLL",
+        "count": 5
+    },
+    {
+        "id": 220,
+        "import": "SQLSRV32.DLL",
+        "count": 5
+    },
+    {
+        "id": 221,
+        "import": "VSSAPI.DLL",
+        "count": 5
+    },
+    {
+        "id": 222,
+        "import": "CERTCLI.DLL",
+        "count": 5
+    },
+    {
+        "id": 223,
+        "import": "DMUTIL.DLL",
+        "count": 5
+    },
+    {
+        "id": 224,
+        "import": "DHCPCSVC.DLL",
+        "count": 5
+    },
+    {
+        "id": 225,
+        "import": "S7OTBXSX.DLL",
+        "count": 5
+    },
+    {
+        "id": 226,
+        "import": "LIBTHEORA-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 227,
+        "import": "API-MS-WIN-CORE-PROCESSTHREADS-L1-1-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 228,
+        "import": "API-MS-WIN-CORE-DEBUG-L1-1-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 229,
+        "import": "API-MS-WIN-CORE-ERRORHANDLING-L1-1-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 230,
+        "import": "API-MS-WIN-CORE-HEAP-L1-1-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 231,
+        "import": "API-MS-WIN-CORE-SYSINFO-L1-1-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 232,
+        "import": "API-MS-WIN-CORE-REGISTRY-L1-1-0.DLL",
+        "count": 5
+    },
+    {
+        "id": 233,
+        "import": "TAPI16.DLL",
+        "count": 4
+    },
+    {
+        "id": 234,
+        "import": "DSOUND.DLL",
+        "count": 4
+    },
+    {
+        "id": 235,
+        "import": "MODEMUI.DLL",
+        "count": 4
+    },
+    {
+        "id": 236,
+        "import": "KERNEL32",
+        "count": 4
+    },
+    {
+        "id": 237,
+        "import": "ADVPACK.DLL",
+        "count": 4
+    },
+    {
+        "id": 238,
+        "import": "CYGWIN1.DLL",
+        "count": 4
+    },
+    {
+        "id": 239,
+        "import": "WLANAPI.DLL",
+        "count": 4
+    },
+    {
+        "id": 240,
+        "import": "LOGONCLI.DLL",
+        "count": 4
+    },
+    {
+        "id": 241,
+        "import": "API-MS-WIN-SECURITY-LSALOOKUP-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 242,
+        "import": "NETUTILS.DLL",
+        "count": 4
+    },
+    {
+        "id": 243,
+        "import": "LTFIL61N.DLL",
+        "count": 4
+    },
+    {
+        "id": 244,
+        "import": "LTKRN61N.DLL",
+        "count": 4
+    },
+    {
+        "id": 245,
+        "import": "EQNOTIFY.DLL",
+        "count": 4
+    },
+    {
+        "id": 246,
+        "import": "SCECLI.DLL",
+        "count": 4
+    },
+    {
+        "id": 247,
+        "import": "ROCKEY2.DLL",
+        "count": 4
+    },
+    {
+        "id": 248,
+        "import": "WS2HELP.DLL",
+        "count": 4
+    },
+    {
+        "id": 249,
+        "import": "VDMDBG.DLL",
+        "count": 4
+    },
+    {
+        "id": 250,
+        "import": "RPCSS.DLL",
+        "count": 4
+    },
+    {
+        "id": 251,
+        "import": "WIASERVC.DLL",
+        "count": 4
+    },
+    {
+        "id": 252,
+        "import": "POLSTORE.DLL",
+        "count": 4
+    },
+    {
+        "id": 253,
+        "import": "CATSRVUT.DLL",
+        "count": 4
+    },
+    {
+        "id": 254,
+        "import": "MTXCLU.DLL",
+        "count": 4
+    },
+    {
+        "id": 255,
+        "import": "UFAT.DLL",
+        "count": 4
+    },
+    {
+        "id": 256,
+        "import": "WMAUDSDK.DLL",
+        "count": 4
+    },
+    {
+        "id": 257,
+        "import": "IPRTPRIO.DLL",
+        "count": 4
+    },
+    {
+        "id": 258,
+        "import": "TAPI32.DLL",
+        "count": 4
+    },
+    {
+        "id": 259,
+        "import": "NSI.DLL",
+        "count": 4
+    },
+    {
+        "id": 260,
+        "import": "D3D8THK.DLL",
+        "count": 4
+    },
+    {
+        "id": 261,
+        "import": "LOCALSPL.DLL",
+        "count": 4
+    },
+    {
+        "id": 262,
+        "import": "LIBGLIB-2.0-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 263,
+        "import": "LIBGOBJECT-2.0-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 264,
+        "import": "LIBSOUP-2.4-1.DLL",
+        "count": 4
+    },
+    {
+        "id": 265,
+        "import": "LIBBELLESIP-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 266,
+        "import": "LIBXML2-2.DLL",
+        "count": 4
+    },
+    {
+        "id": 267,
+        "import": "MFC71.DLL",
+        "count": 4
+    },
+    {
+        "id": 268,
+        "import": "LTFIL13N.DLL",
+        "count": 4
+    },
+    {
+        "id": 269,
+        "import": "LTKRN13N.DLL",
+        "count": 4
+    },
+    {
+        "id": 270,
+        "import": "HLVDD.DLL",
+        "count": 4
+    },
+    {
+        "id": 271,
+        "import": "ZLIB.DLL",
+        "count": 4
+    },
+    {
+        "id": 272,
+        "import": "CSH.DLL",
+        "count": 4
+    },
+    {
+        "id": 273,
+        "import": "AVUTIL-51.DLL",
+        "count": 4
+    },
+    {
+        "id": 274,
+        "import": "AVCODEC-53.DLL",
+        "count": 4
+    },
+    {
+        "id": 275,
+        "import": "SWSCALE-2.DLL",
+        "count": 4
+    },
+    {
+        "id": 276,
+        "import": "API-MS-WIN-CORE-COM-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 277,
+        "import": "QUARTZ.DLL",
+        "count": 4
+    },
+    {
+        "id": 278,
+        "import": "API-MS-WIN-EVENTING-CLASSICPROVIDER-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 279,
+        "import": "API-MS-WIN-CORE-SYNCH-L1-2-1.DLL",
+        "count": 4
+    },
+    {
+        "id": 280,
+        "import": "API-MS-WIN-SECURITY-BASE-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 281,
+        "import": "API-MS-WIN-CORE-SYNCH-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 282,
+        "import": "API-MS-WIN-CORE-APIQUERY-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 283,
+        "import": "API-MS-WIN-CORE-FILE-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 284,
+        "import": "CRYPTSP.DLL",
+        "count": 4
+    },
+    {
+        "id": 285,
+        "import": "API-MS-WIN-CORE-DELAYLOAD-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 286,
+        "import": "API-MS-WIN-CORE-IO-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 287,
+        "import": "API-MS-WIN-CORE-PROCESSENVIRONMENT-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 288,
+        "import": "API-MS-WIN-CORE-LOCALIZATION-L1-2-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 289,
+        "import": "API-MS-WIN-CORE-KERNEL32-LEGACY-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 290,
+        "import": "API-MS-WIN-CORE-LIBRARYLOADER-L1-2-1.DLL",
+        "count": 4
+    },
+    {
+        "id": 291,
+        "import": "API-MS-WIN-CORE-STRING-OBSOLETE-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 292,
+        "import": "API-MS-WIN-CORE-STRING-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 293,
+        "import": "API-MS-WIN-CORE-PROCESSTHREADS-L1-1-1.DLL",
+        "count": 4
+    },
+    {
+        "id": 294,
+        "import": "API-MS-WIN-CORE-DELAYLOAD-L1-1-1.DLL",
+        "count": 4
+    },
+    {
+        "id": 295,
+        "import": "API-MS-WIN-CORE-TIMEZONE-L1-1-0.DLL",
+        "count": 4
+    },
+    {
+        "id": 296,
+        "import": "MFC80U.DLL",
+        "count": 3
+    },
+    {
+        "id": 297,
+        "import": "WNHELP.DLL",
+        "count": 3
+    },
+    {
+        "id": 298,
+        "import": "PSBASE.DLL",
+        "count": 3
+    },
+    {
+        "id": 299,
+        "import": "MSVCM90.DLL",
+        "count": 3
+    },
+    {
+        "id": 300,
+        "import": "MSS32.DLL",
+        "count": 3
+    },
+    {
+        "id": 301,
+        "import": "API-MS-WIN-CRT-TIME-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 302,
+        "import": "API-MS-WIN-CORE-PROCESSTHREADS-L1-1-2.DLL",
+        "count": 3
+    },
+    {
+        "id": 303,
+        "import": "API-MS-WIN-CORE-ERRORHANDLING-L1-1-1.DLL",
+        "count": 3
+    },
+    {
+        "id": 304,
+        "import": "API-MS-WIN-CORE-SYSINFO-L1-2-1.DLL",
+        "count": 3
+    },
+    {
+        "id": 305,
+        "import": "API-MS-WIN-CRT-CONVERT-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 306,
+        "import": "HLINK.DLL",
+        "count": 3
+    },
+    {
+        "id": 307,
+        "import": "MSRATING.DLL",
+        "count": 3
+    },
+    {
+        "id": 308,
+        "import": "LIBMEDIASTREAMER-1.DLL",
+        "count": 3
+    },
+    {
+        "id": 309,
+        "import": "LIBEXOSIP2-7.DLL",
+        "count": 3
+    },
+    {
+        "id": 310,
+        "import": "LIBOSIPPARSER2-7.DLL",
+        "count": 3
+    },
+    {
+        "id": 311,
+        "import": "SQLWOA.DLL",
+        "count": 3
+    },
+    {
+        "id": 312,
+        "import": "MSPATCHA.DLL",
+        "count": 3
+    },
+    {
+        "id": 313,
+        "import": "KEYMGR.DLL",
+        "count": 3
+    },
+    {
+        "id": 314,
+        "import": "RASPPP.DLL",
+        "count": 3
+    },
+    {
+        "id": 315,
+        "import": "DEVENUM.DLL",
+        "count": 3
+    },
+    {
+        "id": 316,
+        "import": "RDPWSX.DLL",
+        "count": 3
+    },
+    {
+        "id": 317,
+        "import": "RAPI.DLL",
+        "count": 3
+    },
+    {
+        "id": 318,
+        "import": "MSSIGN32.DLL",
+        "count": 3
+    },
+    {
+        "id": 319,
+        "import": "SSDPAPI.DLL",
+        "count": 3
+    },
+    {
+        "id": 320,
+        "import": "NTSHRUI.DLL",
+        "count": 3
+    },
+    {
+        "id": 321,
+        "import": "ZLIB1.DLL",
+        "count": 3
+    },
+    {
+        "id": 322,
+        "import": "LIBSQLITE3-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 323,
+        "import": "BORLNDMM.DLL",
+        "count": 3
+    },
+    {
+        "id": 324,
+        "import": "MSLS31.DLL",
+        "count": 3
+    },
+    {
+        "id": 325,
+        "import": "SS32D25.DLL",
+        "count": 3
+    },
+    {
+        "id": 326,
+        "import": "MFC80.DLL",
+        "count": 3
+    },
+    {
+        "id": 327,
+        "import": "OLESVR32.DLL",
+        "count": 3
+    },
+    {
+        "id": 328,
+        "import": "LIBMEDIASTREAMER_VOIP-3.DLL",
+        "count": 3
+    },
+    {
+        "id": 329,
+        "import": "ICAAPI.DLL",
+        "count": 3
+    },
+    {
+        "id": 330,
+        "import": "D3DIM700.DLL",
+        "count": 3
+    },
+    {
+        "id": 331,
+        "import": "ODBCCU32.DLL",
+        "count": 3
+    },
+    {
+        "id": 332,
+        "import": "MSVCP140.DLL",
+        "count": 3
+    },
+    {
+        "id": 333,
+        "import": "SCROBJ.DLL",
+        "count": 3
+    },
+    {
+        "id": 334,
+        "import": "APPHELP.DLL",
+        "count": 3
+    },
+    {
+        "id": 335,
+        "import": "FWPKCLNT.SYS",
+        "count": 3
+    },
+    {
+        "id": 336,
+        "import": "API-MS-WIN-SECURITY-TRUSTEE-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 337,
+        "import": "API-MS-WIN-CORE-STRING-L2-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 338,
+        "import": "API-MS-WIN-EVENTING-CONTROLLER-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 339,
+        "import": "API-MS-WIN-CORE-THREADPOOL-LEGACY-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 340,
+        "import": "API-MS-WIN-EVENTLOG-LEGACY-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 341,
+        "import": "API-MS-WIN-CORE-SYSINFO-L1-2-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 342,
+        "import": "SSPICLI.DLL",
+        "count": 3
+    },
+    {
+        "id": 343,
+        "import": "API-MS-WIN-CORE-SHUTDOWN-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 344,
+        "import": "API-MS-WIN-CORE-PSAPI-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 345,
+        "import": "API-MS-WIN-CORE-HEAP-OBSOLETE-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 346,
+        "import": "API-MS-WIN-SECURITY-LSAPOLICY-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 347,
+        "import": "EXT-MS-WIN-ADVAPI32-LSA-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 348,
+        "import": "SAMCLI.DLL",
+        "count": 3
+    },
+    {
+        "id": 349,
+        "import": "API-MS-WIN-SERVICE-CORE-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 350,
+        "import": "API-MS-WIN-SECURITY-PROVIDER-L1-1-0.DLL",
+        "count": 3
+    },
+    {
+        "id": 351,
+        "import": "KERNELBASE.DLL",
+        "count": 3
+    },
+    {
+        "id": 352,
+        "import": "MSVCP140D.DLL",
+        "count": 3
+    },
+    {
+        "id": 353,
+        "import": "DEPLOY.DLL",
+        "count": 3
+    },
+    {
+        "id": 354,
+        "import": "RSTRTMGR.DLL",
+        "count": 3
+    },
+    {
+        "id": 355,
+        "import": "URL",
+        "count": 3
+    },
+    {
+        "id": 356,
+        "import": "VMPROTECTSDK32.DLL",
+        "count": 2
+    },
+    {
+        "id": 357,
+        "import": "DSPROP.DLL",
+        "count": 2
+    },
+    {
+        "id": 358,
+        "import": "XUL.DLL",
+        "count": 2
+    },
+    {
+        "id": 359,
+        "import": "D3DXOF.DLL",
+        "count": 2
+    },
+    {
+        "id": 360,
+        "import": "MSVCRT",
+        "count": 2
+    },
+    {
+        "id": 361,
+        "import": "SCESRV.DLL",
+        "count": 2
+    },
+    {
+        "id": 362,
+        "import": "COMBASE.DLL",
+        "count": 2
+    },
+    {
+        "id": 363,
+        "import": "XOLEHLP.DLL",
+        "count": 2
+    },
+    {
+        "id": 364,
+        "import": "CYGZ.DLL",
+        "count": 2
+    },
+    {
+        "id": 365,
+        "import": "API-MS-WIN-SERVICE-MANAGEMENT-L2-1-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 366,
+        "import": "IR41_QCX.DLL",
+        "count": 2
+    },
+    {
+        "id": 367,
+        "import": "MSDTCTM.DLL",
+        "count": 2
+    },
+    {
+        "id": 368,
+        "import": "SUSE.DLL",
+        "count": 2
+    },
+    {
+        "id": 369,
+        "import": "HYPRINT.DLL",
+        "count": 2
+    },
+    {
+        "id": 370,
+        "import": "HMON.DLL",
+        "count": 2
+    },
+    {
+        "id": 371,
+        "import": "TYEFCLIP.DLL",
+        "count": 2
+    },
+    {
+        "id": 372,
+        "import": "API-MS-WIN-CORE-UTIL-L1-1-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 373,
+        "import": "API-MS-WIN-CORE-INTERLOCKED-L1-2-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 374,
+        "import": "API-MS-WIN-CORE-DEBUG-L1-1-1.DLL",
+        "count": 2
+    },
+    {
+        "id": 375,
+        "import": "WINRNR.DLL",
+        "count": 2
+    },
+    {
+        "id": 376,
+        "import": "SBL.DLL",
+        "count": 2
+    },
+    {
+        "id": 377,
+        "import": "NTWDBLIB.DLL",
+        "count": 2
+    },
+    {
+        "id": 378,
+        "import": "TLS7012D.DLL",
+        "count": 2
+    },
+    {
+        "id": 379,
+        "import": "SAMSRV.DLL",
+        "count": 2
+    },
+    {
+        "id": 380,
+        "import": "PERFPROC.DLL",
+        "count": 2
+    },
+    {
+        "id": 381,
+        "import": "PERFNET.DLL",
+        "count": 2
+    },
+    {
+        "id": 382,
+        "import": "AVUTIL-50.DLL",
+        "count": 2
+    },
+    {
+        "id": 383,
+        "import": "AVCODEC-52.DLL",
+        "count": 2
+    },
+    {
+        "id": 384,
+        "import": "SWSCALE-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 385,
+        "import": "LIBPROTOBUF-LITE.DLL",
+        "count": 2
+    },
+    {
+        "id": 386,
+        "import": "UNIPLAT.DLL",
+        "count": 2
+    },
+    {
+        "id": 387,
+        "import": "SHIMGVW.DLL",
+        "count": 2
+    },
+    {
+        "id": 388,
+        "import": "MSYUV.DLL",
+        "count": 2
+    },
+    {
+        "id": 389,
+        "import": "TCPMON.DLL",
+        "count": 2
+    },
+    {
+        "id": 390,
+        "import": "WINIPSEC.DLL",
+        "count": 2
+    },
+    {
+        "id": 391,
+        "import": "DSSENH.DLL",
+        "count": 2
+    },
+    {
+        "id": 392,
+        "import": "SFC.DLL",
+        "count": 2
+    },
+    {
+        "id": 393,
+        "import": "NTVDMD.DLL",
+        "count": 2
+    },
+    {
+        "id": 394,
+        "import": "LIBTSC.DLL",
+        "count": 2
+    },
+    {
+        "id": 395,
+        "import": "ATMLIB.DLL",
+        "count": 2
+    },
+    {
+        "id": 396,
+        "import": "MSCTF.DLL",
+        "count": 2
+    },
+    {
+        "id": 397,
+        "import": "IPNATHLP.DLL",
+        "count": 2
+    },
+    {
+        "id": 398,
+        "import": "DPLAYX.DLL",
+        "count": 2
+    },
+    {
+        "id": 399,
+        "import": "ADVAPI32.DLL ",
+        "count": 2
+    },
+    {
+        "id": 400,
+        "import": "NETAPI32.DLL ",
+        "count": 2
+    },
+    {
+        "id": 401,
+        "import": "PREFS.DLL",
+        "count": 2
+    },
+    {
+        "id": 402,
+        "import": "SWFLDCTL.DLL",
+        "count": 2
+    },
+    {
+        "id": 403,
+        "import": "SAL.DLL",
+        "count": 2
+    },
+    {
+        "id": 404,
+        "import": "FIL.DLL",
+        "count": 2
+    },
+    {
+        "id": 405,
+        "import": "SWCHRSET.DLL",
+        "count": 2
+    },
+    {
+        "id": 406,
+        "import": "IEAKENG.DLL",
+        "count": 2
+    },
+    {
+        "id": 407,
+        "import": "DPNHPAST.DLL",
+        "count": 2
+    },
+    {
+        "id": 408,
+        "import": "MFC100.DLL",
+        "count": 2
+    },
+    {
+        "id": 409,
+        "import": "ACLEDIT.DLL",
+        "count": 2
+    },
+    {
+        "id": 410,
+        "import": "WSECEDIT.DLL",
+        "count": 2
+    },
+    {
+        "id": 411,
+        "import": "MFC110.DLL",
+        "count": 2
+    },
+    {
+        "id": 412,
+        "import": "LIBFAAD2.DLL",
+        "count": 2
+    },
+    {
+        "id": 413,
+        "import": "LIBSPEEX.DLL",
+        "count": 2
+    },
+    {
+        "id": 414,
+        "import": "_ENCODER.DLL",
+        "count": 2
+    },
+    {
+        "id": 415,
+        "import": "_MID.DLL",
+        "count": 2
+    },
+    {
+        "id": 416,
+        "import": "_MIDIFILE.DLL",
+        "count": 2
+    },
+    {
+        "id": 417,
+        "import": "_MIXER.DLL",
+        "count": 2
+    },
+    {
+        "id": 418,
+        "import": "_MSAUDIO.DLL",
+        "count": 2
+    },
+    {
+        "id": 419,
+        "import": "LIBORTP-11.DLL",
+        "count": 2
+    },
+    {
+        "id": 420,
+        "import": "BCTOOLBOX.DLL",
+        "count": 2
+    },
+    {
+        "id": 421,
+        "import": "LIBMEDIASTREAMER_BASE-7.DLL",
+        "count": 2
+    },
+    {
+        "id": 422,
+        "import": "DAVCLNT.DLL",
+        "count": 2
+    },
+    {
+        "id": 423,
+        "import": "STI_CI.DLL",
+        "count": 2
+    },
+    {
+        "id": 424,
+        "import": "LIBMEDIASTREAMER_BASE-4.DLL",
+        "count": 2
+    },
+    {
+        "id": 425,
+        "import": "SOFTPUB.DLL",
+        "count": 2
+    },
+    {
+        "id": 426,
+        "import": "DISKCOPY.DLL",
+        "count": 2
+    },
+    {
+        "id": 427,
+        "import": "LIBOPUS-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 428,
+        "import": "LIBSPEEX-1.DLL",
+        "count": 2
+    },
+    {
+        "id": 429,
+        "import": "LIBSPEEXDSP-1.DLL",
+        "count": 2
+    },
+    {
+        "id": 430,
+        "import": "IEDKCS32.DLL",
+        "count": 2
+    },
+    {
+        "id": 431,
+        "import": "RUNNCFG.DLL",
+        "count": 2
+    },
+    {
+        "id": 432,
+        "import": "TCPMONUI.DLL",
+        "count": 2
+    },
+    {
+        "id": 433,
+        "import": "OB600LC.DLL",
+        "count": 2
+    },
+    {
+        "id": 434,
+        "import": "CSRSRV.DLL",
+        "count": 2
+    },
+    {
+        "id": 435,
+        "import": "MSVCR120.DLL",
+        "count": 2
+    },
+    {
+        "id": 436,
+        "import": "MSVCP120.DLL",
+        "count": 2
+    },
+    {
+        "id": 437,
+        "import": "DRMV2CLT.DLL",
+        "count": 2
+    },
+    {
+        "id": 438,
+        "import": "LOADPERF.DLL",
+        "count": 2
+    },
+    {
+        "id": 439,
+        "import": "ICM32.DLL",
+        "count": 2
+    },
+    {
+        "id": 440,
+        "import": "MSV1_0.DLL",
+        "count": 2
+    },
+    {
+        "id": 441,
+        "import": "IMSCORETOOL.DLL",
+        "count": 2
+    },
+    {
+        "id": 442,
+        "import": "ICONV.DLL",
+        "count": 2
+    },
+    {
+        "id": 443,
+        "import": "LOG4CXX.DLL",
+        "count": 2
+    },
+    {
+        "id": 444,
+        "import": "PTHREADVSE2.DLL",
+        "count": 2
+    },
+    {
+        "id": 445,
+        "import": "PW.DLL",
+        "count": 2
+    },
+    {
+        "id": 446,
+        "import": "CM.DLL",
+        "count": 2
+    },
+    {
+        "id": 447,
+        "import": "TSBASE.DLL",
+        "count": 2
+    },
+    {
+        "id": 448,
+        "import": "DMBAND.DLL",
+        "count": 2
+    },
+    {
+        "id": 449,
+        "import": "API-MS-WIN-CRT-FILESYSTEM-L1-1-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 450,
+        "import": "API-MS-WIN-CRT-ENVIRONMENT-L1-1-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 451,
+        "import": "LIBEAY32.DLL",
+        "count": 2
+    },
+    {
+        "id": 452,
+        "import": "API-MS-WIN-CRT-UTILITY-L1-1-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 453,
+        "import": "SYSSETUP.DLL",
+        "count": 2
+    },
+    {
+        "id": 454,
+        "import": "RASSER.DLL",
+        "count": 2
+    },
+    {
+        "id": 455,
+        "import": "CTL3D32.DLL",
+        "count": 2
+    },
+    {
+        "id": 456,
+        "import": "VSODSCPL.DLL",
+        "count": 2
+    },
+    {
+        "id": 457,
+        "import": "API-MS-WIN-CORE-FILE-L1-2-1.DLL",
+        "count": 2
+    },
+    {
+        "id": 458,
+        "import": "API-MS-WIN-CORE-THREADPOOL-L1-2-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 459,
+        "import": "API-MS-WIN-CORE-KERNEL32-PRIVATE-L1-1-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 460,
+        "import": "API-MS-WIN-CORE-KERNEL32-LEGACY-L1-1-1.DLL",
+        "count": 2
+    },
+    {
+        "id": 461,
+        "import": "WMVCORE.DLL",
+        "count": 2
+    },
+    {
+        "id": 462,
+        "import": "ULADI2X.DLL",
+        "count": 2
+    },
+    {
+        "id": 463,
+        "import": "ULADI2.DLL",
+        "count": 2
+    },
+    {
+        "id": 464,
+        "import": "CC3260MT.DLL",
+        "count": 2
+    },
+    {
+        "id": 465,
+        "import": "VCL60.BPL",
+        "count": 2
+    },
+    {
+        "id": 466,
+        "import": "RTL60.BPL",
+        "count": 2
+    },
+    {
+        "id": 467,
+        "import": "MPSVC.DLL",
+        "count": 2
+    },
+    {
+        "id": 468,
+        "import": "MSDELTA.DLL",
+        "count": 2
+    },
+    {
+        "id": 469,
+        "import": "API-MS-WIN-CORE-RTLSUPPORT-L1-1-0.DLL",
+        "count": 2
+    },
+    {
+        "id": 470,
+        "import": "HTTPAPI.DLL",
+        "count": 1
+    },
+    {
+        "id": 471,
+        "import": "MSVBVM60.DLL ",
+        "count": 1
+    },
+    {
+        "id": 472,
+        "import": "WS2.DLL",
+        "count": 1
+    },
+    {
+        "id": 473,
+        "import": "CELLCORE.DLL",
+        "count": 1
+    },
+    {
+        "id": 474,
+        "import": "ORACLIENT9.DLL",
+        "count": 1
+    },
+    {
+        "id": 475,
+        "import": "ORAGENERIC9.DLL",
+        "count": 1
+    },
+    {
+        "id": 476,
+        "import": "ORACORE9.DLL",
+        "count": 1
+    },
+    {
+        "id": 477,
+        "import": "ORANLS9.DLL",
+        "count": 1
+    },
+    {
+        "id": 478,
+        "import": "ORACOMMON9.DLL",
+        "count": 1
+    },
+    {
+        "id": 479,
+        "import": "ORAVSN9.DLL",
+        "count": 1
+    },
+    {
+        "id": 480,
+        "import": "SQLITE3.DLL",
+        "count": 1
+    },
+    {
+        "id": 481,
+        "import": "MOZALLOC.DLL",
+        "count": 1
+    },
+    {
+        "id": 482,
+        "import": "LIBOPENCV_CORE246.DLL",
+        "count": 1
+    },
+    {
+        "id": 483,
+        "import": "LIBOPENCV_IMGPROC246.DLL",
+        "count": 1
+    },
+    {
+        "id": 484,
+        "import": "LIBOPENCV_HIGHGUI246.DLL",
+        "count": 1
+    },
+    {
+        "id": 485,
+        "import": "CRT.DLL",
+        "count": 1
+    },
+    {
+        "id": 486,
+        "import": "NEWDEV.DLL",
+        "count": 1
+    },
+    {
+        "id": 487,
+        "import": "DINPUT.DLL",
+        "count": 1
+    },
+    {
+        "id": 488,
+        "import": "ATL80.DLL",
+        "count": 1
+    },
+    {
+        "id": 489,
+        "import": "WWUTILS.DLL",
+        "count": 1
+    },
+    {
+        "id": 490,
+        "import": "USERDATA.DLL",
+        "count": 1
+    },
+    {
+        "id": 491,
+        "import": "ISM.DLL",
+        "count": 1
+    },
+    {
+        "id": 492,
+        "import": "VCOMP.DLL",
+        "count": 1
+    },
+    {
+        "id": 493,
+        "import": "D3DX9_32.DLL",
+        "count": 1
+    },
+    {
+        "id": 494,
+        "import": "ATL71.DLL",
+        "count": 1
+    },
+    {
+        "id": 495,
+        "import": "VMWAREBASE.DLL",
+        "count": 1
+    },
+    {
+        "id": 496,
+        "import": "VMWAREWUI.DLL",
+        "count": 1
+    },
+    {
+        "id": 497,
+        "import": "VMWARECUI.DLL",
+        "count": 1
+    },
+    {
+        "id": 498,
+        "import": "SIGC-2.0.DLL",
+        "count": 1
+    },
+    {
+        "id": 499,
+        "import": "VMWARESTRING.DLL",
+        "count": 1
+    },
+    {
+        "id": 500,
+        "import": "DBGENG.DLL",
+        "count": 1
+    },
+    {
+        "id": 501,
+        "import": "WINBRAND.DLL",
+        "count": 1
+    },
+    {
+        "id": 502,
+        "import": "EAPPCFG.DLL",
+        "count": 1
+    },
+    {
+        "id": 503,
+        "import": "FSMA32.DLL",
+        "count": 1
+    },
+    {
+        "id": 504,
+        "import": "FSPMAPI.DLL",
+        "count": 1
+    },
+    {
+        "id": 505,
+        "import": "MSO.DLL",
+        "count": 1
+    },
+    {
+        "id": 506,
+        "import": "WEVTAPI.DLL",
+        "count": 1
+    },
+    {
+        "id": 507,
+        "import": "PTHREADGC2.DLL",
+        "count": 1
+    },
+    {
+        "id": 508,
+        "import": "CLAPI32.DLL",
+        "count": 1
+    },
+    {
+        "id": 509,
+        "import": "MSPOOL.DLL",
+        "count": 1
+    },
+    {
+        "id": 510,
+        "import": "GPAPI.DLL",
+        "count": 1
+    },
+    {
+        "id": 511,
+        "import": "MSNMETAL.DLL",
+        "count": 1
+    },
+    {
+        "id": 512,
+        "import": "MZ",
+        "count": 1
+    },
+    {
+        "id": 513,
+        "import": "XLBUGHANDLER.DLL",
+        "count": 1
+    },
+    {
+        "id": 514,
+        "import": "MSVBVM60",
+        "count": 1
+    },
+    {
+        "id": 515,
+        "import": "VPNCOMMON.DLL",
+        "count": 1
+    },
+    {
+        "id": 516,
+        "import": "VPNCOMMONCRYPT.DLL",
+        "count": 1
+    },
+    {
+        "id": 517,
+        "import": "CYGGCC_S-1.DLL",
+        "count": 1
+    },
+    {
+        "id": 518,
+        "import": "HCCUTILS.DLL",
+        "count": 1
+    },
+    {
+        "id": 519,
+        "import": "SBIEDLL.DLL",
+        "count": 1
+    },
+    {
+        "id": 520,
+        "import": "FLTMGR.SYS",
+        "count": 1
+    },
+    {
+        "id": 521,
+        "import": "MZ@",
+        "count": 1
+    },
+    {
+        "id": 522,
+        "import": "ESSCLI.DLL",
+        "count": 1
+    },
+    {
+        "id": 523,
+        "import": "API-MS-WIN-CORE-LIBRARYLOADER-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 524,
+        "import": "API-MS-WIN-CORE-LOCALREGISTRY-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 525,
+        "import": "XPCOM.DLL",
+        "count": 1
+    },
+    {
+        "id": 526,
+        "import": "NSPR4.DLL",
+        "count": 1
+    },
+    {
+        "id": 527,
+        "import": "MSVCRTD.DLL",
+        "count": 1
+    },
+    {
+        "id": 528,
+        "import": "MFC42D.DLL",
+        "count": 1
+    },
+    {
+        "id": 529,
+        "import": "MSVCIRTD.DLL",
+        "count": 1
+    },
+    {
+        "id": 530,
+        "import": "HUSTUFF.DLL",
+        "count": 1
+    },
+    {
+        "id": 531,
+        "import": "VCRUNTIME140_APP.DLL",
+        "count": 1
+    },
+    {
+        "id": 532,
+        "import": "MSVCP140_APP.DLL",
+        "count": 1
+    },
+    {
+        "id": 533,
+        "import": "API-MS-WIN-CORE-COM-L1-1-1.DLL",
+        "count": 1
+    },
+    {
+        "id": 534,
+        "import": "API-MS-WIN-CORE-SYSINFO-L1-2-3.DLL",
+        "count": 1
+    },
+    {
+        "id": 535,
+        "import": "VCCORLIB140_APP.DLL",
+        "count": 1
+    },
+    {
+        "id": 536,
+        "import": "CONCRT140_APP.DLL",
+        "count": 1
+    },
+    {
+        "id": 537,
+        "import": "API-MS-WIN-CORE-WINRT-STRING-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 538,
+        "import": "DEVMGR.DLL",
+        "count": 1
+    },
+    {
+        "id": 539,
+        "import": "FAULTREP.DLL",
+        "count": 1
+    },
+    {
+        "id": 540,
+        "import": "WMI.DLL",
+        "count": 1
+    },
+    {
+        "id": 541,
+        "import": "FILEMGMT.DLL",
+        "count": 1
+    },
+    {
+        "id": 542,
+        "import": "WSHEXT.DLL",
+        "count": 1
+    },
+    {
+        "id": 543,
+        "import": "PELOADER.DLL",
+        "count": 1
+    },
+    {
+        "id": 544,
+        "import": "DSAUTH.DLL",
+        "count": 1
+    },
+    {
+        "id": 545,
+        "import": "MSDMO.DLL",
+        "count": 1
+    },
+    {
+        "id": 546,
+        "import": "BMAPI.DLL",
+        "count": 1
+    },
+    {
+        "id": 547,
+        "import": "LIB_ORTP-8.DLL",
+        "count": 1
+    },
+    {
+        "id": 548,
+        "import": "LIBOGG-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 549,
+        "import": "GZ.DLL",
+        "count": 1
+    },
+    {
+        "id": 550,
+        "import": "TAPI3.DLL",
+        "count": 1
+    },
+    {
+        "id": 551,
+        "import": "MYDOCS.DLL",
+        "count": 1
+    },
+    {
+        "id": 552,
+        "import": "MTXOCI.DLL",
+        "count": 1
+    },
+    {
+        "id": 553,
+        "import": "MSSCP.DLL",
+        "count": 1
+    },
+    {
+        "id": 554,
+        "import": "THEMEUI.DLL",
+        "count": 1
+    },
+    {
+        "id": 555,
+        "import": "PHOTOWIZ.DLL",
+        "count": 1
+    },
+    {
+        "id": 556,
+        "import": "TERMMGR.DLL",
+        "count": 1
+    },
+    {
+        "id": 557,
+        "import": "SAFEAPI.DLL",
+        "count": 1
+    },
+    {
+        "id": 558,
+        "import": "COMUID.DLL",
+        "count": 1
+    },
+    {
+        "id": 559,
+        "import": "LMGR9A.DLL",
+        "count": 1
+    },
+    {
+        "id": 560,
+        "import": "MSVCR110D.DLL",
+        "count": 1
+    },
+    {
+        "id": 561,
+        "import": "ATL110.DLL",
+        "count": 1
+    },
+    {
+        "id": 562,
+        "import": "ODFOX32.DLL",
+        "count": 1
+    },
+    {
+        "id": 563,
+        "import": "GPEDIT.DLL",
+        "count": 1
+    },
+    {
+        "id": 564,
+        "import": "DMSTYLE.DLL",
+        "count": 1
+    },
+    {
+        "id": 565,
+        "import": "IASSVCS.DLL",
+        "count": 1
+    },
+    {
+        "id": 566,
+        "import": "CYGICONV-2.DLL",
+        "count": 1
+    },
+    {
+        "id": 567,
+        "import": "SDL.DLL",
+        "count": 1
+    },
+    {
+        "id": 568,
+        "import": "LIBVIDIX.DLL",
+        "count": 1
+    },
+    {
+        "id": 569,
+        "import": "CLB.DLL",
+        "count": 1
+    },
+    {
+        "id": 570,
+        "import": "MSXML3.DLL",
+        "count": 1
+    },
+    {
+        "id": 571,
+        "import": "RICHED20.DLL",
+        "count": 1
+    },
+    {
+        "id": 572,
+        "import": "AMSTREAM.DLL",
+        "count": 1
+    },
+    {
+        "id": 573,
+        "import": "ORGKERNEL5.DLL",
+        "count": 1
+    },
+    {
+        "id": 574,
+        "import": "LIBEXOSIP2-6.DLL",
+        "count": 1
+    },
+    {
+        "id": 575,
+        "import": "LIBOSIPPARSER2-6.DLL",
+        "count": 1
+    },
+    {
+        "id": 576,
+        "import": "CIFNTDLL.DLL",
+        "count": 1
+    },
+    {
+        "id": 577,
+        "import": "VIIO.DLL",
+        "count": 1
+    },
+    {
+        "id": 578,
+        "import": "VIINTERNAT.DLL",
+        "count": 1
+    },
+    {
+        "id": 579,
+        "import": "RW_PARAM.DLL",
+        "count": 1
+    },
+    {
+        "id": 580,
+        "import": "RW_VIIO_PARAM.DLL",
+        "count": 1
+    },
+    {
+        "id": 581,
+        "import": "LIBBZRTP-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 582,
+        "import": "LIBPOLARSSL-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 583,
+        "import": "CMCFG32.DLL",
+        "count": 1
+    },
+    {
+        "id": 584,
+        "import": "MSCTFP.DLL",
+        "count": 1
+    },
+    {
+        "id": 585,
+        "import": "MLANG.DLL",
+        "count": 1
+    },
+    {
+        "id": 586,
+        "import": "MSCOMSTF.DLL",
+        "count": 1
+    },
+    {
+        "id": 587,
+        "import": "GHIDLE.DLL",
+        "count": 1
+    },
+    {
+        "id": 588,
+        "import": "CRYPTSVC.DLL",
+        "count": 1
+    },
+    {
+        "id": 589,
+        "import": "CLICONFG.DLL",
+        "count": 1
+    },
+    {
+        "id": 590,
+        "import": "RDPCFGEX.DLL",
+        "count": 1
+    },
+    {
+        "id": 591,
+        "import": "MFC100U.DLL",
+        "count": 1
+    },
+    {
+        "id": 592,
+        "import": "ICUIN51.DLL",
+        "count": 1
+    },
+    {
+        "id": 593,
+        "import": "ICUUC51.DLL",
+        "count": 1
+    },
+    {
+        "id": 594,
+        "import": "BUGTRAP.DLL",
+        "count": 1
+    },
+    {
+        "id": 595,
+        "import": "D3DX9_28.DLL",
+        "count": 1
+    },
+    {
+        "id": 596,
+        "import": "TBB.DLL",
+        "count": 1
+    },
+    {
+        "id": 597,
+        "import": "DRPROV.DLL",
+        "count": 1
+    },
+    {
+        "id": 598,
+        "import": "MFC120.DLL",
+        "count": 1
+    },
+    {
+        "id": 599,
+        "import": "WMADMOE.DLL",
+        "count": 1
+    },
+    {
+        "id": 600,
+        "import": "UMDMXFRM.DLL",
+        "count": 1
+    },
+    {
+        "id": 601,
+        "import": "ATL100.DLL",
+        "count": 1
+    },
+    {
+        "id": 602,
+        "import": "CMPBK32.DLL",
+        "count": 1
+    },
+    {
+        "id": 603,
+        "import": "D3DIM.DLL",
+        "count": 1
+    },
+    {
+        "id": 604,
+        "import": "VMSGEN.DLL",
+        "count": 1
+    },
+    {
+        "id": 605,
+        "import": "LIBSIGC++1.2-VC6.DLL",
+        "count": 1
+    },
+    {
+        "id": 606,
+        "import": "VMSGUIBASE.DLL",
+        "count": 1
+    },
+    {
+        "id": 607,
+        "import": "VMSSIMPLEDB.DLL",
+        "count": 1
+    },
+    {
+        "id": 608,
+        "import": "VMSGDI.DLL",
+        "count": 1
+    },
+    {
+        "id": 609,
+        "import": "VMSGUII.DLL",
+        "count": 1
+    },
+    {
+        "id": 610,
+        "import": "VMSIMG.DLL",
+        "count": 1
+    },
+    {
+        "id": 611,
+        "import": "VMSMUS.DLL",
+        "count": 1
+    },
+    {
+        "id": 612,
+        "import": "VMSFILEMANAGER.DLL",
+        "count": 1
+    },
+    {
+        "id": 613,
+        "import": "VMSKAR.DLL",
+        "count": 1
+    },
+    {
+        "id": 614,
+        "import": "VMSMEDIAPLAY.DLL",
+        "count": 1
+    },
+    {
+        "id": 615,
+        "import": "VMSMUSCTRL.DLL",
+        "count": 1
+    },
+    {
+        "id": 616,
+        "import": "VMSMSOLE.DLL",
+        "count": 1
+    },
+    {
+        "id": 617,
+        "import": "VMSPL.DLL",
+        "count": 1
+    },
+    {
+        "id": 618,
+        "import": "VMSDBI.DLL",
+        "count": 1
+    },
+    {
+        "id": 619,
+        "import": "VMSAUDIO.DLL",
+        "count": 1
+    },
+    {
+        "id": 620,
+        "import": "VMSSQLITE.DLL",
+        "count": 1
+    },
+    {
+        "id": 621,
+        "import": "VMSWNDFRM.DLL",
+        "count": 1
+    },
+    {
+        "id": 622,
+        "import": "VMSGCOM.DLL",
+        "count": 1
+    },
+    {
+        "id": 623,
+        "import": "VMSMIXGUIBASE.DLL",
+        "count": 1
+    },
+    {
+        "id": 624,
+        "import": "LIBCHARGUESS.DLL",
+        "count": 1
+    },
+    {
+        "id": 625,
+        "import": "VMSMEDIAMANAGER.DLL",
+        "count": 1
+    },
+    {
+        "id": 626,
+        "import": "VMSGUIEX.DLL",
+        "count": 1
+    },
+    {
+        "id": 627,
+        "import": "RASDLG.DLL",
+        "count": 1
+    },
+    {
+        "id": 628,
+        "import": "SENS.DLL",
+        "count": 1
+    },
+    {
+        "id": 629,
+        "import": "API-MS-WIN-CRT-MULTIBYTE-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 630,
+        "import": "ASWCMNBS.DLL",
+        "count": 1
+    },
+    {
+        "id": 631,
+        "import": "ASWENGLDR.DLL",
+        "count": 1
+    },
+    {
+        "id": 632,
+        "import": "ASWCMNIS.DLL",
+        "count": 1
+    },
+    {
+        "id": 633,
+        "import": "ASWCMNOS.DLL",
+        "count": 1
+    },
+    {
+        "id": 634,
+        "import": "SSLEAY32.DLL",
+        "count": 1
+    },
+    {
+        "id": 635,
+        "import": "LIM.DLL",
+        "count": 1
+    },
+    {
+        "id": 636,
+        "import": "LOG.DLL",
+        "count": 1
+    },
+    {
+        "id": 637,
+        "import": "ASWPROPERTY.DLL",
+        "count": 1
+    },
+    {
+        "id": 638,
+        "import": "COMMCHANNEL.DLL",
+        "count": 1
+    },
+    {
+        "id": 639,
+        "import": "AVASTIP.DLL",
+        "count": 1
+    },
+    {
+        "id": 640,
+        "import": "BLACKBOX.DLL",
+        "count": 1
+    },
+    {
+        "id": 641,
+        "import": "DMUSIC.DLL",
+        "count": 1
+    },
+    {
+        "id": 642,
+        "import": "WSHIP6.DLL",
+        "count": 1
+    },
+    {
+        "id": 643,
+        "import": "LIBTUNNEL-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 644,
+        "import": "CORPOL.DLL",
+        "count": 1
+    },
+    {
+        "id": 645,
+        "import": "VEDIODRIVER.DLL",
+        "count": 1
+    },
+    {
+        "id": 646,
+        "import": "OCCACHE.DLL",
+        "count": 1
+    },
+    {
+        "id": 647,
+        "import": "TCPIP6.SYS",
+        "count": 1
+    },
+    {
+        "id": 648,
+        "import": "WMILIB.SYS",
+        "count": 1
+    },
+    {
+        "id": 649,
+        "import": "MSDTCPRX.DLL",
+        "count": 1
+    },
+    {
+        "id": 650,
+        "import": "ACDBASE.DLL",
+        "count": 1
+    },
+    {
+        "id": 651,
+        "import": "AUDIOROUTING.DLL",
+        "count": 1
+    },
+    {
+        "id": 652,
+        "import": "TOUCHSCREENDLL.DLL",
+        "count": 1
+    },
+    {
+        "id": 653,
+        "import": "SHAREDLIBRARY.DLL",
+        "count": 1
+    },
+    {
+        "id": 654,
+        "import": "CLRCOMPRESSION.DLL",
+        "count": 1
+    },
+    {
+        "id": 655,
+        "import": "API-MS-WIN-CORE-LOCALIZATION-L1-2-1.DLL",
+        "count": 1
+    },
+    {
+        "id": 656,
+        "import": "MRT100_APP.DLL",
+        "count": 1
+    },
+    {
+        "id": 657,
+        "import": "API-MS-WIN-CORE-WINRT-ROBUFFER-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 658,
+        "import": "API-MS-WIN-CORE-WINRT-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 659,
+        "import": "D3DX9_43.DLL",
+        "count": 1
+    },
+    {
+        "id": 660,
+        "import": "DINPUT8.DLL",
+        "count": 1
+    },
+    {
+        "id": 661,
+        "import": "CRASHRPT1403.DLL",
+        "count": 1
+    },
+    {
+        "id": 662,
+        "import": "STEAM_API.DLL",
+        "count": 1
+    },
+    {
+        "id": 663,
+        "import": "FMODSTUDIOL.DLL",
+        "count": 1
+    },
+    {
+        "id": 664,
+        "import": "RASCHAP.DLL",
+        "count": 1
+    },
+    {
+        "id": 665,
+        "import": "MPRDDM.DLL",
+        "count": 1
+    },
+    {
+        "id": 666,
+        "import": "DFSSHLEX.DLL",
+        "count": 1
+    },
+    {
+        "id": 667,
+        "import": "WDLOADER.DLL",
+        "count": 1
+    },
+    {
+        "id": 668,
+        "import": "VSS_PS.DLL",
+        "count": 1
+    },
+    {
+        "id": 669,
+        "import": "LIBMEDIASTREAMER_VOIP-7.DLL",
+        "count": 1
+    },
+    {
+        "id": 670,
+        "import": "LIBORA_TUNNEL.DLL",
+        "count": 1
+    },
+    {
+        "id": 671,
+        "import": "WSHRM.DLL",
+        "count": 1
+    },
+    {
+        "id": 672,
+        "import": "RASTAPI.DLL",
+        "count": 1
+    },
+    {
+        "id": 673,
+        "import": "SECURITY.DLL",
+        "count": 1
+    },
+    {
+        "id": 674,
+        "import": "DLCAPI.DLL",
+        "count": 1
+    },
+    {
+        "id": 675,
+        "import": "EP7RES01.DLL",
+        "count": 1
+    },
+    {
+        "id": 676,
+        "import": "8EBECD7C.DLL",
+        "count": 1
+    },
+    {
+        "id": 677,
+        "import": "CCL120U.DLL",
+        "count": 1
+    },
+    {
+        "id": 678,
+        "import": "LIBCURL.DLL",
+        "count": 1
+    },
+    {
+        "id": 679,
+        "import": "LIBMYSQL.DLL",
+        "count": 1
+    },
+    {
+        "id": 680,
+        "import": "COLI-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 681,
+        "import": "TRCH-1.DLL",
+        "count": 1
+    },
+    {
+        "id": 682,
+        "import": "TUCL-1.DLL",
+        "count": 1
+    },
+    {
+        "id": 683,
+        "import": "API-MS-WIN-CORE-IO-L1-1-1.DLL",
+        "count": 1
+    },
+    {
+        "id": 684,
+        "import": "API-MS-WIN-CORE-RTLSUPPORT-L1-2-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 685,
+        "import": "KTMW32.DLL",
+        "count": 1
+    },
+    {
+        "id": 686,
+        "import": "EXT-MS-WIN-SESSION-CANDIDATEACCOUNTMGR-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 687,
+        "import": "API-MS-WIN-CORE-SHLWAPI-OBSOLETE-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 688,
+        "import": "CRYPTUTIL.DLL",
+        "count": 1
+    },
+    {
+        "id": 689,
+        "import": "COMMUTIL.DLL",
+        "count": 1
+    },
+    {
+        "id": 690,
+        "import": "OBJBASE.DLL",
+        "count": 1
+    },
+    {
+        "id": 691,
+        "import": "IPC.DLL",
+        "count": 1
+    },
+    {
+        "id": 692,
+        "import": "GXXFRAMEWORK.DLL",
+        "count": 1
+    },
+    {
+        "id": 693,
+        "import": "APPSHIELD.DLL",
+        "count": 1
+    },
+    {
+        "id": 694,
+        "import": "TRCERR.DLL",
+        "count": 1
+    },
+    {
+        "id": 695,
+        "import": "FAP32.DLL",
+        "count": 1
+    },
+    {
+        "id": 696,
+        "import": "NSUTIL2.DLL",
+        "count": 1
+    },
+    {
+        "id": 697,
+        "import": "FRAMEDYN.DLL",
+        "count": 1
+    },
+    {
+        "id": 698,
+        "import": "MFC40.DLL",
+        "count": 1
+    },
+    {
+        "id": 699,
+        "import": "HHA.DLL",
+        "count": 1
+    },
+    {
+        "id": 700,
+        "import": "VAULTCLI.DLL",
+        "count": 1
+    },
+    {
+        "id": 701,
+        "import": "QT5CORE.DLL",
+        "count": 1
+    },
+    {
+        "id": 702,
+        "import": "ASL.DLL",
+        "count": 1
+    },
+    {
+        "id": 703,
+        "import": "APPLEVERSIONS.DLL",
+        "count": 1
+    },
+    {
+        "id": 704,
+        "import": "YSCRASHDUMP.DLL",
+        "count": 1
+    },
+    {
+        "id": 705,
+        "import": "LIBINTL3.DLL",
+        "count": 1
+    },
+    {
+        "id": 706,
+        "import": "LIBSSL32.DLL",
+        "count": 1
+    },
+    {
+        "id": 707,
+        "import": "DBGWRAPPER80.DLL",
+        "count": 1
+    },
+    {
+        "id": 708,
+        "import": "JLI.DLL",
+        "count": 1
+    },
+    {
+        "id": 709,
+        "import": "CCFIPC64.DLL",
+        "count": 1
+    },
+    {
+        "id": 710,
+        "import": "M CANNOT BE RUN IN DOS MODE.\r\r\n$",
+        "count": 1
+    },
+    {
+        "id": 711,
+        "import": "VMTOOLS.DLL",
+        "count": 1
+    },
+    {
+        "id": 712,
+        "import": "GLIB-2.0.DLL",
+        "count": 1
+    },
+    {
+        "id": 713,
+        "import": "API-MS-WIN-CORE-MEMORY-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 714,
+        "import": "API-MS-WIN-CORE-DATETIME-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 715,
+        "import": "API-MS-WIN-CORE-VERSION-PRIVATE-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 716,
+        "import": "API-MS-WIN-SECURITY-LSALOOKUP-L2-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 717,
+        "import": "EXT-MS-WIN-ADVAPI32-SAFER-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 718,
+        "import": "API-MS-WIN-CORE-VERSION-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 719,
+        "import": "API-MS-WIN-CORE-MEMORY-L1-1-1.DLL",
+        "count": 1
+    },
+    {
+        "id": 720,
+        "import": "API-MS-WIN-SERVICE-PRIVATE-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 721,
+        "import": "API-MS-WIN-CRT-PRIVATE-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 722,
+        "import": "API-MS-WIN-CORE-LOCALIZATION-OBSOLETE-L1-2-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 723,
+        "import": "API-MS-WIN-CORE-INTERLOCKED-L1-1-0.DLL",
+        "count": 1
+    },
+    {
+        "id": 724,
+        "import": "OUTLLIB.DLL",
+        "count": 1
+    }
+]

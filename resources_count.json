@@ -1,0 +1,272 @@
+[
+    {
+        "id": 1,
+        "resource": "application/octet-stream",
+        "count": 209815
+    },
+    {
+        "id": 2,
+        "resource": "application/vnd.lotus-1-2-3",
+        "count": 11306
+    },
+    {
+        "id": 3,
+        "resource": "application/x-dbt",
+        "count": 8868
+    },
+    {
+        "id": 4,
+        "resource": "text/plain",
+        "count": 7241
+    },
+    {
+        "id": 5,
+        "resource": "text/xml",
+        "count": 7189
+    },
+    {
+        "id": 6,
+        "resource": "image/png",
+        "count": 7155
+    },
+    {
+        "id": 7,
+        "resource": "application/x-empty",
+        "count": 6598
+    },
+    {
+        "id": 8,
+        "resource": "application/x-dosexec",
+        "count": 2158
+    },
+    {
+        "id": 9,
+        "resource": "image/gif",
+        "count": 461
+    },
+    {
+        "id": 10,
+        "resource": "video/x-msvideo",
+        "count": 257
+    },
+    {
+        "id": 11,
+        "resource": "audio/x-wav",
+        "count": 177
+    },
+    {
+        "id": 12,
+        "resource": "application/vnd.ms-cab-compressed",
+        "count": 172
+    },
+    {
+        "id": 13,
+        "resource": "image/jpeg",
+        "count": 136
+    },
+    {
+        "id": 14,
+        "resource": "text/html",
+        "count": 133
+    },
+    {
+        "id": 15,
+        "resource": "image/x-ms-bmp",
+        "count": 120
+    },
+    {
+        "id": 16,
+        "resource": "application/x-java-applet",
+        "count": 104
+    },
+    {
+        "id": 17,
+        "resource": "text/x-c",
+        "count": 65
+    },
+    {
+        "id": 18,
+        "resource": "text/rtf",
+        "count": 63
+    },
+    {
+        "id": 19,
+        "resource": "application/x-executable",
+        "count": 63
+    },
+    {
+        "id": 20,
+        "resource": "application/pdf",
+        "count": 50
+    },
+    {
+        "id": 21,
+        "resource": "application/zlib",
+        "count": 48
+    },
+    {
+        "id": 22,
+        "resource": "image/x-icon",
+        "count": 43
+    },
+    {
+        "id": 23,
+        "resource": "Secret Key -",
+        "count": 31
+    },
+    {
+        "id": 24,
+        "resource": "application/msword",
+        "count": 29
+    },
+    {
+        "id": 25,
+        "resource": "application/zip",
+        "count": 25
+    },
+    {
+        "id": 26,
+        "resource": "application/x-gzip",
+        "count": 22
+    },
+    {
+        "id": 27,
+        "resource": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "count": 20
+    },
+    {
+        "id": 28,
+        "resource": "Secret Sub-key -",
+        "count": 17
+    },
+    {
+        "id": 29,
+        "resource": "image/x-tga",
+        "count": 15
+    },
+    {
+        "id": 30,
+        "resource": "text/x-msdos-batch",
+        "count": 12
+    },
+    {
+        "id": 31,
+        "resource": "application/x-msaccess",
+        "count": 11
+    },
+    {
+        "id": 32,
+        "resource": "application/x-hwp",
+        "count": 9
+    },
+    {
+        "id": 33,
+        "resource": "application/x-arc",
+        "count": 9
+    },
+    {
+        "id": 34,
+        "resource": "video/mp4",
+        "count": 6
+    },
+    {
+        "id": 35,
+        "resource": "application/x-shockwave-flash",
+        "count": 6
+    },
+    {
+        "id": 36,
+        "resource": "application/vnd.ms-excel",
+        "count": 5
+    },
+    {
+        "id": 37,
+        "resource": "application/x-7z-compressed",
+        "count": 4
+    },
+    {
+        "id": 38,
+        "resource": "audio/mpeg",
+        "count": 4
+    },
+    {
+        "id": 39,
+        "resource": "audio/x-mp4a-latm",
+        "count": 4
+    },
+    {
+        "id": 40,
+        "resource": "application/x-rar",
+        "count": 3
+    },
+    {
+        "id": 41,
+        "resource": "image/x-award-bioslogo",
+        "count": 2
+    },
+    {
+        "id": 42,
+        "resource": "application/x-ima",
+        "count": 2
+    },
+    {
+        "id": 43,
+        "resource": "application/CDFV2",
+        "count": 2
+    },
+    {
+        "id": 44,
+        "resource": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "count": 2
+    },
+    {
+        "id": 45,
+        "resource": "image/svg",
+        "count": 2
+    },
+    {
+        "id": 46,
+        "resource": "application/x-cpio",
+        "count": 1
+    },
+    {
+        "id": 47,
+        "resource": "application/x-tex-tfm",
+        "count": 1
+    },
+    {
+        "id": 48,
+        "resource": "application/x-dosdriver",
+        "count": 1
+    },
+    {
+        "id": 49,
+        "resource": "audio/midi",
+        "count": 1
+    },
+    {
+        "id": 50,
+        "resource": "application/font-sfnt",
+        "count": 1
+    },
+    {
+        "id": 51,
+        "resource": "application/x-msi",
+        "count": 1
+    },
+    {
+        "id": 52,
+        "resource": "image/vnd.adobe.photoshop",
+        "count": 1
+    },
+    {
+        "id": 53,
+        "resource": "image/svg+xml",
+        "count": 1
+    },
+    {
+        "id": 54,
+        "resource": "application/x-pgp-keyring",
+        "count": 1
+    }
+]
