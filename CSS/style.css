@@ -342,7 +342,12 @@ button.esri-icon-close {
 
 
 
-
+#malware {
+  color: rgb(253, 255, 16);
+  box-shadow: none;
+  cursor: pointer;
+  
+}
 
 #relationship {
   color: white;
@@ -500,8 +505,27 @@ input:checked + .slider:before {
 .APTname
 {    color: aqua;
      font-size: 2em;
-	 }
 	 
+	 }
+.APTnameclickable
+{    color: aqua;
+     font-size: 2em;
+	 cursor: pointer;
+	 
+	 }	 
+
+
+.details {
+        display: none;
+    }
+.opendetails {
+        display: block;
+    }
+.PanelContainer
+{
+	width:100%;
+	
+}
 .infoTitle
 {
 	font-size: 1.4em;

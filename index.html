@@ -12,14 +12,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="CSS/style.css" />
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://js.arcgis.com/4.12/"></script>
   
   
  <script>
+ 
+ function toggleAPTDetails(h2Element) {
+        var details = h2Element.nextElementSibling;
+        details.classList.toggle("opendetails");
+    }
 
- window.addEventListener('hashchange', function(){
+    window.addEventListener('hashchange', function(){
 	document.getElementById("search").click();
 	document.getElementById("searchAPTname").value="";
 	document.getElementById("searchTarget").value="";
@@ -736,6 +741,8 @@ fuldiv.innerHTML += '<p class="info">'+divf1toadd + '</p>';
 
 //others
 
+
+
 var othdiv = document.getElementById("othPlaceHolder");
 
 let apt = null;
@@ -748,7 +755,7 @@ for (let i = 0; i < jdata.features.length; i++) {
 	{
 		apt = jdata.features[i];
         
-		div+='<li><h2 class="APTname">'+ apt.properties["name"] +'</h2>';
+		div+='<li><h2 class="APTnameclickable" onclick="toggleAPTDetails(this)"><i class="fa fa-caret-right"></i> '+ apt.properties["name"] +'</h2><div class="details">';
 		if (apt.properties.description)
 		{
 			div+='<p class="info"><i class="fa fa-file-text-o"></i> <span class="infoTitle">Description</span><br />'+apt.properties.description+'</p>';
@@ -852,7 +859,7 @@ for (let i = 0; i < jdata.features.length; i++) {
 			}
 		div+='<p class="info"><i class="fa fa-book"></i> <span class="infoTitle">Sources</span><br />'+sadd+'</p>';
 	}
-div+='</li>';
+div+='</div></li>';
 }
 }
 
@@ -1058,13 +1065,21 @@ document.getElementById("close-relationship").addEventListener("click", closeRel
 function closeRelationship() {
     document.getElementById("relationship-container").style.display = "none";
     }
-	  
+
+
+document.getElementById("malware").addEventListener("click", function () {
+	var linkURL = "malware.html";
+    window.open(linkURL, "_blank");
+    });
+
+
 view.ui.add("about", "bottom-left");
 view.ui.add("maptitle", "top-left");
 view.ui.add("others", "top-left");
 view.ui.add("search", "top-left");
 view.ui.add("chart", "top-left");
 view.ui.add("relationship", "top-left");
+view.ui.add("malware", "top-left");
 
 function rotate() {
     if (!view.interacting) {
@@ -1416,6 +1431,7 @@ function Search()
 	<div id="search"><h3>Search</h3></div>
 	<div id="chart"><h3>Charts</h3></div>
 	<div id="relationship"><h3>Relationship</h3></div>
+	<div id="malware"><h3>APT Malware stats</h3></div>
 	
 	
   </div>
@@ -1429,7 +1445,7 @@ function Search()
 		<p>Attribution is a very complex issue. This map is based on data from different sources (vendor, studies, reports, ...) and it is not a reliable source. The majority of the mappings rely on the findings in a single incident analysis. Groups often change their toolsets or exchange them with other groups. This makes attribution of certain operations extremely difficult. Information published here may be wrong, outdated, or may change based on evolving information.</p>
         <p>Primary sources: <a href="https://www.misp-project.org/" target="blank_">MISP</a>, <a href="https://attack.mitre.org/" target="blank_">MITRE</a>, <a href="https://www.etda.or.th/th/" target="blank_">ETDA</a>, <a href="https://www.vx-underground.org/" target="blank_">VX-Underground</a></p>
 		<p>ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON AN "AS IS" BASIS</p>
-		<p>Project: Andrea Cristaldi <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
+		<p>Project: <strong style="color:rgb(253, 255, 16);">Andrea Cristaldi</strong> <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
 		<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="blank_">Creative Commons Attribution 4.0 International License</a>.</p>
 		<button id="start-globe">Go to map</button>
       </div>
@@ -1441,7 +1457,7 @@ function Search()
 		<ol id="fulPlaceHolder">
 		</ol>
 		<p>ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON AN "AS IS" BASIS</p>
-        <p>Project: Andrea Cristaldi <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
+        <p>Project: <strong style="color:rgb(253, 255, 16);">Andrea Cristaldi</strong> <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
 		<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="blank_">Creative Commons Attribution 4.0 International License</a>.</p>
 		<button id="close-about" class="esri-icon-close"></button>
         </div>
@@ -1450,7 +1466,7 @@ function Search()
   </div>
   <div id="others-container">
   <button id="close-others" class="esri-icon-close"></button>
-		<div><img src="images/aptmap.png" />        
+		<div class="PanelContainer"><img src="images/aptmap.png" />        
 		<h1>Other APTs not in map</h1>
 		<ol id="othPlaceHolder">
 		</ol>
