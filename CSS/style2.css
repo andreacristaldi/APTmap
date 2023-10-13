@@ -10,14 +10,41 @@ body,
   font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+#start {
+  border-radius: 0.2em;
+  padding: 0.8em 1.5em;
+  font-size: 1em;
+  margin: 2em auto;
+  display: block;
+  border: 1px solid rgba(2, 105, 161, 1);
+  background: transparent;
+  color: rgba(255,255,255, 1);
+}
+
+#start:hover {
+  color: white;
+  background: rgb(2, 105, 161);
+  border: 1px solid white;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
 #DivContainer
 {
-	/*width:100%;*/
+	filter: blur(8px);
+	/*width:100%;
 	margin:15px;
 	border: 1px solid #888;
 	padding-left:10px;
-	padding-right:10px;
+	padding-right:10px;*/
 }
+
+#Aboutclickable
+{    color: rgb(253, 255, 16);
+     font-size: 1.5em;
+	 cursor: pointer;
+	 text-decoration:underline;
+	 }
 
 #DivContainer p
 {
@@ -41,7 +68,7 @@ body,
 
 .DivPanel1 p
 {
-	font-size:0.8em;
+	font-size:1em;
 	font-weight:100;
 	color:#BBBBBB;
 	word-wrap: break-word;
@@ -118,11 +145,59 @@ body,
             background-color: #222222;
         }
 
+#pagination1 {
+	
+	padding-top: 20px;
+    Padding-bottom: 20px;
+}
+#pagination2 {
+	
+	padding-top: 20px;
+    Padding-bottom: 20px;
+}
+#pagination3 {
+	
+	padding-top: 20px;
+    Padding-bottom: 20px;
+}
+#pagination4 {
+	
+	padding-top: 20px;
+    Padding-bottom: 20px;
+}
+#pagination5 {
+	
+	padding-top: 20px;
+    Padding-bottom: 20px;
+}
+#pagination6 {
+	
+	padding-top: 20px;
+    Padding-bottom: 20px;
+}
+#pagination7 {
+	
+	padding-top: 20px;
+    Padding-bottom: 20px;
+}
+#pagination8 {
+	
+	padding-top: 20px;
+    Padding-bottom: 20px;
+}
+#pagination9 {
+	
+	padding-top: 20px;
+    Padding-bottom: 20px;
+}
+
+
+
 h2{
 
 width:100%;
 color:#BBBBBB;
-font-size:1em;
+font-size:1.4em;
 font-weight:100;
 margin:2px;
 padding-bottom:20px;

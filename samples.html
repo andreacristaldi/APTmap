@@ -22,7 +22,27 @@
 
 </head>
 <body>
-	<div class="DivContainer">
+<div id="container">
+  
+    <div id="introDiv">
+      
+      <div id="show-intro">
+	  <h1><img src="images/aptmap.png" /> APT Malware stats</h1>
+        <p>An Advanced Persistent Threat (APT) is a stealthy computer network threat actor, nation state, state-sponsored group or non-state sponsored groups conducting large-scale targeted intrusions for specific goals, which gains unauthorized access to a computer network and remains undetected for an extended period.
+        </p>
+		<p>The data reported in these statistics are the result of a processing based on static analysis techniques performed on 29GB of malware samples attributed to APT groups, followed by a correlation process. The sample group is limited to PE Portable executable. The data in JSON format are available on the github repository.</p>
+		<p>Attribution is a very complex issue. Information published here may be wrong, outdated, or may change based on evolving information.</p>
+        <p>Sample sources: <a href="https://www.vx-underground.org/" target="blank_">VX-Underground</a></p>
+		<p>ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON AN "AS IS" BASIS</p>
+		<p>Project: <strong style="color:rgb(253, 255, 16);">Andrea Cristaldi</strong> <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
+		<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="blank_">Creative Commons Attribution 4.0 International License</a>.</p>
+		<button id="start">Go to data</button>
+      </div>
+     
+	   
+    </div>
+	</div>
+	<div id="DivContainer">
 	<img src="images/aptmap.png"/>
 	<h1>APT Malware stats</h1>
 		<div class="DivPanel1">
@@ -31,8 +51,11 @@
 			<p>2010-2022</br>
 			PE Portable Executable</br>
 			29GB of data analysed using static analysis techniques</br>
-			<a href="malware.html">Here, the stats</a></p>
+			<a href="malware.html">Here, the stats</a></br></br></p>
+			<a href="default.html">Go to APTMap</a></br></br>
+		<h3 id="Aboutclickable" >About APT Malware stats</h3>
 		</div>
+	
 		
 		
 		<div class="DivPanel2">
@@ -59,7 +82,32 @@
         <button id="next-page1">Next</button>
 		<span id="count1"></span> 
     <script>
+
+
+document.getElementById("start").addEventListener("click", function () {
+	document.getElementById("DivContainer").style.filter = "blur(0px)";
+    document.getElementById("container").style.display = "none";
+    
+    });
+	
+document.getElementById("Aboutclickable").addEventListener("click", function () {
+	document.getElementById("DivContainer").style.filter = "blur(8px)";
+    document.getElementById("container").style.display = "";
+    
+    });
+	
+	
+	var referrer = document.referrer;
+
+    if (referrer.includes("malware.html")) {
         
+ document.getElementById("DivContainer").style.filter = "blur(0px)";
+ document.getElementById("container").style.display = "none";
+      } 
+
+
+
+
         const itemsPerPage1 = 250;
         let currentPage1 = 1;
         let jsonData1 = [];
@@ -70,6 +118,11 @@
             $.getJSON('hashes.json', function(data) {
                 jsonData1 = data;
 				filteredData1 = jsonData1;
+				let count = filteredData1.length;
+			
+			
+				document.getElementById("NSamples").innerHTML=count;
+              
                 const totalPages = Math.ceil(filteredData1.length / itemsPerPage1);
                 $('#total-pages1').text(totalPages);
                 updateTable1();
