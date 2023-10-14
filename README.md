@@ -1,5 +1,5 @@
 # APTmap
-Graphical map of known Advanced Persistent Threats v2
+Graphical map of known Advanced Persistent Threats v2.1
 
 <a href="https://andreacristaldi.github.io/APTmap/">https://andreacristaldi.github.io/APTmap/</a>
 
@@ -11,16 +11,16 @@ Attribution is a very complex issue. This map is based on data from different so
 
 Primary sources: <a href="https://www.misp-project.org/" target="blank_">MISP</a>, <a href="https://attack.mitre.org/" target="blank_">MITRE</a>, <a href="https://www.etda.or.th/th/" target="blank_">ETDA</a>, <a href="https://www.vx-underground.org/" target="blank_">VX-Underground</a>
 
-<h1>APTMalware - Advanced Persistent Threat MALWARE stats</h1>
+<h1>APTMalware - Advanced Persistent Threat MALWARE features and statistics</h1>
 
 <img src="https://github.com/andreacristaldi/APTmap/raw/master/images/preview2.jpg" />
 
-The data reported in these statistics are the result of a processing based on static analysis techniques performed on 29GB of malware samples attributed to APT groups, followed by a correlation process. The sample group is limited to PE Portable executable. The data in JSON format are available on the github repository.
+The data reported here are the result of a processing based on static analysis techniques performed on 29GB of malware samples attributed to APT groups, followed by a correlation process. The sample group is limited to PE Portable executable. The data in JSON format are available on the github repository.
 	
 Sample source: <a href="https://www.vx-underground.org/" target="blank_">VX-Underground</a>
 	
 <h2>Author</h2>
-Project: <strong style="color:rgb(253, 255, 16);">Andrea Cristaldi</string> <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
+Project: Andrea Cristaldi <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
 
 
 <h2>Data</h2>
