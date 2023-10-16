@@ -8,17 +8,18 @@
   <meta name="keywords" content="APTMAP, Advanced Persistent Threat Map">
   <meta name="author" content="Andrea Cristaldi">
   <title>APTMAP - Advanced Persistent Threat Map</title>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.12/esri/themes/light/main.css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.27/esri/themes/light/main.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="CSS/style.css" />
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://js.arcgis.com/4.12/"></script>
+  
+  <script src="https://js.arcgis.com/4.27/"></script>
   
   
  <script>
- 
+
  function toggleAPTDetails(h2Element) {
         var details = h2Element.nextElementSibling;
         details.classList.toggle("opendetails");
@@ -83,26 +84,15 @@ function GetMap()
 }
  
  var jdata;
- async function fetchData() {
-  
-
-  try {
-    const response = await fetch('apt.json');
-    jdata = await response.json();
-
-    if (jdata.hasOwnProperty("features")) {
-      console.log("JSON OK");
-    } else {
-      console.log("JSON ERROR");
-    }
-  } catch (error) {
+ 	fetch('apt.json')
+	.then(response => response.json())
+	.then(data => {
+    jdata=data;
+    
+  })
+  .catch(error => {
     console.error('JSON error: ', error);
-  }
-}
-
-fetchData();
-
-
+  });
 
 
 	
@@ -115,10 +105,11 @@ fetchData();
       "esri/Basemap",
       "esri/Graphic",
       "esri/geometry/Point",
-      "esri/geometry/Mesh",	   
-	  "esri/core/watchUtils"
+      "esri/geometry/Mesh",
+  "esri/core/reactiveUtils"
    
-    ], function (Map, SceneView, TileLayer, GeoJSONLayer, Basemap,  Graphic, Point, Mesh, watchUtils) {
+    ], function (Map, SceneView, TileLayer, GeoJSONLayer, Basemap,  Graphic, Point, Mesh, reactiveUtils) {
+
 
 
       const R = 6358137; // approximate radius of the Earth in m
@@ -143,6 +134,7 @@ fetchData();
         map: map,
         alphaCompositingEnabled: true,
         qualityProfile: "high",
+		rotate: true,
         camera: {
           position: [15.03975781, 14.94826384, 19921223.30821],
           heading: 2.03,
@@ -230,12 +222,25 @@ fetchData();
 map.layers.add(extremesLayer);
 
 
-view.popup.watch("visible", function(name, oldValue, newValue){
-        if(name===true){document.getElementById("chart-container").style["max-width"] = "50%";}
-		else{document.getElementById("chart-container").style["max-width"] = "100%";}
+reactiveUtils.watch(
+  () => view.popup.visible,
+  (graphic) => {
+    if (graphic) {
+        document.getElementById("chart-container").style.maxWidth = "50%";
+    } else {
+        document.getElementById("chart-container").style.maxWidth = "100%";
+    }
+  }
+);
 
-      })
 
+if (!view.interacting) {
+        const camera = view.camera.clone();
+        camera.position.longitude -= 0.2;
+        view.goTo(camera, { animate: false });
+        requestAnimationFrame(rotate);
+        }
+    
 
 
 jdata.features = jdata.features.sort((a, b) => {
@@ -996,18 +1001,14 @@ document.getElementById("start-globe").addEventListener("click", function () {
 	document.getElementById("chart-container").style.filter = "blur(0px)";
     closeMenu();
 	onChart(jdata);
-    view.when(function () {
-		watchUtils.whenFalseOnce(view, "updating", rotate);
-		});
+    
     });
 
 document.getElementById("container").addEventListener("click", function (e) {
     if (e.target.id === "container") {
     closeMenu();
 	onChart(jdata);
-    view.when(function () {
-        watchUtils.whenFalseOnce(view, "updating", rotate);
-        });
+    
     }
 });
 
@@ -1121,7 +1122,7 @@ function DisplayPopUp(feature)
 	
 
 	var div='';
-	div+='<div class="popupImage"><img src="images/flags/'+ apt.properties["image-url"] +'" alt="' + apt.properties["image-caption"] + '"/></div>';
+	div+='<div class="popupImage"><div class="Flag'+ apt.properties["image-url"].replace(".","") +'"></div></div>';
 	div+='<div class="popupImageCaption">'+apt.properties["image-caption"]+'</div>';
 	div+='<div class="popupDescription"><p class="info"><i class="fa fa-location-arrow"></i> <span class="infoTitle">Location</span><br />' + apt.properties.location + '</p>';
 	if (apt.properties.description)
@@ -1222,6 +1223,7 @@ function DisplayPopUp(feature)
 			}
 			div+='<p class="info"><i class="fa fa-book"></i> <span class="infoTitle">Sources</span><br />'+sadd+'</p>';
 	}
+	
 	return div;
 	}
 	
