@@ -83,16 +83,25 @@ function GetMap()
 			 
 }
  
- var jdata;
- 	fetch('apt.json')
-	.then(response => response.json())
-	.then(data => {
-    jdata=data;
-    
-  })
-  .catch(error => {
+var jdata;
+ async function fetchData() {
+  
+
+  try {
+    const response = await fetch('apt.json');
+    jdata = await response.json();
+
+    if (jdata.hasOwnProperty("features")) {
+      console.log("JSON OK");
+    } else {
+      console.log("JSON ERROR");
+    }
+  } catch (error) {
     console.error('JSON error: ', error);
-  });
+  }
+}
+
+fetchData();
 
 
 	
