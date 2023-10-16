@@ -230,6 +230,12 @@ body {
     background-position: center; 
 }
 
+
+
+.esri-widget__heading {
+    color: #FFFFFF; 
+}
+
 h3{margin:5px;}
 
 
