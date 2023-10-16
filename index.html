@@ -20,7 +20,10 @@
   
  <script>
 
- 
+ function toggleAPTDetails(h2Element) {
+        var details = h2Element.nextElementSibling;
+        details.classList.toggle("opendetails");
+    }
  
 var jdata;
 
@@ -42,10 +45,7 @@ async function fetchData() {
 fetchData().then(() => {
 
 
-function toggleAPTDetails(h2Element) {
-        var details = h2Element.nextElementSibling;
-        details.classList.toggle("opendetails");
-    }
+
 
     window.addEventListener('hashchange', function(){
 	document.getElementById("search").click();
