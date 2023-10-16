@@ -20,7 +20,29 @@
   
  <script>
 
- function toggleAPTDetails(h2Element) {
+ 
+ 
+var jdata;
+
+async function fetchData() {
+  try {
+    const response = await fetch('apt.json');
+    jdata = await response.json();
+
+    if (jdata.hasOwnProperty("features")) {
+      console.log("JSON OK");
+    } else {
+      console.log("JSON ERROR");
+    }
+  } catch (error) {
+    console.log('JSON error: ', error);
+  }
+}
+
+fetchData().then(() => {
+
+
+function toggleAPTDetails(h2Element) {
         var details = h2Element.nextElementSibling;
         details.classList.toggle("opendetails");
     }
@@ -82,28 +104,6 @@ function GetMap()
 	}
 			 
 }
- 
-var jdata;
- async function fetchData() {
-  
-
-  try {
-    const response = await fetch('apt.json');
-    jdata = await response.json();
-
-    if (jdata.hasOwnProperty("features")) {
-      console.log("JSON OK");
-    } else {
-      console.log("JSON ERROR");
-    }
-  } catch (error) {
-    console.error('JSON error: ', error);
-  }
-}
-
-fetchData();
-
-
 	
 
     require([
@@ -1440,7 +1440,7 @@ function Search()
 	
 }
 	
-	
+	});
 
   </script>
 </head>
