@@ -30,6 +30,86 @@ body {
 }
 
 
+.FlagAustriajpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Austria.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.FlagItalyjpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Italy.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.FlagTaiwanjpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Taiwan.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.FlagIndonesiajpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Indonesia.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.FlagMalaysiajpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Malaysia.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.FlagKenyajpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Kenya.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.FlagKazakhstanjpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Kazakhstan.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.FlagIraqjpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Iraq.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.FlagEgyptjpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Egypt.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
+.FlagMoroccojpg
+{    width: 300px; 
+    height: 200px; 
+    background-image: url('../images/flags/Morocco.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+
 .FlagLibyajpg
 {    width: 300px; 
     height: 200px; 
