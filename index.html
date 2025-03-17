@@ -115,7 +115,7 @@ function GetMap()
       "esri/Graphic",
       "esri/geometry/Point",
       "esri/geometry/Mesh",
-  "esri/core/reactiveUtils"
+	  "esri/core/reactiveUtils"
    
     ], function (Map, SceneView, TileLayer, GeoJSONLayer, Basemap,  Graphic, Point, Mesh, reactiveUtils) {
 
@@ -831,14 +831,23 @@ for (let i = 0; i < jdata.features.length; i++) {
 	if (apt.properties["ext-links"].length>0)
 	{
 		let tadd="";
+		let tmadd="";
 		for (var t of apt.properties["ext-links"]) 
 			{
-				tadd +=' <a href="' + t.url +'" >'
-				if (t.description!== undefined){tadd +=t.url;}
-				else{tadd +=t.description;}
-				tadd +='</a><br /><br />';
+				if (t.type=="malwaresample"){
+					tmadd +=' <a href="' + t.url +'" >'
+					tmadd +=t.description;
+					tmadd +='</a><br /><br />';
+				}
+				else{
+					tadd +=' <a href="' + t.url +'" >'
+					if (t.description!== undefined){tadd +=t.url;}
+					else{tadd +=t.description;}
+					tadd +='</a><br /><br />';
+				}
 			}
 		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">External links</span><br />'+tadd+'</p>';
+		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span><br />'+tmadd+'</p>';
 	}
 	
 	
@@ -1183,14 +1192,24 @@ function DisplayPopUp(feature)
 	if (apt.properties["ext-links"].length>0)
 	{
 		let tadd="";
+		let tmadd="";
 		for (var t of apt.properties["ext-links"]) 
 			{
-				tadd +=' <a href="' + t.url +'" target="_blank">'
-				if (t.description!== undefined){tadd +=t.url;}
-				else{tadd +=t.description;}
-				tadd +='</a><br /><br />';
+				if (t.type=="malwaresample"){
+					tmadd +=' <a href="' + t.url +'" target="_blank">'
+					tmadd +=t.description;
+					tmadd +='</a><br /><br />';
+				}
+				else{
+					tadd +=' <a href="' + t.url +'" target="_blank">'
+					if (t.description!== undefined){tadd +=t.url;}
+					else{tadd +=t.description;}
+					tadd +='</a><br /><br />';
+				}
 			}
+		
 		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">External links</span><br />'+tadd+'</p>';
+		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span><br />'+tmadd+'</p>';
 	}
 	
 	
@@ -1375,15 +1394,30 @@ function Search()
 		
 			if (apt.properties["ext-links"].length>0)
 			{
-				let tadd="";
-				for (var t of apt.properties["ext-links"]) 
-					{
-					tadd +=' <a href="' + t.url +'" target="_blank">'
-					if (t.description!== undefined){tadd +=t.url;}
-					else{tadd +=t.description;}
-					tadd +='</a><br /><br />';
+			
+			let tadd="";
+			let tmadd="";
+			for (var t of apt.properties["ext-links"]) 
+				{
+					if (t.type=="malwaresample"){
+						tmadd +=' <a href="' + t.url +'" target="_blank">'
+						tmadd +=t.description;
+						tmadd +='</a><br /><br />';
 					}
+					else{
+						tadd +=' <a href="' + t.url +'" target="_blank">'
+						if (t.description!== undefined){tadd +=t.url;}
+						else{tadd +=t.description;}
+						tadd +='</a><br /><br />';
+					}
+				}
+		
 			div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">External links</span><br />'+tadd+'</p>';
+			div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span><br />'+tmadd+'</p>';
+		
+			
+			
+			
 			}
 		
 			if (apt.properties["tools"].length>0)
