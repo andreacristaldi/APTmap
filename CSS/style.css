@@ -630,7 +630,12 @@ button.esri-icon-close {
 
 #searchPnl{width:100%;}
 
-
+#netgraph {
+  color: rgb(255, 51, 141);
+  box-shadow: none;
+  cursor: pointer;
+  
+}
 
 #malware {
   color: rgb(253, 255, 16);

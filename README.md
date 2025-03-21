@@ -1,9 +1,11 @@
 # APTmap
-Graphical map of known Advanced Persistent Threats v2.1
+Graphical map of known Advanced Persistent Threats v2.2
 
 <a href="https://andreacristaldi.github.io/APTmap/">https://andreacristaldi.github.io/APTmap/</a>
 
 <img src="https://github.com/andreacristaldi/APTmap/raw/master/images/preview.jpg" />
+
+<img src="https://github.com/andreacristaldi/APTmap/raw/master/images/graph.gif" />
 
 An Advanced Persistent Threat (APT) is a stealthy computer network threat actor, nation state, state-sponsored group or non-state sponsored groups conducting large-scale targeted intrusions for specific goals, which gains unauthorized access to a computer network and remains undetected for an extended period.
 

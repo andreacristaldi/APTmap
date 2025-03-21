@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1" />
+  <meta name="description" content="APTMAP - Advanced Persistent Threat Map">
+  <meta name="keywords" content="APTMAP, Advanced Persistent Threat Map">
+  <meta name="author" content="Andrea Cristaldi">
+  <title>APTMAP - Advanced Persistent Threat Map</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<style type="text/css">
+
+body{  margin: 0;font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;}
+
+
+.sidepanel {
+  height: 100%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0;
+  right: 0;
+  background-color: #333333;
+  overflow-x: hidden; 
+  padding-top: 60px; 
+  padding-left: 10px; 
+  transition: 0.3s; 
+  font-size: 1.2em;
+}
+
+.sidepanel h4 {
+  padding: 0px 0px 0px 32px;
+  text-decoration: none;
+  
+  
+  color: #FFFFFF;
+  display: block;
+  transition: 0.3s;
+  font-weight: 100;
+  margin: 4px 0px 4px 0px;
+}
+
+.sidepanel h3 {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  color: #FFFFFF;
+  display: block;
+  transition: 0.3s;
+  font-weight: 100;
+  margin: 10px 0px 5px 0px;
+}
+.sidepanelinfo {
+  padding: 8px 2px 2px 32px;
+  text-decoration: none;
+  font-size:0.6em;
+  color: #818181;
+  display: block;
+  font-weight: 100;
+  }
+
+/* The sidepanel links */
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-top:15px;
+  color: #dddddd;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+  color: #ffffff;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  z-index:99;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  margin:0;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+/*end sidepanel*/
+
+
+/*onoffswitch */
+
+/* Customize the label (the OptionContainer) */
+.OptionContainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color:#bbbbbb;
+  margin-left:10px;
+  margin-top:10px;
+}
+
+/* Hide the browser's default radio button */
+.OptionContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.chkcheckmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+ }
+
+/* On mouse-over, add a grey background color */
+.OptionContainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.OptionContainer:hover input ~ .chkcheckmark {
+  background-color: #ccc;
+}
+
+.OptionContainer input:removed  {
+  background-color: #2196F3;
+}
+
+/* When the radio button is checked, add a blue background */
+.OptionContainer input:checked ~ .checkmark {
+  /*background-color: #2196F3;*/
+}
+
+.OptionContainer input:checked ~ .chkcheckmark {
+  /*background-color: #2196F3;*/
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.chkcheckmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.OptionContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+.OptionContainer input:checked ~ .chkcheckmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.OptionContainer .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2196f3;
+}
+
+.OptionContainer .chkcheckmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #2196f3;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* end onoffswitch */
+
+
+/* list */
+
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 5px 6px 6px 40px;
+  transition: 0.2s;
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#ULAPT li {
+  color:#ffffff;
+}
+
+#ULFeatures li {
+
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul li:nth-child(odd) {
+  background-color: rgba(110,110,110,0.2);
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: rgba(0,0,0,0.5);
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.LIchecked {
+  background-color: rgba(255,0,0,0.2);
+  color: #fff;
+  
+}
+
+/* Add a "checked" mark when clicked on */
+ul li.LIchecked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 2px;
+  left: 10px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+
+
+/* Style the header */
+.header {
+  background-color: #f44336;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* end list */
+
+
+.scene-nav-info {
+  bottom: 5px;
+  width: 100%;
+  text-align: center;
+  color: slategrey;
+  opacity: 0.7;
+  font-size: 10px;
+}
+
+.scene-tooltip {
+  color: lavender;
+  font-size: 15px;
+}
+
+.scene-nav-info, .scene-tooltip {
+  position: absolute;
+  font-family: sans-serif;
+  pointer-events: none;
+  }
+  
+/* infopanel */
+
+.infopanel
+{
+height: 200px; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1; 
+  bottom: 0;
+  left: 0;
+  background-color: rgba(80,80,80,0.5);
+  overflow-x: hidden; 
+  padding-top: 10px; 
+  transition: 0.3s;
+  color:#dddddd;
+}
+
+#InfoText {padding-left:20px; font-size:12px;padding-bottom: 50px;}
+/* Style the button that is used to open the sidepanel */
+.infobtn {
+  margin:0;
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  z-index:99;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.infobtn:hover {
+  background-color: #444;
+}
+
+button {
+  background-color: #2196f3;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  margin: 10px 5px;
+  cursor: pointer;
+}
+
+#ULFeatures{display:block;color:#ffffff;}
+#infopanelAPT{background-color: rgba(255,215,0,0.8);color:#000000;}
+#infopanelFeatures{background-color: rgba(0,0,0,0.5);}
+
+/*SLIDER*/
+.slidercontainer {
+  width: 100%; /* Width of the outside container */
+  padding-bottom:10px;
+}
+
+.slidervalue
+{font-size:12px;
+  padding-left:8px;
+}
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  
+  appearance: none;
+  width: 60%; 
+  height: 14px; 
+  background: #d3d3d3; 
+  outline: none; 
+  opacity: 0.7; 
+  -webkit-transition: .2s; 
+  transition: opacity .2s;
+  margin: 0 8px 8px 32px;
+  float:left;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; 
+  appearance: none;
+  width: 14px; 
+  height: 14px; 
+  background: #2196f3; 
+  cursor: pointer; 
+}
+
+.slider::-moz-range-thumb {
+  width: 14px; 
+  height: 14px; 
+  background: #2196f3; 
+  cursor: pointer; 
+}
+
+#mySidepanel ul li {
+    white-space: normal; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+	list-style-type: none;
+}
+
+a
+{
+color:#ffffff;
+}
+</style>
+
+
+  
+</head>
+
+<body oncontextmenu="return false;">
+<div style=" position:absolute; width:100%; top:200px; text-align:center; font-size:30px; color:#888888;">APTMap<br/> Loading... </div>
+<div id="InfoPanel" class="infopanel">
+<div id="InfoText"></div>
+</div>
+<button class="infobtn" onclick="opencloseInfo()">Info</button> 
+
+<div id="mySidepanel" class="sidepanel">
+  <div id="loadingMessage" style="color:#fff;padding:10px;">
+    Loading data, please wait...
+  </div>
+  <div id="contentPanel" style="display:none;">
+<button id="resolutionToggle" >High resolution</button> <button id="saveImage" onclick="downloadImage()">Save image</button>
+<br/>
+<button id="animationToggle" >Pause Animation</button> <button id="rotationToggle" >Activate Rotation</button>
+
+<a id="downloadAnchorElem" href="#" style="display:none">x</a>  
+
+
+<br/>
+<a id="infopanelAPT" href="#" onclick="opencloseUL('ULAPT')">APT</a>
+<div class="sidepanelinfo">left-click: highlight</div>
+<button id="clearselectionAPT" onclick="clearAPTSelection()">Clear selection</button> 
+<ul id="ULAPT"></ul>
+
+<br/>
+<h3 id="infopanelFeatures">Features</h3>
+<div class="sidepanelinfo">left-click: highlight</div>
+<button id="clearselectionfeatures" onclick="clearFeaturesSelection()">Clear selection</button> 
+<ul id="ULFeatures"></ul>
+<br/>
+
+  
+</div>
+</div>
+
+
+<div style="width:80%; height:30px; color:rgba(255,255,255,0.7); font-size:30px; position:absolute; left:0; top:0; z-index:99; font-family: sans-serif; text-align:left; padding-left:20px;"><a href="https://andreacristaldi.github.io/APTmap/"><img src="images/aptmap.png" /></a></div>
+<div style="width:80%; height:30px; color:rgba(255,255,255,0.7); font-size:30px; position:absolute; left:0; top:100px; z-index:99; font-size:0.8em; font-family: sans-serif; text-align:left; padding-left:20px;">APTMap Andrea Cristaldi <a href="https://github.com/andreacristaldi/APTmap">Github</a></div>
+
+<button id="OpenBtn" class="openbtn"  onclick="opencloseNav()">&#9776;</button> 
+
+  <div id="3d-graph" style="z-index:10">
+  
+  <div style="position: relative;"><div><div style="width: 1280px; height: 607px; position: relative;"><div class="scene-nav-info">APTMap Andrea Cristaldi github.com/andreacristaldi/APTmap - Left-click: info, Right-click: focus, Mouse-wheel/middle-click: zoom </div><div class="scene-tooltip" style="left: 607px; top: 362px; transform: translate(-47.4219%, 21px);"></div><canvas width="2560" height="1214" style="width: 1280px; height: 607px;"></canvas></div></div><div class="graph-info-msg"></div></div></div>
+
+ 
+  
+  
+<script type="module">
+  import * as THREE from 'https://unpkg.com/three@0.154.0/build/three.module.js';
+  import ForceGraph3D from 'https://cdn.jsdelivr.net/npm/3d-force-graph/+esm';
+    
+  window.THREE = THREE;
+	
+  var DictGroupColor ={};
+
+  var resolution = 8;
+  
+  let dataremoved={"nodes": [],"links":[]};
+  
+  
+  let highlightNodes = [];
+  let invisibleNodes = [];
+
+  let highlightLink = null;
+  
+  var bootstrap=1;
+  
+  
+  const elem = document.getElementById('3d-graph');
+
+  const Graph = ForceGraph3D()(elem)
+	  .jsonUrl('apt_rel.json')  
+	  
+      .cooldownTime(7000)
+	  
+	  .onEngineStop(renderInfopanel)
+      .nodeLabel(node => { if (node.group==='APT') return `${node.group}: ${node.name}`
+	  if (node.group!=='APT') return `${node.group}: ${node.name}`
+	  }
+	  )
+	  .nodeResolution(resolution)
+	  .nodeVal(8)
+      .nodeColor('currentcolor')
+	  .nodeRelSize(5)
+	  .linkColor('color')
+	  .linkWidth(2)
+	  
+	  .numDimensions(3)
+      .onNodeDrag(node => {updateInfo(node)})
+      .onNodeHover(node => elem.style.cursor = node ? 'pointer' : null)
+	  .onNodeRightClick(node => {
+		  
+				
+				const distance = 80;
+				const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+
+				Graph.cameraPosition(
+					{ x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, 
+					node, 
+					3000  // ms transition duration
+				)
+				updateInfo(node);}
+			)
+      .onNodeClick(node => {
+		  
+				
+				updateInfo(node);}
+			);
+		
+
+		
+      let isAnimationActive = true;
+	  
+ 
+	  document.getElementById('animationToggle').addEventListener('click', event => {
+      isAnimationActive ? Graph.pauseAnimation() : Graph.resumeAnimation();
+      isAnimationActive = !isAnimationActive;
+      event.target.innerHTML = `${(isAnimationActive ? 'Pause' : 'Resume')} Animation`;
+	  });
+	
+	const distance = 1400;  
+    let isRotationActive = false;
+	var RotationInterval; 
+	  document.getElementById('rotationToggle').addEventListener('click', event => {
+      if (isRotationActive != true){
+	  let angle = 0;
+		RotationInterval = setInterval(() => {
+		Graph.cameraPosition({
+        x: distance * Math.sin(angle),
+        z: distance * Math.cos(angle)
+      });
+      angle += Math.PI / 300;
+    }, 10);
+}	  
+	  else
+	  {clearInterval(RotationInterval);}
+      isRotationActive = !isRotationActive;
+      event.target.innerHTML = `${(isRotationActive ? 'Deactivate' : 'Activate')} Rotation`;
+
+});
+	let isResolutionActive = false;
+	document.getElementById('resolutionToggle').addEventListener('click', event => {
+      changeRes();
+      isResolutionActive = !isResolutionActive;
+      event.target.innerHTML = `${(isResolutionActive ? 'Low' : 'High')} Resolution`;
+	  });
+
+window.Graph = Graph;
+
+const linkForce = Graph
+
+      .d3Force('link')
+
+      .distance(link => 20);
+	  
+const NodeVisibility = Graph
+
+      .nodeVisibility(true);
+
+const LinkVisibility = Graph
+
+      .linkVisibility(true);
+
+		 
+function updateGeometries() {
+      Graph.nodeRelSize(4); // trigger update of 3d objects in scene
+}
+	
+function visibleNode(node)
+{	 
+
+}
+
+//UPDATE INFOPANEL
+function updateInfo(node)
+{	 
+	let { nodes, links } = Graph.graphData();
+	let lnk = links.filter(l => l.source === node || l.target === node);
+	
+	let lnks ="";
+	for (let l of lnk)
+	{
+	if (l.source.name!==node.name){
+		lnks=lnks+l.source.name + ", ";}
+	else{lnks=lnks+l.target.name + ", ";}
+	}
+	
+	
+	document.getElementById("InfoText").innerHTML="Name: " +  node.name + "<br/><br/>Type: " + node.group +"<br/><br/>Description: " + node.description + "<br/><br/>Number of links: " + lnk.length + "<br/><br/>Links: " + lnks;
+
+}
+
+
+function viewNode(node)
+{
+     	const distance = 90;
+          const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+
+          Graph.cameraPosition(
+            { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // new position
+            node, 
+            3000  
+          )
+		  updateInfo(node)
+}	 
+
+
+
+//HIGHLIGHT NODE
+function modNode(n) {
+var dimension = 10;
+var opacity =0.75;
+if (n.currentcolor == n.highlightcolor){dimension = 20;opacity=1;}
+
+
+	
+  var sphere = new THREE.SphereGeometry(dimension,resolution,resolution);
+  var lambert = new THREE.MeshLambertMaterial({ color: n.currentcolor, transparent: true, opacity: opacity });
+  var mesh = new THREE.Mesh(sphere, lambert);
+
+  var group = new THREE.Group();
+  group.add(mesh);
+  
+  return group;
+}
+function highlightNode(node)
+{
+
+	const { nodes, links } = Graph.graphData();
+	for (var i = 0; i < nodes.length; i++) {
+		if (nodes[i].name==node.name){ 
+			if (nodes[i].currentcolor == nodes[i].highlightcolor){
+			nodes[i].currentcolor = nodes[i].color;
+			
+			}
+			else{
+			nodes[i].currentcolor = nodes[i].highlightcolor;
+			} 
+		}
+  }
+  Graph.nodeThreeObject(node => {
+    return modNode(node);
+  });
+}	
+
+//CHANGE RESOLUTION
+function changeRes()
+{
+	if (resolution==4){resolution=32;}
+	else{resolution=4}
+
+	Graph.nodeThreeObject(node => {
+    return modNode(node);
+  });
+
+}
+
+
+
+//REMOVE NODE IN GRAPH	 		 
+function removeNode(node) {
+
+	let { nodes, links } = Graph.graphData();
+
+	noderemoved=nodes.filter(l => l.id == node.id);
+	dataremoved['nodes'].push(noderemoved);
+	linksremoved = links.filter(l => l.source === node || l.target === node);
+	dataremoved['links'].push(linksremoved);
+
+	
+	links = links.filter(l => l.source !== node && l.target !== node); // Remove links attached to node
+    nodes.splice(node.id, 1); // Remove node
+    nodes.forEach((n, idx) => { n.id = idx; }); // Reset node ids to array index
+    Graph.graphData({ nodes, links });
+}
+	
+
+
+//ADD UL in GUI
+function renderInfopanel() {
+    if (bootstrap === 0) { return; }
+    bootstrap = 0;
+
+    const { nodes } = Graph.graphData();
+    const listULAPT = document.getElementById("ULAPT");
+    const listULFeatures = document.getElementById("ULFeatures");
+    const FeaturesGroup = {};
+
+    listULAPT.addEventListener('contextmenu', function(ev) {
+        if (ev.target.tagName === 'LI') {
+            if (ev.target.className !== 'LIremoved') {
+                ev.target.classList.toggle('LIremoved');
+                const node = nodes.find(n => n.name === ev.target.innerHTML);
+                if (node) removeNode(node);
+            }
+        }
+        ev.preventDefault();
+    }, false);
+
+    listULAPT.addEventListener('click', function(ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('LIchecked');
+            const node = nodes.find(n => n.name === ev.target.innerHTML);
+            if (node) {
+			  highlightNode(node);
+			  updateInfo(node);       
+			  viewNode(node);         
+			}
+        }
+    }, false);
+
+    listULFeatures.addEventListener('contextmenu', function(ev) {
+        if (ev.target.tagName === 'LI') {
+            const node = nodes.find(n => n.name === ev.target.innerHTML);
+            if (node) {
+			  highlightNode(node);
+			           
+			}
+        }
+        ev.preventDefault();
+    }, false);
+
+    listULFeatures.addEventListener('click', function(ev) {
+        if (ev.target.tagName === 'LI') {
+            ev.target.classList.toggle('LIchecked');
+            const node = nodes.find(n => n.name === ev.target.innerHTML);
+            if (node) {
+			  highlightNode(node);
+			  updateInfo(node);       
+			  viewNode(node);         
+			}
+        }
+    }, false);
+
+    
+    let i = 0;
+    const batchSize = 50; 
+
+    function populateBatch() {
+        const limit = Math.min(i + batchSize, nodes.length);
+        for (; i < limit; i++) {
+            const node = nodes[i];
+
+            if (node.group !== "APT" && !(node.group in FeaturesGroup)) {
+                FeaturesGroup[node.group] = 1;
+                DictGroupColor[node.color] = node.group;
+                newAElement("ULFeatures", node.group, node.color);
+                newCheckboxElement("ULFeatures", node.group);
+                newSliderElement("ULFeatures", node.group);
+                newUlElement("ULFeatures", "UL" + node.group);
+            }
+
+            if (node.group === "APT") {
+                newLiElement("ULAPT", node.name);
+            } else if (node.group === "Country") {
+                newLiElement("UL" + node.group, node.name);
+            } else {
+                newLiElement("UL" + node.group, node.name);
+            }
+        }
+
+        if (i < nodes.length) {
+            setTimeout(populateBatch, 0); 
+        } else {
+            
+            sortListDir("ULAPT");
+            sortListDir("ULCountry");
+			sortListDir("ULTool");
+			sortListDir("ULTTP");
+
+            
+            document.getElementById('OpenBtn').style.display = "block";
+            document.getElementById("loadingMessage").style.display = "none";
+            document.getElementById("contentPanel").style.display = "block";
+        }
+    }
+
+    populateBatch(); 
+}
+
+
+	
+
+window.updateLinkDistance = function(elem)
+{
+let sliderid=elem.id;
+
+document.getElementById(sliderid.replace("LinkDistance","LinkDistanceValue")).innerHTML=elem.value;
+
+    linkForce.distance(link => { 
+	if (DictGroupColor[link.color]!=null){ return document.getElementById("LinkDistance"+DictGroupColor[link.color]).value}} );
+	Graph.numDimensions(3); 
+}
+
+window.updateLinkVisible = function()
+{
+
+    LinkVisibility.linkVisibility(link => { 
+	if (DictGroupColor[link.color]!=null){ return document.getElementById("chkLinkVisible"+DictGroupColor[link.color]).checked}} );
+
+	Graph.numDimensions(3); 
+}
+
+window.updateVisible = function() 
+{
+
+NodeVisibility.nodeVisibility(node => { if (node.group!="APT") { return document.getElementById("chkVisible"+ node.group).checked;} else{return true;}} );
+	Graph.numDimensions(3); 
+}
+
+
+
+
+
+
+	//DOWNLOAD IMAGE	
+window.downloadImage = function(){
+
+let c = Graph.renderer().domElement;
+
+	window.requestAnimationFrame(timestamp => {
+		let img = c.toDataURL("image/png");
+		
+		var image = new Image();
+		image.src = img;
+		
+		
+		image.onload = function() {
+		  
+		  var canvas = document.createElement("canvas");
+		  canvas.width = image.width;
+		  canvas.height = image.height;
+		  var ctx = canvas.getContext("2d");
+
+		  
+		  ctx.drawImage(image, 0, 0);
+
+		 
+		  var tempImg = new Image();
+		  tempImg.src = "images/aptmap.png";
+
+		  
+		  tempImg.onload = function() {
+			ctx.drawImage(tempImg, 0, 0);
+			
+			var mergedImage = canvas.toDataURL("image/png");
+			var w=window.open('about:blank','APTmap Image');
+				w.document.write("<img src='"+mergedImage+"' alt='Network Image'/>");
+  };
+};
+
+
+
+
+
+
+
+		
+		
+		
+		
+		
+		
+	});
+	
+
+}
+
+
+	
+// SORT UL LIST ITEM	
+function sortListDir(ULname) {
+    const list = document.getElementById(ULname);
+    const items = Array.from(list.querySelectorAll('li'));
+
+    items.sort((a, b) => a.textContent.localeCompare(b.textContent));
+
+    const fragment = document.createDocumentFragment();
+    let i = 0;
+    const batchSize = 50;
+
+    function appendBatch() {
+        const limit = Math.min(i + batchSize, items.length);
+        for (; i < limit; i++) {
+            fragment.appendChild(items[i]);
+        }
+
+        if (i < items.length) {
+            setTimeout(appendBatch, 0);
+        } else {
+            list.innerHTML = '';
+            list.appendChild(fragment);
+        }
+    }
+
+    appendBatch();
+}
+
+
+
+function getCorrectTextColor(hex){
+		
+			
+			let threshold = 130; 
+			
+			let hRed = hexToR(hex);
+			let hGreen = hexToG(hex);
+			let hBlue = hexToB(hex);
+			
+      
+			function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)}
+			function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)}
+			function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
+			function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
+
+			let cBrightness = ((hRed * 299) + (hGreen * 587) + (hBlue * 114)) / 1000;
+			  if (cBrightness > threshold){return "#000000";} else { return "#ffffff";}	
+		  }
+
+
+
+function decodeHTMLEntities (str) {
+    if(str && typeof str === 'string') {
+      
+      str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
+      str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
+	  let element = document.createElement("textarea");
+      element.innerHTML = str;
+      str = element.textContent;
+      element.textContent = '';
+    }
+
+    return str;
+  }
+  
+  
+ window.clearAPTSelection = function() 
+ {
+	let ul = document.getElementById("ULAPT");
+	let items = ul.getElementsByTagName("li");
+	for (let i = 0; i < items.length; ++i) {
+		if (items[i].className=="LIchecked"){items[i].click();}
+  
+	}
+ 
+}
+ 
+
+window.clearFeaturesSelection = function() 
+ {
+	let ul = document.getElementById("ULFeatures");
+	let items = ul.getElementsByTagName("li");
+	for (let i = 0; i < items.length; ++i) {
+		if (items[i].className=="LIchecked"){items[i].click();}
+ 
+	}
+ 
+ }
+ 
+ 
+ 
+ /*GUI*/
+   /* NAV sidebar */
+window.opencloseNav = function() {
+if (document.getElementById("mySidepanel").style.width == "450px")
+{ document.getElementById("mySidepanel").style.width = "0"; }
+else{
+  document.getElementById("mySidepanel").style.width = "450px";
+}}
+  /* end sidebar */
+
+  /* INFO sidebar */
+window.opencloseInfo = function() {
+if (document.getElementById("InfoPanel").style.width == "400px")
+{ document.getElementById("InfoPanel").style.width = "0"; }
+else{
+  document.getElementById("InfoPanel").style.width = "400px";
+}}
+  /* end sidebar */
+  
+  
+  
+  
+  
+ function newSliderElement(ULfather, feature)
+ {
+ let h4 = document.createElement("h4");
+ h4.innerHTML="Link distance";
+ document.getElementById(ULfather).appendChild(h4);
+ let div = document.createElement("div");
+ div.innerHTML= "<input type='range' min='1' max='1500' value='20' class='slider' id='LinkDistance"+feature+"' onchange='updateLinkDistance(this)'><div class='slidervalue' id='LinkDistanceValue"+feature+"'>20</div>";
+div.className="slidercontainer";
+document.getElementById(ULfather).appendChild(div);
+ } 
+  
+function newCheckboxElement(ULfather, feature)
+ {
+ 
+ let div = document.createElement("div");
+ div.innerHTML= "<label class='OptionContainer'>Node visibility <input type='checkbox' checked='checked' id='chkVisible"+feature+"'onclick='updateVisible()'><span class='chkcheckmark'></span></label> <label class='OptionContainer'>Link visibility <input type='checkbox' checked='checked' id='chkLinkVisible"+feature+"'onclick='updateLinkVisible()'><span class='chkcheckmark'></span></label><br/>";
+ document.getElementById(ULfather).appendChild(div);
+ } 
+
+function newAElement(ULfather,name,color) {
+  let a = document.createElement("a");
+  a.setAttribute('href', "#");
+  a.onclick= function() {opencloseUL('UL' + name)};
+  a.setAttribute('style', "background-color:"+ color);
+  let ncolor = getCorrectTextColor(color);
+ 
+  a.setAttribute('style', "background-color:"+ color+"; color:"+ncolor +";");
+  
+  let inputValue = name;
+  let t = document.createTextNode(inputValue);
+  a.appendChild(t);
+  
+  document.getElementById(ULfather).appendChild(a);
+}
+
+function newUlElement(ULfather,ULname) {
+  let ul = document.createElement("ul");
+  ul.id=ULname;
+
+  ul.className="ULfeature";
+ 
+  document.getElementById(ULfather).appendChild(ul);
+}
+
+
+function newLiElement(ULname,nodename) {
+
+  let li = document.createElement("li");
+  let inputValue = decodeHTMLEntities(nodename);//decodeHTMLEntities
+  let t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  document.getElementById(ULname).appendChild(li);
+}
+
+
+window.opencloseUL = function(ULname) {
+if (document.getElementById(ULname).style.display == "block")
+{ document.getElementById(ULname).style.display = "none"; }
+else{
+  document.getElementById(ULname).style.display = "block";
+}}
+
+  /*UL*/
+
+  </script>
+	  
+	  
+	
+ 
+  
+</body>
