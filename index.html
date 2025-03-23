@@ -34,6 +34,10 @@ async function fetchData() {
 
     if (jdata.hasOwnProperty("features")) {
       console.log("JSON OK");
+      // Attiva il pulsante solo dopo il caricamento JSON
+      const startGlobeButton = document.getElementById('start-globe');
+      startGlobeButton.textContent = "Go to map";
+      startGlobeButton.disabled = false;
     } else {
       console.log("JSON ERROR");
     }
@@ -1517,7 +1521,7 @@ function Search()
 		<p>ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON AN "AS IS" BASIS</p>
 		<p>Project: <strong style="color:rgb(253, 255, 16);">Andrea Cristaldi</strong> <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
 		<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="blank_">Creative Commons Attribution 4.0 International License</a>.</p>
-		<button id="start-globe">Go to map</button>
+		<button id="start-globe" disabled>Loading data...</button>
       </div>
       <div id="show-about" class="hidden">
 	  <p>An Advanced Persistent Threat (APT) is a stealthy computer network threat actor, nation state, state-sponsored group or non-state sponsored groups conducting large-scale targeted intrusions for specific goals, which gains unauthorized access to a computer network and remains undetected for an extended period.
