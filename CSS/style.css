@@ -644,6 +644,12 @@ button.esri-icon-close {
   
 }
 
+#filter {
+  color: rgb(50, 168, 109);
+  box-shadow: none;
+  cursor: pointer;
+}
+
 #relationship {
   color: white;
   box-shadow: none;
