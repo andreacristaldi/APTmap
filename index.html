@@ -1086,7 +1086,7 @@ function closeChart() {
     document.getElementById("chart-container").style.display = "none";
     }
 	  
-	  
+	/*  
 document.getElementById("relationship").addEventListener("click", function () {
     document.getElementById("relationship-container").style.display = "flex";
     });
@@ -1094,7 +1094,7 @@ document.getElementById("close-relationship").addEventListener("click", closeRel
 
 function closeRelationship() {
     document.getElementById("relationship-container").style.display = "none";
-    }
+    }*/
 
 
 document.getElementById("malware").addEventListener("click", function () {
@@ -1107,13 +1107,19 @@ document.getElementById("netgraph").addEventListener("click", function () {
     window.open(linkURL, "_self");
     });
 
+document.getElementById("filter").addEventListener("click", function () {
+	var linkURL = "apt.html";
+    window.open(linkURL, "_blank");
+    });
 
 view.ui.add("about", "bottom-left");
 view.ui.add("maptitle", "top-left");
 view.ui.add("others", "top-left");
 view.ui.add("search", "top-left");
 view.ui.add("chart", "top-left");
-view.ui.add("relationship", "top-left");
+/*
+view.ui.add("relationship", "top-left");*/
+view.ui.add("filter", "top-left");
 view.ui.add("netgraph", "top-left");
 view.ui.add("malware", "top-left");
 
@@ -1492,7 +1498,7 @@ function Search()
 	<div id="others"><h3>Other APTs not in map</h3></div>
 	<div id="search"><h3>Search</h3></div>
 	<div id="chart"><h3>Charts</h3></div>
-	<div id="relationship"><h3>Relationship</h3></div>
+	<div id="filter"><h3>Filter</h3></div>
 	<div id="netgraph"><h3>Network Graph</h3></div>
 	<div id="malware"><h3>APT Malware</h3></div>
 	

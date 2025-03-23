@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1" />
+	<title>APTMAP - Advanced Persistent Threat Map - Groups Filtering Dashboard</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
+	<link rel="stylesheet" href="CSS/style3.css" />
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+	
+</head>
+<body>
+	<div id="container">
+		<div id="introDiv">
+		<img src="images/aptmap.png" />
+      <div id="show-intro">
+        <p>An Advanced Persistent Threat (APT) is a stealthy computer network threat actor, nation state, state-sponsored group or non-state sponsored groups conducting large-scale targeted intrusions for specific goals, which gains unauthorized access to a computer network and remains undetected for an extended period.
+        </p>
+		<p>Attribution is a very complex issue. This map is based on data from different sources (vendor, studies, reports, ...) and it is not a reliable source. The majority of the mappings rely on the findings in a single incident analysis. Groups often change their toolsets or exchange them with other groups. This makes attribution of certain operations extremely difficult. Information published here may be wrong, outdated, or may change based on evolving information.</p>
+        <p>Primary sources: <a href="https://www.misp-project.org/" target="blank_">MISP</a>, <a href="https://attack.mitre.org/" target="blank_">MITRE</a>, <a href="https://www.etda.or.th/th/" target="blank_">ETDA</a>, <a href="https://www.vx-underground.org/" target="blank_">VX-Underground</a></p>
+		<p>ALL DOCUMENTS AND THE INFORMATION CONTAINED THEREIN ARE PROVIDED ON AN "AS IS" BASIS</p>
+		<p>Project: <strong style="color:rgb(253, 255, 16);">Andrea Cristaldi</strong> <a href="https://github.com/andreacristaldi/APTmap" target="blank_">GitHub</a>, <a href="https://www.linkedin.com/in/andreacristaldi/" target="blank_">Linkedin</a>, <a href="https://www.cybersec4.com" target="blank_">Cybersec4</a>
+		<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="blank_">Creative Commons Attribution 4.0 International License</a>.</p>
+		<button id="start">Go to data</button>
+      </div>
+		
+		</div>
+	</div>
+	
+	<div id="DivContainer" style="display:none;">
+		<div id="fixedHeader">
+			<img src="images/aptmap.png"/><br />
+			APT Groups Filtering - <span id="aptCounter">0</span> Groups Found <br />
+			Filters: <span id="selectedFilters"></span>
+		</div>
+		<div id="content">
+			<div class="DivPanel2">
+				<h2>Targets</h2>
+				<div id="tableTargets"></div>
+			</div>
+
+			<div class="DivPanel2">
+				<h2>Category Targets</h2>
+				<div id="tableCategoryTargets"></div>
+			</div>
+
+			<div class="DivPanel2">
+				<h2>Locations</h2>
+				<div id="tableLocations"></div>
+			</div>
+			
+			<div class="DivPanel2">
+				<h2>TTPs</h2>
+				<div id="tableTTPs"></div>
+			</div>
+
+			<div class="DivPanel2">
+				<h2>Malware Samples</h2>
+				<div id="tableSamples"></div>
+			</div>
+
+			<div class="DivPanel2">
+				<h2>Filtered APT Groups</h2>
+				<div id="tableFilteredAPT"></div>
+			</div>
+			
+			<div class="DivPanel2">
+				<h2>APT Group Details</h2>
+				<div id="aptDetails"></div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+	
+	
+	var referrer = document.referrer;
+
+    if (referrer.includes("index.html")) {
+		document.getElementById('DivContainer').style.display = "block";
+		document.getElementById('container').style.display = "none";
+		document.getElementById('DivContainer').style.filter = "none";
+		loadData();
+      } 
+	  
+	let aptData = [];
+	let filters = { targets: [], categoryTargets: [], locations: [], samples: [], ttps: [] };
+
+	async function loadData() {
+		try {
+			const response = await fetch('apt.json');
+			const data = await response.json();
+			aptData = data.features;
+
+			function renderTable(divId, items, filterKey) {
+				items.sort();
+				let html = '<table class="display"><thead><tr><th>Select</th><th>Name</th></tr></thead><tbody>';
+				items.forEach(item => html += `<tr><td><input type="checkbox" data-key="${filterKey}" value="${item}"></td><td>${item}</td></tr>`);
+				html += '</tbody></table>';
+				document.getElementById(divId).innerHTML = html;
+				$(`#${divId} table`).DataTable();
+			}
+
+			renderTable('tableTargets', [...new Set(aptData.flatMap(g => g.properties.targets || []))], 'targets');
+			renderTable('tableCategoryTargets', [...new Set(aptData.flatMap(g => g.properties['target-category'] || []))], 'categoryTargets');
+			renderTable('tableLocations', [...new Set(aptData.map(g => g.properties.location).filter(Boolean))], 'locations');
+			renderTable('tableSamples', [...new Set(aptData.flatMap(g => (g.properties['ext-links'] || []).filter(el => el.type === 'malwaresample' && el.description).map(el => el.description)))], 'samples');
+			renderTable('tableTTPs', [...new Set(aptData.flatMap(g => (g.properties.TTP || []).map(ttp => ttp.techniqueID)))], 'ttps');
+
+			$('body').on('change', 'input[type="checkbox"]', filterGroups);
+			filterGroups();
+		} catch (e) { console.error('Error:', e); }
+	}
+
+	function filterGroups() {
+		for (let key in filters) {
+			filters[key] = $(`input[data-key="${key}"]:checked`).map((_, cb) => cb.value).get();
+		}
+
+		let filtered = aptData.filter(group => {
+			const props = group.properties;
+			return (!filters.targets.length || filters.targets.some(t => props.targets?.includes(t))) &&
+				(!filters.categoryTargets.length || filters.categoryTargets.some(ct => props['target-category']?.includes(ct))) &&
+				(!filters.locations.length || filters.locations.includes(props.location)) &&
+				(!filters.samples.length || filters.samples.some(s => props['ext-links']?.some(el => el.type === 'malwaresample' && el.description === s))) &&
+				(!filters.ttps.length || filters.ttps.some(ttp => props.TTP?.some(t => t.techniqueID === ttp)));
+		});
+
+		document.getElementById('aptCounter').innerText = filtered.length;
+        let filterText = Object.entries(filters).map(([k, v]) => v.length ? `${k}: ${v.join(', ')}` : '').filter(Boolean).join(' | ');
+		document.getElementById('selectedFilters').innerText = filterText;
+
+		let html = '<table class="display"><thead><tr><th>APT Group Names</th></tr></thead><tbody>';
+		filtered.forEach(g => html += `<tr><td><a href="#" class="apt-link" data-name="${g.properties.name}">${g.properties.name}</a></td></tr>`);
+		html += '</tbody></table>';
+		document.getElementById('tableFilteredAPT').innerHTML = html;
+		$('#tableFilteredAPT table').DataTable();
+
+		
+		$('#tableFilteredAPT').on('click', '.apt-link', function(e){
+			e.preventDefault();
+			const aptName = $(this).data('name');
+			const apt = aptData.find(g => g.properties.name === aptName);
+			document.getElementById('aptDetails').innerHTML = createAptDetails(apt);
+		});
+
+	}
+	
+	function createAptDetails(apt) {
+		let div;
+		
+	
+	div='<div class="popupDescription"><div class="popupImage"><div class="Flag'+ apt.properties["image-url"].replace(".","") +'"></div><p class="info"><i class="fa fa-location-arrow"></i> <span class="infoTitle">Location</span><br />' + apt.properties.location + '</p>';
+	if (apt.properties.description)
+	{
+		div+='<p class="info"><i class="fa fa-file-text-o"></i> <span class="infoTitle">Description</span><br />'+apt.properties.description+'</p>';
+	}
+	if (apt.properties["other-names"].length >0)
+	{
+		let onadd="";
+		for (var on of apt.properties["other-names"]) 
+			{
+				onadd +=' ' + on +',';
+			}
+		div+='<p class="info"><i class="fa fa-users"></i> <span class="infoTitle">Other names</span><br />'+onadd+'</p>';
+	}
+	
+	if (apt.properties["first-seen"])
+	{
+		div+='<p class="info"><i class="fa fa-clock-o"></i> <span class="infoTitle">First seen</span><br />'+apt.properties["first-seen"]+'</p>';
+	}
+	if (apt.properties["sponsor"])
+	{
+		div+='<p class="info"><i class="fa fa-share-square-o"></i> <span class="infoTitle">Sponsor</span><br />'+apt.properties["sponsor"]+'</p>';
+	}
+	if (apt.properties.motivation)
+	{
+		div+='<p class="info"><i class="fa fa-angle-double-right"></i> <span class="infoTitle">Motivation</span><br />'+apt.properties.motivation+'</p>';
+		}
+	if (apt.properties.targets.length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties.targets) 
+			{
+				tadd +=' <a href="#target=' + t +'" >'+t+'</a>,';
+			}
+		div+='<p class="info"><i class="fa fa-crosshairs"></i> <span class="infoTitle">Targets</span><br />'+tadd+'</p>';
+	}
+	
+	if (apt.properties["target-category"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["target-category"]) 
+			{
+				tadd +=' <a href="#targetcategory=' + t +'" >'+t+'</a>,';
+		}
+		div+='<p class="info"><i class="fa fa-industry"></i> <span class="infoTitle">Target categories</span><br />'+tadd+'</p>';
+	}
+
+	if (apt.properties["ext-links"].length>0)
+	{
+		let tadd="";
+		let tmadd="";
+		for (var t of apt.properties["ext-links"]) 
+			{
+				if (t.type=="malwaresample"){
+					tmadd +=' <a href="' + t.url +'" target="_blank">'
+					tmadd +=t.description;
+					tmadd +='</a><br /><br />';
+				}
+				else{
+					tadd +=' <a href="' + t.url +'" target="_blank">'
+					if (t.description!== undefined){tadd +=t.url;}
+					else{tadd +=t.description;}
+					tadd +='</a><br /><br />';
+				}
+			}
+		
+		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">External links</span><br />'+tadd+'</p>';
+		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span><br />'+tmadd+'</p>';
+	}
+	
+	
+	
+	if (apt.properties["tools"].length>0)
+	{
+		let tadd="";
+		for (var t of apt.properties["tools"]) 
+			{
+			tadd +=' <a href="#tool=' + t.value +'" ><span class="infoTool">'+t.value+'</span> (category: ' + t.category +')</a><br />';
+			if (t.type!== undefined){tadd +='type: '+ t.type.join(', ') +'<br />'}
+			tadd +='<br />'+ t.description + '<br /><br />';
+			for (var t2 of t.refs) 
+				{
+					tadd +=' <a href="'+ t2 +'" target="_blank">'+t2+'</a><br /><br />';
+				}
+					tadd +='<br />';
+			}
+		div+='<p class="info"><i class="fa fa-exclamation-triangle"></i> <span class="infoTitle">Tools</span><br />'+tadd+'</p>';
+	}
+	
+	if (apt.properties["TTP"].length>0)
+		{
+		let tadd="";
+		for (var t of apt.properties["TTP"]) 
+			{
+				tadd +=' <a href="https://attack.mitre.org/techniques/' + t.techniqueID.replace(".","/") +'/" target="_blank" ><span class="infoTTP">'+t.techniqueID+'</span></a><br />'
+				if (t.comment!== undefined){tadd +=t.comment +'<br /><br />'}
+			}
+		div+='<p class="info"><i class="fa fa-cogs"></i> <span class="infoTitle">TTP</span><br />'+tadd+'</p>';
+		}
+	
+	if (apt.properties.sources.length>0)
+	{
+		let sadd="";
+		for (var s of apt.properties.sources) 
+			{
+				sadd +=s.name+ ', ' ;
+			}
+			div+='<p class="info"><i class="fa fa-book"></i> <span class="infoTitle">Sources</span><br />'+sadd+'</p>';
+	}
+		return div;
+	}
+
+	document.getElementById('start').addEventListener('click', () => {
+		document.getElementById('DivContainer').style.display = "block";
+		document.getElementById('container').style.display = "none";
+		document.getElementById('DivContainer').style.filter = "none";
+		loadData();
+	});
+
+	
+	</script>
+</body>
+</html>
