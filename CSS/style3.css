@@ -9,8 +9,177 @@ body,
   color: #FFFFFF;
   font-family: "Avenir Next W00", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-#fixedHeader { position: fixed; top: 0; left: 0; right: 0; background: #000; padding: 10px; z-index: 1000; }
-#content { margin-top: 140px; }
+#fixedHeader { 
+	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 8px 16px;
+    background: #0b0e16;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 13px; 
+	}
+	
+  #fixedHeader img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+  
+   .header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .header-title {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .header-sub {
+    font-size: 11px;
+    opacity: 0.8;
+  }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    max-width: 55%;
+  }
+
+  .header-filters-row {
+    font-size: 11px;
+  }
+
+  #selectedFilters {
+    font-weight: 500;
+  }
+
+  .header-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    opacity: 0.9;
+  }
+
+  .header-toggle-label {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 10px;
+    opacity: 0.8;
+  }
+
+  /* Toggle switch in stile dark */
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 18px;
+  }
+
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    inset: 0;
+    background-color: #222832;
+    border-radius: 999px;
+    transition: 0.2s;
+  }
+
+  .toggle-slider::before {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    background-color: #9ca3af;
+    transition: 0.2s;
+  }
+
+  .toggle-switch input:checked + .toggle-slider {
+    background-color: #00c896;
+  }
+
+  .toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(22px);
+    background-color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    #fixedHeader {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .header-right {
+      align-items: flex-start;
+      max-width: 100%;
+    }
+  }
+
+  /* Header dei pannelli + pulsante Clear */
+
+  .DivPanel2 {
+    position: relative;
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .panel-header h2 {
+    margin: 0;
+    /*font-size: 14px;*/
+  }
+
+  .panel-clear-btn {
+    border: none;
+    padding: 2px 8px;
+    border-radius: 999px;
+    
+    cursor: pointer;
+    background: rgba(148, 163, 184, 0.15);
+    color: #e5e7eb;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .panel-clear-btn i {
+    font-size: 10px;
+  }
+
+  .panel-clear-btn:hover {
+    background: rgba(148, 163, 184, 0.3);
+  }
+ 
+
 #start {
   border-radius: 0.2em;
   padding: 0.8em 1.5em;
@@ -33,6 +202,7 @@ body,
 #DivContainer
 {
 	filter: blur(8px);
+	padding-top: 70px;
 	/*width:100%;
 	margin:15px;
 	border: 1px solid #888;

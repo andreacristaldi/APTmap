@@ -858,7 +858,7 @@ input:checked + .slider:before {
   bottom: 70px;
   left: 0;
 
-  display: flex;
+  display: none; 
   justify-content: center;
   overflow-x: auto;
   padding: 1em;
@@ -868,6 +868,7 @@ input:checked + .slider:before {
   filter:blur(10px);
   
 }
+
 
 
 
@@ -1003,3 +1004,283 @@ margin:5px;}
 
 
 }
+
+/* --- Search panel layout improvements (APT Search) --- */
+
+#search-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75); /* overlay scuro */
+  display: none; /* viene attivato da JS */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#search-container.active {
+  display: flex;
+}
+
+#searchDiv {
+  position: relative;
+  background: #ffffff;
+  color: #111827;
+  width: 90%;
+  max-width: 1000px;          /* pannello più largo */
+  max-height: 90vh;
+  border-radius: 12px;
+  padding: 20px 24px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+/* Bottone X */
+#close-search {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+  color: #6b7280;
+}
+#close-search:hover {
+  color: #111827;
+}
+
+/* Header con logo + testo */
+.search-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.search-header img {
+  height: 48px;
+  width: auto;
+}
+
+#searchDiv h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.search-tagline {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Grid dei campi */
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px 16px;
+  margin-top: 12px;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.search-field label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #4b5563;
+}
+
+#searchDiv input[type="text"],
+#searchDiv select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  outline: none;
+}
+
+#searchDiv input[type="text"]:focus,
+#searchDiv select:focus {
+  border-color: #f97316; /* arancio simile ai marker */
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.3);
+}
+
+/* Azioni */
+#search-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Bottoni stile APTmap */
+#searchDiv button,
+#searchDiv input[type="button"],
+#searchDiv .btn-primary,
+#searchDiv .btn-secondary {
+  font-size: 13px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+#searchDiv .btn-primary {
+  background: #f97316;   /* arancio caldo */
+  border-color: #ea580c;
+  color: #ffffff;
+}
+
+#searchDiv .btn-primary:hover {
+  background: #ea580c;
+}
+
+#searchDiv .btn-secondary {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+#searchDiv .btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+/* Lista risultati */
+#searchPlaceHolder {
+  margin-top: 20px;
+  padding-left: 18px;
+}
+
+#searchPlaceHolder li {
+  margin-bottom: 12px;
+}
+
+
+/* --- APTmap: Dark theme per pannello Search --- */
+
+#search-container {
+  /* overlay scuro sopra la mappa */
+  background: rgba(3, 7, 18, 0.90); /* quasi nero, lascia intravedere sotto */
+  color: #e5e7eb;
+}
+
+/* Card centrale del search */
+#searchDiv {
+  background: #020617;             /* nero/blu molto scuro */
+  color: #e5e7eb;
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  padding: 24px 24px 20px;
+  max-width: 1000px;               /* un po' più largo */
+}
+
+/* Titolo e “tagline” */
+#searchDiv h1 {
+  margin-top: 0;
+  margin-bottom: 0.4em;
+  font-weight: 600;
+  font-size: 22px;
+  color: #f9fafb;
+}
+
+.search-tagline {
+  margin: 0;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Header con logo + testo, se lo usi */
+.search-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.search-header img {
+  height: 40px;
+  width: auto;
+}
+
+/* Layout a griglia dei campi (se usi la versione nuova) */
+.search-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px 16px;
+  margin-top: 10px;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Label e input in tema scuro */
+#searchDiv label,
+.search-field label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #9ca3af;
+}
+
+#searchDiv input[type="text"],
+#searchDiv select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 9px;
+}
+
+#searchlogo{width: auto !important;}
+
+  .collapsible-section {
+    margin-top: 8px;
+    padding-top: 4px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .collapsible-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .collapsible-header .infoTitle {
+    flex: 1;
+  }
+
+  .collapsible-arrow {
+    font-size: 10px;
+    opacity: 0.7;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .collapsible-section.open .collapsible-arrow {
+    transform: rotate(90deg);
+    opacity: 1;
+  }
+
+  .collapsible-body {
+    display: none;
+    margin-top: 4px;
+  }
+
+  .collapsible-section.open .collapsible-body {
+    display: block;
+  }
