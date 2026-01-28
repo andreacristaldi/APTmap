@@ -25,19 +25,352 @@
         details.classList.toggle("opendetails");
     }
  
+
+document.addEventListener("click", function (e) {
+  const header = e.target.closest(".collapsible-header");
+  if (!header) return;
+
+  const section = header.closest(".collapsible-section");
+  if (!section) return;
+
+  section.classList.toggle("open");
+});
+ 
 var jdata;
+let stopRotation = false;
+
+
+function getEmptyFilterState() {
+  return {
+    name: "",
+    location: "",
+    target: "",
+    targetCategory: "",
+    tool: "",
+    sponsor: "",
+    motivation: "",
+    firstSeenFrom: "",
+    firstSeenTo: "",
+    technique: ""
+  };
+}
+
+// Legge l'hash 
+function parseHashToFilterState() {
+  const hash = window.location.hash || "";
+  const state = getEmptyFilterState();
+
+  if (!hash || hash === "#") {
+    return state;
+  }
+
+  const raw = hash.replace(/^#/, "");
+  if (!raw) {
+    return state;
+  }
+
+  const parts = raw.split("&");
+  for (const part of parts) {
+    if (!part) continue;
+    const [key, value] = part.split("=");
+    const decodedKey = decodeURIComponent(key || "").toLowerCase();
+    const decodedValue = decodeURIComponent(value || "");
+
+    switch (decodedKey) {
+      case "name":
+        state.name = decodedValue;
+        break;
+      case "location":
+        state.location = decodedValue;
+        break;
+      case "target":
+        state.target = decodedValue;
+        break;
+      case "targetcategory":
+        state.targetCategory = decodedValue;
+        break;
+      case "tool":
+        state.tool = decodedValue;
+        break;
+      case "sponsor":
+        state.sponsor = decodedValue;
+        break;
+      case "motivation":
+        state.motivation = decodedValue;
+        break;
+      case "firstseenfrom":
+        state.firstSeenFrom = decodedValue;
+        break;
+      case "firstseento":
+        state.firstSeenTo = decodedValue;
+        break;
+      case "technique":
+        state.technique = decodedValue;
+        break;
+      default:
+        // ignora chiavi sconosciute
+        break;
+    }
+  }
+
+  return state;
+}
+
+
+function filterStateToHash(state) {
+  const params = [];
+
+  if (state.name)          params.push("name=" + encodeURIComponent(state.name));
+  if (state.location)      params.push("location=" + encodeURIComponent(state.location));
+  if (state.target)        params.push("target=" + encodeURIComponent(state.target));
+  if (state.targetCategory)params.push("targetcategory=" + encodeURIComponent(state.targetCategory));
+  if (state.tool)          params.push("tool=" + encodeURIComponent(state.tool));
+  if (state.sponsor)       params.push("sponsor=" + encodeURIComponent(state.sponsor));
+  if (state.motivation)    params.push("motivation=" + encodeURIComponent(state.motivation));
+  if (state.firstSeenFrom) params.push("firstseenfrom=" + encodeURIComponent(state.firstSeenFrom));
+  if (state.firstSeenTo)   params.push("firstseento=" + encodeURIComponent(state.firstSeenTo));
+  if (state.technique)     params.push("technique=" + encodeURIComponent(state.technique));
+
+  return params.join("&");
+}
+
+
+function updateHashFromState(state) {
+  const hashParams = filterStateToHash(state);
+
+  if (hashParams) {
+    window.location.hash = hashParams;
+  } else {
+    // nessun filtro: puliamo l'hash senza ricaricare la pagina
+    history.pushState("", document.title, window.location.pathname + window.location.search);
+  }
+}
+
+
+document.addEventListener("click", function (e) {
+  const a = e.target.closest("a");
+  if (!a) return;
+
+  const href = a.getAttribute("href") || "";
+
+
+  if (a.classList.contains("filter-link")) {
+    e.preventDefault();
+
+    const type  = a.getAttribute("data-filter-type");
+    const value = a.getAttribute("data-filter-value") || "";
+
+    const state = getEmptyFilterState();
+
+    switch (type) {
+      case "target":
+        state.target = value;
+        break;
+      case "targetcategory":
+        state.targetCategory = value;
+        break;
+      case "tool":
+        state.tool = value;
+        break;
+      default:
+        return; 
+    }
+
+    updateHashFromState(state);
+    return;
+  }
+
+
+  if (!href.startsWith("#")) {
+   
+    return;
+  }
+
+  if (href === "#") {
+    
+    return;
+  }
+
+  
+  e.preventDefault();
+
+  const hashPart = href.substring(1); // rimuove "#"
+  if (!hashPart.includes("=")) {
+  
+    return;
+  }
+
+  const state = getEmptyFilterState();
+  const pairs = hashPart.split("&");
+  for (const pair of pairs) {
+    if (!pair) continue;
+    const [k, v] = pair.split("=");
+    const key = decodeURIComponent(k || "").toLowerCase();
+    const val = decodeURIComponent(v || "");
+
+    switch (key) {
+      case "name":
+        state.name = val;
+        break;
+      case "location":
+        state.location = val;
+        break;
+      case "target":
+        state.target = val;
+        break;
+      case "targetcategory":
+        state.targetCategory = val;
+        break;
+      case "tool":
+        state.tool = val;
+        break;
+      case "technique":
+        state.technique = val;
+        break;
+      case "sponsor":
+        state.sponsor = val;
+        break;
+      case "motivation":
+        state.motivation = val;
+        break;
+      case "firstseenfrom":
+        state.firstSeenFrom = val;
+        break;
+      case "firstseento":
+        state.firstSeenTo = val;
+        break;
+      default:
+        break;
+    }
+  }
+
+  updateHashFromState(state);
+});
+
+
+
+
+function applyFilterStateToInputs(state) {
+  document.getElementById("searchAPTname").value        = state.name || "";
+  document.getElementById("searchLocation").value       = state.location || "";
+  document.getElementById("searchTarget").value         = state.target || "";
+  document.getElementById("searchTargetcategory").value = state.targetCategory || "";
+  document.getElementById("searchTool").value           = state.tool || "";
+
+  document.getElementById("searchSponsor").value        = state.sponsor || "";
+  document.getElementById("searchMotivation").value     = state.motivation || "";
+  document.getElementById("searchFirstSeenFrom").value  = state.firstSeenFrom || "";
+  document.getElementById("searchFirstSeenTo").value    = state.firstSeenTo || "";
+  document.getElementById("searchTechnique").value      = state.technique || "";
+}
+
+
+function collectFilterStateFromInputs() {
+  return {
+    name:           document.getElementById("searchAPTname").value.trim(),
+    location:       document.getElementById("searchLocation").value.trim(),
+    target:         document.getElementById("searchTarget").value.trim(),
+    targetCategory: document.getElementById("searchTargetcategory").value.trim(),
+    tool:           document.getElementById("searchTool").value.trim(),
+    sponsor:        document.getElementById("searchSponsor").value.trim(),
+    motivation:     document.getElementById("searchMotivation").value.trim(),
+    firstSeenFrom:  document.getElementById("searchFirstSeenFrom").value.trim(),
+    firstSeenTo:    document.getElementById("searchFirstSeenTo").value.trim(),
+    technique:      document.getElementById("searchTechnique").value.trim()
+  };
+}
+
+
+function isOnlyNameFilter(state) {
+  if (!state || !state.name) return false;
+
+  for (const key in state) {
+    if (!Object.prototype.hasOwnProperty.call(state, key)) continue;
+    if (key === "name") continue;
+    if (state[key] && String(state[key]).trim() !== "") {
+      return false;
+    }
+  }
+  return true;
+}
+
+
+function aptExistsInMap(name) {
+  if (!name || !jdata || !jdata.features) return false;
+  const needle = name.toLowerCase();
+
+  return jdata.features.some(f =>
+    f.properties &&
+    f.properties.name &&
+    f.properties.name.toLowerCase() === needle &&
+    f.properties.country && f.properties.country !== ""
+  );
+}
+
+
+
+
+function handleFiltersFromHash() {
+  const hash = window.location.hash;
+
+
+  if (hash && hash !== "#") {
+    stopRotation = true;
+  }
+
+
+  if (!hash || hash === "#") {
+    const empty = getEmptyFilterState();
+    applyFilterStateToInputs(empty);
+    const ph = document.getElementById("searchPlaceHolder");
+    if (ph) ph.innerHTML = "";
+
+    if (window.closeSearchPanel) {
+      window.closeSearchPanel();
+    } else {
+      const sc = document.getElementById("search-container");
+      if (sc) sc.style.display = "none";
+    }
+    return;
+  }
+
+  const state = parseHashToFilterState();
+
+
+  if (isOnlyNameFilter(state) && aptExistsInMap(state.name)) {
+    if (window.closeSearchPanel) {
+      window.closeSearchPanel();
+    } else {
+      const sc = document.getElementById("search-container");
+      if (sc) sc.style.display = "none";
+    }
+
+    if (window.focusAPTByName) {
+      window.focusAPTByName(state.name);
+    }
+
+    return;
+  }
+
+  
+  const searchButton = document.getElementById("search");
+  if (searchButton) {
+    searchButton.click();
+  }
+  applyFilterStateToInputs(state);
+  if (typeof Search === "function") {
+    Search();
+  }
+}
+
 
 async function fetchData() {
   try {
     const response = await fetch('apt.json');
     jdata = await response.json();
 
-    if (jdata.hasOwnProperty("features")) {
+    if (jdata && jdata.hasOwnProperty("features")) {
       console.log("JSON OK");
-      // Attiva il pulsante solo dopo il caricamento JSON
-      const startGlobeButton = document.getElementById('start-globe');
-      startGlobeButton.textContent = "Go to map";
-      startGlobeButton.disabled = false;
     } else {
       console.log("JSON ERROR");
     }
@@ -46,43 +379,11 @@ async function fetchData() {
   }
 }
 
-fetchData().then(() => {
 
 
+const dataPromise = fetchData();
 
 
-    window.addEventListener('hashchange', function(){
-	document.getElementById("search").click();
-	document.getElementById("searchAPTname").value="";
-	document.getElementById("searchTarget").value="";
-	document.getElementById("searchTargetcategory").value="";
-	document.getElementById("searchTool").value="";
-	document.getElementById("searchLocation").value="";
-	
-	if (window.location.hash!==""|| window.location.hash!=="#"){
-		for (var h of window.location.hash.split("#")[1].split("&")){
-		
-			if (h.split("=")[0]==="name"){
-				document.getElementById("searchAPTname").value=decodeURIComponent(h.split("=")[1]);
-			}
-			if (h.split("=")[0]==="target"){
-				document.getElementById("searchTarget").value=decodeURIComponent(h.split("=")[1]);
-			}
-			if (h.split("=")[0]==="targetcategory"){
-				document.getElementById("searchTargetcategory").value=decodeURIComponent(h.split("=")[1]);
-			}
-			if (h.split("=")[0]==="tool"){
-				document.getElementById("searchTool").value=decodeURIComponent(h.split("=")[1]);
-			}
-			if (h.split("=")[0]==="location"){
-				document.getElementById("searchLocation").value=decodeURIComponent(h.split("=")[1]);
-			}
-		}
-	
-	Search();
-	}
-	
-});
  
 function GetDate()
 {
@@ -106,9 +407,10 @@ function GetMap()
 	else{
 		return 'https://tiles.arcgis.com/tiles/P3ePLMYs2RVChkJx/arcgis/rest/services/Earth_at_Night_2016/MapServer';
 	}
-			 
 }
 	
+
+function initMapAndUI() {
 
     require([
       "esri/Map",
@@ -119,11 +421,23 @@ function GetMap()
       "esri/Graphic",
       "esri/geometry/Point",
       "esri/geometry/Mesh",
-	  "esri/core/reactiveUtils"
+      "esri/core/reactiveUtils",
+      "esri/layers/GraphicsLayer",
+      "esri/geometry/Polyline"
    
-    ], function (Map, SceneView, TileLayer, GeoJSONLayer, Basemap,  Graphic, Point, Mesh, reactiveUtils) {
-
-
+    ], function (
+      Map,
+      SceneView,
+      TileLayer,
+      GeoJSONLayer,
+      Basemap,
+      Graphic,
+      Point,
+      Mesh,
+      reactiveUtils,
+      GraphicsLayer,
+      Polyline
+    ) {
 
       const R = 6358137; // approximate radius of the Earth in m
       const offset = 300000; // offset from the ground used for the clouds
@@ -145,8 +459,8 @@ function GetMap()
       const view = new SceneView({
         container: "viewDiv",
         map: map,
-        alphaCompositingEnabled: true,
-        qualityProfile: "high",
+        alphaCompositingEnabled: false,
+        qualityProfile: "medium",
 		rotate: true,
         camera: {
           position: [15.03975781, 14.94826384, 19921223.30821],
@@ -186,6 +500,23 @@ function GetMap()
           haloOpacity: 0.8
         }
       });
+      
+      reactiveUtils.watch(
+        () => view.interacting,
+        (interacting) => {
+          if (interacting) {
+            stopRotation = true;
+          }
+        }
+      );
+
+      
+      ["drag", "click", "double-click", "mouse-wheel", "pointer-down"].forEach((evt) => {
+        view.on(evt, () => {
+          stopRotation = true;
+        });
+      });
+
 
       view.ui.empty("top-left");
      
@@ -234,33 +565,387 @@ function GetMap()
       });
 map.layers.add(extremesLayer);
 
+const connectionsLayer = new GraphicsLayer({
+  id: "connectionsLayer",
+  elevationInfo: {
+    mode: "absolute-height"
+  }
+});
+map.add(connectionsLayer);
+
+
+let connectionsAnimationId = null;
+const connectionHeads = []; 
+
+function interpolateOnPath(path, t) {
+ 
+  const totalSegments = path.length - 1;
+  if (totalSegments <= 0) {
+    return path[0];
+  }
+
+  const scaled = t * totalSegments;
+  const segIndex = Math.min(Math.floor(scaled), totalSegments - 1);
+  const segT = scaled - segIndex;
+
+  const p0 = path[segIndex];
+  const p1 = path[segIndex + 1];
+
+  return [
+    p0[0] + (p1[0] - p0[0]) * segT,
+    p0[1] + (p1[1] - p0[1]) * segT,
+    p0[2] + (p1[2] - p0[2]) * segT
+  ];
+}
+
+function startConnectionsAnimation() {
+  const speed = 0.04;      
+  const intervalMs = 80;   
+
+ 
+  if (connectionsAnimationId != null) {
+    clearInterval(connectionsAnimationId);
+    connectionsAnimationId = null;
+  }
+
+  if (!connectionHeads.length) return;
+
+  connectionsAnimationId = setInterval(() => {
+    connectionHeads.forEach(h => {
+      h.t += speed;
+      if (h.t > 1) {
+        h.t = 0;
+      }
+      const pos = interpolateOnPath(h.path, h.t);
+      h.graphic.geometry = new Point({
+        longitude: pos[0],
+        latitude: pos[1],
+        z: pos[2]
+      });
+    });
+  }, intervalMs);
+}
+
+
+
+
+
+  const countryCentroids = {
+ 
+  "united states": [-95.7129, 37.0902],
+  "usa":           [-95.7129, 37.0902],
+  "united states of america": [-95.7129, 37.0902],
+  "canada":        [-106.3468, 56.1304],
+  "mexico":        [-102.5528, 23.6345],
+
+  // Sud America
+  "brazil":        [-51.9253, -14.2350],
+  "argentina":     [-63.6167, -38.4161],
+  "chile":         [-71.5429, -35.6751],
+  "colombia":      [-74.2973, 4.5709],
+  "peru":          [-75.0152, -9.1899],
+
+  // Europa occidentale
+  "united kingdom": [-3.4360, 55.3781],
+  "uk":             [-3.4360, 55.3781],
+  "great britain":  [-3.4360, 55.3781],
+  "ireland":       [-8.2439, 53.4129],
+  "france":        [2.2137, 46.2276],
+  "germany":       [10.4515, 51.1657],
+  "italy":         [12.5674, 41.8719],
+  "spain":         [-3.7492, 40.4637],
+  "portugal":      [-8.2245, 39.3999],
+  "belgium":       [4.4699, 50.5039],
+  "netherlands":   [5.2913, 52.1326],
+  "luxembourg":    [6.1296, 49.8153],
+  "switzerland":   [8.2275, 46.8182],
+  "austria":       [14.5501, 47.5162],
+
+  // Europa nordica & baltica
+  "sweden":        [18.6435, 60.1282],
+  "norway":        [8.4689, 60.4720],
+  "finland":       [25.7482, 61.9241],
+  "denmark":       [9.5018, 56.2639],
+  "iceland":       [-19.0208, 64.9631],
+  "estonia":       [25.0136, 58.5953],
+  "latvia":        [24.6032, 56.8796],
+  "lithuania":     [23.8813, 55.1694],
+
+  // Europa centrale / est
+  "poland":        [19.1451, 51.9194],
+  "czech republic": [15.4729, 49.8175],
+  "czechia":       [15.4729, 49.8175],
+  "slovakia":      [19.6990, 48.6690],
+  "hungary":       [19.5033, 47.1625],
+  "romania":       [24.9668, 45.9432],
+  "bulgaria":      [25.4858, 42.7339],
+  "greece":        [21.8243, 39.0742],
+  "croatia":       [15.2, 45.1],
+  "serbia":        [21.0059, 44.0165],
+  "slovenia":      [14.9955, 46.1512],
+
+  // Europa orientale / spazio ex-URSS
+  "russia":        [105.3188, 61.5240],
+  "ukraine":       [31.1656, 48.3794],
+  "belarus":       [27.9534, 53.7098],
+  "moldova":       [28.3699, 47.4116],
+  "georgia":       [43.3569, 42.3154],
+  "armenia":       [45.0382, 40.0691],
+  "azerbaijan":    [47.5769, 40.1431],
+
+  // Medio Oriente
+  "turkey":        [35.2433, 38.9637],
+  "israel":        [34.8516, 31.0461],
+  "lebanon":       [35.8623, 33.8547],
+  "jordan":        [36.2384, 30.5852],
+  "saudi arabia":  [45.0792, 23.8859],
+  "united arab emirates": [53.8478, 23.4241],
+  "uae":           [53.8478, 23.4241],
+  "qatar":         [51.1839, 25.3548],
+  "kuwait":        [47.4818, 29.3117],
+  "bahrain":       [50.5577, 26.0667],
+  "iran":          [53.6880, 32.4279],
+  "iraq":          [43.6793, 33.2232],
+  "syria":         [38.9968, 34.8021],
+  "yemen":         [48.5164, 15.5527],
+
+  // Asia meridionale
+  "india":         [78.9629, 20.5937],
+  "pakistan":      [69.3451, 30.3753],
+  "bangladesh":    [90.3563, 23.6850],
+  "sri lanka":     [80.7718, 7.8731],
+  "afghanistan":   [67.7099, 33.9391],
+  "nepal":         [84.1240, 28.3949],
+
+  // Asia orientale
+  "china":         [104.1954, 35.8617],
+  "japan":         [138.2529, 36.2048],
+  "south korea":   [127.7669, 35.9078],
+  "republic of korea": [127.7669, 35.9078],
+  "north korea":   [127.5101, 40.3399],
+  "democratic people's republic of korea": [127.5101, 40.3399],
+  "taiwan":        [120.9605, 23.6978],
+  "hong kong":     [114.1694, 22.3193],
+  "macau":         [113.5491, 22.1987],
+  "mongolia":      [103.8467, 46.8625],
+
+  // Sud-est asiatico
+  "vietnam":       [108.2772, 14.0583],
+  "thailand":      [100.9925, 15.8700],
+  "cambodia":      [104.9909, 12.5657],
+  "laos":          [102.4955, 19.8563],
+  "myanmar":       [95.9562, 21.9162],
+  "malaysia":      [101.9758, 4.2105],
+  "singapore":     [103.8198, 1.3521],
+  "indonesia":     [113.9213, -0.7893],
+  "philippines":   [121.7740, 12.8797],
+  "brunei":        [114.7277, 4.5353],
+
+  // Asia centrale
+  "kazakhstan":    [66.9237, 48.0196],
+  "uzbekistan":    [64.5853, 41.3775],
+  "turkmenistan":  [59.5563, 38.9697],
+  "kyrgyzstan":    [74.7661, 41.2044],
+  "tajikistan":    [71.2761, 38.8610],
+
+  // Africa nord
+  "egypt":         [30.8025, 26.8206],
+  "morocco":       [-7.0926, 31.7917],
+  "algeria":       [1.6596, 28.0339],
+  "tunisia":       [9.5375, 33.8869],
+  "libya":         [17.2283, 26.3351],
+
+  // Africa subsahariana (alcuni paesi chiave)
+  "south africa":  [22.9375, -30.5595],
+  "nigeria":       [8.6753, 9.0820],
+  "kenya":         [37.9062, -0.0236],
+  "ethiopia":      [40.4897, 9.1450],
+  "ghana":         [-1.0232, 7.9465],
+  "angola":        [17.8739, -11.2027],
+
+  // Oceania
+  "australia":     [133.7751, -25.2744],
+  "new zealand":   [174.8850, -40.9006]
+
+
+};
+
+
+function normalizeCountryName(raw) {
+  if (!raw) return null;
+  const s = raw.trim().toLowerCase();
+
+  if (s === "uk") return "united kingdom";
+  if (s === "u.k.") return "united kingdom";
+  if (s === "usa") return "usa";
+  if (s === "u.s.a.") return "usa";
+  if (s === "united states of america") return "united states";
+  return s;
+}
+
+
+window.drawTrajectories = function (apt) {
+  
+  connectionsLayer.removeAll();
+  connectionHeads.length = 0;
+
+if (connectionsAnimationId != null) {
+  clearInterval(connectionsAnimationId);
+  connectionsAnimationId = null;
+}
+
+
+
+
+  if (!apt || !apt.geometry || !apt.geometry.coordinates) return;
+
+  const coords = apt.geometry.coordinates;
+  const originLon = coords[0];
+  const originLat = coords[1];
+
+  const targets = apt.properties.targets || [];
+  if (!targets.length) return;
+
+  const baseHeight = 300000;   // ~300km
+  const arcHeight  = 2500000;  // ~2500km
+
+  targets
+    .map(t => normalizeCountryName(t))        
+    .filter(name => name && countryCentroids[name])
+    .forEach(normName => {
+      const centroid = countryCentroids[normName];
+      if (!centroid) return;
+
+      const destLon = centroid[0];
+      const destLat = centroid[1];
+
+      const midLon = (originLon + destLon) / 2;
+      const midLat = (originLat + destLat) / 2;
+
+      const path = [
+        [originLon, originLat, baseHeight],
+        [midLon,    midLat,    arcHeight],
+        [destLon,   destLat,   baseHeight]
+      ];
+
+      const polyline = new Polyline({
+        paths: [path],
+        spatialReference: { wkid: 4326 }
+      });
+
+      // linea tratteggiata
+      const lineGraphic = new Graphic({
+        geometry: polyline,
+        symbol: {
+          type: "simple-line",
+          color: [245, 99, 66, 0.7],
+          width: 2//,
+          //style: "dash"
+        }
+      });
+      connectionsLayer.add(lineGraphic);
+
+      
+      const startPos = path[0];
+
+      const headGraphic = new Graphic({
+        geometry: new Point({
+          longitude: startPos[0],
+          latitude: startPos[1],
+          z: startPos[2]
+        }),
+        symbol: {
+          type: "point-3d",
+          symbolLayers: [{
+            type: "icon",
+            resource: { primitive: "circle" },
+            material: { color: [255, 255, 0, 1] },
+            outline: { color: [255, 0, 0, 1], size: 1 },
+            size: 6
+          }]
+        }
+      });
+
+      connectionsLayer.add(headGraphic);
+
+      
+      connectionHeads.push({
+        graphic: headGraphic,
+        path: path,
+        t: 0
+      });
+    });
+
+  
+  startConnectionsAnimation();
+};
+
+
+window.focusAPTByName = function (aptName) {
+  if (!aptName || !extremesLayer || !view) return;
+
+  const safeName = aptName.toLowerCase().replace(/'/g, "''");
+
+  view.when(function () {
+    const q = extremesLayer.createQuery();
+    q.where = "LOWER(name) = '" + safeName + "'";
+    q.outFields = ["*"];
+
+    extremesLayer.queryFeatures(q).then(function (result) {
+      if (!result.features.length) return;
+
+      const g = result.features[0];
+
+      
+      view.popup.open({
+        features: [g],
+        location: g.geometry
+      });
+
+     
+      view.goTo({
+        target: g.geometry,
+        tilt: 30
+      }, { duration: 1000 });
+    });
+  });
+};
+
 
 reactiveUtils.watch(
   () => view.popup.visible,
-  (graphic) => {
-    if (graphic) {
-        document.getElementById("chart-container").style.maxWidth = "50%";
+  (visible) => {
+    if (visible) {
+      document.getElementById("chart-container").style.maxWidth = "50%";
     } else {
-        document.getElementById("chart-container").style.maxWidth = "100%";
+      document.getElementById("chart-container").style.maxWidth = "100%";
+
+      
+      if (connectionsAnimationId != null) {
+		  clearInterval(connectionsAnimationId);
+		  connectionsAnimationId = null;
+		}
+
+      connectionHeads.length = 0;
+      connectionsLayer.removeAll();
     }
   }
 );
 
 
-if (!view.interacting) {
-        const camera = view.camera.clone();
-        camera.position.longitude -= 0.2;
-        view.goTo(camera, { animate: false });
-        requestAnimationFrame(rotate);
-        }
+if (!window.location.hash || window.location.hash === "#") {
+  requestAnimationFrame(rotate);
+}
+
     
 
 
 jdata.features = jdata.features.sort((a, b) => {
-  if (a.properties.name < b.properties.name) {
-    return -1;
-  }
+  if (a.properties.name < b.properties.name) return -1;
+  if (a.properties.name > b.properties.name) return 1;
+  return 0;
 });
+
 
 	  
 function onChart(jdata) {
@@ -811,80 +1496,137 @@ for (let i = 0; i < jdata.features.length; i++) {
 	{
 		div+='<p class="info"><i class="fa fa-angle-double-right"></i> <span class="infoTitle">Motivation</span><br />'+apt.properties.motivation+'</p>';
 	}
-	if (apt.properties.targets.length>0){
-		let tadd="";
-		for (var t of apt.properties.targets) 
-			{
-				tadd +=' <a href="#target=' + t +'" >'+t+'</a>,';
-			}
-		div+='<p class="info"><i class="fa fa-crosshairs"></i> <span class="infoTitle">Targets</span><br />'+tadd+'</p>';
+	if (apt.properties.targets.length > 0) {
+	  let tadd = "";
+	  for (var t of apt.properties.targets) {
+		tadd += ' <a href="#" class="filter-link" data-filter-type="target" data-filter-value="' +
+				t.replace(/"/g, '&quot;') + '">' + t + '</a>,';
+	  }
+	  div += '<p class="info"><i class="fa fa-crosshairs"></i> <span class="infoTitle">Targets</span><br />' + tadd + '</p>';
 	}
+
 	
-	if (apt.properties["target-category"].length>0)
-	{
-		let tadd="";
-		for (var t of apt.properties["target-category"]) 
-			{
-				tadd +=' <a href="#targetcategory=' + t +'" >'+t+'</a>,';
-			}
-		div+='<p class="info"><i class="fa fa-industry"></i> <span class="infoTitle">Target categories</span><br />'+tadd+'</p>';
-	
+	if (apt.properties["target-category"].length > 0) {
+	  let tadd = "";
+	  for (var t of apt.properties["target-category"]) {
+		tadd += ' <a href="#" class="filter-link" data-filter-type="targetcategory" data-filter-value="' +
+				t.replace(/"/g, '&quot;') + '">' + t + '</a>,';
+	  }
+	  div += '<p class="info"><i class="fa fa-industry"></i> <span class="infoTitle">Target categories</span><br />' + tadd + '</p>';
 	}
-	
-	
-	if (apt.properties["ext-links"].length>0)
-	{
-		let tadd="";
-		let tmadd="";
-		for (var t of apt.properties["ext-links"]) 
-			{
-				if (t.type=="malwaresample"){
-					tmadd +=' <a href="' + t.url +'" >'
-					tmadd +=t.description;
-					tmadd +='</a><br /><br />';
-				}
-				else{
-					tadd +=' <a href="' + t.url +'" >'
-					if (t.description!== undefined){tadd +=t.url;}
-					else{tadd +=t.description;}
-					tadd +='</a><br /><br />';
-				}
-			}
-		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">External links</span><br />'+tadd+'</p>';
-		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span><br />'+tmadd+'</p>';
-	}
+
 	
 	
 	
 	
+	if (apt.properties["tools"].length > 0) {
+  let tadd = "";
+  for (var t of apt.properties["tools"]) {
+    // link di filtro interno per il tool
+    tadd += ' <a href="#tool=' + encodeURIComponent(t.value) + '">'
+          +   '<span class="infoTool">' + t.value + '</span> (category: ' + t.category + ')'
+          + '</a><br />';
+
+    if (t.type !== undefined) {
+      tadd += 'type: ' + t.type.join(', ') + '<br />';
+    }
+    tadd += '<br />' + t.description + '<br /><br />';
+
+    // link esterni alle reference del tool (restano target="_blank")
+    for (var t2 of t.refs) {
+      tadd += ' <a href="' + t2 + '" target="_blank">' + t2 + '</a><br /><br />';
+    }
+    tadd += '<br />';
+  }
+
+  if (tadd) {
+    div += ''
+      + '<div class="info collapsible-section">'
+      + '  <div class="collapsible-header">'
+      + '    <i class="fa fa-exclamation-triangle"></i> <span class="infoTitle">Tools</span>'
+      + '    <span class="collapsible-arrow"><i class="fa fa-chevron-right"></i></span>'
+      + '  </div>'
+      + '  <div class="collapsible-body">' + tadd + '</div>'
+      + '</div>';
+  }
+}
+
+
 	
-	if (apt.properties["tools"].length>0)
-	{
-		let tadd="";
-		for (var t of apt.properties["tools"]) 
-			{
-			tadd +=' <a href="#tool=' + t.value +'" ><span class="infoTool">'+t.value+'</span> (category: ' + t.category +')</a><br />';
-			if (t.type!== undefined){tadd +='type: '+ t.type.join(', ') +'<br />'}
-			tadd +='<br />'+ t.description + '<br /><br />';
-			for (var t2 of t.refs) 
-				{
-					tadd +=' <a href="'+ t2 +'" target="_blank">'+t2+'</a><br /><br />';
-				}
-					tadd +='<br />';
-			}
-		div+='<p class="info"><i class="fa fa-exclamation-triangle"></i> <span class="infoTitle">Tools</span><br />'+tadd+'</p>';
-	}
+	if (apt.properties["TTP"].length > 0) {
+  let tadd = "";
+  for (var t of apt.properties["TTP"]) {
+    if (t.techniqueID) {
+      tadd += ' <a href="https://attack.mitre.org/techniques/' + t.techniqueID
+           +  '" target="_blank"><span class="infoTTP">' + t.techniqueID + '</span></a><br />';
+    }
+    if (t.comment !== undefined) {
+      tadd += t.comment + '<br /><br />';
+    }
+  }
+
+  if (tadd) {
+    div += ''
+      + '<div class="info collapsible-section">'
+      + '  <div class="collapsible-header">'
+      + '    <i class="fa fa-cogs"></i> <span class="infoTitle">TTP</span>'
+      + '    <span class="collapsible-arrow"><i class="fa fa-chevron-right"></i></span>'
+      + '  </div>'
+      + '  <div class="collapsible-body">' + tadd + '</div>'
+      + '</div>';
+  }
+}
+
 	
-	if (apt.properties["TTP"].length>0)
-	{
-		let tadd="";
-		for (var t of apt.properties["TTP"]) 
-			{
-				tadd +=' <a href="https://attack.mitre.org/techniques/' + t.techniqueID.replace(".","/") +'/" target="_blank" ><span class="infoTTP">'+t.techniqueID+'</span></a><br />'
-				if (t.comment!== undefined){tadd +=t.comment +'<br /><br />'}
-		}
-		div+='<p class="info"><i class="fa fa-cogs"></i> <span class="infoTitle">TTP</span><br />'+tadd+'</p>';
-	}
+
+
+
+
+	if (apt.properties["ext-links"].length > 0) {
+  let tadd = "";
+  let tmadd = "";
+
+  for (var t of apt.properties["ext-links"]) {
+    if (t.type === "malwaresample") {
+      // malware samples
+      //tmadd += ' <a href="' + t.url + '" target="_blank">';
+      //if (t.description !== undefined) { tmadd += t.description; }
+      //else { tmadd += t.url; }
+      //tmadd += '</a><br /><br />';
+    } else {
+      // altri external links
+      tadd += ' <a href="' + t.url + '" target="_blank">';
+      if (t.description !== undefined) { tadd += t.description; }
+      else { tadd += t.url; }
+      tadd += '</a><br /><br />';
+    }
+  }
+
+  if (tadd) {
+    div += ''
+      + '<div class="info collapsible-section">'
+      + '  <div class="collapsible-header">'
+      + '    <i class="fa fa-link"></i> <span class="infoTitle">External links</span>'
+      + '    <span class="collapsible-arrow"><i class="fa fa-chevron-right"></i></span>'
+      + '  </div>'
+      + '  <div class="collapsible-body">' + tadd + '</div>'
+      + '</div>';
+  }
+
+  /*if (tmadd) {
+    div += ''
+      + '<div class="info collapsible-section">'
+      + '  <div class="collapsible-header">'
+      + '    <i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span>'
+      + '    <span class="collapsible-arrow"><i class="fa fa-chevron-right"></i></span>'
+      + '  </div>'
+      + '  <div class="collapsible-body">' + tmadd + '</div>'
+      + '</div>';
+  }*/
+}
+
+	
+	
 	
 
 	
@@ -1020,18 +1762,26 @@ function onSearchInput() {
 document.getElementById("close-about").addEventListener("click", closeMenu);
 
 document.getElementById("start-globe").addEventListener("click", function () {
-	document.getElementById("chart-container").style.filter = "blur(0px)";
-    closeMenu();
-	onChart(jdata);
-    
-    });
+  document.getElementById("chart-container").style.filter = "blur(0px)";
+  closeMenu();
+  onChart(jdata);
+
+  // Dopo aver mostrato la mappa, applica eventuali filtri dall'hash
+  if (window.location.hash && window.location.hash !== "#") {
+    handleFiltersFromHash();
+  }
+});
+
 
 document.getElementById("container").addEventListener("click", function (e) {
-    if (e.target.id === "container") {
+  if (e.target.id === "container") {
     closeMenu();
-	onChart(jdata);
-    
+    onChart(jdata);
+
+    if (window.location.hash && window.location.hash !== "#") {
+      handleFiltersFromHash();
     }
+  }
 });
 
 function closeMenu() {
@@ -1079,16 +1829,30 @@ function closeSearch() {
     view.container.style.filter = "blur(0px)";
 	document.getElementById("chart-container").style.filter =  "blur(0px)";
     }
+	// Rende richiamabile la chiusura anche dall'esterno del require
+  window.closeSearchPanel = closeSearch;
 	  
 document.getElementById("chart").addEventListener("click", function () {
-    document.getElementById("chart-container").style.display = "flex";
-    document.getElementById("chart-container").style.filter =  "blur(0px)";
-	});
+  var chartContainer = document.getElementById("chart-container");
+  var isVisible = window.getComputedStyle(chartContainer).display !== "none";
+
+  if (isVisible) {
+    // Se è già visibile, lo chiudo
+    closeChart();
+  } else {
+    // Se è nascosto, lo apro
+    chartContainer.style.display = "flex";
+    chartContainer.style.filter = "blur(0px)";
+  }
+});
+
 document.getElementById("close-chart").addEventListener("click", closeChart);
-	  
+
 function closeChart() {
-    document.getElementById("chart-container").style.display = "none";
-    }
+  var chartContainer = document.getElementById("chart-container");
+  chartContainer.style.display = "none";
+  chartContainer.style.filter = "blur(0px)";
+}
 	  
 	/*  
 document.getElementById("relationship").addEventListener("click", function () {
@@ -1112,9 +1876,16 @@ document.getElementById("netgraph").addEventListener("click", function () {
     });
 
 document.getElementById("filter").addEventListener("click", function () {
-	var linkURL = "apt.html";
-    window.open(linkURL, "_blank");
-    });
+
+  const currentHash = window.location.hash || "";
+
+ 
+  const linkURL = "apt.html" + currentHash;
+
+
+  window.open(linkURL, "_blank");
+});
+
 
 view.ui.add("about", "bottom-left");
 view.ui.add("maptitle", "top-left");
@@ -1128,17 +1899,24 @@ view.ui.add("netgraph", "top-left");
 view.ui.add("malware", "top-left");
 
 function rotate() {
-    if (!view.interacting) {
-        const camera = view.camera.clone();
-        camera.position.longitude -= 0.2;
-        view.goTo(camera, { animate: false });
-        requestAnimationFrame(rotate);
-        }
-    }
+
+  if (stopRotation) return;
+
+  if (!view.interacting) {
+    const camera = view.camera.clone();
+    camera.position.longitude -= 0.2;
+    view.goTo(camera, { animate: false });
+  }
+
+
+  requestAnimationFrame(rotate);
+}
+
+
 
 });
 	
-
+}
 	
 function DisplayPopUp(feature)
 	{
@@ -1153,7 +1931,15 @@ function DisplayPopUp(feature)
 		}
     }
 
-	
+   
+    if (apt && apt.properties && apt.properties.name) {
+        const state = getEmptyFilterState(); 
+        state.name = apt.properties.name;    
+        updateHashFromState(state);        
+    }
+
+	 
+
 
 	var div='';
 	div+='<div class="popupImage"><div class="Flag'+ apt.properties["image-url"].replace(".","") +'"></div></div>';
@@ -1185,67 +1971,54 @@ function DisplayPopUp(feature)
 	{
 		div+='<p class="info"><i class="fa fa-angle-double-right"></i> <span class="infoTitle">Motivation</span><br />'+apt.properties.motivation+'</p>';
 		}
-	if (apt.properties.targets.length>0)
-	{
-		let tadd="";
-		for (var t of apt.properties.targets) 
-			{
-				tadd +=' <a href="#target=' + t +'" >'+t+'</a>,';
-			}
-		div+='<p class="info"><i class="fa fa-crosshairs"></i> <span class="infoTitle">Targets</span><br />'+tadd+'</p>';
-	}
-	
-	if (apt.properties["target-category"].length>0)
-	{
-		let tadd="";
-		for (var t of apt.properties["target-category"]) 
-			{
-				tadd +=' <a href="#targetcategory=' + t +'" >'+t+'</a>,';
-		}
-		div+='<p class="info"><i class="fa fa-industry"></i> <span class="infoTitle">Target categories</span><br />'+tadd+'</p>';
+	if (apt.properties.targets.length > 0) {
+	  let tadd = "";
+	  for (var t of apt.properties.targets) {
+		
+		tadd += ' <a href="#target=' + encodeURIComponent(t) + '">' +
+				t + '</a>,';
+	  }
+	  div += '<p class="info"><i class="fa fa-crosshairs"></i> <span class="infoTitle">Targets</span><br />' + tadd + '</p>';
 	}
 
-	if (apt.properties["ext-links"].length>0)
-	{
-		let tadd="";
-		let tmadd="";
-		for (var t of apt.properties["ext-links"]) 
-			{
-				if (t.type=="malwaresample"){
-					tmadd +=' <a href="' + t.url +'" target="_blank">'
-					tmadd +=t.description;
-					tmadd +='</a><br /><br />';
-				}
-				else{
-					tadd +=' <a href="' + t.url +'" target="_blank">'
-					if (t.description!== undefined){tadd +=t.url;}
-					else{tadd +=t.description;}
-					tadd +='</a><br /><br />';
-				}
-			}
+
+	
+	if (apt.properties["target-category"].length > 0) {
+	  let tadd = "";
+	  for (var t of apt.properties["target-category"]) {
 		
-		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">External links</span><br />'+tadd+'</p>';
-		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span><br />'+tmadd+'</p>';
+		tadd += ' <a href="#targetcategory=' + encodeURIComponent(t) + '">' +
+				t + '</a>,';
+	  }
+	  div += '<p class="info"><i class="fa fa-industry"></i> <span class="infoTitle">Target categories</span><br />' + tadd + '</p>';
 	}
+
+
+
 	
 	
 	
-	if (apt.properties["tools"].length>0)
-	{
-		let tadd="";
-		for (var t of apt.properties["tools"]) 
-			{
-			tadd +=' <a href="#tool=' + t.value +'" ><span class="infoTool">'+t.value+'</span> (category: ' + t.category +')</a><br />';
-			if (t.type!== undefined){tadd +='type: '+ t.type.join(', ') +'<br />'}
-			tadd +='<br />'+ t.description + '<br /><br />';
-			for (var t2 of t.refs) 
-				{
-					tadd +=' <a href="'+ t2 +'" target="_blank">'+t2+'</a><br /><br />';
-				}
-					tadd +='<br />';
-			}
-		div+='<p class="info"><i class="fa fa-exclamation-triangle"></i> <span class="infoTitle">Tools</span><br />'+tadd+'</p>';
+	if (apt.properties["tools"].length > 0) {
+	  let tadd = "";
+	  for (var t of apt.properties["tools"]) {
+		
+		tadd += ' <a href="#tool=' + encodeURIComponent(t.value) + '"><span class="infoTool">' +
+				t.value + '</span> (category: ' + t.category + ')</a><br />';
+		if (t.type !== undefined) {
+		  tadd += 'type: ' + t.type.join(', ') + '<br />';
+		}
+		tadd += '<br />' + t.description + '<br /><br />';
+
+		
+		for (var t2 of t.refs) {
+		  tadd += ' <a href="' + t2 + '" target="_blank">' + t2 + '</a><br /><br />';
+		}
+		tadd += '<br />';
+	  }
+	  div += '<p class="info"><i class="fa fa-exclamation-triangle"></i> <span class="infoTitle">Tools</span><br />' + tadd + '</p>';
 	}
+
+
 	
 	if (apt.properties["TTP"].length>0)
 		{
@@ -1268,231 +2041,339 @@ function DisplayPopUp(feature)
 			div+='<p class="info"><i class="fa fa-book"></i> <span class="infoTitle">Sources</span><br />'+sadd+'</p>';
 	}
 	
-	return div;
+	
+	
+	
+	
+	
+	if (apt.properties["ext-links"].length>0)
+	{
+		let tadd="";
+		let tmadd="";
+		for (var t of apt.properties["ext-links"]) 
+			{
+				if (t.type=="malwaresample"){
+				//	tmadd +=' <a href="' + t.url +'" target="_blank">'
+				//	tmadd +=t.description;
+				//	tmadd +='</a><br /><br />';
+				}
+				else{
+					tadd +=' <a href="' + t.url +'" target="_blank">'
+					if (t.description!== undefined){tadd +=t.url;}
+					else{tadd +=t.description;}
+					tadd +='</a><br /><br />';
+				}
+			}
+		
+		div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">External links</span><br />'+tadd+'</p>';
+		//div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span><br />'+tmadd+'</p>';
 	}
 	
-	
+	  
+	  if (window.drawTrajectories) {
+		window.drawTrajectories(apt);
+	  }
 
-	
-function Search()
-	{
-	
-		var srcdiv = document.getElementById("searchPlaceHolder");
-		srcdiv.innerHTML="";
-		var srcLocation = document.getElementById("searchLocation").value;
-		var srcAPTname = document.getElementById("searchAPTname").value;
-		var srcTools = document.getElementById("searchTool").value;
-		var srcTarget = document.getElementById("searchTarget").value;
-		var srcTargetcategory = document.getElementById("searchTargetcategory").value;
-
-
-				
-		var res=jdata.features;
-		
-		
-	
-		if (srcAPTname!=="")
-		{
-			let napt = null;
-			for (let i = 0; i < jdata.features.length; i++) 
-			{
-		
-				if (jdata.features[i].properties.name.toLowerCase() === srcAPTname.toLowerCase()) 
-				{
-					napt = jdata.features[i].properties.name;
-					break;
-				}
-			}
-		
-			if(napt===null)
-			{
-				for (let i = 0; i < jdata.features.length; i++) 
-				{
-					for (let i2 = 0; i2 < jdata.features[i].properties["other-names"].length; i2++) 
-					{
-		
-						if (jdata.features[i].properties["other-names"][i2].toLowerCase() === srcAPTname.toLowerCase()) 
-						{
-							napt = jdata.features[i].properties.name;
-							break;
-						}
-					}
-				}
-			}
-		
-		res = res.filter(a => a.properties.name.toLowerCase() === napt.toLowerCase());
-		
-		}
-		
-		if (srcLocation!==""){
-			res = res.filter(a => a.properties.location.toLowerCase() === srcLocation.toLowerCase());}
-			
-		
-		if (srcTarget!==""){
-			res = res.filter(a => a.properties.targets.some(x => x.toLowerCase() == srcTarget.toLowerCase()));}
-			
-		
-		if (srcTargetcategory!==""){
-			res = res.filter(a => a.properties["target-category"].some(x => x.toLowerCase() == srcTargetcategory.toLowerCase()));}
-			
-		if (srcTools!==""){
-			res = res.filter(a => a.properties.tools.some(x => x.value.toLowerCase() == srcTools.toLowerCase()));}
-		
-			
-		
-		var div='';
-		
-		if (res.length>0)
-		
-		{
-		for (var apt of res)
-		{
-			if(apt.properties.location!=="")
-			{
-				div+='<div class="popupImage"><img src="images/flags/'+ apt.properties["image-url"] +'" alt="' + apt.properties["image-caption"] + '"/></div>';
-				div+='<div class="popupImageCaption">'+apt.properties["image-caption"]+'</div>';
-				div+='<div class="popupDescription"><p class="info"><i class="fa fa-location-arrow"></i> <span class="infoTitle">Location</span><br />' + apt.properties.location + '</p>';
-				}
-			else
-			{
-			div+='<div class="popupDescription">';
-			}	
-				
-				
-			div+='<h2 class="APTname">'+ apt.properties["name"] +'</h2>';
-			
-			if (apt.properties.description)
-			{
-				div+='<p class="info"><i class="fa fa-file-text-o"></i> <span class="infoTitle">Description</span><br />'+apt.properties.description+'</p>';
-			}
-			if (apt.properties["other-names"].length >0)
-			{
-				let onadd="";
-				for (var on of apt.properties["other-names"]) 
-					{
-						onadd +=' ' + on +',';
-					}
-				div+='<p class="info"><i class="fa fa-users"></i> <span class="infoTitle">Other names</span><br />'+onadd+'</p>';
-			}
-			
-			if (apt.properties["first-seen"])
-			{
-				div+='<p class="info"><i class="fa fa-clock-o"></i> <span class="infoTitle">First seen</span><br />'+apt.properties["first-seen"]+'</p>';
-			}
-			if (apt.properties["sponsor"])
-			{
-				div+='<p class="info"><i class="fa fa-share-square-o"></i> <span class="infoTitle">Sponsor</span><br />'+apt.properties["sponsor"]+'</p>';
-			}
-			if (apt.properties.motivation)
-			{
-			div+='<p class="info"><i class="fa fa-angle-double-right"></i> <span class="infoTitle">Motivation</span><br />'+apt.properties.motivation+'</p>';
-			}
-			if (apt.properties.targets.length>0)
-			{
-				let tadd="";
-				for (var t of apt.properties.targets) 
-					{
-					tadd +=' <a href="#target=' + t +'" >'+t+'</a>,';
-					}
-				div+='<p class="info"><i class="fa fa-crosshairs"></i> <span class="infoTitle">Targets</span><br />'+tadd+'</p>';
-				}
-		
-			if (apt.properties["target-category"].length>0)
-			{
-				let tadd="";
-				for (var t of apt.properties["target-category"]) 
-					{
-					tadd +=' <a href="#targetcategory=' + t +'" >'+t+'</a>,';
-					}
-			div+='<p class="info"><i class="fa fa-industry"></i> <span class="infoTitle">Target categories</span><br />'+tadd+'</p>';
-			}
-		
-		
-			if (apt.properties["ext-links"].length>0)
-			{
-			
-			let tadd="";
-			let tmadd="";
-			for (var t of apt.properties["ext-links"]) 
-				{
-					if (t.type=="malwaresample"){
-						tmadd +=' <a href="' + t.url +'" target="_blank">'
-						tmadd +=t.description;
-						tmadd +='</a><br /><br />';
-					}
-					else{
-						tadd +=' <a href="' + t.url +'" target="_blank">'
-						if (t.description!== undefined){tadd +=t.url;}
-						else{tadd +=t.description;}
-						tadd +='</a><br /><br />';
-					}
-				}
-		
-			div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">External links</span><br />'+tadd+'</p>';
-			div+='<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span><br />'+tmadd+'</p>';
-		
-			
-			
-			
-			}
-		
-			if (apt.properties["tools"].length>0)
-			{
-				let tadd="";
-				for (var t of apt.properties["tools"]) 
-					{
-					tadd +=' <a href="#tool=' + t.value +'" ><span class="infoTool">'+t.value+'</span> (category: ' + t.category +')</a><br />';
-					if (t.type!== undefined){tadd +='type: '+ t.type.join(', ') +'<br />'}
-					tadd +='<br />'+ t.description + '<br /><br />';
-					for (var t2 of t.refs) 
-						{
-							tadd +=' <a href="'+ t2 +'" target="_blank">'+t2+'</a><br /><br />';
-						}
-						tadd +='<br />';
-					}
-			div+='<p class="info"><i class="fa fa-exclamation-triangle"></i> <span class="infoTitle">Tools</span><br />'+tadd+'</p>';
-			}
-		
-			if (apt.properties["TTP"].length>0)
-			{
-				let tadd="";
-				for (var t of apt.properties["TTP"]) 
-					{
-					tadd +=' <a href="https://attack.mitre.org/techniques/' + t.techniqueID.replace(".","/") +'/" target="_blank" ><span class="infoTTP">'+t.techniqueID+'</span></a><br />'
-					if (t.comment!== undefined){tadd +=t.comment +'<br /><br />'}
-					}
-				div+='<p class="info"><i class="fa fa-cogs"></i> <span class="infoTitle">TTP</span><br />'+tadd+'</p>';
-			}
-		
-		
-		
-			if (apt.properties.sources.length>0)
-			{
-				let sadd="";
-				for (var s of apt.properties.sources) 
-				{
-					sadd +=s.name+ ', ' ;
-				}
-				div+='<p class="info"><i class="fa fa-book"></i> <span class="infoTitle">Sources</span><br />'+sadd+'</p>';
-			}
-				
-			div+='</div><br /><br /><br /><br />';
-		
-		
-		}
-		
-		
-		
-		} else {div="No match.";}
-		
-	srcdiv.innerHTML=div;
-	
-	
+  return div;
 }
+
 	
-	});
+	
+
+	
+function Search() {
+  var srcdiv = document.getElementById("searchPlaceHolder");
+  srcdiv.innerHTML = "";
+
+  var srcLocation       = document.getElementById("searchLocation").value.trim();
+  var srcAPTname        = document.getElementById("searchAPTname").value.trim();
+  var srcTools          = document.getElementById("searchTool").value.trim();
+  var srcTarget         = document.getElementById("searchTarget").value.trim();
+  var srcTargetcategory = document.getElementById("searchTargetcategory").value.trim();
+
+  var srcSponsor        = document.getElementById("searchSponsor").value.trim();
+  var srcMotivation     = document.getElementById("searchMotivation").value.trim();
+  var srcFirstFrom      = document.getElementById("searchFirstSeenFrom").value.trim();
+  var srcFirstTo        = document.getElementById("searchFirstSeenTo").value.trim();
+  var srcTechnique      = document.getElementById("searchTechnique").value.trim();
+
+  var res = jdata.features;
+
+
+  if (srcAPTname !== "") {
+    let napt = null;
+    const needle = srcAPTname.toLowerCase();
+
+    for (let i = 0; i < jdata.features.length; i++) {
+      if (jdata.features[i].properties.name.toLowerCase() === needle) {
+        napt = jdata.features[i].properties.name;
+        break;
+      }
+    }
+
+    if (napt === null) {
+      for (let i = 0; i < jdata.features.length; i++) {
+        for (let i2 = 0; i2 < jdata.features[i].properties["other-names"].length; i2++) {
+          if (jdata.features[i].properties["other-names"][i2].toLowerCase() === needle) {
+            napt = jdata.features[i].properties.name;
+            break;
+          }
+        }
+      }
+    }
+
+    if (napt !== null) {
+      res = res.filter(a => a.properties.name.toLowerCase() === napt.toLowerCase());
+    } else {
+      
+      res = [];
+    }
+  }
+
+  
+  if (srcLocation !== "") {
+    const loc = srcLocation.toLowerCase();
+    res = res.filter(a => (a.properties.location || "").toLowerCase() === loc);
+  }
+
+
+  if (srcTarget !== "") {
+    const tgt = srcTarget.toLowerCase();
+    res = res.filter(a =>
+      (a.properties.targets || []).some(x => x.toLowerCase() === tgt)
+    );
+  }
+
+
+  if (srcTargetcategory !== "") {
+    const tc = srcTargetcategory.toLowerCase();
+    res = res.filter(a =>
+      (a.properties["target-category"] || []).some(x => x.toLowerCase() === tc)
+    );
+  }
+
+
+  if (srcTools !== "") {
+    const tool = srcTools.toLowerCase();
+    res = res.filter(a =>
+      (a.properties.tools || []).some(x => (x.value || "").toLowerCase() === tool)
+    );
+  }
+
+
+  if (srcSponsor !== "") {
+    const sp = srcSponsor.toLowerCase();
+    res = res.filter(a => {
+      const val = (a.properties["sponsor"] || "").toLowerCase();
+      return val.includes(sp);
+    });
+  }
+
+
+  if (srcMotivation !== "") {
+    const mot = srcMotivation.toLowerCase();
+    res = res.filter(a => {
+      const val = (a.properties.motivation || "").toLowerCase();
+      return val.includes(mot);
+    });
+  }
+
+
+  if (srcFirstFrom !== "" || srcFirstTo !== "") {
+    const fromYear = srcFirstFrom ? parseInt(srcFirstFrom, 10) : null;
+    const toYear   = srcFirstTo   ? parseInt(srcFirstTo, 10)   : null;
+
+    res = res.filter(a => {
+      const raw = a.properties["first-seen"];
+      if (!raw) return false;
+      const year = parseInt(String(raw).substr(0, 4), 10);
+      if (isNaN(year)) return false;
+      if (fromYear !== null && year < fromYear) return false;
+      if (toYear !== null && year > toYear) return false;
+      return true;
+    });
+  }
+
+
+  if (srcTechnique !== "") {
+    const tech = srcTechnique.toLowerCase();
+    res = res.filter(a => {
+      const ttps = a.properties["TTP"] || [];
+      return ttps.some(t =>
+        (t.techniqueID || "").toLowerCase().includes(tech)
+      );
+    });
+  }
+
+
+  var div = "";
+
+  if (res.length > 0) {
+    for (var apt of res) {
+      if (apt.properties.location !== "") {
+        div += '<div class="popupImage"><img src="images/flags/' +
+          apt.properties["image-url"] + '" alt="' +
+          apt.properties["image-caption"] + '"/></div>';
+        div += '<div class="popupImageCaption">' +
+          apt.properties["image-caption"] + '</div>';
+        div += '<div class="popupDescription"><p class="info"><i class="fa fa-location-arrow"></i> <span class="infoTitle">Location</span><br />' +
+          apt.properties.location + '</p>';
+      } else {
+        div += '<div class="popupDescription">';
+      }
+
+      div+='<h2 class="APTname"><a href="#name=' + apt.properties["name"] + '">' + apt.properties["name"] + '</a></h2>';
+
+
+      if (apt.properties.description) {
+        div += '<p class="info"><i class="fa fa-file-text-o"></i> <span class="infoTitle">Description</span><br />' +
+          apt.properties.description + '</p>';
+      }
+
+      if (apt.properties["other-names"].length > 0) {
+        let onadd = "";
+        for (var on of apt.properties["other-names"]) {
+          onadd += " " + on + ",";
+        }
+        div += '<p class="info"><i class="fa fa-users"></i> <span class="infoTitle">Other names</span><br />' +
+          onadd + '</p>';
+      }
+
+      if (apt.properties["first-seen"]) {
+        div += '<p class="info"><i class="fa fa-clock-o"></i> <span class="infoTitle">First seen</span><br />' +
+          apt.properties["first-seen"] + '</p>';
+      }
+      if (apt.properties["sponsor"]) {
+        div += '<p class="info"><i class="fa fa-share-square-o"></i> <span class="infoTitle">Sponsor</span><br />' +
+          apt.properties["sponsor"] + '</p>';
+      }
+      if (apt.properties.motivation) {
+        div += '<p class="info"><i class="fa fa-angle-double-right"></i> <span class="infoTitle">Motivation</span><br />' +
+          apt.properties.motivation + '</p>';
+      }
+      if (apt.properties.targets.length > 0) {
+        let tadd = "";
+        for (var t of apt.properties.targets) {
+          tadd += ' <a href="#target=' + t + '" >' + t + '</a>,';
+        }
+        div += '<p class="info"><i class="fa fa-crosshairs"></i> <span class="infoTitle">Targets</span><br />' +
+          tadd + '</p>';
+      }
+
+      if (apt.properties["target-category"].length > 0) {
+        let tadd = "";
+        for (var t of apt.properties["target-category"]) {
+          tadd += ' <a href="#targetcategory=' + t + '" >' + t + '</a>,';
+        }
+        div += '<p class="info"><i class="fa fa-industry"></i> <span class="infoTitle">Target categories</span><br />' +
+          tadd + '</p>';
+      }
+
+      if (apt.properties["ext-links"].length > 0) {
+        let eadd = "";
+        let madd = "";
+        for (var el of apt.properties["ext-links"]) {
+          if (el.type == "malwaresample") {
+            //madd += ' <a href="' + el.url + '" target="_blank">' +
+              //el.description + '</a><br /><br />';
+          } else {
+            eadd += ' <a href="' + el.url + '" target="_blank">';
+            if (el.description !== undefined) {
+			  eadd += el.description;
+			} else {
+			  eadd += el.url;
+			}
+           
+            eadd += '</a><br /><br />';
+          }
+        }
+        div += '<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">External links</span><br />' +
+          eadd + '</p>';
+        //div += '<p class="info"><i class="fa fa-link"></i> <span class="infoTitle">Malware samples</span><br />' +
+          madd + '</p>';
+      }
+
+      if (apt.properties["tools"].length > 0) {
+        let tadd = "";
+        for (var tool of apt.properties["tools"]) {
+          tadd += ' <a href="#tool=' + tool.value +
+            '" ><span class="infoTool">' + tool.value +
+            '</span> (category: ' + tool.category + ')</a><br />';
+          if (tool.type !== undefined) {
+            tadd += 'type: ' + tool.type.join(', ') + '<br />';
+          }
+          tadd += '<br />' + tool.description + '<br /><br />';
+          for (var r of tool.refs) {
+            tadd += ' <a href="' + r + '" target="_blank">' + r + '</a><br /><br />';
+          }
+          tadd += '<br />';
+        }
+        div += '<p class="info"><i class="fa fa-exclamation-triangle"></i> <span class="infoTitle">Tools</span><br />' +
+          tadd + '</p>';
+      }
+
+      if (apt.properties["TTP"].length > 0) {
+        let tadd = "";
+        for (var ttp of apt.properties["TTP"]) {
+          tadd += ' <a href="https://attack.mitre.org/techniques/' +
+            ttp.techniqueID.replace(".", "/") +
+            '/" target="_blank" ><span class="infoTTP">' +
+            ttp.techniqueID + '</span></a><br />';
+          if (ttp.comment !== undefined) {
+            tadd += ttp.comment + '<br /><br />';
+          }
+        }
+        div += '<p class="info"><i class="fa fa-cogs"></i> <span class="infoTitle">TTP</span><br />' +
+          tadd + '</p>';
+      }
+
+      if (apt.properties.sources.length > 0) {
+        let sadd = "";
+        for (var s of apt.properties.sources) {
+          sadd += s.name + ', ';
+        }
+        div += '<p class="info"><i class="fa fa-book"></i> <span class="infoTitle">Sources</span><br />' +
+          sadd + '</p>';
+      }
+
+      div += '</div>'; 
+    }
+  } else {
+    div = "<p>No results found for the selected filters.</p>";
+  }
+
+  srcdiv.innerHTML = div;
+}
+
+
+
+window.addEventListener('load', function () {
+  dataPromise.then(() => {
+    
+    const startGlobeButton = document.getElementById('start-globe');
+    if (startGlobeButton && jdata && jdata.features) {
+      startGlobeButton.textContent = "Go to map";
+      startGlobeButton.disabled = false;
+    }
+
+    
+    initMapAndUI();
+
+   
+    window.addEventListener('hashchange', handleFiltersFromHash);
+
+    
+    if (window.location.hash && window.location.hash !== "#") {
+      handleFiltersFromHash();
+    }
+
+  });
+});
+
+
 
   </script>
+
 </head>
 <body>
   <div id="viewDiv">
@@ -1647,32 +2528,29 @@ var checkBox = document.getElementById("chkrelTargets");
   }
 }
 
-function btnSearchClick()
-{
-window.location.hash="#";
-if (document.getElementById("searchAPTname").value!==""){window.location.hash+='name='+document.getElementById("searchAPTname").value +'&';
-} 
-if (document.getElementById("searchTarget").value!==""){window.location.hash+='target='+document.getElementById("searchTarget").value+'&';
+function btnSearchClick() {
+  const state = collectFilterStateFromInputs();
+
+  
+  const hasAnyFilter = Object.values(state).some(v => v && v.length > 0);
+
+  if (!hasAnyFilter) {
+    clearSearch();
+    return;
+  }
+
+  updateHashFromState(state);
 }
-if (document.getElementById("searchTargetcategory").value!==""){window.location.hash+='targetcategory='+document.getElementById("searchTargetcategory").value+'&';
+
+function clearSearch() {
+  const emptyState = getEmptyFilterState();
+  applyFilterStateToInputs(emptyState);
+  updateHashFromState(emptyState);  
+  document.getElementById("searchPlaceHolder").innerHTML = "";
 }
-if (document.getElementById("searchTool").value!==""){window.location.hash+='tool='+document.getElementById("searchTool").value+'&';
-} 
-if (document.getElementById("searchLocation").value!==""){window.location.hash+='location='+document.getElementById("searchLocation").value+'&';}
 
-if (window.location.hash==="#"){window.location.hash="";}
+	
 
-}	
-
-function clearSearch()
-{
-	document.getElementById("searchAPTname").value="";
-	document.getElementById("searchTarget").value="";
-	document.getElementById("searchTargetcategory").value="";
-	document.getElementById("searchTool").value="";
-	document.getElementById("searchLocation").value="";
-
-}
 		
 		
 		</script>
@@ -1680,25 +2558,99 @@ function clearSearch()
 		
   </div>
   
-  <div id="search-container">
+<div id="search-container">
   <div id="searchDiv">
-  <button id="close-search" class="esri-icon-close"></button>
-		<div><img src="images/aptmap.png" /> </div> 
-		<div>		
-		<h1>Search</h1>
-		<div id"searchPnl">APT Name: <input type="text" id="searchAPTname" name="searchAPTname"><br><br>
-		Location: <input type="text" id="searchLocation" name="searchLocation"><br><br>
-		Target: <input type="text" id="searchTarget" name="searchTarget"><br><br>
-		Target category: <input type="text" id="searchTargetcategory" name="searchTargetcategory"><br><br>
-		Tool: <input type="text" id="searchTool" name="searchTool"><br><br>
-		<input type="button" id="btnsearch" name="btnsearch" value="Search" onclick="btnSearchClick()">
-		<button onclick="clearSearch()">Clear</button>
-		</div>
-		<ol id="searchPlaceHolder">
-		</ol>
-		</div>
-	   </div>
+    <button id="close-search" class="esri-icon-close" title="Close search"></button>
+
+    <div class="search-header">
+      <img id="searchlogo" src="images/aptmap.png" alt="APTmap logo" />
+      <div>
+        <h1>APT Search</h1>
+        <p class="search-tagline">
+          Filter APT groups by name, geography, targeting, TTP, sponsor, and motivation.
+        </p>
+      </div>
     </div>
+
+    <div id="searchPnl">
+      <div class="search-grid">
+        <!-- Colonna 1 -->
+        <div class="search-field">
+          <label for="searchAPTname">APT name / alias</label>
+          <input type="text" id="searchAPTname" name="searchAPTname"
+                 placeholder="es. APT28, Equation Group">
+        </div>
+
+        <div class="search-field">
+          <label for="searchLocation">Location (country / region)</label>
+          <input type="text" id="searchLocation" name="searchLocation"
+                 placeholder="es. Russia, China, Middle East">
+        </div>
+
+        <div class="search-field">
+          <label for="searchTarget">Targets (org / sector)</label>
+          <input type="text" id="searchTarget" name="searchTarget"
+                 placeholder="es. government, telecom, energy">
+        </div>
+
+        <div class="search-field">
+          <label for="searchTargetcategory">Target category</label>
+          <input type="text" id="searchTargetcategory" name="searchTargetcategory"
+                 placeholder="es. government, financial, defense">
+        </div>
+
+        <!-- Colonna 2 -->
+        <div class="search-field">
+          <label for="searchTool">Tool / framework</label>
+          <input type="text" id="searchTool" name="searchTool"
+                 placeholder="es. Cobalt Strike, PlugX">
+        </div>
+
+        <div class="search-field">
+          <label for="searchTechnique">MITRE ATT&amp;CK technique</label>
+          <input type="text" id="searchTechnique" name="searchTechnique"
+                 placeholder="es. T1059, T1566.001">
+        </div>
+
+        <div class="search-field">
+          <label for="searchSponsor">Sponsor / attribution</label>
+          <input type="text" id="searchSponsor" name="searchSponsor"
+                 placeholder="es. state-sponsored, Russia, Iran">
+        </div>
+
+        <div class="search-field">
+          <label for="searchMotivation">Motivation</label>
+          <input type="text" id="searchMotivation" name="searchMotivation"
+                 placeholder="es. espionage, financial, sabotage">
+        </div>
+
+        <!-- Colonna 3: first-seen range -->
+        <div class="search-field">
+          <label for="searchFirstSeenFrom">First seen &ge; (year)</label>
+          <input type="text" id="searchFirstSeenFrom" name="searchFirstSeenFrom"
+                 placeholder="es. 2010">
+        </div>
+
+        <div class="search-field">
+          <label for="searchFirstSeenTo">First seen &le; (year)</label>
+          <input type="text" id="searchFirstSeenTo" name="searchFirstSeenTo"
+                 placeholder="es. 2020">
+        </div>
+      </div>
+
+      <div id="search-actions">
+        <button type="button" onclick="clearSearch()" class="btn-secondary">Clear</button>
+        <button type="button" id="btnsearch" name="btnsearch"
+                onclick="btnSearchClick()" class="btn-primary">
+          Search
+        </button>
+      </div>
+    </div>
+
+    <ol id="searchPlaceHolder"></ol>
+  </div>
+</div>
+
 	<div id="chart-container">
   <div id="chartDiv">
   <button id="close-chart" class="esri-icon-close"></button>
@@ -1717,45 +2669,5 @@ function clearSearch()
     </div>
 	</div>
   </div>
- <script>
- setTimeout(function(){
- 
- if (window.location.hash!=="") {
-	document.getElementById("search").click();
-	
-	document.getElementById("searchAPTname").value="";
-	document.getElementById("searchTarget").value="";
-	document.getElementById("searchTargetcategory").value="";
-	document.getElementById("searchTool").value="";
-	document.getElementById("searchLocation").value="";
-	console.log(window.location.hash.split("#"));
-	console.log(window.location.hash.split("#")[1].split("&"));
-	for (var h of window.location.hash.split("#")[1].split("&")){
-	console.log(h);
-		if (h.split("=")[0]==="name"){
-			document.getElementById("searchAPTname").value=decodeURIComponent(h.split("=")[1]);
-		}
-		if (h.split("=")[0]==="target"){
-			document.getElementById("searchTarget").value=decodeURIComponent(h.split("=")[1]);
-		}
-		if (h.split("=")[0]==="targetcategory"){
-			document.getElementById("searchTargetcategory").value=decodeURIComponent(h.split("=")[1]);
-		}
-		if (h.split("=")[0]==="tool"){
-			document.getElementById("searchTool").value=decodeURIComponent(h.split("=")[1]);
-		}
-		if (h.split("=")[0]==="location"){
-			document.getElementById("searchLocation").value=decodeURIComponent(h.split("=")[1]);
-		}
-		
-	}
-	
-	
-
-Search();
-	}
-}, 6000);
- 
- </script>
 </body>
 </html>
