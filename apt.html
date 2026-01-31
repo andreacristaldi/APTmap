@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="initial-scale=1" />
-	<title>APTMAP - Advanced Persistent Threat Map - Groups Filtering Dashboard</title>
+	<title>APTMAP - Filter - Advanced Persistent Threat Map</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
 	<link rel="stylesheet" href="CSS/style3.css" />
@@ -32,46 +32,135 @@
 	
 	<div id="DivContainer" style="display:none;">
 		<div id="fixedHeader">
-			<img src="images/aptmap.png"/><br />
-			APT Groups Filtering - <span id="aptCounter">0</span> Groups Found <br />
-			Filters: <span id="selectedFilters"></span>
-		</div>
+  <div class="header-left">
+    <img src="images/aptmap.png" alt="APTmap logo" />
+    <div class="header-text">
+      <div class="header-title">APT Groups Filtering</div>
+      <div class="header-sub">
+        <span id="aptCounter">0</span> groups found
+      </div>
+    </div>
+  </div>
+
+  <div class="header-right">
+    <div class="header-filters-row">
+      Filters: <span id="selectedFilters"></span>
+    </div>
+    <div class="header-toggle-row">
+      <span class="header-toggle-label">Adaptive filters</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="adaptiveFiltersToggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+</div>
+
+
 		<div id="content">
-			<div class="DivPanel2">
-				<h2>Targets</h2>
-				<div id="tableTargets"></div>
-			</div>
-
-			<div class="DivPanel2">
-				<h2>Category Targets</h2>
-				<div id="tableCategoryTargets"></div>
-			</div>
-
-			<div class="DivPanel2">
-				<h2>Locations</h2>
-				<div id="tableLocations"></div>
-			</div>
-			
-			<div class="DivPanel2">
-				<h2>TTPs</h2>
-				<div id="tableTTPs"></div>
-			</div>
-
-			<div class="DivPanel2">
-				<h2>Malware Samples</h2>
-				<div id="tableSamples"></div>
-			</div>
-
-			<div class="DivPanel2">
-				<h2>Filtered APT Groups</h2>
-				<div id="tableFilteredAPT"></div>
-			</div>
-			
-			<div class="DivPanel2">
-				<h2>APT Group Details</h2>
-				<div id="aptDetails"></div>
-			</div>
+		  <div class="DivPanel2">
+		  <div class="panel-header">
+			<h2>Targets</h2>
+			<button class="panel-clear-btn" data-key="targets" title="Clear Targets">
+			  <i class="fa fa-times-circle"></i> Clear
+			</button>
+		  </div>
+		  <div id="tableTargets"></div>
 		</div>
+
+		  <div class="DivPanel2">
+		  <div class="panel-header">
+			<h2>Category Targets</h2>
+			<button class="panel-clear-btn" data-key="categoryTargets" title="Clear Category Targets">
+			  <i class="fa fa-times-circle"></i> Clear
+			</button>
+		  </div>
+		  <div id="tableCategoryTargets"></div>
+		</div>
+
+
+ <div class="DivPanel2">
+  <div class="panel-header">
+    <h2>Locations</h2>
+    <button class="panel-clear-btn" data-key="locations" title="Clear Locations">
+      <i class="fa fa-times-circle"></i> Clear
+    </button>
+  </div>
+  <div id="tableLocations"></div>
+</div>
+
+<div class="DivPanel2">
+  <div class="panel-header">
+    <h2>Tools</h2>
+    <button class="panel-clear-btn" data-key="tools" title="Clear Tools">
+      <i class="fa fa-times-circle"></i> Clear
+    </button>
+  </div>
+  <div id="tableTools"></div>
+</div>
+
+<div class="DivPanel2">
+  <div class="panel-header">
+    <h2>Tool Categories</h2>
+    <button class="panel-clear-btn" data-key="toolCategories" title="Clear Tool Categories">
+      <i class="fa fa-times-circle"></i> Clear
+    </button>
+  </div>
+  <div id="tableToolCategories"></div>
+</div>
+
+<div class="DivPanel2">
+  <div class="panel-header">
+    <h2>Sponsors</h2>
+    <button class="panel-clear-btn" data-key="sponsors" title="Clear Tool Sponsors">
+      <i class="fa fa-times-circle"></i> Clear
+    </button>
+  </div>
+  <div id="tableSponsors"></div>
+</div>
+
+
+<div class="DivPanel2">
+  <div class="panel-header">
+    <h2>Motivations</h2>
+    <button class="panel-clear-btn" data-key="motivations" title="Clear Motivations">
+      <i class="fa fa-times-circle"></i> Clear
+    </button>
+  </div>
+  <div id="tableMotivations"></div>
+</div>
+
+<div class="DivPanel2">
+  <div class="panel-header">
+    <h2>TTPs</h2>
+    <button class="panel-clear-btn" data-key="ttps" title="Clear TTPs">
+      <i class="fa fa-times-circle"></i> Clear
+    </button>
+  </div>
+  <div id="tableTTPs"></div>
+</div>
+			
+<div class="DivPanel2">
+  <div class="panel-header">
+    <h2>Malware Samples</h2>
+    <button class="panel-clear-btn" data-key="samples" title="Clear Malware Samples">
+      <i class="fa fa-times-circle"></i> Clear
+    </button>
+  </div>
+  <div id="tableSamples"></div>
+</div>
+
+  <div class="DivPanel2">
+    <h2>Filtered APT Groups</h2>
+    <div id="tableFilteredAPT"></div>
+  </div>
+			
+  <div class="DivPanel2">
+    <h2>APT Group Details</h2>
+    <div id="aptDetails"></div>
+  </div>
+</div>
+
 	</div>
 
 	<script>
@@ -79,75 +168,310 @@
 	
 	var referrer = document.referrer;
 
-    if (referrer.includes("index.html")) {
-		document.getElementById('DivContainer').style.display = "block";
-		document.getElementById('container').style.display = "none";
-		document.getElementById('DivContainer').style.filter = "none";
-		loadData();
-      } 
+	// Arrivo da index.html O con hash (es. apt.html#target=Government)
+	if (referrer.includes("index.html") || (window.location.hash && window.location.hash !== "")) {
+	  document.getElementById('DivContainer').style.display = "block";
+	  document.getElementById('container').style.display = "none";
+	  document.getElementById('DivContainer').style.filter = "none";
+	  loadData();
+	}
+ 
 	  
 	let aptData = [];
-	let filters = { targets: [], categoryTargets: [], locations: [], samples: [], ttps: [] };
+	let filters = {
+	  targets: [],
+	  categoryTargets: [],
+	  locations: [],
+	  samples: [],
+	  ttps: [],
+	  tools: [],
+	  toolCategories: [],
+	  sponsors: [],
+	  motivations: []
+	};
+	
+	
 
-	async function loadData() {
-		try {
-			const response = await fetch('apt.json');
-			const data = await response.json();
-			aptData = data.features;
+let adaptiveFilters = false;
 
-			function renderTable(divId, items, filterKey) {
-				items.sort();
-				let html = '<table class="display"><thead><tr><th>Select</th><th>Name</th></tr></thead><tbody>';
-				items.forEach(item => html += `<tr><td><input type="checkbox" data-key="${filterKey}" value="${item}"></td><td>${item}</td></tr>`);
-				html += '</tbody></table>';
-				document.getElementById(divId).innerHTML = html;
-				$(`#${divId} table`).DataTable();
-			}
+// Render di una singola tabella (Targets, Tools, ecc.)
+// Usa filters[filterKey] per lasciare checkati i valori già selezionati
+function renderTable(divId, items, filterKey) {
+  items = [...items]; // per sicurezza, non mutiamo l'array originale
+  items.sort();
 
-			renderTable('tableTargets', [...new Set(aptData.flatMap(g => g.properties.targets || []))], 'targets');
-			renderTable('tableCategoryTargets', [...new Set(aptData.flatMap(g => g.properties['target-category'] || []))], 'categoryTargets');
-			renderTable('tableLocations', [...new Set(aptData.map(g => g.properties.location).filter(Boolean))], 'locations');
-			renderTable('tableSamples', [...new Set(aptData.flatMap(g => (g.properties['ext-links'] || []).filter(el => el.type === 'malwaresample' && el.description).map(el => el.description)))], 'samples');
-			renderTable('tableTTPs', [...new Set(aptData.flatMap(g => (g.properties.TTP || []).map(ttp => ttp.techniqueID)))], 'ttps');
+  const selected = filters[filterKey] || [];
 
-			$('body').on('change', 'input[type="checkbox"]', filterGroups);
-			filterGroups();
-		} catch (e) { console.error('Error:', e); }
-	}
+  let html = '<table class="display"><thead><tr><th>Select</th><th>Name</th></tr></thead><tbody>';
 
-	function filterGroups() {
-		for (let key in filters) {
-			filters[key] = $(`input[data-key="${key}"]:checked`).map((_, cb) => cb.value).get();
-		}
+  items.forEach(item => {
+    const text = String(item);
+    // uso value='...' con apici singoli, così non mi preoccupo dei doppi apici nel testo
+    const escapedValue = text.replace(/'/g, '&#39;');
+    const checked = selected.includes(text) ? ' checked' : '';
+    html += '<tr><td><input type="checkbox" data-key="' + filterKey +
+            '" value=\'' + escapedValue + '\'' + checked +
+            '></td><td>' + escapedValue + '</td></tr>';
+  });
 
-		let filtered = aptData.filter(group => {
-			const props = group.properties;
-			return (!filters.targets.length || filters.targets.some(t => props.targets?.includes(t))) &&
-				(!filters.categoryTargets.length || filters.categoryTargets.some(ct => props['target-category']?.includes(ct))) &&
-				(!filters.locations.length || filters.locations.includes(props.location)) &&
-				(!filters.samples.length || filters.samples.some(s => props['ext-links']?.some(el => el.type === 'malwaresample' && el.description === s))) &&
-				(!filters.ttps.length || filters.ttps.some(ttp => props.TTP?.some(t => t.techniqueID === ttp)));
-		});
+  html += '</tbody></table>';
+  document.getElementById(divId).innerHTML = html;
+  $(`#${divId} table`).DataTable();
+}
 
-		document.getElementById('aptCounter').innerText = filtered.length;
-        let filterText = Object.entries(filters).map(([k, v]) => v.length ? `${k}: ${v.join(', ')}` : '').filter(Boolean).join(' | ');
-		document.getElementById('selectedFilters').innerText = filterText;
+// Render di TUTTI i pannelli filtro (Targets, Locations, Tools, ecc.)
+// sourceData: lista di feature APT da cui estrarre i valori (aptData completo o "filtered")
+function renderAllTables(sourceData) {
+  const data = sourceData || aptData;
 
-		let html = '<table class="display"><thead><tr><th>APT Group Names</th></tr></thead><tbody>';
-		filtered.forEach(g => html += `<tr><td><a href="#" class="apt-link" data-name="${g.properties.name}">${g.properties.name}</a></td></tr>`);
-		html += '</tbody></table>';
-		document.getElementById('tableFilteredAPT').innerHTML = html;
-		$('#tableFilteredAPT table').DataTable();
+  renderTable(
+    'tableTargets',
+    [...new Set(data.flatMap(g => g.properties.targets || []))],
+    'targets'
+  );
 
-		
-		$('#tableFilteredAPT').on('click', '.apt-link', function(e){
-			e.preventDefault();
-			const aptName = $(this).data('name');
-			const apt = aptData.find(g => g.properties.name === aptName);
-			document.getElementById('aptDetails').innerHTML = createAptDetails(apt);
-		});
+  renderTable(
+    'tableCategoryTargets',
+    [...new Set(data.flatMap(g => g.properties['target-category'] || []))],
+    'categoryTargets'
+  );
 
-	}
+  renderTable(
+    'tableLocations',
+    [...new Set(data.map(g => g.properties.location).filter(Boolean))],
+    'locations'
+  );
+
+  // Tools (nome del tool)
+  renderTable(
+    'tableTools',
+    [...new Set(data.flatMap(g => (g.properties.tools || []).map(t => t.value)))],
+    'tools'
+  );
+
+  // Tool "categories" = type (stesso concetto del grafico in index)
+  renderTable(
+    'tableToolCategories',
+    [...new Set(
+      data.flatMap(g =>
+        (g.properties.tools || []).flatMap(t => t.type || [])
+      )
+    )],
+    'toolCategories'
+  );
+
+  // Sponsors
+  renderTable(
+    'tableSponsors',
+    [...new Set(data.map(g => g.properties.sponsor).filter(Boolean))],
+    'sponsors'
+  );
+
+  // Motivations – dal campo properties.motivations (array)
+  renderTable(
+    'tableMotivations',
+    [...new Set(
+      data.flatMap(g => g.properties.motivations || [])
+    )],
+    'motivations'
+  );
+
+  // Malware samples
+  renderTable(
+    'tableSamples',
+    [...new Set(
+      data.flatMap(g =>
+        (g.properties['ext-links'] || [])
+          .filter(el => el.type === 'malwaresample' && el.description)
+          .map(el => el.description)
+      )
+    )],
+    'samples'
+  );
+
+  // TTPs
+  renderTable(
+    'tableTTPs',
+    [...new Set(data.flatMap(g => (g.properties.TTP || []).map(ttp => ttp.techniqueID)))],
+    'ttps'
+  );
+}
+
+
+// Parsing dell'hash tipo "#target=Gov&targetcategory=Finance"
+function parseHashParams() {
+  const hash = window.location.hash || "";
+  const params = {};
+  if (!hash || hash === "#") return params;
+
+  const raw = hash.substring(1); // togli "#"
+  raw.split("&").forEach(p => {
+    if (!p) return;
+    const [k, v] = p.split("=");
+    if (!k) return;
+    const key = decodeURIComponent(k).toLowerCase();
+    const val = v ? decodeURIComponent(v) : "";
+    params[key] = val;
+  });
+
+  return params;
+}
+
+// Applica i parametri dell'hash selezionando i checkbox e filtrando
+function applyHashFilters() {
+  const params = parseHashParams();
+
+  // pulisci tutto
+  $('input[type="checkbox"]').prop('checked', false);
+
+  // mappatura: hash -> data-key / value
+  if (params.target) {
+    $(`input[data-key="targets"][value="${params.target}"]`).prop('checked', true);
+  }
+  if (params.targetcategory) {
+    $(`input[data-key="categoryTargets"][value="${params.targetcategory}"]`).prop('checked', true);
+  }
+  if (params.location) {
+    $(`input[data-key="locations"][value="${params.location}"]`).prop('checked', true);
+  }
+  // TTP/technique
+  if (params.technique) {
+    $(`input[data-key="ttps"][value="${params.technique}"]`).prop('checked', true);
+  }
+
+  // Tools (nome tool)
+  if (params.tool) {
+    $(`input[data-key="tools"][value="${params.tool}"]`).prop('checked', true);
+  }
+
+  // Sponsor
+  if (params.sponsor) {
+    $(`input[data-key="sponsors"][value="${params.sponsor}"]`).prop('checked', true);
+  }
+
+  // Motivation
+  if (params.motivation) {
+    $(`input[data-key="motivations"][value="${params.motivation}"]`).prop('checked', true);
+  }
+
+  filterGroups();
+}
+
+
+
+async function loadData() {
+  try {
+    const response = await fetch('apt.json');
+    const data = await response.json();
+    aptData = data.features;
+
+    // Prima render completo di tutti i pannelli, su aptData intero
+    renderAllTables(aptData);
+
+    // Event delegation: qualunque change su checkbox fa partire filterGroups
+    $('body').on('change', 'input[type="checkbox"]', filterGroups);
+
+    filterGroups();
+
+    // Se arrivo con un hash, applico subito i filtri
+    if (window.location.hash && window.location.hash !== "") {
+      applyHashFilters();
+    }
+  } catch (e) { console.error('Error:', e); }
+}
+
+function filterGroups() {
+  // 1) aggiorna struttura filters leggendo lo stato dei checkbox
+  for (let key in filters) {
+    filters[key] = $(`input[data-key="${key}"]:checked`).map((_, cb) => cb.value).get();
+  }
+
+  // 2) filtra gli APT
+  let filtered = aptData.filter(group => {
+    const props = group.properties;
+
+    return (
+      // Targets
+      (!filters.targets.length ||
+        filters.targets.some(t => (props.targets || []).includes(t)))
+
+      // Category Targets
+      && (!filters.categoryTargets.length ||
+        filters.categoryTargets.some(ct => (props['target-category'] || []).includes(ct)))
+
+      // Locations
+      && (!filters.locations.length ||
+        filters.locations.includes(props.location))
+
+      // Malware Samples (ext-links type=malwaresample / description)
+      && (!filters.samples.length ||
+        filters.samples.some(s =>
+          (props['ext-links'] || []).some(
+            el => el.type === 'malwaresample' && el.description === s
+          )
+        ))
+
+      // TTPs
+      && (!filters.ttps.length ||
+        filters.ttps.some(ttp =>
+          (props.TTP || []).some(t => t.techniqueID === ttp)
+        ))
+
+      // Tools (nome tool)
+      && (!filters.tools.length ||
+        filters.tools.some(toolName =>
+          (props.tools || []).some(t => t.value === toolName)
+        ))
+
+      // Tool Categories -> t.type (non category!)
+      && (!filters.toolCategories.length ||
+        filters.toolCategories.some(cat =>
+          (props.tools || []).some(t => (t.type || []).includes(cat))
+        ))
+
+      // Sponsor
+      && (!filters.sponsors.length ||
+        (props.sponsor && filters.sponsors.includes(props.sponsor)))
+
+      // Motivations (array di stringhe)
+      && (!filters.motivations.length ||
+        filters.motivations.some(m =>
+          (props.motivations || []).includes(m)
+        ))
+    );
+  });
+
+  // 3) Se la modalità adaptiva è attiva, ricalcola i pannelli a partire dal set filtrato
+  if (adaptiveFilters) {
+    renderAllTables(filtered);
+    // NB: i checkbox verranno disegnati già "checked" usando filters[*]
+  }
+
+  // 4) Aggiorna contatori e tabella APT filtrati
+  document.getElementById('aptCounter').innerText = filtered.length;
+  let filterText = Object.entries(filters)
+    .map(([k, v]) => v.length ? `${k}: ${v.join(', ')}` : '')
+    .filter(Boolean)
+    .join(' | ');
+  document.getElementById('selectedFilters').innerText = filterText;
+
+  let html = '<table class="display"><thead><tr><th>APT Group Names</th></tr></thead><tbody>';
+  filtered.forEach(g => html += `<tr><td><a href="#" class="apt-link" data-name="${g.properties.name}">${g.properties.name}</a></td></tr>`);
+  html += '</tbody></table>';
+  document.getElementById('tableFilteredAPT').innerHTML = html;
+  $('#tableFilteredAPT table').DataTable();
+}
+
+// Click su un APT nella tabella "Filtered APT Groups" -> mostra dettagli
+$('#tableFilteredAPT').on('click', '.apt-link', function (e) {
+  e.preventDefault();
+  const aptName = $(this).data('name');
+  const apt = aptData.find(g => g.properties.name === aptName);
+  if (apt) {
+    document.getElementById('aptDetails').innerHTML = createAptDetails(apt);
+  }
+});
+
 	
 	function createAptDetails(apt) {
 		let div;
@@ -265,12 +589,56 @@
 		return div;
 	}
 
+	// Se l'hash cambia (es. click su link #target=... dentro aptDetails), riapplica filtri
+	window.addEventListener('hashchange', function () {
+	  const params = parseHashParams();
+	  if (Object.keys(params).length === 0) {
+		// nessun filtro: deseleziona tutto e mostra tutti gli APT
+		$('input[type="checkbox"]').prop('checked', false);
+		filterGroups();
+	  } else {
+		applyHashFilters();
+	  }
+	});
+
+
 	document.getElementById('start').addEventListener('click', () => {
 		document.getElementById('DivContainer').style.display = "block";
 		document.getElementById('container').style.display = "none";
 		document.getElementById('DivContainer').style.filter = "none";
 		loadData();
 	});
+// Toggle: adaptive filters on/off
+document.getElementById('adaptiveFiltersToggle').addEventListener('change', function () {
+  adaptiveFilters = this.checked;
+
+  if (adaptiveFilters) {
+    // in modalità adaptiva, rigenera pannelli in base allo stato attuale dei filtri
+    filterGroups();
+  } else {
+    // in modalità non adaptiva, torna ai pannelli globali (ma mantieni i filtri correnti)
+    renderAllTables(aptData);
+  }
+});
+
+
+// Pulsante "Clear" su ogni pannello filtro
+document.addEventListener('click', function (e) {
+  const btn = e.target.closest('.panel-clear-btn');
+  if (!btn) return;
+
+  const key = btn.getAttribute('data-key');
+  if (!key) return;
+
+  // deseleziona tutti i checkbox relativi a quel filtro
+  $(`input[data-key="${key}"]`).prop('checked', false);
+
+  // ricalcola i gruppi filtrati (e, se adaptiveFilters è attivo, aggiorna anche i pannelli)
+  if (typeof filterGroups === 'function') {
+    filterGroups();
+  }
+});
+
 
 	
 	</script>
